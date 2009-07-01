@@ -1,0 +1,119 @@
+body {
+  font-size: 12px;
+  COLOR: #222227;
+  LINE-HEIGHT: 150%;
+  FONT-FAMILY: Arial, Helvetica, sans-serif;
+  background: url(/images/bg.png);
+}     
+
+#container{margin-left: auto;margin-right: auto;width: 50em;text-align: left;}          
+
+.container{ 
+   background-color: #f2f2f2;
+}
+
+.nav{
+   background:url('/images/header-application.gif') repeat-x ;  
+}                  
+
+.line{
+	margin-top:10px;
+}
+
+.login a{
+	color: #FFFFFF;
+	font-size: 14px;
+} 
+
+.login a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.login a:hover {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+.login a:active {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.login a:visited {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+
+.login h2{
+	font-size:14px;
+	color:white;
+}
+
+.login{
+	height:30px;
+	padding-top:10px;
+}
+
+.head{          
+	height: 240px;
+	background:url('/images/bg/index_top.jpg') ;
+} 
+
+.edit{
+	font-size:10px;
+} 
+
+.more{
+   float:right; 
+} 
+.date {
+	float:right;
+	font-size:.8em;
+	margin-top:.4em;
+	text-align:right;
+	}
+address{margin-left:80px;}
+.section{
+	border-top:1px solid #ccc;
+	margin:10px 0;
+	padding:20px;
+	}
+
+ul{ margin-left:80px;}
+h2 {
+	width:14em;
+	float:left;
+	font-size:1.5em;
+	font-variant: small-caps;
+	letter-spacing: .06em;
+	}
+a#view { display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
+a#view:hover { background: #222; }
+
+#download a { background: #f78210; color: white; padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px; }
+#download a:hover { background: #c26c06; }        
+
+/* ---- for facebox and blueprint confick*/ 
+th, td, caption {padding:0px;}  
+
+/*--- footer ---*/
+
+#footer{   
+	margin-top:10px;
+	height:60px;
+	line-height:60px;    
+	background:#cccccc;
+
+}
+
+#copyright{
+   padding:5px;    
+}
+
+#footer ul li{
+	float: right;
+	list-style:none;}
+
+#footer li a{
+padding-right:10px;
+display: block;
+border-left: 1px solid #ccc;
+}

@@ -1,0 +1,23 @@
+<div class='span-10'>
+	<%=image_tag 'snap.jpg'%>
+</div>
+<div class='span-12 last'>
+	<h1>简历创建</h1>
+	<p>
+		<b>简单，快捷,安全的在线个人简历创建</b><Br />
+	</p>       
+	<ul>                   
+		<li>简单 - 只需填写几个表单即可</li>
+		<li>方便 - 打印格式支持,支持多种格式下载</li>
+		<li>安全 － 访问权限控制</li>
+
+	</ul>
+	     
+	<div id="download">
+		<% if logged_in? -%>
+		   <%=link_to '新建简历',new_resume_path %> 
+		<% else -%>
+		   <%=facebox_link_to '新建简历',:url => login_box_path %>
+		<% end -%>
+	</div>	
+</div>

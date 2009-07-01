@@ -1,0 +1,21 @@
+<p>
+	<%= f.label :title, "职位" %> <br />
+ 	<%= f.text_field :title %> </p>
+
+<p>    
+	<%= f.label :company, "公司" %><br /> 
+	<%= f.text_field :company %>
+</p>                            
+<p>
+	<%= f.label :start_at, "开始时间" %><br />
+    <%= f.date_select('start_at',:start_year => Time.now.year - 25, :end_year => Time.now.year) %>
+</p>
+<p>
+	<%= f.label :end_at, "结束时间" %><br /> 
+    <%= f.date_select('end_at',:start_year => Time.now.year - 25, :end_year => Time.now.year) %>
+</p>
+<p>
+	<%= f.label :description, "描述" %><br />
+    <%= f.text_area :description, :size => "45x15" %>
+</p>
+

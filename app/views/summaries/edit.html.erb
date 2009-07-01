@@ -1,0 +1,11 @@
+<h1>编辑个人总结</h1>
+
+<% form_for(@summary,:url => resume_summary_path(@resume)) do |f| %>
+  <%= f.error_messages %>
+   <%= render :partial => 'form',:locals => { :f => f } %> 
+  <p>
+    <%= f.submit '更新' %>
+  </p>
+<% end %>
+
+<%= link_to '返回', edit_resume_path(@resume) %>   

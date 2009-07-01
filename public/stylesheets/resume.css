@@ -1,0 +1,55 @@
+body{
+	font-size:12px;
+}
+#address{
+	height:5em;
+	width:48em;
+	padding:1em;
+	}
+#address div{
+	width:16em;
+	float:left;
+	}
+#address h3{
+	border-bottom: none;
+	font-variant: small-caps;
+	margin-top: 0;
+	}
+.date {
+	float:right;
+	font-size:.8em;
+	margin-top:.4em;
+	text-align:right;
+	}
+	
+.content{ 
+	margin:0 0 0 10em;
+	}   
+.profile{
+	padding:20px; 
+}	
+.section{
+	border-top:1px solid #ccc;
+	margin:10px 0;
+	padding:20px;
+	}
+
+ul{ margin-left:80px;}
+
+h1.name { width:200px; float:left;}		
+
+h1{
+	margin:1em 0 1em 9.5em;
+	font-size:1.75em;
+	}
+h2 {
+	width:6em;
+	float:left;
+	font-size:1.5em;
+	font-variant: small-caps;
+	letter-spacing: .06em;
+	}
+h3 {margin-bottom: 10px; }
+#download {float:right;margin:20px 60px 10px 10px;}
+#download a { background: #f78210; color: white; padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px; }
+#download a:hover { background: #c26c06; }

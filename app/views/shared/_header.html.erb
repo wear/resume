@@ -1,0 +1,23 @@
+<div class='nav span-24'>
+	<div class='span-5 logo'>
+		<%=link_to image_tag('logo.png'),root_path %>
+	</div>
+	<div class='line span-1'>
+		<%= image_tag 'line_1.gif'%> 
+	</div>
+	<div class='span-10 login'>
+		 <h2><%=link_to '首页',root_path %> <%=link_to '课堂','#'%> <%=link_to '同学','#'%> <%=link_to '便条','#'%></h2>
+	</div>
+	<div class='line span-1'>
+		<%= image_tag 'line_1.gif'%> 
+	</div>
+	<div class='span-6 last login'> 
+	   	<% if logged_in? -%>
+			  <h2>
+				<%=link_to current_user.login,user_path(current_user) %>
+				<%=link_to '注销', logout_path %></h2>
+		    <% else -%>
+		      <h2><%=link_to '请登录',login_path%></h2>
+			<% end -%>
+	</div>
+</div>

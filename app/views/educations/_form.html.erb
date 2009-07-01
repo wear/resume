@@ -1,0 +1,25 @@
+<p>
+	<%= f.label :name, "学校名称" %> <br />
+ 	<%= f.text_field :name %> </p>
+
+<p>    
+	<%= f.label :degree, "学历" %><br /> 
+	<%= f.text_field :degree %>
+</p>  
+<p>    
+	<%= f.label :field, "专业" %><br /> 
+	<%= f.text_field :field %>
+</p>                          
+<p>
+	<%= f.label :start_at, "开始时间" %><br />
+    <%= f.date_select('start_at',:discard_day => true) %>
+</p>
+<p>
+	<%= f.label :end_at, "结束时间" %><br /> 
+    <%= f.date_select('end_at',:discard_day => true) %>
+</p>
+<p>
+	<%= f.label :description, "描述" %><br />
+    <%= f.text_area :description, :size => "45x15" %>
+</p>
+
