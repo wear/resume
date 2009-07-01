@@ -1,15 +1,15 @@
-<div class='span-14 prepend-2'>
+<div class='span-8 prepend-2'>
 	<h1><%= @resume.profile.name %><span class='edit'>[<%= link_to '删除', resume_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h1>	
 </div>
 <div class='span-6 last'>
 	   <%=link_to '查看完整简历',@resume,:id => 'view',:target => '_blank'%>  
 </div>
   
-<div class="span-22 section"> 
+<div class="span-16 section"> 
 <div class='more'>
 	<%=link_to '编辑',edit_resume_profile_path(@resume)%>
 </div>
-<div class='span-11 '>
+<div class='span-8'>
 		<h3>个人信息<span class='edit'></h3>
 		<table border="0" cellspacing="1" cellpadding="1">
 			<tr><td width='20%'>性别:</td><td><%= format_sex(@resume.profile.sex) %></td></tr> 
@@ -19,7 +19,7 @@
 			<tr><td>生日:</td><td><%= @resume.profile.birthday %></td></tr> 
 		</table>
 </div>
-<div class='span-11 last'>
+<div class='span-8 last'>
 		<h3>联系方式</h3>
 		<table border="0" cellspacing="1" cellpadding="1">
 			<tr><td width='20%'>地址:</td><td><%= @resume.profile.address %></td></tr> 
@@ -29,7 +29,7 @@
 		</table>
 </div>
 </div>
-<div class="span-22 section"> 
+<div class="span-16 section"> 
 	<div class='more'>
 		<%=link_to '编辑',edit_resume_summary_path(@resume)%> 
 	</div>
@@ -44,7 +44,7 @@
 	</div>
 </div>
 
-<div class="span-22 section">    
+<div class="span-16 section">    
 	<h2>工作经验</h2>
 	<div class="content">  
 		<% @resume.positions.each do |position| -%>
@@ -61,7 +61,7 @@
 	</div>
 </div>
 
-<div class="span-22 section">    
+<div class="span-16 section">    
 	<div class='more'>
 		<%=link_to '编辑',edit_resume_additionalinfo_path(@resume)%> 
 	</div>
@@ -75,7 +75,7 @@
 	</div>
 </div>
 
-<div class="span-22 section">    
+<div class="span-16 section">    
 	<h2>教育</h2>  
 	<% @resume.educations.each do |education| -%>
 	<div class="content">  

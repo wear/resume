@@ -3,7 +3,8 @@ class ResumesController < ApplicationController
   # GET /resumes
   # GET /resumes.xml
   def index
-    @resumes = Resume.all
+    @user = current_user
+    @resumes = @user.resumes
 
     respond_to do |format|
       format.html # index.html.erb

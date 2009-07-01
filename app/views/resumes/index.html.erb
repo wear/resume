@@ -1,11 +1,13 @@
-<h1>Listing resumes</h1>
+<h1><%= @user.login %></h1>
 
 <table>
   <tr>
+	<th>编号</th>
   </tr>
 
 <% @resumes.each do |resume| %>
-  <tr>
+  <tr>   
+	<td><%=resume.id%></td>
     <td><%= link_to 'Show', resume %></td>
     <td><%= link_to 'Edit', edit_resume_path(resume) %></td>
     <td><%= link_to 'Destroy', resume, :confirm => 'Are you sure?', :method => :delete %></td>
