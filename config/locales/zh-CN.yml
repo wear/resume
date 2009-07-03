@@ -130,7 +130,8 @@
           content: 总结
           specialties: 特长
       profile:
-          email: '电子邮件'
+          email: '电子邮件' 
+          sex: '性别'
           name: '名称'
           mobile: '手机' 
           address: '地址'

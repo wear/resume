@@ -15,7 +15,7 @@
 	   	<% if logged_in? -%>
 			  <h2>
 				你好<%= current_user.login %>
-				<%=link_to '设置', edit_user_path(current_user) %>
+				<%#=link_to '设置', edit_user_path(current_user) %>
 				<%=link_to '注销', logout_path %></h2>
 		    <% else -%>
 		      <h2><%=link_to '登录',login_path%> <%= link_to '注册', signup_path %></h2> 

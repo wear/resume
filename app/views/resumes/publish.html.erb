@@ -1,0 +1,18 @@
+ <script>  
+ <!--
+ function clip(text){
+ str=eval("document." + text)
+ str.select()
+ str = document.selection.createRange();
+ clipboardData.setData('text',(str.text));
+ }
+ //-->
+</script>
+
+公开网址（任何人可访问）:
+<%= text_field_tag :url,@resume.public_url,:size => 38 %> 
+
+<%= submit_tag '复制',:onclick => "javascript:clip('url')"%>  
+<p>
+	<i>提示:你可以通过重新发布使就的公开网址失效，以控制访问权限</i>
+</p>

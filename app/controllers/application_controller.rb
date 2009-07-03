@@ -8,12 +8,6 @@ class ApplicationController < ActionController::Base
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password            
-  
-  prawnto :prawn => {
-            :left_margin => 80, 
-            :right_margin => 80,
-            :top_margin => 38,
-            :bottom_margin => 38} 
             
   def user_autherized
     unless current_user == @resume.user

@@ -35,5 +35,48 @@ class UsersController < ApplicationController
       flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
       redirect_back_or_default('/')
     end
+  end 
+  
+  def password
+  end
+  
+  def change_password
+     respond_to do |format|
+       if User.authenticate(@user.login, params[:user][:current_password])
+ 	      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+ 	      flash[:notice] = "密码修改成功！"
+ 	      format.html { redirect_to user_path(@user) }
+ 	     else
+ 	      format.html { render :action => 'password' }
+ 	    end
+      else
+ 	     @user.errors.add_to_base("现密码不正确")
+ 	     format.html { render :action => 'password' }
+      end
+    end
+  end
+  
+  def forgot_password
+    respond_to do |wants|
+      wants.html { render :layout => 'application' }
+    end
+  end
+  
+  def reset_password
+    @user = User.find(:first,:conditions => ['email = ? and login = ? ',params[:email],params[:login]])
+    if @user
+      new_password = User.generate_new_password
+      @user.password = new_password
+      @user.password_confirmation = new_password
+      @user.save
+      UserMailer.deliver_forgot_password(@user, new_password)
+      cookies.delete :auth_token
+      reset_session
+      flash[:notice] = "新密码已发送到#{@user.email}!"
+      redirect_to root_url
+    else
+      flash.now[:error] = '填写信息有误，请重试!'
+      render :action => "forgot_password",:layout => 'application'
+    end
   end
 end

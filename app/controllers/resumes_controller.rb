@@ -1,5 +1,6 @@
 class ResumesController < ApplicationController
-  before_filter :login_required 
+  before_filter :login_required,:except => :public 
+  include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
   def index
@@ -11,6 +12,43 @@ class ResumesController < ApplicationController
       format.xml  { render :xml => @resumes }
     end
   end
+  
+  def publish
+     @resume = Resume.find(params[:id])  
+     if current_user == @resume.user  
+     
+     @resume.salt = Resume.generate_salt
+     @resume.save
+     
+     respond_to do |format|
+       format.html { }
+        format.js  { render_to_facebox } 
+       format.xml  { render :xml => @resume }
+     end   
+    else                        
+      flash[:error] = '您无权限查看此文件!' 
+     respond_to do |wants|
+       wants.html { redirect_to '/' }
+       wants.pdf { redirect_to '/' }
+     end 
+    end
+  end 
+  
+  def public
+      @resume = Resume.find_by_salt(params[:salt])  
+     
+     respond_to do |format|
+       format.html { render :action => 'show',:layout=> 'resume'}
+       format.xml  { render :xml => @resume }
+       format.pdf { render :action => :show,:layout => false, :prawn => {
+             :page_size => 'A4',
+             :left_margin => 50,
+             :right_margin => 50,
+             :top_margin => 24,
+             :bottom_margin => 24},
+             :filename=>"#{@resume.profile.name.gsub(' ','_')}.pdf" }
+     end   
+  end
 
   # GET /resumes/1
   # GET /resumes/1.xml
@@ -21,15 +59,21 @@ class ResumesController < ApplicationController
     respond_to do |format|
       format.html { render :layout => 'resume'}
       format.xml  { render :xml => @resume }
-      format.pdf { render :layout => false}
+      format.pdf { render :layout => false, :prawn => {
+            :page_size => 'A4',
+            :left_margin => 50,
+            :right_margin => 50,
+            :top_margin => 24,
+            :bottom_margin => 24},
+            :filename=>"#{@resume.profile.name.gsub(' ','_')}.pdf" }
     end   
-  else                        
+   else                        
      flash[:error] = '您无权限查看此文件!' 
     respond_to do |wants|
       wants.html { redirect_to '/' }
       wants.pdf { redirect_to '/' }
     end 
-  end
+   end
   end
 
   # GET /resumes/new
@@ -57,7 +101,7 @@ class ResumesController < ApplicationController
   # POST /resumes
   # POST /resumes.xml
   def create
-    @resume = Resume.new(:user => current_user )
+    @resume = Resume.new(:user => current_user)
     @resume.build_summary(:content => '暂无',:specialties => '暂无')
     @resume.build_additionalinfo(:interests => '暂无')
     @profile = @resume.build_profile(params[:profile])
@@ -65,7 +109,7 @@ class ResumesController < ApplicationController
       if @profile.save && @resume.save
         flash[:notice] = 'Resume was successfully created.'
         format.html { redirect_to edit_resume_path(@profile.resume) }
-      else
+      else  
         format.html { render :action => "new" }
       end 
     end

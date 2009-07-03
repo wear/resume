@@ -1,8 +1,12 @@
-Your account has been created.
+您好,您在半亩方塘的帐户已创建.以下是帐户信息
 
-  Username: <%=h @user.login %>
-  Password: <%=h @user.password %>
+  帐号: <%=h @user.login %>
+  密码: <%=h @user.password %>
 
-Visit this url to activate your account:
+要启用您的帐户,请访问以下网址以激活您的帐号:
 
-  <%=h @url %>
+  <%=h @activate_url %>   
+
+------------------
+半亩方塘:
+<%=h @url %>

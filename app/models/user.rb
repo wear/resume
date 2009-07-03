@@ -64,6 +64,11 @@ class User < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end 
+  
+  def self.generate_new_password(length=6)
+    charactars = ("a".."z").to_a + ("A".."Z").to_a + ("1".."9").to_a
+    (0..length).inject([]) { |password, i| password << charactars[rand(charactars.size-1)] }.join
   end
 
   protected

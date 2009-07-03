@@ -2,7 +2,8 @@
 	<h1><%= @resume.profile.name %><span class='edit'>[<%= link_to '删除', resume_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h1>	
 </div>
 <div class='span-6 last'>
-	   <%=link_to '查看完整简历',@resume,:id => 'view',:target => '_blank'%>  
+	   <%=link_to '查看效果',@resume,:id => 'view',:target => '_blank'%>
+	<%=facebox_link_to '发布/重发布',:url => publish_resume_path(@resume),:html => {:id => 'view'} %>
 </div>
   
 <div class="span-16 section"> 
@@ -34,19 +35,19 @@
 		<%=link_to '编辑',edit_resume_summary_path(@resume)%> 
 	</div>
 	<h2>总结</h2>
-	<div class="content">
+	<div class="main">
 		<p><%= @resume.summary.content %></p>
 	</div>
 
 	<h2>技能</h2>
-	<div class="content">
+	<div class="main">
 		<p><%= @resume.summary.specialties %></p>
 	</div>
 </div>
 
 <div class="span-16 section">    
 	<h2>工作经验</h2>
-	<div class="content">  
+	<div class="main">  
 		<% @resume.positions.each do |position| -%>
 		<span class="date"><%= position.start_at %> » <%= position.end_at %></span>
 		<h3><%= position.title %><span class='edit'>[<%=link_to '编辑',edit_resume_position_path(@resume,position)%> | <%= link_to '删除', resume_position_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
@@ -66,7 +67,7 @@
 		<%=link_to '编辑',edit_resume_additionalinfo_path(@resume)%> 
 	</div>
 	<h2>兴趣爱好</h2>      
-	<div class="content">
+	<div class="main">
 		<table border="0" cellspacing="1" cellpadding="1">
 			<tr><td width='10%'>爱好:</td><td><%= @resume.additionalinfo.interests %></td></tr> 
 			<tr><td>小组:</td><td><%= @resume.additionalinfo.groups %></td></tr> 
@@ -78,7 +79,7 @@
 <div class="span-16 section">    
 	<h2>教育</h2>  
 	<% @resume.educations.each do |education| -%>
-	<div class="content">  
+	<div class="main">  
 		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
 		<h3><%= education.name %><span class='edit'>[<%=link_to '编辑',edit_resume_education_path(@resume,education)%> | <%= link_to '删除', resume_education_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
 		<ul>

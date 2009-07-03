@@ -12,14 +12,14 @@
 </p>                          
 <p>
 	<%= f.label :start_at, "开始时间" %><br />
-    <%= f.date_select('start_at',:discard_day => true) %>
+    <%= f.date_select('start_at',:discard_day => true,:start_year => Time.now.year - 20) %>
 </p>
 <p>
 	<%= f.label :end_at, "结束时间" %><br /> 
-    <%= f.date_select('end_at',:discard_day => true) %>
+    <%= f.date_select('end_at',:discard_day => true,:start_year => Time.now.year - 20) %>
 </p>
 <p>
 	<%= f.label :description, "描述" %><br />
-    <%= f.text_area :description, :size => "45x15" %>
+    <%= f.text_area :description,:cols => 10, :rows => 20 %>
 </p>
 

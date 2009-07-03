@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="robots" content="noindex, nofollow">
-  <title>Resumes: <%= controller.action_name %></title> 
+  <title><%= @resume.profile.name %>的简历</title> 
 
   <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />                        
 
@@ -17,8 +17,10 @@
 </head>
 <body>
 <div class='container'> 
-	<div class='span-16 prepend-4 append-4'>
-	    <%= yield %>  
+	<div class='span-16 prepend-4 append-4 '> 
+		<div class='res span-16'>
+		    <%= yield %>   
+		</div>
 	</div> 
 </div>
 </body>

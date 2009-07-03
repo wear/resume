@@ -3,13 +3,15 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'     
-  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil 
+  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.public_resume '/resumes/public/:salt', :controller => 'resumes', :action => 'public', :salt => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box'
-  map.resources :users
+  map.resources :users,:collection => {:reset_password => :put}
+  map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
 
   map.resource :session
 
-  map.resources :resumes,:has_one => [:profile,:summary,:additionalinfo] do |resume|
+  map.resources :resumes, :member => {:publish => :post },:has_one => [:profile,:summary,:additionalinfo] do |resume|
      resume.resources :positions
      resume.resources :educations
      resume.resources :summaries 
