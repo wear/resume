@@ -16,5 +16,5 @@ ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
   :date_time24 => "%m/%d/%Y %H:%M"
 )                
 
-APP_URL = 'bmtang.cn'
+
 
