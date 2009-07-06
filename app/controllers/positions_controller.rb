@@ -46,7 +46,7 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.save
-        flash[:notice] = 'Position was successfully created.'
+        flash[:notice] = '工作经验信息创建成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { render :xml => @position, :status => :created, :location => @position }
       else
@@ -63,7 +63,7 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.update_attributes(params[:position])
-        flash[:notice] = 'Position was successfully updated.'
+        flash[:notice] = '工作经验信息更新成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { head :ok }
       else

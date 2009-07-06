@@ -46,7 +46,7 @@ class AdditionalinfosController < ApplicationController
 
     respond_to do |format|
       if @additionalinfo.save
-        flash[:notice] = 'Additionalinfo was successfully created.'
+        flash[:notice] = '兴趣爱好创建成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { render :xml => @additionalinfo, :status => :created, :location => @additionalinfo }
       else
@@ -63,7 +63,7 @@ class AdditionalinfosController < ApplicationController
 
     respond_to do |format|
       if @additionalinfo.update_attributes(params[:additionalinfo])
-        flash[:notice] = 'Additionalinfo was successfully updated.'
+        flash[:notice] = '兴趣爱好更新成功!.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { head :ok }
       else

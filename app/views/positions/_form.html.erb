@@ -8,11 +8,11 @@
 </p>                            
 <p>
 	<%= f.label :start_at, "开始时间" %><br />
-    <%= f.date_select('start_at',:start_year => Time.now.year - 25, :end_year => Time.now.year) %>
+    <%= f.date_select('start_at',:start_year => Time.now.year - 25, :end_year => Time.now.year,:discard_day => true) %>
 </p>
 <p>
 	<%= f.label :end_at, "结束时间" %><br /> 
-    <%= f.date_select('end_at',:start_year => Time.now.year - 25, :end_year => Time.now.year) %>
+    <%= f.date_select('end_at',:start_year => Time.now.year - 25, :end_year => Time.now.year,:discard_day => true) %>
 </p>
 <p>
 	<%= f.label :description, "描述" %><br />

@@ -1,0 +1,14 @@
+<table>
+  <tr>
+	<th>用户名</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>   
+	<td><%= user.login %></td>
+    <td><%= link_to '查看', user,:target => '_blank' %></td>
+    <td><%= link_to '编辑', edit_user_path(user) %></td>
+    <td><%= link_to '删除', user, :confirm => '你确定嘛?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

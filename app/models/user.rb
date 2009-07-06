@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  has_many :resumes
-  has_one :profile
+  has_many :resumes, :dependent => :destroy
+  has_one :profile, :dependent => :destroy 
+  has_and_belongs_to_many :roles
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

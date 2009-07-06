@@ -47,7 +47,7 @@ pdf.fill_color "999999"
 pdf.fill_color "090B18" 
 end      
 pdf.bounding_box [100,pdf.cursor + 20],:width => 340 do
-  pdf.text " #{@resume.summary.content}"
+  pdf.text " #{@resume.summary.tag_list}"
 end
 pdf.move_down 20 
 pdf.stroke_horizontal_rule

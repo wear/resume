@@ -67,8 +67,8 @@ body {
 	margin-left:16em;
 } 
 
-.more{
-   float:right; 
+.more{   
+	text-align:right;
 } 
 .date {
 	float:right;
@@ -135,4 +135,9 @@ table.resume tr{
 
 i{
 	font-size:10px;
+}  
+
+h4{
+	padding:10px; 
+	margin-bottom:0px;
 }

@@ -46,7 +46,7 @@ class SummariesController < ApplicationController
 
     respond_to do |format|
       if @summary.save
-        flash[:notice] = 'Summary was successfully created.'
+        flash[:notice] = '个人总结创建成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { render :xml => @summary, :status => :created, :location => @summary }
       else
@@ -63,7 +63,7 @@ class SummariesController < ApplicationController
 
     respond_to do |format|
       if @summary.update_attributes(params[:summary])
-        flash[:notice] = 'Summary was successfully updated.'
+        flash[:notice] = '个人总结编辑成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { head :ok }
       else

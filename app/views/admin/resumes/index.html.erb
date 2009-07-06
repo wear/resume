@@ -1,0 +1,14 @@
+<table>
+  <tr>
+	<th>编号</th>
+  </tr>
+
+<% @resumes.each do |resume| %>
+  <tr>   
+	<td><%= resume.id %></td>
+    <td><%= link_to '查看', admin_resume_path(resume),:target => '_blank' %></td>
+    <td><%= link_to '编辑', edit_resume_path(resume) %></td>
+    <td><%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

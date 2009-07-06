@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        flash[:notice] = 'Profile was successfully created.'
+        flash[:notice] = '个人资料创建成功!'
         format.html { redirect_to(@profile) }
         format.xml  { render :xml => @profile, :status => :created, :location => @profile }
       else
@@ -63,7 +63,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        flash[:notice] = 'Profile was successfully updated.'
+        flash[:notice] = '个人资料更新成功!.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { head :ok }
       else

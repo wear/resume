@@ -3,7 +3,7 @@
 </div>
 <div class='span-6 last'>
 	   <%=link_to '查看效果',@resume,:id => 'view',:target => '_blank'%>
-	<%=facebox_link_to '发布/重发布',:url => publish_resume_path(@resume),:html => {:id => 'view'} %>
+	<%=facebox_link_to '发布/重发布',:url => publish_resume_path(@resume),:html => {:id => 'view'} %> 
 </div>
   
 <div class="span-16 section"> 
@@ -13,7 +13,7 @@
 <div class='span-8'>
 		<h3>个人信息<span class='edit'></h3>
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='20%'>性别:</td><td><%= format_sex(@resume.profile.sex) %></td></tr> 
+			<tr><td width='30%'>性别:</td><td><%= format_sex(@resume.profile.sex) %></td></tr> 
 			<tr><td>出生地:</td><td><%= @resume.profile.hometwon %></td></tr> 
 			<tr><td>户口所在地:</td><td><%= @resume.profile.hukou %></td></tr> 
 			<tr><td>年龄:</td><td><%= format_age(@resume.profile.birthday) %></td></tr> 
@@ -23,7 +23,7 @@
 <div class='span-8 last'>
 		<h3>联系方式</h3>
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='20%'>地址:</td><td><%= @resume.profile.address %></td></tr> 
+			<tr><td width='30%'>地址:</td><td><%= @resume.profile.address %></td></tr> 
 			<tr><td>电子邮件:</td><td><%= @resume.profile.email %></td></tr> 
 			<tr><td>即时通信:</td><td><%= @resume.profile.im %></td></tr> 
 			<tr><td>手机:</td><td><%= @resume.profile.mobile %></td></tr> 
@@ -41,7 +41,7 @@
 
 	<h2>技能</h2>
 	<div class="main">
-		<p><%= @resume.summary.specialties %></p>
+		<p><%= @resume.summary.tag_list %></p>
 	</div>
 </div>
 

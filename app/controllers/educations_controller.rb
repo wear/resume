@@ -46,7 +46,7 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       if @education.save 
-        flash[:notice] = 'Education was successfully created.'
+        flash[:notice] = '教育信息创建成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { render :xml => @resume, :status => :created, :location => @resume }
       else
@@ -63,7 +63,7 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       if @education.update_attributes(params[:education])
-        flash[:notice] = 'Education was successfully updated.'
+        flash[:notice] = '教育信息更新成功.'
         format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { head :ok }
       else
