@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def permission_denied
     flash[:notice] = "您无权限查看查看此命令"
-    return redirect_to '/'
+    return redirect_to('/')
   end
   
 end
