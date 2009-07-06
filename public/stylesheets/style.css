@@ -11,8 +11,46 @@ body {
 .container{ 
    background-color: #f2f2f2;
 }
+ 
+/* --- href ----*/
+a {
+	font-size: 12px;
+	text-decoration: none;
+}
+a:link {
+	color: #333333;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: #009900;
+}
+a:active {
+	text-decoration: none;
+	color: #000000;
+}
+a:visited {
+	text-decoration: none;
+	color: #000000;
+}      
 
+.ag:link {
+	color: #009900;
+	text-decoration: none;
+}
+.ag:hover {
+	text-decoration: underline;
+	color: #009900;
+}
+.ag:active {
+	text-decoration: none;
+}
+.ag:visited {
+	text-decoration: none;
+	color: #009900;
+}
 
+/* --- href ---- */
 .nav{
    background:url('/images/header-application.gif') repeat-x ;  
 }                  
@@ -120,7 +158,8 @@ textarea{
 
 #footer ul li{
 	float: right;
-	list-style:none;}
+	list-style:none;
+	margin:0px;}
 
 #footer li a{
 padding-right:10px;

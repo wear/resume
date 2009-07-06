@@ -107,7 +107,7 @@ class ResumesController < ApplicationController
     @profile = @resume.build_profile(params[:profile])
     respond_to do |format|
       if @profile.save && @resume.save
-        flash[:notice] = 'Resume was successfully created.'
+        flash[:notice] = '简历创建成功.'
         format.html { redirect_to edit_resume_path(@profile.resume) }
       else  
         format.html { render :action => "new" }
@@ -122,7 +122,7 @@ class ResumesController < ApplicationController
     if current_user == @resume.user  
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
-        flash[:notice] = 'Resume was successfully updated.'
+        flash[:notice] = '简历更新成功.'
         format.html { redirect_to(@resume) }
         format.xml  { head :ok }
       else

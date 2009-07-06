@@ -28,14 +28,18 @@ body{
 }  
 .profile{
 	padding:20px; 
-}	
+}  
+
+.profie_content{
+	margin-top:20px;
+}  
 .section{
 	border-top:1px solid #ccc;
 	margin:10px 0;
 	padding:15px 20px;
 	}
 
-h1.name { width:200px; float:left;}		
+h1.name {font-size:28px; float:left;margin:15px 0 1em 3.5em;}		
 
 h1{
 	margin:1em 0 1em 9.5em;

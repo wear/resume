@@ -8,35 +8,35 @@
   
 <div class="span-16 section"> 
 <div class='more'>
-	<%=link_to '编辑',edit_resume_profile_path(@resume)%>
+	<%=link_to '编辑',edit_resume_profile_path(@resume),:class =>'ag'%>
 </div>
 <div class='span-8'>
 		<h3>个人信息<span class='edit'></h3>
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='30%'>性别:</td><td><%= format_sex(@resume.profile.sex) %></td></tr> 
-			<tr><td>出生地:</td><td><%= @resume.profile.hometwon %></td></tr> 
-			<tr><td>户口所在地:</td><td><%= @resume.profile.hukou %></td></tr> 
-			<tr><td>年龄:</td><td><%= format_age(@resume.profile.birthday) %></td></tr> 
-			<tr><td>生日:</td><td><%= @resume.profile.birthday %></td></tr> 
+			<tr><td width='30%'>性别:</td><td><%=h format_sex(@resume.profile.sex) %></td></tr> 
+			<tr><td>出生地:</td><td><%=h @resume.profile.hometwon %></td></tr> 
+			<tr><td>户口所在地:</td><td><%=h @resume.profile.hukou %></td></tr> 
+			<tr><td>年龄:</td><td><%=h format_age(@resume.profile.birthday) %></td></tr> 
+			<tr><td>生日:</td><td><%=h @resume.profile.birthday %></td></tr> 
 		</table>
 </div>
 <div class='span-8 last'>
 		<h3>联系方式</h3>
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='30%'>地址:</td><td><%= @resume.profile.address %></td></tr> 
-			<tr><td>电子邮件:</td><td><%= @resume.profile.email %></td></tr> 
-			<tr><td>即时通信:</td><td><%= @resume.profile.im %></td></tr> 
-			<tr><td>手机:</td><td><%= @resume.profile.mobile %></td></tr> 
+			<tr><td width='30%'>地址:</td><td><%=h @resume.profile.address %></td></tr> 
+			<tr><td>电子邮件:</td><td><%=h @resume.profile.email %></td></tr> 
+			<tr><td>即时通信:</td><td><%=h @resume.profile.im %></td></tr> 
+			<tr><td>手机:</td><td><%=h @resume.profile.mobile %></td></tr> 
 		</table>
 </div>
 </div>
 <div class="span-16 section"> 
 	<div class='more'>
-		<%=link_to '编辑',edit_resume_summary_path(@resume)%> 
+		<%=link_to '编辑',edit_resume_summary_path(@resume),:class =>'ag'%> 
 	</div>
 	<h2>总结</h2>
 	<div class="main">
-		<p><%= @resume.summary.content %></p>
+		<p><%=h @resume.summary.content %></p>
 	</div>
 
 	<h2>技能</h2>
@@ -50,28 +50,28 @@
 	<div class="main">  
 		<% @resume.positions.each do |position| -%>
 		<span class="date"><%= position.start_at %> » <%= position.end_at %></span>
-		<h3><%= position.title %><span class='edit'>[<%=link_to '编辑',edit_resume_position_path(@resume,position)%> | <%= link_to '删除', resume_position_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
-		<address><%= position.company %></address>
+		<h3><%=h position.title %><span class='edit'>[<%=link_to '编辑',edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to '删除', resume_position_path(@resume),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
+		<address><%=h position.company %></address>
 		<ul>
-		<li><%= position.description %></li>
+		<li><%=h position.description %></li>
 		</ul>
 		<% end -%>
 	</div> 
 	<div class='more'>
-		<%=link_to '添加',new_resume_position_path(@resume)%> 
+		<%=link_to '添加',new_resume_position_path(@resume),:class =>'ag'%> 
 	</div>
 </div>
 
 <div class="span-16 section">    
 	<div class='more'>
-		<%=link_to '编辑',edit_resume_additionalinfo_path(@resume)%> 
+		<%=link_to '编辑',edit_resume_additionalinfo_path(@resume),:class =>'ag'%> 
 	</div>
 	<h2>兴趣爱好</h2>      
 	<div class="main">
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='10%'>爱好:</td><td><%= @resume.additionalinfo.interests %></td></tr> 
-			<tr><td>小组:</td><td><%= @resume.additionalinfo.groups %></td></tr> 
-			<tr><td>获奖:</td><td><%= @resume.additionalinfo.awards %></td></tr> 
+			<tr><td width='10%'>爱好:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+			<tr><td>小组:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
+			<tr><td>获奖:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
 		</table>
 	</div>
 </div>
@@ -81,14 +81,14 @@
 	<% @resume.educations.each do |education| -%>
 	<div class="main">  
 		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
-		<h3><%= education.name %><span class='edit'>[<%=link_to '编辑',edit_resume_education_path(@resume,education)%> | <%= link_to '删除', resume_education_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
+		<h3><%= education.name %><span class='edit'>[<%=link_to '编辑',edit_resume_education_path(@resume,education),:class =>'ag'%> | <%= link_to '删除', resume_education_path(@resume),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
 		<ul>
-			<li><%= education.degree %></li>
-			<li><%= education.field %></li>
+			<li><%=h education.degree %></li>
+			<li><%=h education.field %></li>
 		</ul>
 	</div>
 	<% end -%>  
 	<div class='more'>
-		<%=link_to '添加',new_resume_education_path(@resume)%> 
+		<%=link_to '添加',new_resume_education_path(@resume),:class =>'ag'%> 
 	</div>
 </div>
