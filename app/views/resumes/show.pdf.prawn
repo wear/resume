@@ -1,11 +1,18 @@
 pdf.font "#{Prawn::BASEDIR}/data/fonts/gkai00mp.ttf"
+avatar = "#{RAILS_ROOT}"+"/public/#{avatar_for_pdf(@resume.profile)}"
 pdf.text_options.update(:wrap => :character)
  pdf.stroke_color "999999"
+pdf.bounding_box [5,720], :width => 220  do
 
-pdf.text "#{@resume.profile.name}",:size => 32
+pdf.image avatar, :at => [57,0]
 
+pdf.stroke_rectangle [56,0], 79, 99
+end   
+pdf.bounding_box [240,700], :width => 220  do 
+  pdf.text "#{@resume.profile.name}",:size => 32
+end 
 # 个人资料
-pdf.bounding_box [5,650], :width => 220 do
+pdf.bounding_box [5,600], :width => 220 do
 pdf.fill_color "999999"  
   pdf.text "个人信息",:size => 18
 pdf.fill_color "090B18"  
@@ -15,18 +22,18 @@ pdf.fill_color "090B18"
   pdf.move_down 20
 end
 
-pdf.bounding_box [240,650], :width => 220 do 
+pdf.bounding_box [240,600], :width => 220 do 
 pdf.fill_color "999999" 
   pdf.text '联系方式',:size => 18  
 pdf.fill_color "090B18" 
 pdf.move_down 10   
-  pdf.table [[ "地址:", "#{ @resume.profile.address }"],  ["电子邮件:","#{@resume.profile.email}"],["即时通信:","#{@resume.profile.im}"],["手机:","#{@resume.profile.mobile}"]],
+  pdf.table [[ "地址:", "#{ @resume.profile.address }"],  ["电子邮件:","#{@resume.profile.email}"],["手机:","#{@resume.profile.mobile}"]],
     :widths => { 0 => 200, 1 => 250 }, :position => 5,	:border_width => 0,:align => :left
 	
   pdf.move_down 20
 end   
 
-pdf.move_down 20   
+pdf.move_down 40   
 pdf.stroke_horizontal_rule
 
 

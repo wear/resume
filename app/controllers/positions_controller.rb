@@ -76,11 +76,11 @@ class PositionsController < ApplicationController
   # DELETE /positions/1
   # DELETE /positions/1.xml
   def destroy
-    @position = Position.find(params[:id])
+    @position = @resume.positions.find(params[:id])
     @position.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@resume) }
+      format.html { redirect_to(edit_resume_path(@resume)) }
       format.xml  { head :ok }
     end
   end

@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20090707054722
+#
+# Table name: resumes
+#
+#  id         :integer(4)      not null, primary key
+#  status     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer(4)
+#  salt       :string(255)
+#
+
 class Resume < ActiveRecord::Base
   belongs_to :user  
   has_one :profile
@@ -15,7 +28,11 @@ class Resume < ActiveRecord::Base
   end   
   
   def public_url
-    "http://#{APP_URL}/resumes/public/#{self.salt}"
+    unless salt.nil?
+      "http://#{APP_URL}/resumes/public/#{self.salt}"
+    else
+      '还未发布'
+    end
   end
   
   

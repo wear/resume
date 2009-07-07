@@ -1,4 +1,4 @@
- <h1 class='name'><%= @resume.profile.name %></h1>     
+<span class='avatar'><%= avatar_for @resume.profile %></span> <h1 class='name'><%= @resume.profile.name %></h1>     
 	<div id="download">
 		<% if logged_in? && (current_user == @resume.user ) -%>
 		   <%=link_to 'PDF下载',resume_path(@resume,:format => 'pdf') %>
@@ -23,7 +23,6 @@
 		<table border="0" cellspacing="1" cellpadding="1" class='profile'>
 			<tr><td width='40%'>地址:</td><td><%=h @resume.profile.address %></td></tr> 
 			<tr><td>电子邮件:</td><td><%=h @resume.profile.email %></td></tr> 
-			<tr><td>即时通信:</td><td><%=h @resume.profile.im %></td></tr> 
 			<tr><td>手机:</td><td><%=h @resume.profile.mobile %></td></tr> 
 		</table>
 	</div>

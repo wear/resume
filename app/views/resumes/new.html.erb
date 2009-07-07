@@ -1,6 +1,6 @@
 <h2>填写个人信息</h2>
 
-<% form_for(@profile,:url => resumes_path) do |f| %>
+<% form_for(@profile,:url => resumes_path,:html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
     <%= render :partial => 'profiles/form', :locals => { :f => f }%>
   <p>

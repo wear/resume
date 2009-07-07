@@ -76,11 +76,11 @@ class EducationsController < ApplicationController
   # DELETE /educations/1
   # DELETE /educations/1.xml
   def destroy
-    @education = Education.find(params[:id])
+    @education = @resume.educations.find(params[:id])
     @education.destroy
 
     respond_to do |format|
-      format.html { redirect_to(educations_url) }
+      format.html { redirect_to(edit_resume_path(@resume)) }
       format.xml  { head :ok }
     end
   end        

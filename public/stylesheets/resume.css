@@ -39,12 +39,18 @@ body{
 	padding:15px 20px;
 	}
 
-h1.name {font-size:28px; float:left;margin:15px 0 1em 3.5em;}		
+h1.name {font-size:28px; float:left;margin:15px 0 1em 1.5em;}		
 
 h1{
 	margin:1em 0 1em 9.5em;
 	font-size:1.75em;
-	}  
+	}
+	
+.avatar{
+    margin:5px 50px;
+	float:left;
+}
+  
 h3 {
 	margin-left:16px;
 }

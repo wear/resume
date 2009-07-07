@@ -1,3 +1,22 @@
+# == Schema Information
+# Schema version: 20090707054722
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  login                     :string(40)
+#  name                      :string(100)     default("")
+#  email                     :string(100)
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  remember_token            :string(40)
+#  remember_token_expires_at :datetime
+#  activation_code           :string(40)
+#  activated_at              :datetime
+#
+
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
@@ -9,7 +28,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
 
   validates_presence_of     :login
-  validates_length_of       :login,    :within => 3..40
+  validates_length_of       :login,    :within => 2..40
   validates_uniqueness_of   :login
   validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 

@@ -1,6 +1,6 @@
 <h1>编辑个人资料</h1>
 
-<% form_for(@profile,:url => resume_profile_path(@resume)) do |f| %>
+<% form_for(@profile,:url => resume_profile_path(@resume),:html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
   <%= render :partial => 'form',:locals => { :f => f } %>    
   <p>
