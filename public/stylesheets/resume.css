@@ -1,7 +1,51 @@
 body{
 	font-size:12px;
 	 background: url(/images/bg.png);
+} 
+
+.container{ 
+	background-color: #ffffff;
+    border:1px solid #ccc;
+	margin:0px auto;
+	width:749px; 
 }
+
+.content {
+	margin:50px 60px;
+} 
+
+.identi{  
+	float:left;
+	width:280px;
+}
+  
+.section { 
+	border-top:3px solid #ccc;
+	margin:10px 0;
+	padding:15px 20px;
+	clear:both;
+}            
+
+.profile{
+	border-top:none;   
+}
+
+.profile table{
+	 padding:20px;
+	}
+
+.contact{ 
+	float:right;
+	width:280px;
+} 
+
+    
+
+.box{ 
+	float:right;
+	width:480px;
+}
+
 #address{
 	height:5em;
 	width:48em;
@@ -21,23 +65,7 @@ body{
 	margin-top:.4em;
 	text-align:right;
 	float:right;
-	}
-.content{
-	width:32em;
-	margin-left:16em;
-}  
-.profile{
-	padding:20px; 
-}  
-
-.profie_content{
-	margin-top:20px;
-}  
-.section{
-	border-top:1px solid #ccc;
-	margin:10px 0;
-	padding:15px 20px;
-	}
+	}  
 
 h1.name {font-size:28px; float:left;margin:15px 0 1em 1.5em;}		
 
@@ -55,7 +83,7 @@ h3 {
 	margin-left:16px;
 }
 .section h2 {
-	width:10em;
+	width:100px;
 	float:left;
 	font-size:1.4em;
 
@@ -80,8 +108,10 @@ background-color: #ffffff;
 
 }
 
-.res{
-   background-color: #ffffff;  
-   border:1px solid #ccc;
-   margin:10px;
+.intresting{
+	margin-bottom:10px;
+}
+
+.intresting td{
+	height:20px;
 }

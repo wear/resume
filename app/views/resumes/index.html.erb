@@ -1,14 +1,23 @@
 <h1><%= @user.login %></h1>
 
-<table>
+<table  width='100%',style ='margin-bottom:0;' class='poll'>
   <tr>
 	<th>编号</th>
   </tr>
 
-<% @resumes.each do |resume| %>
+<% @resumes.each_with_index do |resume,index| %>
+<% completeness ||= profile_completeness(resume) %>
+<% percent = completeness[:score] %>
   <tr>   
-	<td><%= resume.id %></td>
+	<td><%= index + 1 %></td>
     <td><%= link_to '查看', resume,:target => '_blank' %></td>
+	<td class='bars'>
+		<div class='bar-container' style='width:50%;'>
+		   <div class='bar' style="width:<%=percent%>%">
+		   	  <small><%= number_to_percentage(percent, :precision => 0)%></small>
+		   </div> 
+		</div>
+	</td>
     <td><%= link_to '编辑', edit_resume_path(resume) %></td>
     <td><%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete %></td>
   </tr>

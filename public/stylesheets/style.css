@@ -1,6 +1,6 @@
 
 body {
-  font-size: 12px;
+  font-size: 13px;
   COLOR: #222227;
   LINE-HEIGHT: 150%;
   FONT-FAMILY: Arial, Helvetica, sans-serif;
@@ -10,6 +10,16 @@ body {
 
 .container{ 
    background-color: #f2f2f2;
+} 
+
+/*  for home */
+.announce h1{
+	color:#133855;
+	font-family:"HelveticaNeue-Light",Helvetica,Arial,sans-serif;
+	font-size:240%;
+	font-weight:normal;
+	padding:0.75em 0;
+	text-align:center;
 }
  
 /* --- href ----*/
@@ -33,7 +43,8 @@ a:visited {
 	text-decoration: none;
 	color: #000000;
 }      
-
+          
+.ag{font-size:14px;}
 .ag:link {
 	color: #009900;
 	text-decoration: none;
@@ -102,11 +113,16 @@ a:visited {
 
 .main{
 	width:28em;
-	margin-left:16em;
+	margin-left:12em;
 } 
 
-.more{   
+.more{
+	height:25px;
+	margin-bottom:10px;   
 	text-align:right;
+	background:#E3E3E3;
+	padding:5px 20px 0px 0px;
+	clear:both; 
 } 
 .date {
 	float:right;
@@ -118,11 +134,11 @@ address{margin-bottom:0px;}
 .section{
 	border-top:1px solid #ccc;
 	margin:10px 0;
-	padding:20px;
+
 	}
 
 .section h2 {
-	width:10em;
+	width:6em;
 	float:left;
 	font-size:1.5em;
 	font-variant: small-caps;
@@ -132,8 +148,8 @@ address{margin-bottom:0px;}
 a#view { margin-right:10px;display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
 a#view:hover { background: #222; }
 
-#download a { background: #f78210; color: white; padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px; }
-#download a:hover { background: #c26c06; }        
+#download a { background: #FFFFAA;  padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px; }
+#download a:hover { background: #19C519; color: white; }        
 
 /* ---- for facebox and blueprint confick*/ 
 th, td, caption {padding:0px;}   
