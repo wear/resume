@@ -6,8 +6,8 @@ body{
 .container{ 
 	background-color: #ffffff;
     border:1px solid #ccc;
-	margin:0px auto;
-	width:749px; 
+	margin:0 auto;
+	width:749px;
 }
 
 .content {

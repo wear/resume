@@ -2,8 +2,11 @@
 db/*.sqlite3
 db/schema.rb
 config/database.yml
+public/asserts
 log/*.log
 tmp/**/*
 doc/**/*
-test/**/*
+test/**/* 
+public/asserts/**/*
+
 
