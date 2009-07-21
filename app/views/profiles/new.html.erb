@@ -9,3 +9,8 @@
 <% end %>
 
 <%= link_to 'Back', profiles_path %>
+
+<% content_for :sidebar do %>
+<h2>提示:</h2> 
+   <%= render :comatose=>'cn/profile' %>
+<% end -%>

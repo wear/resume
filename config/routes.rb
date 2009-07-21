@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.comatose_admin 'admin/cms'
+
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.help '/help', :controller => 'landing', :action => 'help'
   map.contact '/contact', :controller => 'landing', :action => 'contact'
@@ -11,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin '/admin', :controller => 'admin/admin', :action => 'index'  
   map.resources :users,:collection => {:reset_password => :put}
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
-  
+  map.resume_pdf '/resumes/:id/bmtang.pdf', :controller => 'resumes', :action => 'show',:format => 'pdf'
 
   map.namespace :admin do |admin|
     admin.resources :resumes

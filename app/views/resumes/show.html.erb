@@ -1,7 +1,7 @@
 <span class='avatar'><%= avatar_for @resume.profile %></span> <h1 class='name'><%= @resume.profile.name %></h1>     
 	<div id="download">
 		<% if logged_in? && (current_user == @resume.user ) -%>
-		   <%=link_to 'PDF下载',resume_path(@resume,:format => 'pdf') %>
+		   <%=link_to 'PDF下载',resume_pdf_path(@resume) %>
 		<% else -%>                                          
 		    <%=link_to 'PDF下载',public_resume_path(@resume.salt,:format => 'pdf')%>
 	    <% end -%>

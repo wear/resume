@@ -7,6 +7,10 @@ module ApplicationHelper
     when 'f'
       '女'
     end
+  end    
+ 
+  def admin_required?
+    logged_in? && current_user.roles.include?('superuser')
   end
   
   def format_age(birth)

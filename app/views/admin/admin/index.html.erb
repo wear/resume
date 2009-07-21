@@ -4,3 +4,7 @@
 	<tr><td><%= @user_size %> <%= link_to '查看', admin_users_path %></td><td><%= @resume_size %> <%= link_to '查看', admin_resumes_path %></td></tr>
 </table>
 
+<% content_for :sidebar do -%> 
+<h3>管理</h3>
+	<%=link_to 'cms内容', comatose_admin_path %>
+<% end -%>

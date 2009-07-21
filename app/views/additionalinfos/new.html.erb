@@ -8,4 +8,9 @@
   </p>
 <% end %>
 
-<%= link_to '返回', @resume,:method => :put %>   
+<%= link_to '返回', @resume,:method => :put %> 
+
+<% content_for :sidebar do %>
+<h2>提示:</h2> 
+   <%= render :comatose=>'cn/additional' %>
+<% end -%>  

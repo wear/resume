@@ -32,8 +32,13 @@
 		<%= render :partial => '/shared/header' %> 
 	</div>    
 	<div class='span-21 prepend-2 append-1 prepend-top prepend-bottom'> 
-		<%= render :partial => '/shared/notice' %> 
-	    <%= yield %>  
+		<%= render :partial => '/shared/notice' %>
+		<div class='span-15'>  
+	    	<%= yield %>
+   		</div>
+		<div class='span-5 prepend-1 last sidebar'>   
+			<%= yield :sidebar%>
+		</div>
 	</div> 
     <%= render :partial => '/shared/footer' %>
 </div>

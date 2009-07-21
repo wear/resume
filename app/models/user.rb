@@ -47,7 +47,10 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
-
+  def admin?
+    all_roles.include?("superuser")
+  end
+  
   # Activates the user in the database.
   def activate!
     @activated = true
@@ -97,5 +100,8 @@ class User < ActiveRecord::Base
         self.activation_code = self.class.make_token
     end
 
+    def all_roles
+      roles.map{|r| r.title}
+    end
 
 end

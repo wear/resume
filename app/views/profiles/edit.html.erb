@@ -7,4 +7,9 @@
     <%= f.submit '更新' %>
   </p>
 <% end %>
-<%= link_to '返回', edit_resume_path(@resume) %>
+<%= link_to '返回', edit_resume_path(@resume) %>  
+
+<% content_for :sidebar do %>
+<h2>提示:</h2> 
+   <%= render :comatose=>'cn/profile' %>
+<% end -%>
