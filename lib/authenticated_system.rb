@@ -1,27 +1,27 @@
 module AuthenticatedSystem
   protected
-    # Returns true or false if the user is logged in.
-    # Preloads @current_user with the user model if they're logged in.
+    # Returns true or false if the test_user is logged in.
+    # Preloads @current_user with the test_user model if they're logged in.
     def logged_in?
       !!current_user
     end
 
-    # Accesses the current user from the session.
+    # Accesses the current test_user from the session.
     # Future calls avoid the database because nil is not equal to false.
     def current_user
       @current_user ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_user == false
     end
 
-    # Store the given user id in the session.
-    def current_user=(new_user)
-      session[:user_id] = new_user ? new_user.id : nil
-      @current_user = new_user || false
+    # Store the given test_user id in the session.
+    def current_user=(new_test_user)
+      session[:test_user_id] = new_test_user ? new_test_user.id : nil
+      @current_user = new_test_user || false
     end
 
-    # Check if the user is authorized
+    # Check if the test_user is authorized
     #
     # Override this method in your controllers if you want to restrict access
-    # to only a few actions or if you want to check if the user
+    # to only a few actions or if you want to check if the test_user
     # has the correct rights.
     #
     # Example:
@@ -58,7 +58,7 @@ module AuthenticatedSystem
     # The default action is to redirect to the login screen.
     #
     # Override this method in your controllers if you want to have special
-    # behavior in case the user is not authorized
+    # behavior in case the test_user is not authorized
     # to access the requested action.  For example, a popup window might
     # simply close itself.
     def access_denied
@@ -103,9 +103,9 @@ module AuthenticatedSystem
     # Login
     #
 
-    # Called from #current_user.  First attempt to login by the user id stored in the session.
+    # Called from #current_user.  First attempt to login by the test_user id stored in the session.
     def login_from_session
-      self.current_user = User.find_by_id(session[:user_id]) if session[:user_id]
+      self.current_user = User.find_by_id(session[:test_user_id]) if session[:test_user_id]
     end
 
     # Called from #current_user.  Now, attempt to login by basic authentication information.
@@ -120,11 +120,11 @@ module AuthenticatedSystem
     #
 
     # Called from #current_user.  Finaly, attempt to login by an expiring token in the cookie.
-    # for the paranoid: we _should_ be storing user_token = hash(cookie_token, request IP)
+    # for the paranoid: we _should_ be storing test_user_token = hash(cookie_token, request IP)
     def login_from_cookie
-      user = cookies[:auth_token] && User.find_by_remember_token(cookies[:auth_token])
-      if user && user.remember_token?
-        self.current_user = user
+      test_user = cookies[:auth_token] && User.find_by_remember_token(cookies[:auth_token])
+      if test_user && test_user.remember_token?
+        self.current_user = test_user
         handle_remember_cookie! false # freshen cookie token (keeping date)
         self.current_user
       end
@@ -138,7 +138,7 @@ module AuthenticatedSystem
       @current_user.forget_me if @current_user.is_a? User
       @current_user = false     # not logged in, and don't do it for me
       kill_remember_cookie!     # Kill client-side auth cookie
-      session[:user_id] = nil   # keeps the session but kill our variable
+      session[:test_user_id] = nil   # keeps the session but kill our variable
       # explicitly kill any other session variables you set
     end
 

@@ -1,5 +1,3 @@
-# This controller handles the login/logout function of the site.    
-  
 class SessionsController < ApplicationController      
   include FaceboxRender                  
   
@@ -18,7 +16,7 @@ class SessionsController < ApplicationController
   def new
     redirect_to user_path(current_user) and return if current_user
   end
-
+ 
   def create
     self.current_user = User.authenticate(params[:login], params[:password])
     if logged_in?
@@ -44,11 +42,11 @@ class SessionsController < ApplicationController
           end
            }
       end
-
+ 
     end
   end
   
-
+ 
   def destroy
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
@@ -57,5 +55,5 @@ class SessionsController < ApplicationController
     redirect_to new_session_path
   end
   
-
+ 
 end

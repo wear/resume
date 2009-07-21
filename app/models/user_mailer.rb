@@ -1,8 +1,7 @@
 class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
-    @subject    += '请激活你的帐户'
-    @body[:activate_url]  = "http://muutang.com/activate/#{user.activation_code}" 
+    @subject    += '你的帐户信息'
     @body[:url]  = "http://muutang.com/"
   end 
   
@@ -13,10 +12,12 @@ class UserMailer < ActionMailer::Base
     @body[:url]  = "http://muutang.com/"
   end
   
-  def activation(user)
-    setup_email(user)
-    @subject    += '你的帐户已激活!'
-    @body[:url]  = "http://muutang.com/"
+  def recommandition_request(recipients,subject,body)
+    @recipients  = recipients
+    @from        = "半亩方塘"
+    @subject     = "[半亩方塘] - #{subject}"
+    @sent_on     = Time.now
+    @body[:text]  = body
   end
   
   protected
