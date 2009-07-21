@@ -99,7 +99,8 @@
 	  	<li> <a href="/resumes/public/<%=@resume.salt%>" id='view' target='_blank'> 公开网址</a> </li>
 		<% end -%>
 		<li><%=facebox_link_to '发布/重发布',:url => publish_resume_path(@resume),:html => {:id => 'view'} %></li>
-	</div>
+		<li><%= link_to '获得推荐',ask_resume_recommands_path(@resume),:id =>'view'%>
+	</div>                                                       
 	<div class='span-5 prepend-top'> 
 	<% completeness ||= profile_completeness(@resume) %>
 	<% percent = completeness[:score] %>

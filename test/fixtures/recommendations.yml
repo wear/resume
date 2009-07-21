@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sender: 1
+  receiver: 1
+  sender_role: MyString
+  receiver_role: MyString
+  description: MyText
+  refer_type: 1
+
+two:
+  sender: 1
+  receiver: 1
+  sender_role: MyString
+  receiver_role: MyString
+  description: MyText
+  refer_type: 1

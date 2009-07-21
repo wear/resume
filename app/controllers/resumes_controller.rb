@@ -114,6 +114,10 @@ class ResumesController < ApplicationController
       end 
     end
   end
+  
+  def recommands
+    @resume = Resume.find(params[:id]) 
+  end
 
   # PUT /resumes/1
   # PUT /resumes/1.xml

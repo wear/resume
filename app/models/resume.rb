@@ -33,6 +33,13 @@ class Resume < ActiveRecord::Base
     else
       '还未发布'
     end
+  end     
+  
+  def roles
+    roles = []
+    positions.each{|position| roles << ('在' + position.company + '做' + position.title) }
+    educations.each{|edu| roles << ('在' + edu.name + '都' + edu.field )} 
+    roles
   end
   
   

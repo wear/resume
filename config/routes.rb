@@ -22,8 +22,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :session
 
-  map.resources :resumes, :member => {:publish => :post },:has_one => [:profile,:summary,:additionalinfo] do |resume|
-     resume.resources :positions
+  map.resources :resumes, :member => {:publish => :post,:recommands => :get },:has_one => [:profile,:summary,:additionalinfo] do |resume|
+     resume.resources :positions 
+     resume.resources :recommands,:collection => {:ask => :get,:send_request => :post}
      resume.resources :educations
      resume.resources :summaries 
      resume.resources :additionalinfos
