@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
   
   
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password            
-              
+  # filter_parameter_logging :password                        
   
   def user_autherized
     unless current_user == @resume.user

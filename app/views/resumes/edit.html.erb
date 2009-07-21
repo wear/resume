@@ -48,7 +48,7 @@
 	<h2>工作经验</h2>
 	<div class="main">  
 		<% @resume.positions.each do |position| -%>
-		<span class="date"><%= position.start_at %> » <%= position.end_at %></span>
+		<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
 		<h3><%=h position.title %><span class='edit'>[<%=link_to '编辑',edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to '删除', resume_position_path(@resume,position),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
 		<address><%=h position.company %></address>
 		<ul>

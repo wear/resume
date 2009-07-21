@@ -4,3 +4,13 @@
 var $j = jQuery;
  
 $j.ajaxSetup({'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} });
+
+function postition_time_period(ele) {  
+    if(ele.value == 'no') {
+        $('.end_at').hide();
+		ele.value = 'yes';
+    } else {
+	       $('.end_at').show();
+		ele.value = 'no';
+	}
+}

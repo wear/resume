@@ -70,7 +70,7 @@ pdf.bounding_box [100,pdf.cursor + 20], :width => 300 do
 	@resume.positions.each_with_index do |position,index|     
 		pdf.text "#{position.title}",:size => 18
 		pdf.text "#{position.company}"
-		pdf.text "#{position.start_at} >> #{position.end_at}",:at => [240,20],:size => 8
+		pdf.text "#{position.start_at} >> #{format_end_at(position.end_at)}",:at => [240,20],:size => 8
 		pdf.move_down 20 
 	end
 end

@@ -53,6 +53,10 @@ module ApplicationHelper
     score = (completed_score.to_f/total.to_f)*100
 
     {:score => score, :incomplete => incomplete, :total => total}
+  end        
+  
+  def format_end_at(time)
+    return '至今' if time.nil?
   end
   
 end
