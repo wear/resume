@@ -13,7 +13,8 @@
 
 class Friendship < ActiveRecord::Base
   belongs_to :user
-  belongs_to :friend, :class_name => "User", :foreign_key => "friend_id"
+  belongs_to :friend, :class_name => "User", :foreign_key => "friend_id" 
+  
   acts_as_state_machine :initial => :pending,:column => 'status'
   
 
@@ -25,7 +26,7 @@ class Friendship < ActiveRecord::Base
   state :accepted
   
   event :accept do
-    transitions :to => :pending, :from => :accepted
+    transitions :to => :accepted, :from => :pending
   end
   
 end

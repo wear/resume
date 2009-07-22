@@ -6,7 +6,8 @@
 		<%= image_tag 'line_1.gif'%> 
 	</div>
 	<div class='span-10 login'>
-		 <h2><%=link_to '首页',root_path %> <%=link_to '简历列表',resumes_path %> </h2>
+		 <h2><%=link_to '首页',root_path %> <%=link_to '简历列表',resumes_path %> <%=link_to '关系圈',user_friendships_path(current_user) %>
+		 </h2>
 	</div>
 	<div class='line span-1'>
 		<%= image_tag 'line_1.gif'%> 
@@ -14,7 +15,7 @@
 	<div class='span-6 last login'> 
 	   	<% if logged_in? -%>
 			  <h2>
-				你好<%= current_user.login %>
+				你好 <%=link_to current_user.login,current_user %>
 				<% restrict_to "superuser" do %>
 				  <%= link_to "管理", admin_path %>
 				<% end %>

@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.comatose_admin 'admin/cms'
-
+  map.resource :session
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.help '/help', :controller => 'landing', :action => 'help'
   map.contact '/contact', :controller => 'landing', :action => 'contact'
@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.public_resume '/resumes/public/:salt', :controller => 'resumes', :action => 'public', :salt => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box' 
   map.admin '/admin', :controller => 'admin/admin', :action => 'index'  
-  map.resources :users,:collection => {:reset_password => :put}
+ 
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
   map.resume_pdf '/resumes/:id/bmtang.pdf', :controller => 'resumes', :action => 'show',:format => 'pdf'
 
@@ -21,7 +21,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
   end
   
-  map.resource :session
+  map.resources :users,:collection => {:reset_password => :put} do |user| 
+     user.resources :friendships,:member => {:add => :post}
+  end 
 
   map.resources :resumes, :member => {:publish => :post,:recommands => :get },:has_one => [:profile,:summary,:additionalinfo] do |resume|
      resume.resources :positions 

@@ -1,5 +1,6 @@
 class ResumesController < ApplicationController
-  before_filter :login_required,:except => :public 
+  before_filter :login_required,:except => :public
+  
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
@@ -25,12 +26,6 @@ class ResumesController < ApplicationController
         format.js  { render_to_facebox } 
        format.xml  { render :xml => @resume }
      end   
-    else                        
-      flash[:error] = '您无权限查看此文件!' 
-     respond_to do |wants|
-       wants.html { redirect_to '/' }
-       wants.pdf { redirect_to '/' }
-     end 
     end
   end 
   
@@ -54,26 +49,30 @@ class ResumesController < ApplicationController
   # GET /resumes/1.xml
   def show
     @resume = Resume.find(params[:id])  
-    if current_user == @resume.user  
-
+    
     respond_to do |format|
-      format.html { render :layout => 'resume'}
-      format.xml  { render :xml => @resume }
-      format.pdf { render :layout => false, :prawn => {
+      format.html { 
+        if viewable?
+          render :layout => 'resume'
+        else
+          flash[:error] = viewable?.to_s
+          redirect_to '/' 
+        end
+        }
+      format.pdf { 
+         if viewable? 
+            render :layout => false, :prawn => {
             :page_size => 'A4',
             :left_margin => 50,
             :right_margin => 50,
             :top_margin => 24,
             :bottom_margin => 24},
-            :filename=>"#{@resume.profile.name.gsub(' ','_')}.pdf" }
-    end   
-   else                        
-     flash[:error] = '您无权限查看此文件!' 
-    respond_to do |wants|
-      wants.html { redirect_to '/' }
-      wants.pdf { redirect_to '/' }
-    end 
-   end
+            :filename=>"#{@resume.profile.name.gsub(' ','_')}.pdf" 
+          else
+            flash[:error] = '您无权限查看此文件!'
+            redirect_to '/' 
+          end}
+    end
   end
 
   # GET /resumes/new
@@ -122,8 +121,7 @@ class ResumesController < ApplicationController
   # PUT /resumes/1
   # PUT /resumes/1.xml
   def update
-    @resume = Resume.find(params[:id]) 
-    if current_user == @resume.user  
+    @resume =  current_user.resumes.find(params[:id])   
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
         flash[:notice] = '简历更新成功.'
@@ -134,20 +132,12 @@ class ResumesController < ApplicationController
         format.xml  { render :xml => @resume.errors, :status => :unprocessable_entity }
       end
     end 
-     else                        
-       flash[:error] = '您无权限查看此文件!' 
-      respond_to do |wants|
-        wants.html { redirect_to '/' }
-        format.pdf { redirect_to '/' }
-      end 
-    end
   end
 
   # DELETE /resumes/1
   # DELETE /resumes/1.xml
   def destroy
-    @resume = Resume.find(params[:id])   
-    if current_user == @resume.user    
+    @resume = current_user.resumes.find(params[:id])   
     
     @resume.destroy
 
@@ -155,13 +145,8 @@ class ResumesController < ApplicationController
       format.html { redirect_to(resumes_url) }
       format.xml  { head :ok }
     end
-    else                        
-      flash[:error] = '您无权限查看此文件!' 
-     respond_to do |wants|
-       wants.html { redirect_to '/' }
-       format.pdf { redirect_to '/' }
-     end
-   end
-  end
+  end  
+  
+
   
 end

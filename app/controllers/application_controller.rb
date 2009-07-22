@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password                        
   
-  def user_autherized
+  def view_autherized
     unless viewable?
       flash[:error] = '您无权限查看此文件!'
       redirect_to '/'           
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   
   def find_resume
     @resume = Resume.find(params[:resume_id],:include => :user)
-    user_autherized 
+    view_autherized 
   end            
   
 
@@ -27,8 +27,6 @@ class ApplicationController < ActionController::Base
     flash[:notice] = "您无权限查看查看此命令"
     return redirect_to('/')
   end 
-  
-  protected
   
   def viewable?
     @resume.owner?(current_user) || current_user.friend?(@resume.user)

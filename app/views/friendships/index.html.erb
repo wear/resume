@@ -1,0 +1,12 @@
+<h1>关系圈</h1>
+<h2>我加的人</h2> 
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr><th>名称</th></tr>  
+	<% @user.friendships.each do |friendship| -%> 
+	<tr><td><%= friendship.friend.login %></td>
+		<td><%= friendship.status %></td>
+	</tr>  
+	<% end -%>    
+</table>
+	
+</table>

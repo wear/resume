@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :resumes, :dependent => :destroy
   has_one :profile, :dependent => :destroy
   has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
-   
+  has_many :pending_friends, :class_name => "Friendship", :foreign_key => "friend_id",:conditions => ['status = ?','pending'], :dependent => :destroy 
   has_and_belongs_to_many :roles
 
   validates_presence_of     :login
@@ -58,13 +58,14 @@ class User < ActiveRecord::Base
     if friend?(friend)
       return true
     else
-      f = friendships.new(:friend_id => friend.id)
-      f.save
+      r = friendships.new(:friend_id => friend.id)
+      f = Friendship.new(:friend_id => self.id,:user_id => friend.id)
+      f.save && r.save && f.accept! && r.accept!
     end
   end
   
   def friend?(friend)
-    friendships.find_by_friend_id(friend.id)
+    friendships.find_by_friend_id_and_status(friend.id,'accepted')
   end
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

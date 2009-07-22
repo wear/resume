@@ -24,10 +24,9 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      flash.now[:notice] = '多谢注册!'
-      # current_user.track_activity(:logged_in)
+      flash.now[:notice] = '登录成功!'
       respond_to do |wants|
-        wants.html { redirect_to resumes_path }
+        wants.html { redirect_back_or_default(resumes_path) }
         wants.js { redirect_from_facebox(new_resume_path) }
       end
     else

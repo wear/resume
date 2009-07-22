@@ -12,12 +12,17 @@ class UserMailer < ActionMailer::Base
     @body[:url]  = "http://muutang.com/"
   end
   
-  def recommandition_request(recipients,subject,body)
-    @recipients  = recipients
+  def recommandition_request(resume,recipients,subject,body,role,code)
     @from        = "半亩方塘"
-    @subject     = "[半亩方塘] - #{subject}"
+    @subject     = "[半亩方塘] "
     @sent_on     = Time.now
-    @body[:text]  = body
+    @recipients  = recipients
+    @body[:resume] = resume
+    @body[:code] = code
+    @body[:text] = body
+    @body[:role] = role
+    @subject += subject 
+    @content_type = "text/html"
   end
   
   protected
@@ -27,5 +32,6 @@ class UserMailer < ActionMailer::Base
       @subject     = "[半亩方塘] "
       @sent_on     = Time.now
       @body[:user] = user
-    end
+    end 
+    
 end
