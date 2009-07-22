@@ -1,6 +1,0 @@
-                  
-<h1>获得推荐</h1>
-<% @resume.positions.each do |position| -%>
-	<p><%=h position.company %> <%=h position.title %> <%= link_to '获得推荐', new_resume_position_recommand_path(@resume,position)%></p> 
-	<p></p>
-<% end %>

@@ -7,7 +7,7 @@ class CreateRecommendations < ActiveRecord::Migration
       t.string :receiver_role
       t.text :description
       t.integer :refer_type
-      t.string :status, :default => 'pending'
+      t.string :status
 
       t.timestamps
     end

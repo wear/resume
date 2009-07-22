@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.contact '/contact', :controller => 'landing', :action => 'contact'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'     
+  map.signup '/signup', :controller => 'users', :action => 'new'    
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.public_resume '/resumes/public/:salt', :controller => 'resumes', :action => 'public', :salt => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box' 

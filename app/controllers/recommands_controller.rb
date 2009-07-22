@@ -9,14 +9,14 @@ class RecommandsController < ApplicationController
   end
 
   def new
-    @position = Position.find(params[:position_id])
+    @recommand = Recommendation.new
   end
 
   def create
   end    
   
   def ask 
-    @invitation_code = APP_URL + 'signup?invitation_code=' + @resume.user.invitation_code
+    @invitation_code = APP_URL + 'signup?resume=' + "#{@resume.id}&" 'invitation_code=' + current_user.invitation_code
   end    
   
   def send_request

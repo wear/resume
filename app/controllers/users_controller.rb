@@ -4,16 +4,25 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
-    @user = User.new
+    @user = User.new 
+    session[:invitation_code] = params[:invitation_code]
+    session[:invitation_resume] = params[:resume]   
   end
  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
-    if success && @user.errors.empty?
-      redirect_back_or_default('/')
-      flash[:notice] = "感谢注册!您已经可是使用本站全部功能！."
+    if success && @user.errors.empty? 
+      if find_code_and_resume &&  @user.become_friend_with(@friend)
+        flash[:notice] = '已加好友'
+        self.current_user = @user
+        redirect_to new_resume_recommand_path(@resume)   
+      else         
+        self.current_user = @user
+        redirect_back_or_default('/')
+        flash[:notice] = "感谢注册!您已经可是使用本站全部功能！."
+      end
     else
       flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"
       render :action => 'new'
@@ -62,5 +71,14 @@ class UsersController < ApplicationController
       flash.now[:error] = '填写信息有误，请重试!'
       render :action => "forgot_password",:layout => 'application'
     end
+  end 
+  
+  protected
+  
+  def find_code_and_resume
+    if session[:invitation_code] && session[:invitation_resume]
+      @friend = User.find_by_invitation_code(session[:invitation_code])
+      @resume = @friend.resumes.find(session[:invitation_resume])
+    end 
   end
 end

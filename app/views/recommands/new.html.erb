@@ -1,20 +1,9 @@
-<% 
-mail_conent = "好:
 
-我发这封邮件的目的是为了请你对我的在在#{@position.company}的工作做个客观的评价，用来完善我在半亩方塘的简历!
-有任何问题请联系我.
+<h3>评价</h3>
 
-#{@resume.profile.name}
-"
-%>
-<h3><%= @position.company %>  <%= @position.title %> </h3>
-
-<% form_tag(ask_resume_position_recommands_path(@resume,@position),:method => :post) do %>
-<p><%= label_tag 'email'%> <br /> <%= text_area_tag 'body', nil, :style => 'height:40px;'
-%>
-<p><%= label_tag '标题'%> <br /><%= text_field_tag :subject,"帮忙推荐下吧 － #{@resume.profile.name}", :size => 45
- %></p>
-<p><%= label_tag '内容'%> <br /><%= text_area_tag :content,"#{mail_conent}",:style => 'height:120px;'%> </p>
+<% form_for(@recommand,:url => resume_recommands_path(@resume)) do |f| %>
+<p><%= label_tag '角色'%> <br /><%= f.select :sender_role,@resume.roles%></p>
+<p><%= label_tag '内容'%> <br /><%= f.text_area :description,:style => 'height:120px;'%> </p>
 <p>
 	<%= submit_tag '发送'%>
 </p>                                                             	

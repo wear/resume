@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password                        
   
   def user_autherized
-    unless current_user == @resume.user
+    unless viewable?
       flash[:error] = '您无权限查看此文件!'
       redirect_to '/'           
     end
@@ -26,6 +26,11 @@ class ApplicationController < ActionController::Base
   def permission_denied
     flash[:notice] = "您无权限查看查看此命令"
     return redirect_to('/')
-  end
+  end 
   
+  protected
+  
+  def viewable?
+    @resume.owner?(current_user) || current_user.friend?(@resume.user)
+  end
 end

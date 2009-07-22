@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090707054722
+# Schema version: 20090721142042
 #
 # Table name: resumes
 #
@@ -20,7 +20,11 @@ class Resume < ActiveRecord::Base
   has_one :additionalinfo
   
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 20 
+  
+  def owner?(owner)
+    user == owner
+  end
   
   def self.generate_salt(length=12)
     charactars = ("a".."z").to_a + ("A".."Z").to_a + ("1".."9").to_a

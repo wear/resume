@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090707054722
+# Schema version: 20090721142042
 #
 # Table name: users
 #
@@ -15,6 +15,7 @@
 #  remember_token_expires_at :datetime
 #  activation_code           :string(40)
 #  activated_at              :datetime
+#  invitation_code           :string(255)
 #
 
 require 'digest/sha1'
@@ -25,7 +26,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   has_many :resumes, :dependent => :destroy
   has_one :profile, :dependent => :destroy
-  has_many :friends,:dependent => :destroy
+  has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
    
   has_and_belongs_to_many :roles
 
@@ -53,7 +54,18 @@ class User < ActiveRecord::Base
     all_roles.include?("superuser")
   end
   
-
+  def become_friend_with(friend)
+    if friend?(friend)
+      return true
+    else
+      f = friendships.new(:friend_id => friend.id)
+      f.save
+    end
+  end
+  
+  def friend?(friend)
+    friendships.find_by_friend_id(friend.id)
+  end
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
   # uff.  this is really an authorization, not authentication routine.  
@@ -82,7 +94,7 @@ class User < ActiveRecord::Base
   protected 
     
     def make_initation_code
-        self.invitaiton_code = self.class.generate_new_password(8)
+        self.invitation_code = self.class.generate_new_password(8)
     end
 
     def all_roles
