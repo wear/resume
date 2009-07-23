@@ -1,4 +1,6 @@
-class UserMailer < ActionMailer::Base
+class UserMailer < ActionMailer::Base    
+  helper :application  
+  
   def signup_notification(user)
     setup_email(user)
     @subject    += '你的帐户信息'
@@ -25,11 +27,11 @@ class UserMailer < ActionMailer::Base
     @content_type = "text/html"
   end
   
-  def send_resume(resume,email,content)
+  def send_resume(resume,job,email,content)
     @from        = "半亩方塘"
     @subject     = "[半亩方塘] "
     @sent_on     = Time.now
-    @subject    += "求职申请(#{job})"
+    @subject    += "求职申请 - (#{job})"
     @recipients  = email
     @body[:resume]  = resume
     @body[:contetn]  = content

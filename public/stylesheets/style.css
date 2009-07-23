@@ -147,8 +147,7 @@ address{margin-bottom:0px;}
 a#view { margin-right:10px;display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
 a#view:hover { background: #222; }
 
-#download a { background: #FFFFAA;  padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px; }
-#download a:hover { background: #19C519; color: white; }        
+#download a { background: #FFFFAA;  padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px; }       
 
 /* ---- for facebox and blueprint confick*/ 
 th, td, caption {padding:0px;}   

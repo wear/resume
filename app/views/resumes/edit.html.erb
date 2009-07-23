@@ -34,11 +34,12 @@
 	<div class="main">
 		<p><%=h @resume.summary.content %></p>
 	</div>
-
+    <% if false %>
 	<h2>技能</h2>
 	<div class="main">
 		<p><%= @resume.summary.tag_list %></p>
-	</div>
+	</div>      
+	<% end %>
 </div>
 
 <div class="span-14 section"> 
@@ -99,7 +100,8 @@
 			<% end %>
 		</ul>
 	</div>                                                       
-	<div class='span-5 prepend-top'> 
+	<div class='span-5 prepend-top'>      
+		 <b>完成度</b>
 	<% completeness ||= profile_completeness(@resume) %>
 	<% percent = completeness[:score] %>
 		<table width='100%',style ='margin-bottom:0;' class='poll'>
@@ -120,5 +122,5 @@
 				</td>
 			</tr>
 		</table> 
-		</div>
+		</div> 
  <% end -%>

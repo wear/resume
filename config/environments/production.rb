@@ -28,3 +28,5 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!       
 
 APP_URL = 'http://muutang.com/'
+
+config.action_mailer.default_url_options = { :host => APP_URL }   
