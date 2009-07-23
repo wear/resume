@@ -17,10 +17,17 @@ class Resume < ActiveRecord::Base
   has_many :positions
   has_many :educations
   has_one :summary
-  has_one :additionalinfo
+  has_one :additionalinfo   
+
+  validates_length_of :usage, :within => 3..20
   
   cattr_reader :per_page
   @@per_page = 20 
+  
+  
+  def profile
+    user.profile
+  end           
   
   def owner?(owner)
     user == owner

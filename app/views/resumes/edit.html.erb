@@ -1,5 +1,8 @@
+<div class="span-14 section" >   
+   <h4>用途: <%= @resume.usage %>  <span class='edit'><%=link_to '修改',edit_item_resume_path(@resume)%></span></h4>
+</div>
 <div class='span-12 prepend-2'>
-    <span class='avatar'><%= avatar_for @resume.profile %></span><h1><%= @resume.profile.name %><span class='edit'>[<%= link_to '删除', resume_path(@resume), :confirm => '你确定嘛?', :method => :delete %>]</span></h1>	
+    <span class='avatar'><%= avatar_for @resume.profile %></span><h1><%= @resume.profile.name %></h1>	
 </div>
 
   

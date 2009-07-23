@@ -107,7 +107,7 @@
       summary: 个人总结
       position: 工作经验 
       education: 教育情况
-      resumes: 简历
+      resume: 简历
       additionalinfo: 兴趣爱好
       user: 用户
     attributes:
@@ -126,6 +126,8 @@
       position:
           title: 职位
           company: 公司名称
+      resume:
+          usage: 用途
       summary:
           content: 总结
           specialties: 特长

@@ -1,17 +1,6 @@
 class ProfilesController < ApplicationController  
   before_filter :login_required   
-  before_filter :find_resume  
-  # GET /profiles
-  # GET /profiles.xml
-  def index
-    @profiles = Profile.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @profiles }
-    end
-  end
-
+  before_filter :find_user
   # GET /profiles/1
   # GET /profiles/1.xml
   def show
@@ -26,10 +15,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   # GET /profiles/new.xml
   def new
-    @profile = Profile.new
+    @profile = @user.build_profile
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       format.xml  { render :xml => @profile }
     end
   end
@@ -42,13 +31,12 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.xml
   def create
-    @profile = @resume.profile.new(params[:profile])
+    @profile = @user.build_profile(params[:profile])
 
     respond_to do |format|
       if @profile.save
         flash[:notice] = '个人资料创建成功!'
-        format.html { redirect_to(@profile) }
-        format.xml  { render :xml => @profile, :status => :created, :location => @profile }
+        format.html { redirect_to(new_resume_path) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
@@ -84,5 +72,11 @@ class ProfilesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-   
+  
+  
+  protected
+  
+  def find_user
+    @user = current_user
+  end 
 end

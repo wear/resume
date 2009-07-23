@@ -106,7 +106,12 @@ a:visited {
 	background:url('/images/bg/index_top.jpg') ;
 } 
 
-.edit{
+.edit{  
+	font-size:10px;
+} 
+
+.edit a { 
+	color: #009900; 
 	font-size:10px;
 }
 

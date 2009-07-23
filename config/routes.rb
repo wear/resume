@@ -21,11 +21,12 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
   end
   
-  map.resources :users,:collection => {:reset_password => :put} do |user| 
+  map.resources :users,:collection => {:reset_password => :put} do |user|
+     user.resource :profile 
      user.resources :friendships,:member => {:add => :post}
   end 
 
-  map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post },:has_one => [:profile,:summary,:additionalinfo] do |resume|
+  map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get},:has_one => [:profile,:summary,:additionalinfo] do |resume|
      resume.resources :positions 
      resume.resources :recommands,:collection => {:ask => :get,:send_request => :post}
      resume.resources :educations

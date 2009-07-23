@@ -97,15 +97,23 @@ class ResumesController < ApplicationController
 
   # GET /resumes/new
   # GET /resumes/new.xml
-  def new
-    @profile = Profile.new
-
+  def new 
+    @resume = current_user.resumes.new          
     respond_to do |format|
-      format.html 
-      format.xml  { render :xml => @resume }
+      if current_user.profile.nil?
+        format.html { redirect_to new_user_profile_path(current_user) }
+      else
+        format.html {}
+      end
     end
   end
-
+       
+  def edit_item
+    @resume = current_user.resumes.find(params[:id]) 
+    respond_to do |wants|
+      wants.html {  }
+    end
+  end
   # GET /resumes/1/edit
   def edit
     @resume = Resume.find(params[:id])  
@@ -120,14 +128,14 @@ class ResumesController < ApplicationController
   # POST /resumes
   # POST /resumes.xml
   def create
-    @resume = Resume.new(:user => current_user)
+    @resume = current_user.resumes.new(params[:resume])
     @resume.build_summary(:content => '暂无',:specialties => '暂无')
-    @resume.build_additionalinfo(:interests => '暂无')
-    @profile = @resume.build_profile(params[:profile])
+    @resume.build_additionalinfo(:interests => '暂无') 
+    @resume.salt = Resume.generate_salt
     respond_to do |format|
-      if @profile.save && @resume.save
+      if @resume.save
         flash[:notice] = '简历创建成功.'
-        format.html { redirect_to edit_resume_path(@profile.resume) }
+        format.html { redirect_to edit_resume_path(@resume) }
       else  
         format.html { render :action => "new" }
       end 
@@ -145,10 +153,10 @@ class ResumesController < ApplicationController
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
         flash[:notice] = '简历更新成功.'
-        format.html { redirect_to(@resume) }
+        format.html { redirect_to(edit_resume_path(@resume)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit_item" }
         format.xml  { render :xml => @resume.errors, :status => :unprocessable_entity }
       end
     end 
