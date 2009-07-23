@@ -49,8 +49,6 @@ pdf.bounding_box [100,pdf.cursor + 20],:width => 340 do
 end
 pdf.move_down 20  
 pdf.bounding_box [5,pdf.cursor], :width => 100 do 
-pdf.fill_color "999999"     
-	pdf.text '技能',:size => 18 
 pdf.fill_color "090B18" 
 end      
 pdf.bounding_box [100,pdf.cursor + 20],:width => 340 do

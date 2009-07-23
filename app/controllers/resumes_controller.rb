@@ -56,7 +56,7 @@ class ResumesController < ApplicationController
       @resume = Resume.find_by_salt(params[:salt])  
      
      respond_to do |format|
-       format.html { render :layout => 'mail'}
+       format.html { render :layout => 'resume'}
        format.xml  { render :xml => @resume }
        format.pdf { render :action => :show,:layout => false, :prawn => {
              :page_size => 'A4',
