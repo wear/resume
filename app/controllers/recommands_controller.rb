@@ -23,7 +23,7 @@ class RecommandsController < ApplicationController
     emails = params[:emails]
      unless emails.nil? || params[:subject].nil? || params[:content].nil?
       begin                                 
-        flash[:error] = '邮件已发送'
+       flash[:info] = '邮件已发送'
        UserMailer.deliver_recommandition_request(@resume,emails,params[:subject],params[:content],params[:role],generate_url)
       rescue
         flash[:error] = '有错误发送,可能email格式填写不对'

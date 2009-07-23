@@ -93,12 +93,13 @@
 <% content_for :sidebar do -%>
 	<div class='span-5'>
 		<ul>
-			<li> <%=link_to '预览',@resume,:id => 'view',:target => '_blank'%></li>  
-	        
+			<li> <%=link_to '预览/定制',@resume,:id => 'view',:target => '_blank'%></li>  
+	        <% if false %>
 			<% unless @resume.salt.nil? -%> 
-	  	<li> <a href="/resumes/public/<%=@resume.salt%>" id='view' target='_blank'> 公开网址</a> </li>
-		<% end -%>
-		<li><%=facebox_link_to '发布/重发布',:url => publish_resume_path(@resume),:html => {:id => 'view'} %></li>
+	  		<li> <a href="/resumes/public/<%=@resume.salt%>" id='view' target='_blank'> 公开网址</a> </li>
+			<% end -%>
+		<li><%=facebox_link_to '发布/重发布',:url => publish_resume_path(@resume),:html => {:id => 'view'} %></li> 
+		<% end %>
 		<li><%= link_to '获得推荐',ask_resume_recommands_path(@resume),:id =>'view'%>
 	</div>                                                       
 	<div class='span-5 prepend-top'> 

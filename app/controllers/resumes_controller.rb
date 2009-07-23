@@ -1,5 +1,6 @@
 class ResumesController < ApplicationController
   before_filter :login_required,:except => :public
+  # Todo : need view-able
   
   include FaceboxRender 
   # GET /resumes
@@ -12,28 +13,50 @@ class ResumesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @resumes }
     end
+  end 
+  
+  def send_to
+     @resume = Resume.find(params[:id]) 
+    respond_to do |wants|
+      wants.js {render_to_facebox(:template => 'resumes/send_to' ) }
+    end
   end
+   
+  def do_send
+    @resume = Resume.find(params[:id])  
+    email = params[:email]
+     unless emails.nil? || params[:content].nil? || params[:job].nil?
+      begin                                 
+       flash[:notice] = '邮件已发送'
+       UserMailer.deliver_send_resume(@resume,params[:job],email,params[:content],current_user)
+      rescue
+        flash[:error] = '有错误发送,可能email格式不对'
+      end
+       redirect_to edit_resume_path(@resume) 
+     end
+    respond_to do |wants|
+      wants.js {  }
+    end
+  end             
+  
   
   def publish
-     @resume = Resume.find(params[:id])  
-     if current_user == @resume.user  
+     @resume = Resume.find(params[:id])   
      
      @resume.salt = Resume.generate_salt
      @resume.save
      
      respond_to do |format|
        format.html { }
-        format.js  { render_to_facebox } 
-       format.xml  { render :xml => @resume }
-     end   
-    end
+       format.js  { }  
+     end
   end 
   
   def public
       @resume = Resume.find_by_salt(params[:salt])  
      
      respond_to do |format|
-       format.html { render :action => 'show',:layout=> 'resume'}
+       format.html { render :layout => 'mail'}
        format.xml  { render :xml => @resume }
        format.pdf { render :action => :show,:layout => false, :prawn => {
              :page_size => 'A4',

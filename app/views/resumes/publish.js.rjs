@@ -1,0 +1,2 @@
+page.replace_html 'public_url', @resume.public_url
+page.visual_effect 'highlight', 'public_url'

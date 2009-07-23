@@ -33,7 +33,7 @@ class Resume < ActiveRecord::Base
   
   def public_url
     unless salt.nil?
-      "http://#{APP_URL}/resumes/public/#{self.salt}"
+      "#{APP_URL}public/resume/#{self.salt}"
     else
       '还未发布'
     end

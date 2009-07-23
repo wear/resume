@@ -1,12 +1,11 @@
-body{
+body{  
+	font:Arial;
 	font-size:12px;
 	 background: url(/images/bg.png);
 } 
 
 .container{ 
-	background-color: #ffffff;
-    border:1px solid #ccc;
-	margin:0 auto;
+	padding: 10px 80px; margin: 80px auto; background: #f5f5f5; border: solid #666; border-width: 8px 0 2px 0;
 	width:749px;
 }
 
@@ -67,9 +66,10 @@ body{
 	float:right;
 	}  
 
-h1.name {font-size:28px; float:left;margin:15px 0 1em 1.5em;}		
+h1.name {font-size:28px; float:left;margin:15px 0 1em 1.5em;font:Verdana;}		
 
-h1{
+h1{ 
+	font:Verdana;
 	margin:1em 0 1em 9.5em;
 	font-size:1.75em;
 	}
@@ -79,7 +79,8 @@ h1{
 	float:left;
 }
   
-h3 {
+h3 { 
+	font:Verdana;
 	margin-left:16px;
 }
 .section h2 {
@@ -94,6 +95,7 @@ h3 {
 #download a:hover { background: #c26c06; }
 
 table{
+	width:300px;
 	 margin:10px 0px 0px 0px;
 }
 
@@ -115,3 +117,28 @@ background-color: #ffffff;
 .intresting td{
 	height:20px;
 }
+
+#message_box {  
+ position: absolute; 
+ top: 0; left: 0; 
+ z-index: 10; 
+ background:#ECECEC;
+ border:1px solid #CCCCCC;
+ text-align:center; 
+ font-weight:bold; 
+ width:99.9%;
+
+}  
+
+#message_body{ 
+	margin:0px auto;
+	width:769px;
+}  
+
+#message_body h1 { color: #999;font-size:100%;float:right; width:100%;margin:none;}
+#message_body a#dl { margin:0px 20px; background: #408814; 
+	font-size:14px;color: white; padding: 6px 38px; text-decoration: none; }
+#message_body a#dl:hover { background: #266400; }
+#message_body a{color:#0000FF; margin:0px 2px;text-decoration: none; }
+#message_body a:hover;{color:#7777FF; margin:0px 2px;text-decoration: underline; }  
+#send_form { clear:both;}

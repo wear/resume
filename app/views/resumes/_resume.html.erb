@@ -1,0 +1,81 @@
+<span class='avatar'><%= avatar_for @resume.profile %></span> <h1 class='name'><%= @resume.profile.name %></h1>     
+	<div id="download">
+		<% if logged_in? && (current_user == @resume.user ) -%>
+		   <%=link_to 'PDF下载',resume_pdf_path(@resume) %>
+		<% else -%>                                          
+		    <%=link_to 'PDF下载',public_resume_path(@resume.salt,:format => 'pdf')%>
+	    <% end -%>
+	</div>
+
+<div class="section profile"> 
+	<div class='identi'>
+		<h3>个人信息</h3>
+		<table border="0" cellspacing="1" cellpadding="1">
+			<tr><td width='35%'>性别:</td><td><%= format_sex(@resume.profile.sex) %></td></tr> 
+			<tr><td>出生地:</td><td><%=h @resume.profile.hometwon %></td></tr> 
+			<tr><td>户口所在地:</td><td><%=h @resume.profile.hukou %></td></tr> 
+			<tr><td>年龄:</td><td><%= format_age(@resume.profile.birthday) %></td></tr> 
+			<tr><td>生日:</td><td><%= @resume.profile.birthday %></td></tr> 
+		</table>
+	</div>
+	<div class='contact'>
+		<h3>联系方式</h3>
+		<table border="0" cellspacing="1" cellpadding="1">
+			<tr><td width='35%'>地址:</td><td><%=h @resume.profile.address %></td></tr> 
+			<tr><td>电子邮件:</td><td><%=h @resume.profile.email %></td></tr> 
+			<tr><td>手机:</td><td><%=h @resume.profile.mobile %></td></tr> 
+		</table>
+	</div>
+</div>
+<div class="section"> 
+	<h2>总结</h2>
+	<div class="box">
+		<p><%=h @resume.summary.content %></p>
+	</div> 
+	<% if false %> 
+	<hr />
+	<h2>技能</h2>
+	<div class="box">
+		<p><%=h @resume.summary.specialties %></p>
+	</div>      
+	<% end %>
+</div>
+
+<div class="span-15 section">  
+	<h2>工作经验</h2>
+	<div class="box">  
+		<% @resume.positions.each do |position| -%>
+		<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
+		<h3><%=h position.title %></h3>
+		<address><%=h position.company %></address>
+		<ul>
+		<li><%=h position.description %></li>
+		</ul>
+		<% end -%>
+	</div> 
+</div>
+
+<div class="span-15 section">  
+	<h2>兴趣爱好</h2>      
+	<div class="box">
+		<table border="0" cellspacing="1" cellpadding="1" class='intresting'>
+			<tr><td width='20%'>爱好:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+			<tr><td>小组:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
+			<tr><td>获奖:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
+		</table>
+	</div>
+</div>
+
+<div class="span-15 section">  
+	<h2>教育</h2>  
+	<% @resume.educations.each do |education| -%>
+	<div class="box">  
+		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
+		<h3><%= education.name %></h3>
+		<ul>
+			<li><%=h education.degree %></li>
+			<li><%=h education.field %></li>
+		</ul>
+	</div>
+	<% end -%>  
+</div>                             
