@@ -49,7 +49,7 @@ ActionMailer::Base.smtp_settings = {
    :port => "587",
    :domain => "muutang.com",
    :authentication => :plain,
-   :user_name => "support",
+   :user_name => "support@muutang.com",
    :password => "tellmewhy" 
  }          
 
