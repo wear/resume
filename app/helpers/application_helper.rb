@@ -25,7 +25,7 @@ module ApplicationHelper
     if profile.avatar_exists?
       image_tag((APP_URL + profile.assert.public_filename),:alt => "avatar")
     else  
-      image_tag((APP_URL + 'images/unknow-avatar.jpg'),:alt => "avatar")
+      image_tag((APP_URL + '/images/unknow-avatar.jpg'),:alt => "avatar")
     end
   end
   
