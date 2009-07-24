@@ -1,7 +1,7 @@
 body{  
 	font:Arial;
 	font-size:12px;
-	 background: url(/images/bg.png);
+	background: url(/images/bg.png);
 } 
 
 .container{ 
@@ -119,26 +119,25 @@ background-color: #ffffff;
 }
 
 #message_box {  
- position: absolute; 
- top: 0; left: 0; 
- z-index: 10; 
+ margin: 0px auto;
+width:99.9%;
  background:#ECECEC;
  border:1px solid #CCCCCC;
  text-align:center; 
  font-weight:bold; 
- width:99.9%;
-
+ position: absolute; 
+ top: 0; left: 0; 
+ z-index: 10;
 }  
 
-#message_body{ 
-	margin:0px auto;
-	width:769px;
-}  
 
-#message_body h1 { color: #999;font-size:100%;float:right; width:100%;margin:none;}
-#message_body a#dl { margin:0px 20px; background: #408814; 
+#message_box h1 { color: #999;font-size:100%;float:right; width:100%;margin:none;}
+#message_box a#dl { margin:0px 20px; background: #408814; 
 	font-size:14px;color: white; padding: 6px 38px; text-decoration: none; }
-#message_body a#dl:hover { background: #266400; }
-#message_body a{color:#0000FF; margin:0px 2px;text-decoration: none; }
-#message_body a:hover;{color:#7777FF; margin:0px 2px;text-decoration: underline; }  
-#send_form { clear:both;}
+#message_box a#dl:hover { background: #266400; }
+#message_box a{color:#0000FF; margin:0px 2px;text-decoration: none; }
+#message_box a:hover;{color:#7777FF; margin:0px 2px;text-decoration: underline; }  
+#send_form { clear:both; }
+
+/* for facebox */ 
+#facebox .content { padding:0px;margin:0px;}

@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
  
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
   map.resume_pdf '/resumes/:id/bmtang.pdf', :controller => 'resumes', :action => 'show',:format => 'pdf'
+  map.public_resume_pdf '/public/resumes/:salt/bmtang.pdf', :controller => 'resumes', :action => 'public',:format => 'pdf'
 
   map.namespace :admin do |admin|
     admin.resources :resumes
@@ -25,12 +26,12 @@ ActionController::Routing::Routes.draw do |map|
      user.resources :friendships,:member => {:add => :post}
   end 
 
-  map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get},:has_one => [:profile,:summary,:additionalinfo] do |resume|
+  map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get} do |resume|
      resume.resources :positions 
      resume.resources :recommands,:collection => {:ask => :get,:send_request => :post}
      resume.resources :educations
-     resume.resources :summaries 
-     resume.resources :additionalinfos
+     resume.resource :summary 
+     resume.resource :additionalinfo
   end 
   
 

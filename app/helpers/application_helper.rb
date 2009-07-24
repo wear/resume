@@ -23,9 +23,9 @@ module ApplicationHelper
   
   def avatar_for(profile)
     if profile.avatar_exists?
-      image_tag(profile.assert.public_filename)
+      image_tag((APP_URL + profile.assert.public_filename),:alt => "avatar")
     else  
-      image_tag('/images/unknow-avatar.jpg')
+      image_tag((APP_URL + 'images/unknow-avatar.jpg'),:alt => "avatar")
     end
   end
   
@@ -33,13 +33,13 @@ module ApplicationHelper
     if profile.avatar_exists?
       profile.assert.public_filename
     else  
-      '/images/unknow-avatar.jpg'
+      'images/unknow-avatar.jpg'
     end
   end
   
   def profile_completeness(resume)
     segments = [
-      {:val => 2, :action => link_to('添加一寸照', edit_resume_profile_path(resume)), :test => resume.profile.avatar_exists? },
+      {:val => 2, :action => link_to('添加一寸照', edit_user_profile_path(resume)), :test => resume.profile.avatar_exists? },
       {:val => 1, :action => link_to('添加个人总结', edit_resume_summary_path(resume)), :test => !(resume.summary.content == '暂无')},      
       {:val => 2, :action => link_to('增加工作经验', new_resume_position_path(resume)), :test => resume.positions.any? },            
       {:val => 1, :action => link_to('填写个人兴趣爱好', edit_resume_additionalinfo_path(resume)), :test => !(resume.additionalinfo.interests== '暂无')},                  
