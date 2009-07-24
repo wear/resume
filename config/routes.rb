@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-
   map.comatose_admin 'admin/cms'
   map.resource :session
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
