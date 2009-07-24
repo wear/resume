@@ -64,15 +64,18 @@ pdf.fill_color "999999"
 pdf.fill_color "090B18" 
 end                            
 
-pdf.bounding_box [100,pdf.cursor + 20], :width => 300 do   
+pdf.bounding_box [100,pdf.cursor + 20], :width => 300 do
+   if  @resume.positions.blank?
+	pdf.text '暂无'
+   else
 	@resume.positions.each_with_index do |position,index|     
 		pdf.text "#{position.title}",:size => 18
 		pdf.text "#{position.company}"
-		pdf.text "#{position.start_at} >> #{format_end_at(position.end_at)}",:at => [240,20],:size => 8
-		pdf.move_down 20 
+		pdf.text "#{position.start_at} >> #{format_end_at(position.end_at)}",:at => [240,20],:size => 8 
+	end
 	end
 end
-
+pdf.move_down 20 
 pdf.stroke_horizontal_rule 
 pdf.move_down 20 
  

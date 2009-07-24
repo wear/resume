@@ -1,5 +1,6 @@
 class ResumesController < ApplicationController
   before_filter :login_required,:except => :public
+  before_filter :get_resume,:except => [:index,:new,:public,:create]
   # Todo : need view-able
   
   include FaceboxRender 
@@ -16,14 +17,12 @@ class ResumesController < ApplicationController
   end 
   
   def send_to
-     @resume = Resume.find(params[:id]) 
     respond_to do |wants|
       wants.js {render_to_facebox(:template => 'resumes/send_to' ) }
     end
   end
    
   def do_send
-    @resume = Resume.find(params[:id])  
     email = params[:email]
      unless email.nil? || params[:content].nil? || params[:job].nil?
       begin                                 
@@ -38,7 +37,6 @@ class ResumesController < ApplicationController
   
   
   def publish
-     @resume = Resume.find(params[:id])   
      
      @resume.salt = Resume.generate_salt
      @resume.save
@@ -68,8 +66,6 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.xml
   def show
-    @resume = Resume.find(params[:id])  
-    
     respond_to do |format|
       format.html { 
         if viewable?
@@ -109,20 +105,15 @@ class ResumesController < ApplicationController
   end
        
   def edit_item
-    @resume = current_user.resumes.find(params[:id]) 
     respond_to do |wants|
       wants.html {  }
     end
   end
   # GET /resumes/1/edit
   def edit
-    @resume = Resume.find(params[:id])  
-   unless current_user == @resume.user                        
-       flash[:error] = '您无权限查看此文件!' 
       respond_to do |wants|
-        wants.html { redirect_to '/' }
+        wants.html {  }
       end 
-    end
   end
 
   # POST /resumes
@@ -143,13 +134,11 @@ class ResumesController < ApplicationController
   end
   
   def recommands
-    @resume = Resume.find(params[:id]) 
   end
 
   # PUT /resumes/1
   # PUT /resumes/1.xml
-  def update
-    @resume =  current_user.resumes.find(params[:id])   
+  def update  
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
         flash[:notice] = '简历更新成功.'
@@ -165,8 +154,7 @@ class ResumesController < ApplicationController
   # DELETE /resumes/1
   # DELETE /resumes/1.xml
   def destroy
-    @resume = current_user.resumes.find(params[:id])   
-    
+       
     @resume.destroy
 
     respond_to do |format|
@@ -174,7 +162,11 @@ class ResumesController < ApplicationController
       format.xml  { head :ok }
     end
   end  
+   
+  protected 
   
+  def get_resume
+    @resume = current_user.resumes.find(params[:id])
+  end
 
-  
 end

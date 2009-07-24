@@ -24,8 +24,8 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1/edit
-  def edit
-    @profile = @resume.profile
+  def edit  
+    @profile = @user.profile
   end
 
   # POST /profiles
@@ -46,13 +46,13 @@ class ProfilesController < ApplicationController
 
   # PUT /profiles/1
   # PUT /profiles/1.xml
-  def update
-    @profile = @resume.profile
+  def update 
+    @profile = @user.profile
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         flash[:notice] = '个人资料更新成功!.'
-        format.html { redirect_to edit_resume_path(@resume) }
+        format.html { redirect_to resumes_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

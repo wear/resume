@@ -34,7 +34,7 @@ class UserMailer < ActionMailer::Base
     @subject    += "求职申请 - (#{job})"
     @recipients  = email
     @body[:resume]  = resume
-    @body[:contetn]  = content
+    @body[:content]  = content
     @content_type = "text/html"
   end
   
