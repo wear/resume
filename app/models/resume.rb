@@ -18,7 +18,7 @@ class Resume < ActiveRecord::Base
   has_many :educations
   has_one :summary
   has_one :additionalinfo   
-
+  has_many :posters
   validates_length_of :usage, :within => 3..20
   
   cattr_reader :per_page
@@ -40,7 +40,7 @@ class Resume < ActiveRecord::Base
   
   def public_url
     unless salt.nil?
-      "#{APP_URL}public/resume/#{self.salt}"
+      "#{APP_URL}/public/resume/#{self.salt}"
     else
       '还未发布'
     end

@@ -37,6 +37,6 @@ class RecommandsController < ApplicationController
   
   protected
   def generate_url
-    @invitation_code = APP_URL + 'signup?resume=' + "#{@resume.id}&" 'invitation_code=' + current_user.invitation_code
+    @invitation_code = APP_URL + '/signup?resume=' + "#{@resume.id}&" 'invitation_code=' + current_user.invitation_code
   end
 end

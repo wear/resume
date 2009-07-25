@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
+  # Be sure to include AuthenticationSystem in Application Controller instead  
+  before_filter :login_required 
+  
   def show
-    @user = current_user
+    @user = User.find params[:id]    
   end                                                                          
 
   # render new.rhtml
@@ -16,7 +18,15 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty? 
-      if find_code_and_resume &&  @user.become_friend_with(@friend)
+      if find_code_and_resume &&  @user.become_friend_with(@friend) 
+  
+          message = Message.new
+          message.subject = "#{@friend.profile.name}请求你评价他/她的简历" 
+          message.body = '你的评价对我的简历十分重要,谢谢!' 
+          message.sender = @friend
+          message.recipient = @user
+          message.save
+        
         flash[:notice] = '已加好友'
         self.current_user = @user
         redirect_to new_resume_recommand_path(@resume)   

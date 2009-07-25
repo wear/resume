@@ -3,7 +3,7 @@
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr><th>名称</th></tr>  
 	<% @user.friendships.each do |friendship| -%> 
-	<tr><td><%= friendship.friend.login %></td>
+	<tr><td><%=link_to friendship.friend.login,friendship.friend %></td>
 		<td><%= friendship.status %></td>
 	</tr>  
 	<% end -%>    

@@ -109,8 +109,12 @@
       education: 教育情况
       resume: 简历
       additionalinfo: 兴趣爱好
-      user: 用户
-    attributes:
+      user: 用户     
+      poster: 求职信
+    attributes:  
+      poster:
+          content: 内容
+          position: 职位
       user:
           login: 用户名
           password: 密码
@@ -156,7 +160,7 @@
           one: "有 1 个错误发生导致「{{model}}」无法被保存。"
           other: "有 {{count}} 个错误发生导致「{{model}}」无法被保存。"
         body: "如下字段出现错误："
-      messages:
+      messages: 
         inclusion: "不包含于列表中"
         exclusion: "是保留关键字"
         invalid: "是无效的"

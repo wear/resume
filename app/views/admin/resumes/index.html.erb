@@ -4,12 +4,16 @@
   </tr>
 
 <% @resumes.each do |resume| %>
-  <tr>   
+  <tr>      
+	<% begin %>
 	<td><%=resume.profile.name %>_<%= resume.id %></td>
 	<td><%=resume.profile.created_at %></td>
     <td><%= link_to '查看', resume.public_url,:target => '_blank' %></td>
     <td><%= link_to '编辑', edit_resume_path(resume) %></td>
-    <td><%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete %></td>
+    <td><%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete %></td>    
+<% rescue %>
+<%= resume.id %> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td> <td><%= link_to '删除', admin_resume_path(resume), :confirm => '你确定嘛?', :method => :delete %></td>    
+<% end %>
   </tr>
 <% end %>
 </table>

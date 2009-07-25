@@ -5,5 +5,6 @@ class Admin::AdminController < ApplicationController
   def index
     @resume_size = Resume.count
     @user_size = User.count
-  end
+  end 
+  
 end

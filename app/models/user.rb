@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
   has_many :pending_friends, :class_name => "Friendship", :foreign_key => "friend_id",:conditions => ['status = ?','pending'], :dependent => :destroy 
-  has_and_belongs_to_many :roles
+  has_and_belongs_to_many :roles    
+  has_private_messages
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 2..40

@@ -1,10 +1,20 @@
-
-<h3>评价</h3>
-
+<h3>评价 </h3> 
+<% if false %>
+<% if current_user.resumes.blank? %> 
+	要作评价，你必须要填写你与<%= @resume.profile.name %>一起工作或学习时的角色,所以请先花几分钟创建你的简历！<p>
+	<%= link_to '现在就创建简历',new_resume_path,:class=>'ag'%></p>
+<% else -%> 
+<% end %>   
+<%=h @resume.profile.name %>请求你评价他/她的简历
 <% form_for(@recommand,:url => resume_recommands_path(@resume)) do |f| %>
-<p><%= label_tag '角色'%> <br /><%= f.select :sender_role,@resume.roles%></p>
+<p><%= label_tag "#{@resume.profile.name}的角色"%> <br /><%= f.select :sender_role,@resume.roles%></p>
+
 <p><%= label_tag '内容'%> <br /><%= f.text_area :description,:style => 'height:120px;'%> </p>
 <p>
 	<%= submit_tag '发送'%>
 </p>                                                             	
-<% end -%>  
+<% end -%> 
+
+<% content_for :sidebar do -%>
+	<%= render :comatose => 'cn/add-recommandation'%>
+<% end %> 

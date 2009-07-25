@@ -23,16 +23,15 @@ class ResumesController < ApplicationController
   end
    
   def do_send
-    email = params[:email]
-     unless email.nil? || params[:content].nil? || params[:job].nil?
+      @poster = @resume.poster.new(params[:poster])
       begin                                 
-        UserMailer.deliver_send_resume(@resume,params[:job],email,params[:content]) 
-        flash[:notice] = '邮件已发送'  
-      rescue
-        flash[:error] = '有错误发送,可能email格式不对'
-      end
+        @poser.save! || UserMailer.deliver_send_resume(@poster) 
+        flash[:notice] = '邮件已发送'      
         redirect_to edit_resume_path(@resume)
-     end
+      rescue
+        flash[:error] = '有错误发送,可能email格式不对' 
+      end
+
   end             
   
   

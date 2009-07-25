@@ -27,14 +27,14 @@ class UserMailer < ActionMailer::Base
     @content_type = "text/html"
   end
   
-  def send_resume(resume,job,email,content)
+  def send_resume(poster)
     @from        = "半亩方塘"
-    @subject     = "[半亩方塘] "
+    @subject     = "[半亩方塘]"
     @sent_on     = Time.now
-    @subject    += "求职申请 - (#{job})"
-    @recipients  = email
-    @body[:resume]  = resume
-    @body[:content]  = content
+    @subject    += "求职申请 - (#{poster.position})"
+    @recipients  = poster.email
+    @body[:poster]  = poster
+    @body[:resume]  = poster.resume
     @content_type = "text/html"
   end
   

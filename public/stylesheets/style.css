@@ -186,7 +186,12 @@ display: block;
 border-left: 1px solid #ccc;
 }
 
-table.resume {width:24em;}
+td.label{
+   text-align:right;
+   padding:5px; 
+   width:100px;
+}  
+
 table.resume tr{
 	height:40px;
 } 
@@ -243,3 +248,9 @@ table.poll {
 .sidebar ul li{
 	list-style:none;
 }
+
+/* for landing */
+
+.pro { margin-top:20px;padding:20px;border-top:4px solid #CCC;text-align:center;} 
+
+#preview fieldset {margin-top: 1em; background: url(/images/draft.png)}    
