@@ -41,7 +41,7 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = 'zh-CN'
 end  
 
-ExceptionNotifier.exception_recipients = %w(wear63659220@gmail.com)   
+ExceptionNotifier.exception_recipients = %w(wear63659220@gmail.com support@muutang.com)   
  
 ActionMailer::Base.smtp_settings = {
    :tls => true,

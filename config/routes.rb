@@ -23,7 +23,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users,:collection => {:reset_password => :put} do |user|
      user.resource :profile 
-     user.resources :friendships,:member => {:add => :post}
+     user.resources :friendships,:member => {:add => :post}  
+     user.resources :messages, :collection => { :delete_selected => :post }
   end 
 
   map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get} do |resume|
@@ -32,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
      resume.resources :educations
      resume.resource :summary 
      resume.resource :additionalinfo
+     resume.resources :posters,:collection => {:preview => :post }
   end 
   
 

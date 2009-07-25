@@ -1,0 +1,11 @@
+<% if false %>
+<p><%=h @user.profile.name%>共有<%= @user.resumes.count %>份简历</p>
+<% @user.resumes.each do |resume| %>                          
+<%=h resume.usage %>
+<ul>
+	<% resume.roles.each do |role| %>
+		<li><%= role %></li>
+	<% end %> 
+</ul>
+<% end %>
+<% end %>

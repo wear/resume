@@ -9,7 +9,7 @@
 <% completeness ||= profile_completeness(resume) %>
 <% percent = completeness[:score] %>
   <tr>   
-	<td><%= index + 1 %></td>
+	<td><%= index + 1 %>_<%= resume.usage %></td>
     <td><%= link_to '查看', resume,:target => '_blank' %></td>
 	<td class='bars'>
 		<div class='bar-container' style='width:50%;'>
