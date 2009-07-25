@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead  
-  before_filter :login_required 
+  before_filter :login_required,:only => [:show]
   
   def show
     @user = User.find params[:id]    
@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new 
-    session[:invitation_code] = params[:invitation_code]
-    session[:invitation_resume] = params[:resume]   
+    unless  params[:invitation_code].nil? && params[:resume].nil?
+      session[:invitation_code] = params[:invitation_code]
+      session[:invitation_resume] = params[:resume]
+    end   
   end
  
   def create
