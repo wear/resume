@@ -15,7 +15,10 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
   map.resume_pdf '/resumes/:id/bmtang.pdf', :controller => 'resumes', :action => 'show',:format => 'pdf'
   map.public_resume_pdf '/public/resumes/:salt/bmtang.pdf', :controller => 'resumes', :action => 'public',:format => 'pdf'
-
+  map.jobs '/jobs',:controller => 'landing',:action => 'jobs'
+  map.tools '/tools',:controller => 'landing',:action => 'tools' 
+  map.books '/books',:controller => 'landing',:action => 'books' 
+  
   map.namespace :admin do |admin|
     admin.resources :resumes
     admin.resources :users
