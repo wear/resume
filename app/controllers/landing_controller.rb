@@ -11,5 +11,9 @@ class LandingController < ApplicationController
   
   def contact
     
+  end 
+  
+  def jobs
+    
   end
 end

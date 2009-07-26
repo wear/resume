@@ -254,3 +254,8 @@ table.poll {
 .pro { margin-top:20px;padding:20px;border-top:4px solid #CCC;text-align:center;} 
 
 #preview fieldset {margin-top: 1em; background: url(/images/draft.png)}    
+
+.url-list {background:#f2f2f2;padding:0px 10px;margin-bottom:20px;} 
+.url-list ul li{float:left;list-style:none;}
+.url-list ul li a{display: block;padding:10px; font-size:13px;}
+.url-list h3 {margin:0px 10px;border-bottom:1px solid #CCC;padding-bottom:10px;}
