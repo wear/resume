@@ -1,44 +1,30 @@
 <div class='announce'>
-  <h1>半亩塘让你的简历创建时间从几小时变成几分钟！</h1>   
+  <h1>半亩塘让你快速创建更管用的简历！</h1>   
 </div>
+	<div class='span-5 ad' > 
+	   <h3>(1)快速创建 -> </h3> 
+	<%#=image_tag 'snap.jpg', :border => '0',:align => 'center'%>
+	有限的必填项,让你创建时感觉更轻松.一份格式良好的简历信手拈来!
+	</div>   
+	<div class='span-5 ad'>
+	   <h3>(2)在线配置 -> </h3> 
+	查看/完善效果,配置公开网址
+	</div>      
+	<div class='span-5 ad'> 
+		<h3>(3)到处使用 -> </h3>
+		你可以下载打印,直接投递email,或者直接在线浏览
+	</div>
+<div class='span-4 last' style='text-align:center;padding:10px;'>
 
-<div class='span-8 prepend-3'>
-	<%=image_tag 'snap.jpg', :border => '0'%>
-</div>
-<div class='span-8 last'>
-	<h1>马上开始</h1>
-	<p>
-		<b>简单，快捷,安全的在线个人简历创建</b><Br />
-	</p>       
-	<ul>                   
-		<li>简单 - 只需填写一个表单即可创建您的简历</li>
-		<li>方便 - 打印格式支持,支持PDF格式下载</li>
-		<li>安全 － 访问权限控制</li>
-
-	</ul>
-	     
 	<div id="download">
 		<% if logged_in? -%>
-		   <%=link_to '新建简历',new_resume_path %> 
+		   <%=link_to '开始创建',new_resume_path %> 
 		<% else -%>
-		   <%=facebox_link_to '新建简历',:url => login_box_path %>
+		   <%=facebox_link_to '开始创建',:url => login_box_path %>
 		<% end -%>
 	</div>	
+	<div style = 'margin-top:20px'>
+	<%=link_to '登录', login_path,:class => 'ag' %>
+	</div>
 </div> 
-<div class='span-18 pro'>  
-		<div class='span-9 ad'>
-		   <h3>简单,易用</h3>
-		有限的必填项,让你感觉更轻松  
-		</div>  
-		<% if false %>
-		<div class='span-6 ad'>
-		   <h3>更加客观</h3> 
-		领导,同事,同学的评价,让你的简历用事实说明一切 
-		</div>  
-		<% end %>
-		<div class='span-9 ad last'>
-		   <h3>到处使用</h3>
-		支持在线浏览,email发送,导出打印  
-		</div>
-</div>
 

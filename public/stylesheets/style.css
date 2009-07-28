@@ -192,6 +192,10 @@ td.label{
    width:100px;
 }  
 
+table{margin:0px;} 
+
+.box{ background:none;}
+
 table.resume tr{
 	height:40px;
 } 
@@ -251,7 +255,7 @@ table.poll {
 
 /* for landing */
 
-.pro { margin-top:20px;padding:20px;border-top:4px solid #CCC;text-align:center;} 
+.ad{text-align:center;padding:10px;font-style:italic;}
 
 #preview fieldset {margin-top: 1em; background: url(/images/draft.png)}    
 
