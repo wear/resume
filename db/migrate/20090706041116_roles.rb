@@ -15,7 +15,6 @@ class Roles < ActiveRecord::Migration
     
     admin = User.create(:login => 'admin', :email => 'admin@urc.com', :password => 'zzzzzz', :password_confirmation => 'zzzzzz')
     admin.roles << superuser
-    admin.activate!
   end
 
   def self.down
