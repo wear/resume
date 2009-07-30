@@ -6,6 +6,9 @@
   <%=h @message.body %>
 </p>
 <p>
+  <% if @message.req == 'recommendation' %>
+	<%= link_to '评价对方',new_user_recommendation_path(current_user,:receiver => @message.sender )%>   | 
+  <% end %>
   <% if @message.recipient == @user %>
 	  <%= link_to "回复", new_user_message_path(@user, :reply_to => @message) %> |
   <% end %>

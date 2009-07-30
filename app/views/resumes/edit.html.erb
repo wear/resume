@@ -97,10 +97,10 @@
 <% content_for :sidebar do -%>
 	<div class='span-5'>
 		<ul>
-			<li> <%=link_to '预览/定制',@resume,:id => 'view',:target => '_blank'%></li>  
-			<% if false %>
-            <li><%= link_to '获得推荐',ask_resume_recommands_path(@resume),:id =>'view'%>  
-	<% end %>
+			<li> <%=link_to '预览/定制',@resume,:id => 'view',:target => '_blank'%></li> 
+			<% if false %> 
+            <li><%= link_to '获得推荐',ask_resume_recommendations_path(@resume),:id =>'view'%> 
+	<% end %> 
 		</ul>
 	</div>                                                       
 	<div class='span-5 prepend-top'>      

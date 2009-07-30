@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090721142042
+# Schema version: 20090729062155
 #
 # Table name: resumes
 #
@@ -9,6 +9,8 @@
 #  updated_at :datetime
 #  user_id    :integer(4)
 #  salt       :string(255)
+#  usage      :string(255)
+#  type       :integer(4)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

@@ -1,9 +1,11 @@
 <div id="footer" class='span-24'> 
-	<div class='span-16' id='copyright'>
+	<div class='span-7' id='copyright'>
 		半亩塘 © 2008-2009    中文(简体)
 	</div> 
-	<div class='span-7 last'>
+	<div class='span-16 last'>
 	<ul>
+		<li><%= link_to '招聘信息',jobs_path %></li>
+		<li><%= link_to '相关工具',tools_path %></li>
 		<li><%=link_to '意见反馈','http://spreadsheets.google.com/viewform?formkey=cmhJV0c1ZXFaWkRlckNLLTQ4dEQzNUE6MA',:target => '_blank'%></li><li><%=link_to '帮助',help_path%></li> <li><%=link_to '联系我们',contact_path%></li><li><%=link_to '首页','/'%><li> 
 	</ul>
 	</div>	

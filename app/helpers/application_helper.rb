@@ -59,4 +59,14 @@ module ApplicationHelper
     return '至今' if time.nil?
   end
   
+  def option_groups_for_select(collection,selected = nil)
+    collection.inject('') do |options_for_select,group|
+      group_label_string = group[0]
+      options_for_select = "<optgroup label=\"#{html_escape(group_label_string)}\">"
+      options_for_select += options_for_select(group[1..-1],selected)
+      options_for_select += '</optgroup>'
+    end
+  end
+  
+  
 end

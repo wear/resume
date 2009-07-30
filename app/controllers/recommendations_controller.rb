@@ -1,6 +1,5 @@
-class RecommandsController < ApplicationController 
+class RecommendationsController < ApplicationController 
   before_filter :login_required   
-  before_filter :find_resume
   
   def index
   end
@@ -9,10 +8,20 @@ class RecommandsController < ApplicationController
   end
 
   def new
-    @recommand = Recommendation.new
+    @recommendation = Recommendation.new
+    @receiver = User.find(params[:receiver])
+  end 
+  
+  def select_role
+    @roles = Resume.find(params[:resume_id]).roles
+    respond_to do |wants|
+      wants.js { render :layout => false }
+    end
   end
 
   def create
+     @resume = Resume.find(parmas[:resume_id]) 
+     
   end    
   
   def ask 

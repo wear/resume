@@ -118,16 +118,16 @@ class ResumesController < ApplicationController
   # POST /resumes
   # POST /resumes.xml
   def create
-    @resume = current_user.resumes.new(params[:resume])
+    @resume = current_user.resumes.new(:usage => '暂无')
     @resume.build_summary(:content => '暂无',:specialties => '暂无')
     @resume.build_additionalinfo(:interests => '暂无') 
     @resume.salt = Resume.generate_salt
     respond_to do |format|
       if @resume.save
-        flash[:notice] = '简历创建成功.'
         format.html { redirect_to edit_resume_path(@resume) }
       else  
-        format.html { render :action => "new" }
+        flash[:error] = '创建中出错了'
+        format.html { resumes_path }
       end 
     end
   end

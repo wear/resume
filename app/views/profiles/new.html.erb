@@ -9,5 +9,8 @@
 <% end %>
 
 <% content_for :sidebar do %>
+<% unless params[:invitation_code].nil? -%>
+	<p>你需要填写个人信息并填写与评价人相应的经历,才能评价对方.</p>
+<% end -%>
    <%= render :comatose=>'cn/profile' %>
 <% end -%>
