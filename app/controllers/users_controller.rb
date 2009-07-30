@@ -20,20 +20,19 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
-    if success && @user.errors.empty? 
+    if success && @user.errors.empty?
+      self.current_user = @user 
       if find_code_and_resume &&  @user.become_friend_with(@friend)   
         message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req => 'recommendation')
         message.sender = @friend
         message.recipient = @user
         message.save
         flash[:notice] = '注册成功!为了严肃评价,请先填写个人信息'
-        self.current_user = @user
-        redirect_to new_user_profile_path(@user)   
       else         
         self.current_user = @user
-        redirect_back_or_default('/')
         flash[:notice] = "感谢注册!您现在就可以登录创建简历了."
-      end
+      end 
+      redirect_to new_user_profile_path(@user) 
     else
       flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"
       render :action => 'new'
