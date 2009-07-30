@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 20090721142042
+# Schema version: 20090729062155
 #
 # Table name: profiles
 #
 #  id             :integer(4)      not null, primary key
-#  resume_id      :integer(4)
 #  name           :string(255)
 #  mobile         :string(255)
 #  address        :string(255)
@@ -20,7 +19,6 @@
 #
 
 class Profile < ActiveRecord::Base
-  belongs_to :resume
   belongs_to :user
   has_one :assert, :as => 'attachable'
   
@@ -31,6 +29,7 @@ class Profile < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => '必须符合email的格式'  
+  after_create :create_initial_resume
   
   def avatar_exists?
     return false unless assert
@@ -50,6 +49,15 @@ class Profile < ActiveRecord::Base
     unless self.mobile.to_s.size == 11
       errors.add("mobile", "必须为11位")
     end
+  end
+  
+  def create_initial_resume
+      resume = Resume.new(:user => user)
+      resume.build_summary(:content => '暂无',:specialties => '暂无')
+      resume.build_additionalinfo(:interests => '暂无')
+      resume.build_additionalinfo(:interests => '暂无') 
+      resume.salt = Resume.generate_salt
+      resume.save
   end
   
 end

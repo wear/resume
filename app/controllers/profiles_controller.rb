@@ -32,11 +32,16 @@ class ProfilesController < ApplicationController
   # POST /profiles.xml
   def create
     @profile = @user.build_profile(params[:profile])
-
+    
+    @resume = current_user.resumes.new(:usage => '暂无')
+    @resume.build_summary(:content => '暂无',:specialties => '暂无')
+    @resume.build_additionalinfo(:interests => '暂无') 
+    @resume.salt = Resume.generate_salt
+    
     respond_to do |format|
-      if @profile.save
+      if @profile.save &&  @resume.save
         flash[:notice] = '个人资料创建成功!'
-        format.html { redirect_to(new_resume_path) }
+        format.html { redirect_to(edit_resume_path(@resume)) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }

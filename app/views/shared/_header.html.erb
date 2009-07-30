@@ -9,14 +9,10 @@
 	<div class='span-10 login'>
 		 <h2>
 			<%=link_to '首页',root_path %> <%=link_to '我的简历',resumes_path %>
-			<% if false -%> 
 			<% if logged_in? -%>
-			<%=link_to '关系圈',user_friendships_path(current_user) %>
+			<%=link_to '关系圈',user_friendships_path(current_user) %> 
 			<%=link_to "便条(#{current_user.received_messages.count})",user_messages_path(current_user) %>  
 			<% end -%> 
-			<% end %>
-			<%= link_to '招聘信息',jobs_path %>
-			<%= link_to '相关工具',tools_path %>
 			<%#= link_to '励志',books_path %>
 		 </h2>
 	</div> 
@@ -27,7 +23,7 @@
 	<div class='span-6 last login'> 
 	   	<% if logged_in? -%>
 			  <h2>
-				你好 <%= current_user.login %><%#=link_to current_user.login,current_user %>
+				你好 <%=link_to current_user.login,current_user %>
 				<% restrict_to "superuser" do %>
 				  <%= link_to "管理", admin_path %>
 				<% end %>

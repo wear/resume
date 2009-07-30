@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     @user = User.new 
     unless  params[:invitation_code].nil? && params[:resume].nil?
       session[:invitation_code] = params[:invitation_code]
-      session[:invitation_resume] = params[:resume]
-    end   
+      session[:invitation_resume] = params[:resume] 
+      find_code_and_resume 
+    end
   end
  
   def create
@@ -20,22 +21,18 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty? 
-      if find_code_and_resume &&  @user.become_friend_with(@friend) 
-  
-          message = Message.new
-          message.subject = "#{@friend.profile.name}请求你评价他/她的简历" 
-          message.body = '你的评价对我的简历十分重要,谢谢!' 
-          message.sender = @friend
-          message.recipient = @user
-          message.save
-        
-        flash[:notice] = '已加好友'
+      if find_code_and_resume &&  @user.become_friend_with(@friend)   
+        message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req => 'recommendation')
+        message.sender = @friend
+        message.recipient = @user
+        message.save
+        flash[:notice] = '注册成功!为了严肃评价,请先填写个人信息'
         self.current_user = @user
-        redirect_to new_resume_recommand_path(@resume)   
+        redirect_to new_user_profile_path(@user)   
       else         
         self.current_user = @user
         redirect_back_or_default('/')
-        flash[:notice] = "感谢注册!您已经可是使用本站全部功能！."
+        flash[:notice] = "感谢注册!您现在就可以登录创建简历了."
       end
     else
       flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"

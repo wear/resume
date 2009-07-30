@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20090729062155
+#
+# Table name: posters
+#
+#  id         :integer(4)      not null, primary key
+#  position   :string(255)
+#  email      :string(255)
+#  content    :text
+#  resume_id  :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Poster < ActiveRecord::Base 
   belongs_to :resume  
   validates_length_of :position, :minimum => 2

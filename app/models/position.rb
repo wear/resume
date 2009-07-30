@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090721142042
+# Schema version: 20090729062155
 #
 # Table name: positions
 #
@@ -15,5 +15,5 @@
 class Position < ActiveRecord::Base
   belongs_to :resume
   validates_presence_of :title,:company,:start_at
- 
+  has_many :recommends, :as => :recommendable 
 end

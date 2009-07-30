@@ -1,30 +1,34 @@
-<div class='announce'>
-  <h1>半亩塘让你快速创建更管用的简历！</h1>   
-</div>
-	<div class='span-5 ad' > 
-	   <h3>(1)快速创建 -> </h3> 
-	<%#=image_tag 'snap.jpg', :border => '0',:align => 'center'%>
-	有限的必填项,让你创建时感觉更轻松.一份格式良好的简历信手拈来!
-	</div>   
-	<div class='span-5 ad'>
-	   <h3>(2)在线配置 -> </h3> 
-	查看/完善效果,配置公开网址
-	</div>      
-	<div class='span-5 ad'> 
-		<h3>(3)到处使用 -> </h3>
-		你可以下载打印,直接投递email,或者直接在线浏览
-	</div>
-<div class='span-4 last' style='text-align:center;padding:10px;'>
-
-	<div id="download">
+  
+	<div class='span-11' style='text-align:right;padding:20px 30px 0px 0px;'>
+   	 <%=image_tag 'snap.jpg', :border => '0',:align => 'center'%>    
+   </div>
+   <div class='span-9 last'>   
+	<% if false %>
+   	<div id="download">
 		<% if logged_in? -%>
 		   <%=link_to '开始创建',new_resume_path %> 
 		<% else -%>
 		   <%=facebox_link_to '开始创建',:url => login_box_path %>
 		<% end -%>
-	</div>	
-	<div style = 'margin-top:20px'>
-	<%=link_to '登录', login_path,:class => 'ag' %>
-	</div>
-</div> 
+	</div> 
+	<% end %>
+	<%= render :partial => '/users/form'%>   
+  </div>                                           
+  <div class='span-19 prepend-2' style='margin-top:20px;'>
 
+  <div class='span-5 ad' > 
+	   <h3>(1)快速创建 -> </h3> 
+	
+	有限的必填项,让你创建时感觉更轻松.一份格式良好的简历信手拈来!
+	</div>   
+	<div class='span-7 ad'>
+	   <h3>(2)在线配置 -> </h3> 
+	查看/完善效果,配置公开网址
+	</div>      
+	<div class='span-5 ad last'> 
+		<h3>(3)到处使用 -> </h3>
+		你可以下载打印,直接投递email,或者直接在线浏览
+	</div> 
+
+
+  </div>

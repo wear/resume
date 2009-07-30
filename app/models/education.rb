@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090721142042
+# Schema version: 20090729062155
 #
 # Table name: educations
 #
@@ -16,4 +16,6 @@
 class Education < ActiveRecord::Base 
   belongs_to :resume      
   validates_presence_of :name,:degree,:field,:start_at,:end_at
+  
+  has_many :recommends, :as => :recommendable
 end

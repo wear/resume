@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090721142042
+# Schema version: 20090729062155
 #
 # Table name: resumes
 #
@@ -9,20 +9,25 @@
 #  updated_at :datetime
 #  user_id    :integer(4)
 #  salt       :string(255)
+#  usage      :string(255)
+#  type       :integer(4)
 #
 
 class Resume < ActiveRecord::Base
-  belongs_to :user  
-  has_one :profile
+  belongs_to :user     
   has_many :positions
   has_many :educations
   has_one :summary
   has_one :additionalinfo   
   has_many :posters
-  validates_length_of :usage, :within => 3..20
+  validates_length_of :usage, :within => 2..20
   
   cattr_reader :per_page
-  @@per_page = 20 
+  @@per_page = 20
+  
+  def name
+     user.profile.name + '的简历' + id.to_s 
+  end 
   
   
   def profile
@@ -46,12 +51,18 @@ class Resume < ActiveRecord::Base
     end
   end     
   
-  def roles
-    roles = []
-    positions.each{|position| roles << ('在' + position.company + '做' + position.title) }
-    educations.each{|edu| roles << ('在' + edu.name + '都' + edu.field )} 
-    roles
-  end
-  
-  
+ def roles
+   roles = []
+   r = find_roles
+   r.each_index{|index| roles << [index,r[index]]}
+   roles
+ end 
+ 
+ def find_roles
+    tmp_roles = []
+    positions.each{|position| tmp_roles << position }
+    educations.each{|edu| tmp_roles << edu }
+    tmp_roles
+ end
+
 end

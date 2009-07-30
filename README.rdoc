@@ -1,0 +1,5 @@
+# online resume creation  
+
+h1.参数
+
+req_type = ['recommendation','friend']
