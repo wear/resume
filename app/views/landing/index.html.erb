@@ -1,8 +1,10 @@
-  
-	<div class='span-11' style='text-align:right;padding:20px 30px 0px 0px;'>
+<div class="announce">
+  <h1>半亩塘让你快速创建更有用的简历</h1>
+</div>  
+	<div class='span-10' style='text-align:right;padding:20px 30px 0px 0px;'>
    	 <%=image_tag 'snap.jpg', :border => '0',:align => 'center'%>    
    </div>
-   <div class='span-9 last'>   
+   <div class='span-10 last'>   
 	<% if false %>
    	<div id="download">
 		<% if logged_in? -%>
@@ -12,7 +14,13 @@
 		<% end -%>
 	</div> 
 	<% end %>
-	<%= render :partial => '/users/form'%>   
+   <fieldset style='width:220px;background:#FFF;'>
+	<legend>马上开始</legend>   
+   	<% form_for :user, :url => users_path do |f| -%>
+		<%= render :partial => '/users/form',:locals => {:f => f} %>
+	<p><%= submit_tag '确定' %></p> 
+	<% end %>
+	</fieldset>   
   </div>                                           
   <div class='span-19 prepend-2' style='margin-top:20px;'>
 
