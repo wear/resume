@@ -9,13 +9,11 @@
 	<div class='span-10 login'>
 		 <h2>
 			<%=link_to '首页',root_path %> <%=link_to '我的简历',resumes_path %> 
-			<% if false %>
 			<% if logged_in? -%>
 			<%=link_to '关系圈',user_friendships_path(current_user) %> 
 			<%=link_to "便条(#{current_user.received_messages.count})",user_messages_path(current_user) %>  
 			<% end -%> 
 			<%#= link_to '励志',books_path %> 
-			<% end %>
 		 </h2>
 	</div> 
 	

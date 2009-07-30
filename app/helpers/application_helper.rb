@@ -56,7 +56,11 @@ module ApplicationHelper
   end        
   
   def format_end_at(time)
-    return '至今' if time.nil?
+      if time.nil?
+        '至今'
+      else
+        time
+      end
   end
   
   def option_groups_for_select(collection,selected = nil)

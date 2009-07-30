@@ -3,20 +3,24 @@
 #
 # Table name: recommendations
 #
-#  id                 :integer(4)      not null, primary key
-#  sender_id          :integer(4)
-#  receiver_id        :integer(4)
-#  visible            :boolean(1)
-#  recommendable_type :string(255)
-#  recommandable_id   :integer(4)
-#  desc               :text
-#  sender_role        :string(255)
-#  refer_type         :integer(4)
-#  created_at         :datetime
-#  updated_at         :datetime
+#  id            :integer(4)      not null, primary key
+#  sender_id     :integer(4)
+#  receiver_id   :integer(4)
+#  visible       :boolean(1)
+#  desc          :text
+#  sender_role   :string(255)
+#  receiver_role :string(255)
+#  refer_type    :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Recommendation < ActiveRecord::Base
-  belongs_to :recommendation, :polymorphic => true
+  validates_length_of :desc, :minimum => 10
+  validates_presence_of :sender_role
+  validates_presence_of :receiver_role
+  validates_presence_of :refer_type   
   
+  belongs_to :sender, :class_name => "User" 
+  belongs_to :receiver, :class_name => "User" 
 end

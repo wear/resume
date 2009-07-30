@@ -110,8 +110,14 @@
       resume: 简历
       additionalinfo: 兴趣爱好
       user: 用户     
-      poster: 求职信
-    attributes:  
+      poster: 求职信 
+      recommendation: 评价
+    attributes: 
+      recommendation:
+          sender_role: 发送者角色
+          receiver_role: 接受者角色
+          desc: 内容
+          refer_type: 关系
       poster:
           content: 内容
           position: 职位
@@ -128,6 +134,8 @@
           degree: 学历
           field: 专业
       position:
+          start_at: 开始时间
+          end_at: 结束时间
           title: 职位
           company: 公司名称
       resume:

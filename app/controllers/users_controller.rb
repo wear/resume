@@ -20,18 +20,17 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
-    if success && @user.errors.empty?
-      self.current_user = @user 
+    if success && @user.errors.empty? 
       if find_code_and_resume &&  @user.become_friend_with(@friend)   
         message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req => 'recommendation')
         message.sender = @friend
         message.recipient = @user
-        message.save
+        message.save      
         flash[:notice] = '注册成功!为了严肃评价,请先填写个人信息'
-      else         
-        self.current_user = @user
+      else             
         flash[:notice] = "感谢注册!您现在就可以登录创建简历了."
-      end 
+      end                
+      session[:user_id] = @user
       redirect_to new_user_profile_path(@user) 
     else
       flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"
@@ -88,7 +87,7 @@ class UsersController < ApplicationController
   def find_code_and_resume
     if session[:invitation_code] && session[:invitation_resume]
       @friend = User.find_by_invitation_code(session[:invitation_code])
-      @resume = @friend.resumes.find(session[:invitation_resume])
+      @resume = Resume.find(session[:invitation_resume])
     end 
   end
 end

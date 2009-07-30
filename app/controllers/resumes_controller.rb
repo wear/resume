@@ -10,9 +10,14 @@ class ResumesController < ApplicationController
     @user = current_user
     @resumes = @user.resumes
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @resumes }
+    respond_to do |format| 
+      if @user.profile.nil?
+        flash[:error] = '请先填写基本个人信息'
+         format.html {redirect_to new_user_profile_path(@user)}
+      else
+        format.html # index.html.erb
+        format.xml  { render :xml => @resumes }
+      end
     end
   end 
   

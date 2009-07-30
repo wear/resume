@@ -1,22 +1,28 @@
-<h3>评价<%=h @receiver.profile.name %> </h3> 
 <%
-a = [
-	['同学',0],['师生',1],['同事',2]
-	]
+a = ["North America",[["United States",1],["Canada",2]]]
+
 %>
-<% form_for(@recommendation,:url => user_recommendations_path(current_user)) do |f| %> 
-<p><%= label_tag '选择角色'%> <br /><%= select_tag('resume_id', options_for_select(@receiver.resumes.collect{|r| [r.name,r.id]}.insert(0,'请选择')), { "onchange" => remote_function(   
-                    :with => "'resume_id='+value",   
-                    :update => 'role_select',   
-                    :url => { :action => :select_role },:method => :get ) })%> <span id='role_select'>角色</span></p>
-<p><%= label_tag '与当事人的关系'%><br /><%=f.select :refer_type, a %>
-</span></p>    
-<p><%= label_tag '内容'%> <br /><%= f.text_area :desc,:style => 'height:120px;'%> </p>
-<p>
+<h3>评价<%=h @receiver.profile.name %> </h3> 
+
+<% form_for(@recommendation,:url => user_recommendations_path(current_user)) do |f| %>   
+<%= f.error_messages %> 
+<p><%= label_tag '选择他/她的角色'%> <br /><%= select_tag('resume_id', options_for_select(@receiver.resumes.collect{|r| [r.name,r.id]}.insert(0,['请选择',nil])), { "onchange" => remote_function(   
+                    :with => "'resume_id='+value+'&type=receiver'",   
+                    :update => 'receiver_role',   
+                    :url => { :action => :select_role },:method => :get ) })%> <span id='receiver_role'>角色</span></p>
+<p><%= label_tag '你们的关系'%><br /><%=select_tag 'recommendation[refer_type]', 					grouped_options_for_select([["师生", ["老师","学生"]],["同事", ["领导","同事","下属"]]],nil,"选择你们的关系")%>
+</span></p>
+<p><%= label_tag '选择你的角色'%> <br /><%= select_tag('resume_id', options_for_select(@user.resumes.collect{|r| [r.name,r.id]}.insert(0,['请选择',nil]), :html => {:id => 'sender'}),{ "onchange" => remote_function(   
+                    :with => "'resume_id='+value+'&type=sender'",   
+                    :update => 'sender_role',   
+                    :url => { :action => :select_role },:method => :get ) })%> <span id='sender_role'>角色</span></p> 
+<%= hidden_field_tag :receiver_id, @receiver.id %>    
+<p><%= label_tag '内容'%>(最少10个字符) <br /><%= f.text_area :desc,:style => 'height:120px;'%> </p>
+<p>                  
 	<%= submit_tag '发送'%>
 </p>                                                             	
 <% end -%> 
 
 <% content_for :sidebar do -%>
-	<%= render :comatose => 'cn/add-recommandation'%>
+收费电视
 <% end -%> 

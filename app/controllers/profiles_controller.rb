@@ -15,12 +15,20 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   # GET /profiles/new.xml
   def new
+    unless current_user.profile.nil?
+      @user = current_user
+      @profile = @user.profile
+      respond_to do |wants|
+        wants.html { render :action => "edit"  }
+      end
+    else
     @profile = @user.build_profile
 
     respond_to do |format|
       format.html 
       format.xml  { render :xml => @profile }
-    end
+    end    
+  end
   end
 
   # GET /profiles/1/edit
@@ -40,7 +48,7 @@ class ProfilesController < ApplicationController
     
     respond_to do |format|
       if @profile.save &&  @resume.save
-        flash[:notice] = '个人资料创建成功!'
+        flash[:notice] = '简历创建成功,请添加工作/教育等基本信息以完善你的简历！'
         format.html { redirect_to(edit_resume_path(@resume)) }
       else
         format.html { render :action => "new" }

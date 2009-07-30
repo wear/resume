@@ -1,6 +1,3 @@
-
-<h1>获得推荐</h1>
-<% @resume.positions.each do |position| -%>
-	<p><%=h position.company %> <%=h position.title %> <%= link_to new_resume_recommand_path(@reume,:type => 'position',:id => "#{position.id}")%></p> 
-	<p></p>
-<% end %>
+<%= @user.recommendations.each do |r| -%>
+	<%= r.desc %>
+<% end -%>
