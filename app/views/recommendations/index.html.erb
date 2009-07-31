@@ -1,3 +1,21 @@
-<%= @user.recommendations.each do |r| -%>
-	<%= r.desc %>
+<% content_for :tabs do -%>
+ 	<li><%=link_to('收到的评价', '#tabs-content' ) %></li>
+ <li><%=link_to('给出的评价', resumes_path ) %></li>
+	<li><%=link_to('请求评价','#tabs-content') %></li> 
+<% end -%>   
+
+<% @user.received_recommendations.each do |r| -%>
+	  
+	<dl>      
+		<div class='activity_user_avatar'>
+			  <%= avatar_for(r.sender.profile,48,48) %></span> 
+			</div>
+		<dd id='activity-item'>    
+			<%=h r.desc %>
+		<br /> 
+		<span style='color:#999999'>asfasf</span>
+		 </dd>  
+
+	    <hr />
+	</dl>
 <% end -%>

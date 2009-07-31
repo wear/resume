@@ -6,7 +6,8 @@ class ResumesController < ApplicationController
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
-  def index
+  def index   
+    @section = 'resume'
     @user = current_user
     @resumes = @user.resumes
 
@@ -16,6 +17,7 @@ class ResumesController < ApplicationController
          format.html {redirect_to new_user_profile_path(@user)}
       else
         format.html # index.html.erb
+        format.js { render :template => '/resumes/index',:layout => false}
         format.xml  { render :xml => @resumes }
       end
     end
@@ -69,7 +71,7 @@ class ResumesController < ApplicationController
 
   # GET /resumes/1
   # GET /resumes/1.xml
-  def show
+  def show 
     respond_to do |format|
       format.html { 
         if viewable?
@@ -114,9 +116,11 @@ class ResumesController < ApplicationController
     end
   end
   # GET /resumes/1/edit
-  def edit
+  def edit    
+    @section = 'resume'  
       respond_to do |wants|
-        wants.html {  }
+        wants.html {  } 
+        wants.js { render :template => '/resumes/edit',:layout => false }  
       end 
   end
 

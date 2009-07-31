@@ -1,11 +1,19 @@
-<div class="span-14 section" >   
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.progressbar.min' %>
+<% end %>
+<% content_for :tabs do -%>
+	<li><%=link_to(@resume.name,'#tabs-content') %></li> 
+	<li><%=link_to('全部', resumes_path ) %></li>
+<% end -%>           
+<div class='span-14'>
+	
+<div class="span-14" >   
    <h4>用途: <%= @resume.usage %>  <span class='edit'><%=link_to '修改',edit_item_resume_path(@resume)%></span></h4>
 </div>
 <div class='span-12 prepend-2'>
     <span class='avatar'><%= avatar_for @resume.profile %></span><h1><%= @resume.profile.name %></h1>	
 </div>
 
-  
 <div class="span-14 section"> 
 <div class='more'>
 	<%=link_to '编辑',edit_user_profile_path(current_user),:class =>'ag'%>
@@ -92,36 +100,25 @@
 	</div>
 	<% end -%>  
 </div>
-
-
-<% content_for :sidebar do -%>
-	<div class='span-5'>
+</div>
+<div class='tab-sidebar' style='width:130px;float:right;padding-left:10px;'>
+	<h4>提示</h4>
 		<ul>
-			<li> <%=link_to '预览/定制',@resume,:id => 'view',:target => '_blank'%></li> 
-            <li><%= link_to '获得推荐',ask_user_recommendations_path(current_user,:resume_id => @resume),:id =>'view'%> 
+			<li> <%=link_to '预览/定制',@resume,:target => '_blank'%></li> 
+            <li><%= link_to '获得推荐',ask_user_recommendations_path(current_user,:resume_id => @resume)%> 
 		</ul>
-	</div>                                                       
-	<div class='span-5 prepend-top'>      
-		 <b>完成度</b>
+	<h4>完成度</h4>
 	<% completeness ||= profile_completeness(@resume) %>
 	<% percent = completeness[:score] %>
-		<table width='100%',style ='margin-bottom:0;' class='poll'>
-			<tr><td class='bars'>
-				<div class='bar-container' style='width:50%;'>
-				   <div class='bar' style="width:<%=percent%>%">
-				   	  <small><%= number_to_percentage(percent, :precision => 0)%></small>
-				   </div> 
-				</div>
-			</td></tr>
-			<tr>
-				<td>
-					<ul class='checks'>
-						<% completeness[:incomplete].each do |line| %>
-						<li><%= line[:action]  %>+(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</li>
-						<% end %>
-						</ul>
-				</td>
-			</tr>
-		</table> 
-		</div> 
- <% end -%>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$("#pb").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+		});
+	</script> 
+	 <span class="progressBar" id="pb">&nbsp;</span>
+		 <ul class='checks'>
+				<% completeness[:incomplete].each do |line| %>
+				<li><%= line[:action]  %>+<small>(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</small></li>
+				<% end %>
+				</ul>
+</div>

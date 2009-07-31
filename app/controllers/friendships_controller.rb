@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   before_filter :find_user
   
   def index
-    
+     @section = 'friendship'
   end 
   
   def add                                   

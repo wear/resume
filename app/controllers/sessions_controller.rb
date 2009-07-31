@@ -26,14 +26,13 @@ class SessionsController < ApplicationController
       end
       flash.now[:notice] = '登录成功!'
       respond_to do |wants|
-        wants.html { redirect_back_or_default(resumes_path) }
+        wants.html { redirect_back_or_default current_user }
         wants.js { redirect_from_facebox(new_resume_path) }
       end
     else
       flash.now[:error] = '有错误发生！'
       respond_to do |wants|
-        wants.html { 
-#        redirect_to teaser_path and return if AppConfig.closed_beta_mode        
+        wants.html {        
         render :action => 'new' }
         wants.js { 
           render :update do |page|

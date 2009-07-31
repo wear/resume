@@ -21,11 +21,11 @@ module ApplicationHelper
     (type == 'error') ? 'error' : 'highlight'
   end 
   
-  def avatar_for(profile)
+  def avatar_for(profile,width=77,heigth=99)
     if profile.avatar_exists?
-      image_tag((APP_URL + profile.assert.public_filename),:alt => "avatar")
+      image_tag((APP_URL + profile.assert.public_filename),:alt => "avatar",:size => "#{width}x#{heigth}")
     else  
-      image_tag((APP_URL + '/images/unknow-avatar.jpg'),:alt => "avatar")
+      image_tag((APP_URL + '/images/unknow-avatar.jpg'),:alt => "avatar",:size => "#{width}x#{heigth}")
     end
   end
   
@@ -70,6 +70,13 @@ module ApplicationHelper
       options_for_select += options_for_select(group[1..-1],selected)
       options_for_select += '</optgroup>'
     end
+  end
+  
+  def topnav_tab(name, options)
+    classes = [options.delete(:class)]
+    classes << 'current' if options[:section] && (options.delete(:section).to_a.include?(@section))
+    
+    "<li class='#{classes.join(' ')}'>" + link_to( "<span>"+name+"</span>", options.delete(:url), options) + "</li>"
   end
   
   

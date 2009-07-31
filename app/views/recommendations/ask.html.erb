@@ -3,7 +3,11 @@ mail_conent = "
 我发这封邮件的目的是为了请你对我的的工作做个客观的评价，用来完善我在半亩方塘的简历!
 有任何问题请联系我.
 "
-%>
+%>    
+<% content_for :tabs do -%>
+	<li><%=link_to('请求评价','#tabs-content') %></li> 
+	<li><%=link_to('全部', resumes_path ) %></li>
+<% end -%>
 <h1>请求评价</h1>
 <p> 
 <p>

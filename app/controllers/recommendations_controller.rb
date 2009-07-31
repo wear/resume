@@ -2,6 +2,7 @@ class RecommendationsController < ApplicationController
   before_filter :login_required   
   
   def index
+    @section = 'recommendation'
     @user = current_user
   end
 
@@ -42,7 +43,8 @@ class RecommendationsController < ApplicationController
      end
   end    
   
-  def ask      
+  def ask 
+    @section = 'recommendation'     
     @resume = Resume.find(params[:resume_id]) 
     @user = User.find params[:user_id]
  #   @user.invitation_code = User.generate_new_password(8) 

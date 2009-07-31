@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :login_required,:only => [:show]
   
   def show
+    @section = 'profile'
     @user = User.find params[:id]    
   end                                                                          
 

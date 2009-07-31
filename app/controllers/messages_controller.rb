@@ -3,10 +3,17 @@ class MessagesController < ApplicationController
   before_filter :set_user
   
   def index
-    if params[:mailbox] == "sent"
-      @messages = @user.sent_messages
-    else
-      @messages = @user.received_messages
+    @section = 'message'
+    respond_to do |wants|
+      if params[:mailbox] == "sent"
+        @messages = @user.sent_messages
+        wants.html {  }
+        wants.js { render :partial => 'sent'}
+      else
+        @messages = @user.received_messages
+        wants.html {  }
+        wants.js { render :partial => 'inbox'}
+      end
     end
   end
   

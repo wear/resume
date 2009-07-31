@@ -1,28 +1,34 @@
-<h1><%= @user.login %></h1>
-
-<table  width='100%',style ='margin-bottom:0;' class='poll'>
-  <tr>
-	<th>编号</th>
-  </tr>
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.progressbar.min' %>
+<% end %>
+<% content_for :tabs do -%>
+ 	<li><%=link_to('全部','#tabs-content') %></li>
+	<% if false %><li><%= link_to '新建', resumes_path,:styly =>'font-size:14px;',:method => :post %>   </li>         <% end %>
+<% end -%>
 
 <% @resumes.each_with_index do |resume,index| %>
 <% completeness ||= profile_completeness(resume) %>
-<% percent = completeness[:score] %>
-  <tr>   
-	<td><%= index + 1 %>_<%= resume.usage %></td>
-    <td><%= link_to '查看', resume,:target => '_blank' %></td>
-	<td class='bars'>
-		<div class='bar-container' style='width:50%;'>
-		   <div class='bar' style="width:<%=percent%>%">
-		   	  <small><%= number_to_percentage(percent, :precision => 0)%></small>
-		   </div> 
-		</div>
-	</td>
-    <td><%= link_to '编辑', edit_resume_path(resume) %></td>
-    <td><%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<% percent = completeness[:score] %>    
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#resume_<%=index%>").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+	});
+</script>
+<dl>
+	<dd id='activity-item'>    
+	   <%=h resume.name %>  <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%>
+	 <p>
+		<span class="progressBar" id="resume_<%=index%>">&nbsp;</span>
+		</p>     
+		<%= link_to '编辑', edit_resume_path(resume),:class => 'ag' %>
+	   
+		<%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> 
+	<br /> 
+	<span style='color:#999999'><%= resume.created_at%></span>
+	 </dd>  
+	
+    <hr />
+</dl>
+<% end %>   
 
-<br />
-<%= link_to '新建', resumes_path,:styly =>'font-size:14px;',:method => :post %>
+
