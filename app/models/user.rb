@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
   
-  after_create :make_initation_code
+  before_save :make_initation_code
 
   def admin?
     all_roles.include?("superuser")

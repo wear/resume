@@ -4,10 +4,10 @@ class AdditionalinfosController < ApplicationController
   # GET /additionalinfos
   # GET /additionalinfos.xml
   def index
-    @additionalinfos = Additionalinfo.all
+    @additionalinfos = @resume.additionalinfo
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => false }
       format.xml  { render :xml => @additionalinfos }
     end
   end
@@ -35,7 +35,8 @@ class AdditionalinfosController < ApplicationController
   end
 
   # GET /additionalinfos/1/edit
-  def edit
+  def edit 
+    @section = 'resume'
     @additionalinfo = @resume.additionalinfo
   end
 

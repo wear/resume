@@ -1,3 +1,6 @@
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.scrollTo-min' %>
+<% end -%>
 
 <h2>投简历</h2>
 <% form_for @poster,:url => resume_posters_path(@resume),:html => {:id => 'poster_form'} do |f| -%>
@@ -11,7 +14,7 @@
 	                         :method => 'post',
 	                         :update => 'preview',
 	                         :with => "$('#poster_form').serialize()",
-							 :complete =>"$('#preview').scrollTo()"
+							 :complete =>"$.scrollTo('#preview')"
 	                         }%>   
 </p>  
 <% end -%>   

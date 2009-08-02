@@ -18,24 +18,25 @@ class Resume < ActiveRecord::Base
   has_many :positions
   has_many :educations
   has_one :summary
-  has_one :additionalinfo   
+  has_one :additionalinfo
+  has_one :personalinfo   
   has_many :posters
-  validates_length_of :usage, :within => 2..20   
+  validates_length_of :usage, :within => 2..20,:allow_blank => true
   
-  @@creation_limit = 12
+  @@creation_limit = 6
   cattr_accessor :creation_limit
   
   cattr_reader :per_page
   @@per_page = 20
   
+  def avatar_exists?
+    return false unless personalinfo && personalinfo.assert
+    File.file? "public/#{ personalinfo.assert.public_filename}"
+  end
+  
   def name
-     user.profile.name + '的简历' + id.to_s 
-  end 
-  
-  
-  def profile
-    user.profile
-  end           
+     user.login + '的简历' + id.to_s 
+  end            
   
   def owner?(owner)
     user == owner

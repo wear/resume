@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController      
-  include FaceboxRender                  
+  include FaceboxRender
+  layout 'landing'                  
   
   def login_box 
     respond_to do |wants|
@@ -26,7 +27,7 @@ class SessionsController < ApplicationController
       end
       flash.now[:notice] = '登录成功!'
       respond_to do |wants|
-        wants.html { redirect_back_or_default current_user }
+        wants.html { redirect_back_or_default resumes_path }
         wants.js { redirect_from_facebox(new_resume_path) }
       end
     else

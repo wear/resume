@@ -4,17 +4,18 @@ class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.xml
   def index
-    @positions = Position.all
-
+    @positions = @resume.positions.all
+    @section = 'resume'
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { }
       format.xml  { render :xml => @positions }
     end
   end
 
   # GET /positions/1
   # GET /positions/1.xml
-  def show
+  def show 
+    @section = 'resume'
     @position = Position.find(params[:id])
 
     respond_to do |format|
@@ -26,6 +27,7 @@ class PositionsController < ApplicationController
   # GET /positions/new
   # GET /positions/new.xml
   def new
+    @section = 'resume'
     @position = Position.new
 
     respond_to do |format|
@@ -36,7 +38,12 @@ class PositionsController < ApplicationController
 
   # GET /positions/1/edit
   def edit
+    @section = 'resume'
     @position = Position.find(params[:id])
+    respond_to do |wants|
+      wants.html {  } 
+      wants.js { render :template => '/positions/edit',:layout => false }
+    end
   end
 
   # POST /positions
@@ -83,6 +90,6 @@ class PositionsController < ApplicationController
       format.html { redirect_to(edit_resume_path(@resume)) }
       format.xml  { head :ok }
     end
-  end
+  end 
   
 end

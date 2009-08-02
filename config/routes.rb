@@ -29,13 +29,14 @@ ActionController::Routing::Routes.draw do |map|
      user.resource :profile 
      user.resources :friendships,:member => {:add => :post}  
      user.resources :messages, :collection => { :delete_selected => :post }
-     user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:select_role => :get } 
+     user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:select_role => :get,:sent => :get, :received => :get } 
   end 
 
   map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get} do |resume|
      resume.resources :positions 
      resume.resources :educations
-     resume.resource :summary 
+     resume.resource :summary
+     resume.resource :personalinfo 
      resume.resource :additionalinfo
      resume.resources :posters,:collection => {:preview => :post }
   end 

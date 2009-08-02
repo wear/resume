@@ -1,4 +1,4 @@
-<span class='avatar'><%= avatar_for @resume.profile %></span> <h1 class='name'><%= @resume.profile.name %></h1>     
+<span class='avatar'><%= avatar_for @resume %></span> <h1 class='name'><%= @resume.personalinfo.name %></h1>     
 	<div id="download">                                     
 		    <%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt)%>
 	</div>
@@ -7,19 +7,19 @@
 	<div class='identi'>
 		<h3>个人信息</h3>
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='35%'>性别:</td><td><%= format_sex(@resume.profile.sex) %></td></tr> 
-			<tr><td>出生地:</td><td><%=h @resume.profile.hometwon %></td></tr> 
-			<tr><td>户口所在地:</td><td><%=h @resume.profile.hukou %></td></tr> 
-			<tr><td>年龄:</td><td><%= format_age(@resume.profile.birthday) %></td></tr> 
-			<tr><td>生日:</td><td><%= @resume.profile.birthday %></td></tr> 
+			<tr><td width='35%'>性别:</td><td><%= format_sex(@resume.personalinfo.sex) %></td></tr> 
+			<tr><td>出生地:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
+			<tr><td>户口所在地:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
+			<tr><td>年龄:</td><td><%= format_age(@resume.personalinfo.birthday) %></td></tr> 
+			<tr><td>生日:</td><td><%= @resume.personalinfo.birthday %></td></tr> 
 		</table>
 	</div>
 	<div class='contact'>
 		<h3>联系方式</h3>
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='35%'>地址:</td><td><%=h @resume.profile.address %></td></tr> 
-			<tr><td>电子邮件:</td><td><%=h @resume.profile.email %></td></tr> 
-			<tr><td>手机:</td><td><%=h @resume.profile.mobile %></td></tr> 
+			<tr><td width='35%'>地址:</td><td><%=h @resume.personalinfo.address %></td></tr> 
+			<tr><td>电子邮件:</td><td><%=h @resume.personalinfo.email %></td></tr> 
+			<tr><td>手机:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
 		</table>
 	</div>
 </div>

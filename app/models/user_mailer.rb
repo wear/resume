@@ -15,8 +15,8 @@ class UserMailer < ActionMailer::Base
   end
   
   def recommandition_request(resume,recipients,subject,body,role,code)
-    @from        = "半亩方塘"
-    @subject     = "[半亩方塘] "
+    @from        = "半亩塘"
+    @subject     = "[半亩塘] "
     @sent_on     = Time.now
     @recipients  = recipients
     @body[:resume] = resume
@@ -28,8 +28,8 @@ class UserMailer < ActionMailer::Base
   end
   
   def send_resume(poster)
-    @from        = "半亩方塘"
-    @subject     = "[半亩方塘]"
+    @from        = "半亩塘"
+    @subject     = "[半亩塘]"
     @sent_on     = Time.now
     @subject    += "求职申请 - (#{poster.position})"
     @recipients  = poster.email
@@ -41,10 +41,11 @@ class UserMailer < ActionMailer::Base
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "半亩方塘"
-      @subject     = "[半亩方塘] "
+      @from        = "半亩塘"
+      @subject     = "[半亩塘] "
       @sent_on     = Time.now
       @body[:user] = user
+      @content_type = "text/html"
     end 
     
 end

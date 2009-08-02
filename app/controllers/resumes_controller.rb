@@ -1,25 +1,17 @@
 class ResumesController < ApplicationController
   before_filter :login_required,:except => :public
-  before_filter :get_resume,:except => [:index,:new,:public,:create]
-  # Todo : need view-able
+  before_filter :find_resume,:except => [:index,:new,:public,:create]
   
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
   def index   
     @section = 'resume'
-    @user = current_user
-    @resumes = @user.resumes
+    @resumes = current_user.resumes
 
     respond_to do |format| 
-      if @user.profile.nil?
-        flash[:error] = '请先填写基本个人信息'
-         format.html {redirect_to new_user_profile_path(@user)}
-      else
         format.html # index.html.erb
-        format.js { render :template => '/resumes/index',:layout => false}
         format.xml  { render :xml => @resumes }
-      end
     end
   end 
   
@@ -38,7 +30,6 @@ class ResumesController < ApplicationController
       rescue
         flash[:error] = '有错误发送,可能email格式不对' 
       end
-
   end             
   
   
@@ -65,7 +56,7 @@ class ResumesController < ApplicationController
              :right_margin => 50,
              :top_margin => 24,
              :bottom_margin => 24},
-             :filename=>"#{@resume.profile.name.gsub(' ','_')}.pdf" }
+             :filename=>"#{@resume.personalinfo.name.gsub(' ','_')}.pdf" }
      end   
   end
 
@@ -74,11 +65,11 @@ class ResumesController < ApplicationController
   def show 
     respond_to do |format|
       format.html { 
-        if viewable?
-          render :layout => 'resume'
+        if @resume.personalinfo.nil?  
+          flash[:notice] = '请先填写基本个人信息'
+           redirect_to new_resume_personalinfo_path(@resume) 
         else
-          flash[:error] = viewable?.to_s
-          redirect_to '/' 
+          render :layout => 'resume'
         end
         }
       format.pdf { 
@@ -99,44 +90,41 @@ class ResumesController < ApplicationController
 
   # GET /resumes/new
   # GET /resumes/new.xml
-  def new 
+  def new
+    @section = 'resume' 
     @resume = current_user.resumes.new          
     respond_to do |format|
-      if current_user.profile.nil?
-        format.html { redirect_to new_user_profile_path(current_user) }
-      else
         format.html {}
-      end
     end
   end
        
-  def edit_item
-    respond_to do |wants|
-      wants.html {  }
-    end
-  end
   # GET /resumes/1/edit
   def edit    
     @section = 'resume'  
-      respond_to do |wants|
-        wants.html {  } 
-        wants.js { render :template => '/resumes/edit',:layout => false }  
+      respond_to do |wants| 
+        if @resume.personalinfo.nil?  
+          flash[:notice] = '请先填写基本个人信息'
+          wants.html { redirect_to new_resume_personalinfo_path(@resume) }  
+        else
+          wants.html {} 
+        end
       end 
   end
 
   # POST /resumes
   # POST /resumes.xml
   def create
-    @resume = current_user.resumes.new(:usage => '暂无')
+    @resume = current_user.resumes.new(params[:resume])
     @resume.build_summary(:content => '暂无',:specialties => '暂无')
     @resume.build_additionalinfo(:interests => '暂无') 
     @resume.salt = Resume.generate_salt
     respond_to do |format|
       if @resume.save
-        format.html { redirect_to edit_resume_path(@resume) }
+        flash[:notice] = '简历创建成功!'
+        format.html { redirect_to new_resume_personalinfo_path(@resume) }
       else  
         flash[:error] = '创建中出错了'
-        format.html { resumes_path }
+        format.html { render :action => 'new' }
       end 
     end
   end
@@ -164,17 +152,11 @@ class ResumesController < ApplicationController
   def destroy
        
     @resume.destroy
-
+    flash[:notice] = '删除成功!'
     respond_to do |format|
       format.html { redirect_to(resumes_url) }
       format.xml  { head :ok }
     end
   end  
-   
-  protected 
-  
-  def get_resume
-    @resume = current_user.resumes.find(params[:id])
-  end
 
 end

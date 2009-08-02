@@ -1,14 +1,19 @@
 class RecommendationsController < ApplicationController 
   before_filter :login_required   
+  before_filter :require_current_user
   
   def index
-    @section = 'recommendation'
+    @section = 'resume'
     @user = current_user
   end
 
   def show
   end
-
+  
+  def sent
+   @section = 'resume' 
+  end     
+  
   def new      
     @user = User.find params[:user_id] 
     @receiver = User.find(params[:receiver_id]) 
@@ -44,8 +49,7 @@ class RecommendationsController < ApplicationController
   end    
   
   def ask 
-    @section = 'recommendation'     
-    @resume = Resume.find(params[:resume_id]) 
+    @section = 'resume'     
     @user = User.find params[:user_id]
  #   @user.invitation_code = User.generate_new_password(8) 
  #   @user.save!       
@@ -73,6 +77,6 @@ class RecommendationsController < ApplicationController
   
   protected
   def generate_url 
-    @invitation_code = APP_URL + '/signup?resume=' + "#{@resume.id}&" 'invitation_code=' + @user.invitation_code
+    @invitation_code = APP_URL + '/signup?invitation_code=' + @user.invitation_code
   end
 end

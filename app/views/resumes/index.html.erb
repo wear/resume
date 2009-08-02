@@ -2,19 +2,19 @@
 	<%= javascript_include_tag 'jquery.progressbar.min' %>
 <% end %>
 <% content_for :tabs do -%>
- 	<li><%=link_to('全部','#tabs-content') %></li>
-	<% if false %><li><%= link_to '新建', resumes_path,:styly =>'font-size:14px;',:method => :post %>   </li>         <% end %>
+ 	<li><%=link_to('全部简历','#tabs-content') %></li>
+	<li><%= link_to '管理评价',user_recommendations_path(current_user)%></li>
 <% end -%>
-
+<dl>
 <% @resumes.each_with_index do |resume,index| %>
-<% completeness ||= profile_completeness(resume) %>
+<% completeness ||= resume_completeness(resume) %>
 <% percent = completeness[:score] %>    
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
 		$("#resume_<%=index%>").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
 	});
 </script>
-<dl>
+
 	<dd id='activity-item'>    
 	   <%=h resume.name %>  <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%>
 	 <p>
@@ -28,7 +28,9 @@
 	 </dd>  
 	
     <hr />
+
+<% end %> 
 </dl>
-<% end %>   
-
-
+<div class='btn'>
+	<%= link_to '新建',new_resume_path,:class => 'btn'%>  
+</div>

@@ -1,3 +1,8 @@
+<% content_for :tabs do -%> 
+ 	<li><%=link_to('新建教育经历', '#tabs-content' ) %></li>
+    <li><%=link_to('返回编辑教育情况',resume_educations_path(@resume)) %></li>
+<% end -%>
+
 <h1>新建教育情况</h1>
 
 <% form_for(@education,:url => resume_educations_path(@resume)) do |f| %>
@@ -7,5 +12,3 @@
     <%= f.submit '新建' %>
   </p>
 <% end %>
-
-<%= link_to '返回', @resume,:method => :put %>   

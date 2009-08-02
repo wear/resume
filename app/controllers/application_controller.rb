@@ -11,16 +11,20 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password                        
   
-  def view_autherized
-    unless viewable?
-      flash[:error] = '您无权限查看此文件!'
-      redirect_to '/'           
-    end
-  end   
-  
   def find_resume
-    @resume = Resume.find(params[:resume_id],:include => :user)
-    view_autherized 
+    @resume = Resume.find(params[:resume_id]|| params[:id],:include => :user)
+    unless (@resume && (@resume.user.eql?(current_user)))
+      redirect_to user_path(current_user) and return false
+    end
+     return @resume
+  end
+  
+  def require_current_user
+    @user ||= User.find(params[:user_id] || params[:id] )
+    unless (@user && (@user.eql?(current_user)))
+      redirect_to :controller => 'sessions', :action => 'new' and return false
+    end
+    return @user
   end            
   
 

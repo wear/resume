@@ -14,6 +14,10 @@ class UsersController < ApplicationController
       session[:invitation_code] = params[:invitation_code]
       session[:invitation_resume] = params[:resume] 
       find_code_and_resume 
+    end                                             
+    
+    respond_to do |wants|
+      wants.html { render :layout => 'landing' }
     end
   end
  
@@ -32,10 +36,10 @@ class UsersController < ApplicationController
         flash[:notice] = "感谢注册!您现在就可以登录创建简历了."
       end                
       session[:user_id] = @user
-      redirect_to new_user_profile_path(@user) 
+      redirect_to resumes_path
     else
       flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"
-      render :action => 'new'
+      render :action => 'new',:layout => 'landing'
     end
   end
 

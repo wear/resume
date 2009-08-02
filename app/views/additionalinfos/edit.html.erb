@@ -1,4 +1,10 @@
-<h1>编辑兴趣爱好</h1>
+<% content_for :tabs do -%> 
+ 	<li><%=link_to('全部简历', resumes_path ) %></li>
+	<li ><%=link_to(@resume.name,edit_resume_path(@resume)) %></li>
+	<li ><%=link_to('编辑工作经验',resume_positions_path(@resume)) %></li>
+	<li class='ui-tabs-selected'><%=link_to('编辑兴趣爱好','#tabs-content') %></li> 
+    <li><%=link_to('编辑教育情况',resume_educations_path(@resume)) %></li>
+<% end -%>
 
 <% form_for(@additionalinfo,:url => resume_additionalinfo_path(@resume)) do |f| %>
   <%= f.error_messages %>
@@ -7,9 +13,3 @@
     <%= f.submit '更新' %>
   </p>
 <% end %>
-
-<%= link_to '返回', edit_resume_path(@resume) %>   
-
-<% content_for :sidebar do %>
-   <%= render :comatose=>'cn/additional' %>
-<% end -%>

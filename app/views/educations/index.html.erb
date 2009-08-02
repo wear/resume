@@ -1,18 +1,27 @@
-<h1>Listing educations</h1>
+<% content_for :tabs do -%> 
+ 	<li><%=link_to('全部简历', resumes_path ) %></li>
+	<li ><%=link_to(@resume.name,edit_resume_path(@resume)) %></li>
+	<li ><%=link_to('编辑工作经验',resume_positions_path(@resume)) %></li>
+	<li ><%=link_to('编辑兴趣爱好',edit_resume_additionalinfo_path(@resume)) %></li> 
+    <li class='ui-tabs-selected'><%=link_to('编辑教育情况','#tabs-content') %></li>
+<% end -%>
 
-<table>
-  <tr>
-  </tr>
+<dl>   
+   <% @educations.each do |education| -%>     
+	<dd id='activity-item'>    
+	   <h3 style='margin:0px;'><%=h education.name %></h3>
+	<address><%=h education.degree %> - <%=h education.field %> </address>
+	<p style='padding:10px;'><%=h education.description %></p>
+		<%= link_to '编辑', edit_resume_education_path(@resume,education),:class => 'ag' %>
+		<%= link_to '删除', resume_education_path(@resume,education), :confirm => '你确定嘛?', :method => :delete,:class => 'ag' %>
+	<br /> 
+	<span style='color:#999999'><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
+	 </dd>  
+	
+    <hr /> 
+	<% end -%>
+</dl>
 
-<% @educations.each do |education| %>
-  <tr>
-    <td><%= link_to 'Show', education %></td>
-    <td><%= link_to 'Edit', edit_education_path(education) %></td>
-    <td><%= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New education', new_education_path %>
+<div class='btn'>
+	<%= link_to '新建',new_resume_education_path(@resume),:class => 'btn' %>  
+</div>

@@ -7,7 +7,7 @@
 	<%= f.text_field :company %>
 </p>                            
 <p>
-	<%= f.label :start_at, "开始时间" %> <span style='color:red;'>*</span><br />
+	<%= f.label :start_at, "开始时间" %> <span style='color:red;'>*</span><br /> 
     <%= f.date_select('start_at',:start_year => Time.now.year - 25, :end_year => Time.now.year,:discard_day => true,:prompt => { :month => '选择月份', :year => '选择开始年份' }) %> 仍在职:<%= check_box_tag 'accept','no', false,:onclick => "postition_time_period(this);",:id => 'position_still' %><br >  
 </p>
 <p class='end_at'>  
@@ -15,7 +15,7 @@
     <%= f.date_select('end_at',:start_year => Time.now.year - 25, :end_year => Time.now.year,:discard_day => true,:prompt => { :month => '选择月份', :year => '选择结束年份' }) %>
 </p>
 <p>
-	<%= f.label :description, "描述" %><br />
+	<%= f.label :description, "描述" %><span style='color:red;'>*</span><br />
     <%= f.text_area :description, :size => "45x15" %>
 </p>
 

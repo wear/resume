@@ -18,23 +18,16 @@
 #  user_id        :integer(4)
 #
 
-class Profile < ActiveRecord::Base
-  belongs_to :user
+class Personalinfo < ActiveRecord::Base
+  belongs_to :resume
   has_one :assert, :as => 'attachable'
   
   validates_presence_of :name,:mobile,:email,:sex,:address,:birthday
   validates_length_of :name, :within => 2..20
   validates_numericality_of :mobile
   validates_format_of :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/
-  validates_length_of       :email,    :within => 6..100 #r@a.wk
-  validates_uniqueness_of   :email
-  validates_format_of       :email,    :with => Authentication.email_regex, :message => '必须符合email的格式'  
-  after_create :create_initial_resume
-  
-  def avatar_exists?
-    return false unless assert
-    File.file? "public/#{assert.public_filename}"
-  end    
+  validates_length_of       :email,    :within => 6..100 #r@a.wk   
+  validates_format_of       :email,    :with => Authentication.email_regex, :message => '必须符合email的格式'      
  
   def avatar_data=(data) 
     return if data.blank?

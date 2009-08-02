@@ -36,6 +36,7 @@ class SummariesController < ApplicationController
 
   # GET /summaries/1/edit
   def edit
+    @section = 'resume'
     @summary = @resume.summary
   end
 

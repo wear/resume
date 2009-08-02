@@ -1,18 +1,27 @@
-<h1>Listing positions</h1>
+<% content_for :tabs do -%> 
+ 	<li><%=link_to('全部简历', resumes_path ) %></li>
+	<li ><%=link_to(@resume.name,edit_resume_path(@resume)) %></li>
+	<li class='ui-tabs-selected'><%=link_to('编辑工作经验','#tabs-content') %></li>
+	<li><%=link_to('编辑兴趣爱好',edit_resume_additionalinfo_path(@resume)) %></li> 
+    <li><%=link_to('编辑教育情况',resume_educations_path(@resume)) %></li>
+<% end -%>
 
-<table>
-  <tr>
-  </tr>
+<dl>   
+	<% @positions.each do |position| -%>     
+	<dd id='activity-item'>    
+	   <h3 style='margin:0px;'><%=h position.company %></h3>
+	<address><%=h position.title %>  </address>
+	<p style='padding:10px;'><%=h position.description %></p>
+		<%= link_to '编辑', edit_resume_position_path(@resume,position),:class => 'ag' %>
+		<%= link_to '删除', resume_position_path(@resume,position), :confirm => '你确定嘛?', :method => :delete,:class => 'ag' %>
+	<br /> 
+	<span style='color:#999999'><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
+	 </dd>  
+	
+    <hr /> 
+	<% end -%>
+</dl>
 
-<% @positions.each do |position| %>
-  <tr>
-    <td><%= link_to 'Show', position %></td>
-    <td><%= link_to 'Edit', edit_position_path(position) %></td>
-    <td><%= link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New position', new_position_path %>
+<div class='btn'>
+	<%= link_to '新建',resumes_path,:class => 'btn',:method => :post %>  
+</div>

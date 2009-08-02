@@ -103,7 +103,7 @@
   
   activerecord:
     models:
-      profile: 个人资料
+      personalinfo: 个人资料
       summary: 个人总结
       position: 工作经验 
       education: 教育情况
@@ -135,6 +135,7 @@
           field: 专业
       position:
           start_at: 开始时间
+          description: 描述
           end_at: 结束时间
           title: 职位
           company: 公司名称
@@ -143,7 +144,7 @@
       summary:
           content: 总结
           specialties: 特长
-      profile:
+      personalinfo:
           email: '电子邮件' 
           sex: '性别'
           name: '名称'
