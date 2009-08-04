@@ -35,7 +35,26 @@
   request_recommendation: 请求评价
   groups: 小组
   awards: 获奖情况 
-    
+  add_position: 添加工作经历
+  title: 职位
+  start_at: 开始时间
+  stop_at: 结束时间
+  company: 公司
+  desc: 描述
+  still_on: 仍在职
+  school: 学校
+  degree: 学历
+  major: 专业
+  new_education: 添加教育经历
+  delete: 删除
+  comfirm: 你确定嘛?
+  download_pdf: 下载pdf
+  send_resume: 投简历
+  content: 内容
+  send: 发送
+  follow_resume: 以下是我的简历
+  mail_correct_notify: 如不能正常查看邮件请点击下面的链接
+        
   date:
     formats:
       default: "%Y-%m-%d"

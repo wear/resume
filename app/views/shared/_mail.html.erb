@@ -1,13 +1,13 @@
-<fieldset class="preview"><legend>预览</legend>   
+<fieldset class="preview"><legend><%=t(:preview)%></legend>   
 <p>
 <%= @poster.content %> 
 </p>
--------以下是我的简历-------
+-------<%= t('follow_resume')%>-------
 
 <div style="font-family:宋体;">
 <table border='0' cellspacing='0' cellpadding='0'>
 <tr><td width="632px" align='center'>
-<DIV style="FONT-SIZE: 12px; COLOR: #566777;" align=center>如果您不能正常显示此邮件，请点击以下链接：</DIV>
+<DIV style="FONT-SIZE: 12px; COLOR: #566777;" align=center><%= t :mail_correct_notify%></DIV>
 <DIV align=center><A style="COLOR: #bcbab6; TEXT-DECORATION: none;font-size:12px" href="<%=@resume.public_url%>" target=_blank><%=@resume.public_url%></A>
 </DIV>
 
@@ -22,7 +22,7 @@
 		<td width='130px'><%= avatar_for @resume %></td>
 		<td width='150px'>
 		<span style='font-size:28px; float:right;margin:5px 30px 1px 1.5px;font:Verdana;'> <%= @resume.personalinfo.name %></span></td> 
-		<td width='250px'><%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt),:style => 'background:rgb(247, 130, 16);  padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px;color:#FFFFFF;'%></td>                                
+		<td width='250px'><%=link_to t(:download_pdf),APP_URL + public_resume_pdf_path(@resume.salt),:style => 'background:rgb(247, 130, 16);  padding: 10px 20px; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: -0.35px;color:#FFFFFF;'%></td>                                
 	 	<td width="16px" style="font-size: 14px;">&nbsp;</td> 
 	</tr>
 </table>
@@ -32,22 +32,22 @@
 		<tr >      
 		 <td width="16px" style="font-size: 14px;">&nbsp;</td>
 		<td width='285px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'>
-			<h3>个人信息</h3>
+			<h3><%=t(:pro)%></h3>
 			<ul >
-				<li style='list-style:none;'>性别:<%= format_sex(@resume.personalinfo.sex) %></li>
-				<li style='list-style:none;'>出生地:<%=h @resume.personalinfo.hometwon %></li> 
-				<li style='list-style:none;'>户口所在地:<%=h @resume.personalinfo.hukou %></li>
-				<li style='list-style:none;'>年龄:<%= format_age(@resume.personalinfo.birthday) %></li>
-				<li style='list-style:none;'>生日:<%= @resume.personalinfo.birthday %></li>
+				<li style='list-style:none;'><%=t(:sex)%>:<%= format_sex(@resume.personalinfo.sex) %></li>
+				<li style='list-style:none;'><%=t(:birth)%>:<%=h @resume.personalinfo.hometwon %></li> 
+				<li style='list-style:none;'><%=t(:hukou)%>:<%=h @resume.personalinfo.hukou %></li>
+				<li style='list-style:none;'><%=t(:age)%>:<%= format_age(@resume.personalinfo.birthday) %></li>
+				<li style='list-style:none;'><%=t(:birth)%>:<%= @resume.personalinfo.birthday %></li>
 			</ul>
 		</td>      
 		<td width="15px" style="font-size: 14px;">&nbsp;</td>
 		 <td width='300px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'>
-		  	<h3>联系方式</h3>
+		  	<h3><%=t(:contact)%></h3>
 			<ul>
-				<li style='list-style:none;'>地址:<%=h @resume.personalinfo.address %></li>
-				<li style='list-style:none;'>电子邮件:<%=h @resume.personalinfo.email %></li>
-				<li style='list-style:none;'>手机:<%=h @resume.personalinfo.mobile %></li>
+				<li style='list-style:none;'><%=t(:adr)%>:<%=h @resume.personalinfo.address %></li>
+				<li style='list-style:none;'>email:<%=h @resume.personalinfo.email %></li>
+				<li style='list-style:none;'><%=t(:mobile)%>:<%=h @resume.personalinfo.mobile %></li>
 				<li style='list-style:none;'>&nbsp;</li>
 				<li style='list-style:none;'>&nbsp;</li>
  			</ul>
@@ -61,14 +61,14 @@
 		<tr><td style='border-top:5px solid #ccc;' colspan='5'>&nbsp;</td></tr>
 	<tr>
 		<td width="16px" style="font-size: 14px;">&nbsp;</td>
-		<td width='180px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3>总结</h3></td>
+		<td width='180px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3><%=t(:summary)%></h3></td>
 		<td width='420px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><%=h @resume.summary.content %></td>
 		<td width="16px" style="font-size: 14px;">&nbsp;</td>
 	 </tr>
 	<tr><td style='border-top:5px solid #ccc;' colspan='5'>&nbsp;</td></tr>
 	<tr>
 		<td width="16px" style="font-size: 14px;">&nbsp;</td>
-		<td width='180px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3>工作经验</h3></td>
+		<td width='180px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3><%=t(:positions)%></h3></td>
 		<td width='420px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><% @resume.positions.each do |position| -%>
 			<span style='float:right;font-size:10px;'><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
 			<b><%=h position.title %></b>
@@ -82,14 +82,14 @@
 	<tr><td style='border-top:5px solid #ccc;' colspan='5'>&nbsp;</td></tr>
 	<tr>
 		<td width="16px" style="font-size: 14px;">&nbsp;</td>
-		<td style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3>兴趣爱好</h3></td>
+		<td style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3><%=t(:intresters)%></h3></td>
 		<td style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><%=h @resume.additionalinfo.interests %><%=h @resume.additionalinfo.groups %><%=h @resume.additionalinfo.awards %></td>
 		<td width="16px" style="font-size: 14px;">&nbsp;</td>
 	</tr>  
 	<tr><td style='border-top:5px solid #ccc;' colspan='5'>&nbsp;</td></tr>
 	<tr>
 		<td width="16px" style="font-size: 14px;">&nbsp;</td>
-		<td width='180px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3>教育</h3></td>
+		<td width='180px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><h3><%=t(:edu)%></h3></td>
 		<td width='420px' style='font-size: 14px; color: rgb(51, 51, 51); font-family: 宋体;'><% @resume.educations.each do |education| -%>
 		<div class="box">  
 			  <span style='float:right;font-size:10px;'><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>

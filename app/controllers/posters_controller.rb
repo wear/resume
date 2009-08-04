@@ -2,17 +2,20 @@ class PostersController < ApplicationController
   before_filter :login_required   
   before_filter :find_resume
   
-  def index
+  def index 
+    @section = 'resume'
   end 
   
-  def preview        
+  def preview 
+    @section = 'resume'       
     @poster = params[:poster]
     respond_to do |wants|
       wants.js { render :partial => "/shared/mail" }
     end
   end
 
-  def new
+  def new  
+    @section = 'resume'
     @poster = Poster.new
   end
 
