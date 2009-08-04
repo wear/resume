@@ -1,6 +1,7 @@
 class PersonalinfosController < ApplicationController  
   before_filter :login_required   
   before_filter :find_resume
+  before_filter :set_language
   # GET /personalinfos/1
   # GET /personalinfos/1.xml
   def show
@@ -24,7 +25,8 @@ class PersonalinfosController < ApplicationController
   end
 
   # GET /personalinfos/1/edit
-  def edit  
+  def edit 
+    @section = 'resume' 
     @personalinfo = @resume.personalinfo
   end
 
@@ -58,7 +60,7 @@ class PersonalinfosController < ApplicationController
     respond_to do |format|
       if @personalinfo.update_attributes(params[:personalinfo])
         flash[:notice] = '个人资料更新成功!.'
-        format.html { redirect_to resumes_path }
+        format.html { redirect_to edit_resume_path(@resume) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

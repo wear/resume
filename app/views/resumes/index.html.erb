@@ -3,7 +3,6 @@
 <% end %>
 <% content_for :tabs do -%>
  	<li><%=link_to('全部简历','#tabs-content') %></li>
-	<li><%= link_to '管理评价',user_recommendations_path(current_user)%></li>
 <% end -%>
 <dl>
 <% @resumes.each_with_index do |resume,index| %>
@@ -16,7 +15,7 @@
 </script>
 
 	<dd id='activity-item'>    
-	   <%=h resume.name %>  <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%>
+	   <%=h resume.name %> <%= resume.lang %> <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%>
 	 <p>
 		<span class="progressBar" id="resume_<%=index%>">&nbsp;</span>
 		</p>     

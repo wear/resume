@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         message.save      
         flash[:notice] = '注册成功!为了严肃评价,请先填写个人信息'
       else             
-        flash[:notice] = "感谢注册!您现在就可以登录创建简历了."
+        flash[:notice] = "感谢注册!您现在就可以开始创建您的简历了."
       end                
       session[:user_id] = @user
       redirect_to resumes_path

@@ -1,11 +1,11 @@
 <table class='resume'>
-	<tr><td class='label'><%= f.label :name, "姓名" %>:</td><td><%= f.text_field :name %> <span style='color:red;'>*</span></td></tr>
-	<tr><td class='label'><%= f.label :mobile, "手机" %>:</td><td><%= f.text_field :mobile %><span style='color:red;'>*</span></td></tr>
-	<tr><td class='label'><%= f.label :address, "地址" %>:</td><td> <%= f.text_field :address %> <span style='color:red;'>*</span></td></tr>
+	<tr><td class='label'><%= f.label :name, t(:name) %>:</td><td><%= f.text_field :name %> <span style='color:red;'>*</span></td></tr>
+	<tr><td class='label'><%= f.label :mobile, t(:mobile) %>:</td><td><%= f.text_field :mobile %><span style='color:red;'>*</span></td></tr>
+	<tr><td class='label'><%= f.label :address, t(:adr) %>:</td><td> <%= f.text_field :address %> <span style='color:red;'>*</span></td></tr>
 	<tr><td class='label'><%= f.label :email, "Email" %>:</td><td><%= f.text_field :email,:value => current_user.email %><span style='color:red;'>*</span></td></tr>
-	<tr><td class='label'> <%= f.label :birthday, "生日" %>:</td><td><%= f.date_select :birthday,:start_year => Time.now.year - 45,:end_year => Time.now.year - 16, :default => { :year => 1981}  %>  <span style='color:red;'>*</span></td></tr>
-	<tr><td class='label'><%= f.label :sex, "性别" %>:</td><td><%= f.radio_button :sex, 'm' %> 男 <%= f.radio_button :sex, 'f' %> 女<span style='color:red;'>*</span></td></tr>
-	<tr><td class='label'><%= f.label :hometown, "出生地" %>:</td><td><%= f.text_field :hometwon %><span style='color:red;'>*</span></td></tr> 
-	<tr><td class='label'><%= f.label :hukou, "户籍所在地" %>:</td><td><%= f.text_field :hukou %><span style='color:red;'>*</span></td></tr>
-	<tr><td class='label'><%= f.label :avatar,'1寸大头照'%></td><td><%=f.file_field :avatar_data,:size => '50' %></tr>
-</table>
+	<tr><td class='label'> <%= f.label :birthday, t('birth') %>:</td><td><%= f.date_select :birthday,:start_year => Time.now.year - 45,:end_year => Time.now.year - 16, :default => { :year => 1981}  %>  <span style='color:red;'>*</span></td></tr>
+	<tr><td class='label'><%= f.label :sex, t(:sex) %>:</td><td><%= f.radio_button :sex, 'm' %> <%=t(:male)%> <%= f.radio_button :sex, 'f' %> <%=t(:female)%><span style='color:red;'>*</span></td></tr>
+	<tr><td class='label'><%= f.label :hometown, t(:hometown) %>:</td><td><%= f.text_field :hometwon %><span style='color:red;'>*</span></td></tr> 
+	<tr><td class='label'><%= f.label :hukou, t(:hukou) %>:</td><td><%= f.text_field :hukou %><span style='color:red;'>*</span></td></tr>
+	<tr><td class='label'><%= f.label :avatar,t('portrait')%></td><td><%=f.file_field :avatar_data,:size => '50' %></tr>
+</table>     

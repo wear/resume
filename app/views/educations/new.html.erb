@@ -1,14 +1,12 @@
 <% content_for :tabs do -%> 
- 	<li><%=link_to('新建教育经历', '#tabs-content' ) %></li>
-    <li><%=link_to('返回编辑教育情况',resume_educations_path(@resume)) %></li>
+ 	<li><%=link_to(t(:new_education), '#tabs-content' ) %></li>
+    <li><%=link_to(t(:back),resume_educations_path(@resume)) %></li>
 <% end -%>
-
-<h1>新建教育情况</h1>
 
 <% form_for(@education,:url => resume_educations_path(@resume)) do |f| %>
   <%= f.error_messages %>
    <%= render :partial => 'form', :locals => { :f => f }%> 
   <p>
-    <%= f.submit '新建' %>
+    <%= f.submit t(:create) %>
   </p>
 <% end %>

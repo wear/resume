@@ -33,7 +33,9 @@ class ApplicationController < ActionController::Base
     return redirect_to('/')
   end 
   
-  def viewable?
-    @resume.owner?(current_user) || current_user.friend?(@resume.user)
+  def set_language
+    request_language = @resume.lang
+    I18n.locale = request_language if request_language && File.exist?("#{RAILS_ROOT}/config/locales/#{request_language}.yml")
   end
+
 end

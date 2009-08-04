@@ -1,7 +1,41 @@
 # Chinese (China) translations for Ruby on Rails 
 # by tsechingho (http://github.com/tsechingho)
 
-"zh-CN":
+'cn': 
+  name: 姓名
+  mobile: 手机
+  adr: 地址
+  birth: 生日
+  pro: 资料
+  sex: 性别
+  male: 男
+  female: 女
+  hometown: 出生地
+  hukou: 户口
+  portrait: 头像
+  fill_in_profile: 添加基本信息
+  create: 新建
+  resumes: 所有简历
+  edit_personal_info: 编辑基本信息
+  edit_educations: 编辑教育情况
+  edit_additionalinfo: 编辑兴趣爱好
+  edit_positions: 编辑工作经历
+  edit: 编辑
+  add: 添加
+  age: 年龄
+  contact: 联系方式
+  intresters: 兴趣爱好
+  edu: 教育情况
+  positions: 工作经历
+  summary: 总结
+  usage: 用途
+  preview: 预览/定制
+  back: 返回
+  update: 更新
+  request_recommendation: 请求评价
+  groups: 小组
+  awards: 获奖情况 
+    
   date:
     formats:
       default: "%Y-%m-%d"

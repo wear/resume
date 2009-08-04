@@ -2,47 +2,48 @@
 	<%= javascript_include_tag 'jquery.progressbar.min' %>
 <% end %>
 <% content_for :tabs do -%> 
- 	<li><%=link_to('全部简历', resumes_path ) %></li>
+ 	<li><%=link_to(t(:resumes), resumes_path ) %></li>
 	<li class='ui-tabs-selected'><%=link_to(@resume.name,'#tabs-content') %></li>
-	<li><%=link_to('编辑工作经验',resume_positions_path(@resume)) %></li>
-	<li><%=link_to('编辑兴趣爱好',edit_resume_additionalinfo_path(@resume)) %></li> 
-    <li><%=link_to('编辑教育情况',resume_educations_path(@resume)) %></li>
+	 <li><%=link_to(t(:edit_personal_info),edit_resume_personalinfo_path(@resume)) %></li>
+	<li><%=link_to(t(:edit_positions),resume_positions_path(@resume)) %></li>
+	<li><%=link_to(t(:edit_additionalinfo),edit_resume_additionalinfo_path(@resume)) %></li> 
+    <li><%=link_to(t(:edit_educations),resume_educations_path(@resume)) %></li>
 <% end -%>           
 
-   <h4>用途: <%= @resume.usage %> <%=link_to '修改',edit_resume_path(@resume),:class => 'ag'%></h4>
+   <h4><%= t(:usage)%>: <%= @resume.usage %> <%=link_to t('edit'),edit_resume_path(@resume),:class => 'ag'%></h4>
 
     <span class='avatar' style='margin-left:100px'><%= avatar_for @resume %></span><h1><%= @resume.personalinfo.name %></h1>	
 
 
    
 <div class="section"> 
-<div class='more'>
-	<%=link_to '编辑',edit_resume_personalinfo_path(@resume),:class =>'ag'%>
+<div class='more'> 
+	<%=link_to t('edit'),edit_resume_personalinfo_path(@resume),:class =>'ag'%>
 </div>
 <div class='span-6'>
-		<h3 style='clear:both;'>个人信息</h3>
+		<h3 style='clear:both;'><%=t(:pro)%></h3>
 		<table >
-			<tr><td width='30%'>性别:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
-			<tr><td>出生地:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
-			<tr><td>户口所在地:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
-			<tr><td>年龄:</td><td><%=h format_age(@resume.personalinfo.birthday) %></td></tr> 
-			<tr><td>生日:</td><td><%=h @resume.personalinfo.birthday %></td></tr> 
+			<tr><td width='30%'><%=t(:sex)%>:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
+			<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
+			<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
+			<tr><td><%=t(:age)%>:</td><td><%=h format_age(@resume.personalinfo.birthday) %></td></tr> 
+			<tr><td><%=t(:birth)%>:</td><td><%=h @resume.personalinfo.birthday %></td></tr> 
 		</table>
 </div>
 <div class='span-6 last'>
-		<h3 >联系方式</h3>
+		<h3 ><%= t(:contact) %></h3>
 		<table>
-			<tr><td width='30%'>地址:</td><td><%=h @resume.personalinfo.address %></td></tr> 
-			<tr><td>电子邮件:</td><td><%=h @resume.personalinfo.email %></td></tr> 
-			<tr><td>手机:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
+			<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
+			<tr><td>Email:</td><td><%=h @resume.personalinfo.email %></td></tr> 
+			<tr><td><%= t(:mobile)%>:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
 		</table>
 </div>
 </div>
 <div class="section"> 
 	<div class='more'>
-		<%=link_to '编辑',edit_resume_summary_path(@resume),:class =>'ag'%> 
+		<%=link_to t('edit'),edit_resume_summary_path(@resume),:class =>'ag'%> 
 	</div>
-	<h3>总结</h3>
+	<h3><%= t :summary %></h3>
 	<div class="main">
 		<p><%=h @resume.summary.content %></p>
 	</div>
@@ -56,9 +57,9 @@
 
 <div class="section"> 
 	<div class='more'>
-		<%=link_to '添加',new_resume_position_path(@resume),:class =>'ag'%> 
+		<%=link_to t(:add),new_resume_position_path(@resume),:class =>'ag'%> 
 	</div>   
-	<h3>工作经验</h3>
+	<h3><%= t(:positions) %></h3>
 	<div class="main">  
 		<% @resume.positions.each do |position| -%>
 		<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
@@ -68,30 +69,30 @@
 			<li><%=h position.description %></li>
 		</ul>
 		<p>
-		<span class='edit'>[<%=link_to '编辑',edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to '删除', resume_position_path(@resume,position),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span></p>
+		<span class='edit'>[<%=link_to t('edit'),edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to t(:delete), resume_position_path(@resume,position),:class =>'ag', :confirm => t(:comfirm), :method => :delete %>]</span></p>
 		<% end -%>
 	</div> 
 </div>
 
 <div class="section">    
 	<div class='more'>
-		<%=link_to '编辑',edit_resume_additionalinfo_path(@resume),:class =>'ag'%> 
+		<%=link_to t('edit'),edit_resume_additionalinfo_path(@resume),:class =>'ag'%> 
 	</div>
-	<h3>兴趣爱好</h3>      
+	<h3><%= t(:intresters)%></h3>      
 	<div class="main">
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='10%'>爱好:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
-			<tr><td>小组:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
-			<tr><td>获奖:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
+			<tr><td width='10%'><%= t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+			<tr><td><%= t(:groups)%>:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
+			<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
 		</table>
 	</div>
 </div>
 
 <div class="section"> 
 	<div class='more'>
-		<%=link_to '添加',new_resume_education_path(@resume),:class =>'ag'%> 
+		<%=link_to t(:add),new_resume_education_path(@resume),:class =>'ag'%> 
 	</div>   
-	<h3>教育</h3>  
+	<h3><%= t(:edu) %></h3>  
 	<% @resume.educations.each do |education| -%>
 	<div class="main">  
 		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
@@ -100,7 +101,7 @@
 		<ul style='clear:both;'>
 			<li><%= education.description %></li>
 		</ul>
-		<p><span class='edit'>[<%=link_to '编辑',edit_resume_education_path(@resume,education),:class =>'ag'%> | <%= link_to '删除', resume_education_path(@resume,education),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span>
+		<p><span class='edit'>[<%=link_to t('edit'),edit_resume_education_path(@resume,education),:class =>'ag'%> | <%= link_to t(:delete), resume_education_path(@resume,education),:class =>'ag', :confirm => t(:comfirm), :method => :delete %>]</span>
 			</p>
 	</div>
 	<% end -%>  
@@ -109,8 +110,8 @@
 <div class='tab-sidebar ui-corner-all' >         
 	<h4>提示</h4>
 		<ul>
-			<li> <%=link_to '预览/定制',@resume,:target => '_blank'%></li> 
-            <li><%= link_to '获得推荐',ask_user_recommendations_path(current_user,:resume_id => @resume)%> 
+			<li> <%=link_to t(:preview),@resume,:target => '_blank'%></li> 
+            <li><%= link_to t(:request_recommendation),ask_user_recommendations_path(current_user,:resume_id => @resume)%> 
 		</ul>
 	<h4>完成度</h4>
 	<% completeness ||= resume_completeness(@resume) %>

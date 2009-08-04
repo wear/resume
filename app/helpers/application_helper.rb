@@ -3,9 +3,9 @@ module ApplicationHelper
   def format_sex(sex)
     case sex
     when 'm'
-      '男'
+      t(:male)
     when 'f'
-      '女'
+      t(:female)
     end
   end    
  

@@ -1,10 +1,10 @@
-<h2>填写个人信息</h2>   
+<h2><%=t :fill_in_profile %></h2>   
 
 <% form_for(@personalinfo,:url => resume_personalinfo_path(@resume),:html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
    <%= render :partial => 'form',:locals => {:f => f} %>
   <p style='margin-left:100px'>
-    <%= f.submit '新建' %>
+    <%= f.submit t(:create) %>
   </p>
 <% end %>
 
