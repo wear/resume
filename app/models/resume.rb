@@ -32,11 +32,7 @@ class Resume < ActiveRecord::Base
   def avatar_exists?
     return false unless personalinfo && personalinfo.assert
     File.file? "public/#{ personalinfo.assert.public_filename}"
-  end
-  
-  def name
-     user.login + '的简历' + id.to_s 
-  end            
+  end         
   
   def owner?(owner)
     user == owner
@@ -66,6 +62,7 @@ class Resume < ActiveRecord::Base
    if new_record? && user.has_reached_resume_creation_litmit?
      errors.add_to_base("对不起，你只能创建6份简历.")       
    end
- end
+ end 
+ 
 
 end

@@ -79,5 +79,16 @@ module ApplicationHelper
     "<li class='#{classes.join(' ')}'>" + link_to( "<span>"+name+"</span>", options.delete(:url), options) + "</li>"
   end
   
+  def name_for_resume(resume)
+    resume.user.login + '的简历' + (resume.user.resumes.index(resume) + 1).to_s + '(' + resume_lang(resume) + ')' 
+  end  
   
+  def resume_lang(resume)
+     case resume.lang
+     when 'cn'
+       '中文'
+     when 'en'
+       'English'
+     end
+  end
 end

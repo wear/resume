@@ -24,7 +24,7 @@
 					<% end %>
 				</td>
 				<td><%= link_to h(message.sender.login), user_path(@user) %></td>
-		    <td><%=h message.created_at.to_s(:long) %></td>
+		    <td><%=h message.created_at.to_s(:date_time24) %></td>
 			</tr>
 		<% end %>
 		<tr>
@@ -33,6 +33,8 @@
 			</td>
 		</tr>
 	<% end %>
-</table>
-<%= link_to "发件箱(#{@user.sent_messages.count})", user_messages_path(@user, :mailbox => :sent)%> |
-<%= link_to "新建", new_user_message_path(@user)%>
+</table>  
+<div style='margin:10px'>   
+	<%= link_to "新建", new_user_message_path(@user),:class=> 'ag'%> 
+</div>
+

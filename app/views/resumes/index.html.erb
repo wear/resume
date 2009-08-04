@@ -15,7 +15,7 @@
 </script>
 
 	<dd id='activity-item'>    
-	   <%=h resume.name %> <%= resume.lang %> <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%>
+	   <%=h name_for_resume(resume) %> <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(resume),:target => '_blank',:class => 'ag'%>
 	 <p>
 		<span class="progressBar" id="resume_<%=index%>">&nbsp;</span>
 		</p>     

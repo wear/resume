@@ -6,9 +6,4 @@
 <p><%= submit_tag '确定' %></p>
 <% end -%>
 
-
-<% content_for :sidebar do -%>
-  	<% unless params[:invitation_code].nil? -%>
-		<p>要评价<b><%=h @friend.profile.name %></b>，你需要填写个人信息与评价相关的经历,以严肃评价规则!</p>
-	<% end -%>
-<% end -%>
+<%= session[:invitation_code] %>

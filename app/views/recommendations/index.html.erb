@@ -2,21 +2,8 @@
  	<li><%=link_to('收到的评价', '#tabs-content' ) %></li>
  	<li><%=link_to('给出的评价', sent_user_recommendations_path(@user) ) %></li>
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
-	<li><%=link_to('所有简历',resumes_path) %></li> 
-<% end -%>   
+<% end -%>     
 
-<% @user.received_recommendations.each do |r| -%>
-	  
-	<dl>      
-		<div class='activity_user_avatar'>
-			  <%#= avatar_for(r.sender,48,48) %></span> 
-			</div>
-		<dd id='activity-item'>    
-			<%=h r.desc %>
-		<br /> 
-		<span style='color:#999999'>asfasf</span>
-		 </dd>  
+<%= render :partial => "recommendation", :collection => @user.received_recommendations
+%>
 
-	    <hr />
-	</dl>
-<% end -%>

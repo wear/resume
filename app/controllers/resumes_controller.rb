@@ -1,7 +1,7 @@
 class ResumesController < ApplicationController
   before_filter :login_required,:except => :public
   before_filter :find_resume,:except => [:index,:new,:public,:create]
-  before_filter :set_language,:except => 'index'
+  before_filter :set_language,:except =>  [:index,:new,:create]
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml

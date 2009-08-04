@@ -18,7 +18,7 @@
 				<td><%= check_box_tag "delete[]", message.id %></td>
 				<td><%= link_to h(message.subject), user_message_path(@user, message) %></td>
   			<td><%= link_to h(message.recipient.login), user_path(@user) %></td>
-			  <td><%=h message.created_at.to_s(:long) %></td>
+			  <td><%=h message.created_at.to_s(:date_time24) %></td>
 			</tr>
 		<% end %>
 		<tr>
@@ -28,4 +28,3 @@
 		</tr>
  	<% end %>
 </table>
-<%= link_to "收件箱", user_messages_path(@user)%>

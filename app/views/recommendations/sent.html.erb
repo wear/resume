@@ -2,7 +2,7 @@
  	<li><%=link_to('收到的评价', user_recommendations_path(@user)) %></li>
  	<li class='ui-tabs-selected'><%=link_to('给出的评价','#tabs-content' ) %></li>
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
-	<li><%=link_to('所有简历',resumes_path) %></li> 
-<% end -%>
+<% end -%>        
 
-fasfsd
+<%= render :partial => "recommendation", :collection => @user.sent_recommendations
+%>

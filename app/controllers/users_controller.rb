@@ -10,11 +10,7 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new 
-    unless  params[:invitation_code].nil? && params[:resume].nil?
-      session[:invitation_code] = params[:invitation_code]
-      session[:invitation_resume] = params[:resume] 
-      find_code_and_resume 
-    end                                             
+    find_code                                        
     
     respond_to do |wants|
       wants.html { render :layout => 'landing' }
@@ -26,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty? 
-      if find_code_and_resume &&  @user.become_friend_with(@friend)   
+      if find_friend &&  @user.become_friend_with(@friend)   
         message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req => 'recommendation')
         message.sender = @friend
         message.recipient = @user
@@ -89,10 +85,15 @@ class UsersController < ApplicationController
   
   protected
   
-  def find_code_and_resume
-    if session[:invitation_code] && session[:invitation_resume]
-      @friend = User.find_by_invitation_code(session[:invitation_code])
-      @resume = Resume.find(session[:invitation_resume])
+  def find_code
+    unless  params[:invitation_code].nil? 
+      session[:invitation_code] = params[:invitation_code]
     end 
+  end
+  
+  def find_friend
+    unless  session[:invitation_code].nil?
+      @friend = User.find_by_invitation_code(session[:invitation_code])
+    end
   end
 end

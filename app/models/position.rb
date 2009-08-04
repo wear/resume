@@ -16,7 +16,7 @@ class Position < ActiveRecord::Base
   belongs_to :resume
   validates_presence_of :title,:company,:start_at
   has_many :recommends, :as => :recommendable 
-  validates_length_of :description, :minimum => 12
+  validates_length_of :description, :minimum => 6
   validates_presence_of :start_at
   
   def validate 

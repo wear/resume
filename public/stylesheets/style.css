@@ -16,10 +16,7 @@ h2{font-size:18px;}
 
  
 /* --- href ----*/
-a {
-	font-size: 12px;
-	text-decoration: none;
-}
+
 a:link {
 	color: #333333;
 	text-decoration: none;
@@ -323,7 +320,9 @@ table.poll {
 
 h4,h5 {
 	margin:0px;
-}   
+}    
+
+#tabs ul li{font-size:12px;}
 
 #tabs-content{
 	padding:10px;
@@ -332,7 +331,7 @@ h4,h5 {
 .tab-sidebar{ 
 	border:1px solid #ccc;
 	background-color:#EFEFEF;
-	width:130px;float:right;padding:5px;
+	width:140px;float:right;padding:5px;
 }
 .checks li{padding-top:5px;}
 .checks{ font-size:10px;margin-right:0px;padding:0px;}
@@ -369,3 +368,6 @@ margin:15px 0;
 text-align:center;
 width:119px;  
 }
+
+.ways li {list-style:none;margin:20px 5px;}
+

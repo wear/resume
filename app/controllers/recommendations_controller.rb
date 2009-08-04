@@ -11,10 +11,11 @@ class RecommendationsController < ApplicationController
   end
   
   def sent
-   @section = 'recommendation' 
+   @section = 'recommendation'
   end     
   
   def new      
+    @section = 'recommendation'
     @user = User.find params[:user_id] 
     @receiver = User.find(params[:receiver_id]) 
     @recommendation = Recommendation.new
@@ -40,8 +41,9 @@ class RecommendationsController < ApplicationController
      @recommendation.sender = @sender
      @recommendation.receiver = @receiver
      respond_to do |wants|               
-       if @recommendation.save  
-         wants.html {  }
+       if @recommendation.save 
+         flash[:notice] = '请求发送成功!' 
+         wants.html { redirect_to sent_user_recommendations_path(@user) }
        else
          wants.html { render :action => "new" }  
        end

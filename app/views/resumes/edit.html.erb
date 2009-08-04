@@ -3,12 +3,20 @@
 <% end %>
 <% content_for :tabs do -%> 
  	<li><%=link_to(t(:resumes), resumes_path ) %></li>
-	<li class='ui-tabs-selected'><%=link_to(@resume.name,'#tabs-content') %></li>
+	<li class='ui-tabs-selected'><%=link_to(name_for_resume(@resume),'#tabs-content') %></li>
 	 <li><%=link_to(t(:edit_personal_info),edit_resume_personalinfo_path(@resume)) %></li>
 	<li><%=link_to(t(:edit_positions),resume_positions_path(@resume)) %></li>
 	<li><%=link_to(t(:edit_additionalinfo),edit_resume_additionalinfo_path(@resume)) %></li> 
     <li><%=link_to(t(:edit_educations),resume_educations_path(@resume)) %></li>
 <% end -%>           
+
+<% completeness ||= resume_completeness(@resume) %>
+<% percent = completeness[:score] %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#resume_pro").progressBar(88,{ barImage: '/images/progressbg_green.gif'});
+	});
+</script>         
 
    <h4><%= t(:usage)%>: <%= @resume.usage %> <%=link_to t('edit'),edit_resume_path(@resume),:class => 'ag'%></h4>
 
@@ -74,6 +82,7 @@
 	</div> 
 </div>
 
+ <span class="progressBar" id="pb">&nbsp;</span>
 <div class="section">    
 	<div class='more'>
 		<%=link_to t('edit'),edit_resume_additionalinfo_path(@resume),:class =>'ag'%> 
@@ -114,14 +123,7 @@
             <li><%= link_to t(:request_recommendation),ask_user_recommendations_path(current_user,:resume_id => @resume)%> 
 		</ul>
 	<h4>完成度</h4>
-	<% completeness ||= resume_completeness(@resume) %>
-	<% percent = completeness[:score] %>
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function() {
-			$("#pb").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
-		});
-	</script> 
-	 <span class="progressBar" id="pb">&nbsp;</span>
+         <span class="progressBar" id="resume_pro">&nbsp;</span>    
 		 <ul class='checks'>
 				<% completeness[:incomplete].each do |line| %>
 				<li><%= line[:action]  %>+<small>(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</small></li>

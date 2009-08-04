@@ -5,19 +5,21 @@ class MessagesController < ApplicationController
   def index
     @section = 'message'
     respond_to do |wants|
-      if params[:mailbox] == "sent"
-        @messages = @user.sent_messages
-        wants.html {  }
-        wants.js { render :partial => 'sent'}
-      else
         @messages = @user.received_messages
         wants.html {  }
-        wants.js { render :partial => 'inbox'}
-      end
     end
   end
   
-  def show
+  def sent_box
+    @section = 'message'    
+    respond_to do |wants|
+        @messages = @user.sent_messages
+        wants.html {  }
+    end
+  end
+  
+  def show 
+    @section = 'message'
     @message = Message.read(params[:id], current_user)
   end
   

@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users,:collection => {:reset_password => :put} do |user|
      user.resource :profile 
      user.resources :friendships,:member => {:add => :post}  
-     user.resources :messages, :collection => { :delete_selected => :post }
+     user.resources :messages, :collection => { :delete_selected => :post,:sent_box => :get }
      user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:select_role => :get,:sent => :get, :received => :get } 
   end 
 
