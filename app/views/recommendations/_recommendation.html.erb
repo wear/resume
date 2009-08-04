@@ -1,11 +1,13 @@
-	  <dl>      
-		<div class='activity_user_avatar'>
-			  <%#= avatar_for(r.sender,48,48) %></span> 
-			</div>
+	  <dl class='recommendation'>      
+		<div style='clear:both;'>
+			  <div id="who">
+			  	  <h4><%=h recommendation.receiver.login %></h4> <%=h recommendation.receiver_role %><br /> <i>是你的<%= format_refer(recommendation.refer_type)%> </i>
+			  </div>
+		 </div>
 		<dd id='activity-item'>    
 			<%=h recommendation.desc %>
-		<br /> 
-		<span style='color:#999999'>asfasf</span>
+			  		<br /> 
+			<span style='color:#999999'><%=h recommendation.created_at%></span>
 		 </dd>  
 
 	    <hr />

@@ -90,5 +90,9 @@ module ApplicationHelper
      when 'en'
        'English'
      end
+  end 
+  
+  def format_refer(refer)
+    (SCHOOL + COLLEAGUE).select{|v| v[1] == refer }[0][0]
   end
 end

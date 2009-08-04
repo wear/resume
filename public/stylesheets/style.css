@@ -371,3 +371,11 @@ width:119px;
 
 .ways li {list-style:none;margin:20px 5px;}
 
+/* ---   recommendation ------*/
+.recommendation h4{
+	display:inline;margin:0px;
+}     
+
+#who{ clear:both;}
+
+#who i{font-size:12px;margin-left:10px;color:#999999;}

@@ -10,7 +10,7 @@ a = ["North America",[["United States",1],["Canada",2]]]
                     :with => "'resume_id='+value+'&type=receiver'",   
                     :update => 'receiver_role',   
                     :url => { :action => :select_role },:method => :get ) })%> <span id='receiver_role'>角色</span></p>
-<p><%= label_tag '他/她是你的'%><br /><%=select_tag 'recommendation[refer_type]', 					grouped_options_for_select([["师生", [["老师",'teacher'],["学生",'student']]],["同事", [["领导",'manager'],["同事",'colleague'],["下属",'subordinate']]]],nil,"选择你们的关系")%>
+<p><%= label_tag '他/她是你的'%><br /><%=select_tag 'recommendation[refer_type]', 					grouped_options_for_select([["师生", SCHOOL],["同事", COLLEAGUE]],nil,"选择你们的关系")%>
 </span></p>
 <p><%= label_tag '选择你的角色'%> <br /><%= select_tag('resume_id', options_for_select(@user.resumes.collect{|r| [name_for_resume(r),r.id]}.insert(0,['请选择',nil]), :html => {:id => 'sender'}),{ "onchange" => remote_function(   
                     :with => "'resume_id='+value+'&type=sender'",   

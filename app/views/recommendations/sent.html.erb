@@ -4,5 +4,9 @@
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
 <% end -%>        
 
-<%= render :partial => "recommendation", :collection => @user.sent_recommendations
-%>
+
+	<% @user.sent_recommendations.each do |r| -%>
+<p><%= r.receiver.login%><%= r.receiver_role%> <br /><%=link_to '编辑',edit_user_recommendation_path(@user,r)%></p>
+	 </tr> 
+	<% end %>
+
