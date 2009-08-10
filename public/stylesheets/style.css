@@ -235,10 +235,18 @@ table.poll {
 
 /* for landing */
 
-.ad{text-align:center;padding:10px;}   
+.ad{text-align:center;padding:20px 20px 0px 20px;height:137px;
+	background:url(/images/bg-ad.jpg) no-repeat;font-size:14px;}    
+	
+.ad h3{  
+	font:Helvetica;
+	border-bottom:3px solid #ccc;
+	margin-left:40px;
+	width:100px;
+}   
 .announce h1{
 	color:#133855;
-	font-family:"HelveticaNeue-Light",Helvetica,Arial,sans-serif;
+	font-family:Helvetica,Arial,sans-serif;
 	font-size:240%;
 	font-weight:normal;
 	padding:0.75em 0;
