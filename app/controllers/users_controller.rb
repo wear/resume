@@ -41,6 +41,9 @@ class UsersController < ApplicationController
   
   def public
     @user = User.find params[:id]
+    respond_to do |wants|
+      wants.html { render :layout => 'landing' }
+    end
   end
 
   
@@ -65,7 +68,7 @@ class UsersController < ApplicationController
   
   def forgot_password
     respond_to do |wants|
-      wants.html { render :layout => 'application' }
+      wants.html { render :layout => 'landing' }
     end
   end
   
@@ -79,11 +82,11 @@ class UsersController < ApplicationController
       UserMailer.deliver_forgot_password(@user, new_password)
       cookies.delete :auth_token
       reset_session
-      flash[:notice] = "新密码已发送到#{@user.email}!"
+      flash[:notice] = "新密码已发送到#{@user.email}!" 
       redirect_to root_url
     else
       flash.now[:error] = '填写信息有误，请重试!'
-      render :action => "forgot_password",:layout => 'application'
+      render :action => "forgot_password",:layout => 'landing'
     end
   end 
   
