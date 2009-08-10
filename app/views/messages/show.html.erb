@@ -4,19 +4,16 @@
 	<li><%=link_to('发件箱',sent_box_user_messages_path(@user)) %></li>  
 <% end -%>
 
-<p><strong>来自:</strong> <%= @message.sender == @user ? link_to("你", user_path(@user)) : link_to(h(@message.sender.login), user_path(@user)) %></p>
-<p><strong>收件时间:</strong> <%= @message.created_at.to_s(:date_time24) %></p>
-<p><strong>到:</strong> <%= @message.recipient == @user ? link_to("你", user_path(@user)) : link_to(h(@message.recipient.login), user_path(@user)) %></p>
-<p>
-  <strong>内容</strong><br />
-  <%=h @message.body %>
-</p>
-<p>
-  <% if @message.req == 'recommendation' %>
-	<%= link_to '评价对方',new_user_recommendation_path(current_user,:receiver_id => @message.sender )%>   | 
-  <% end %>
-  <% if @message.recipient == @user %>
-	  <%= link_to "回复", new_user_message_path(@user, :reply_to => @message) %> |
-  <% end %>
-  <%= link_to "收件箱", user_messages_path(@user)%>
-</p>
+<div id="msg_content" class='ui-corner-all'>
+	<p><strong>来自:</strong> <%= @message.sender == @user ? link_to("你", user_path(@user)) : link_to(h(@message.sender.login), user_path(@user)) %><br />
+	<strong>收件时间:</strong> <%= @message.created_at.to_s(:date_time24) %><br />
+	<strong>到:</strong> <%= @message.recipient == @user ? link_to("你", user_path(@user)) : link_to(h(@message.recipient.login), user_path(@user)) %></p>
+	<div class='msg_body'>
+	  <%=sanitize @message.body, :tags => %w(p br) %>
+	</div>
+	<ul>
+	  <%= message_req(current_user,@message)%>
+	  <li><%= link_to "收件箱", user_messages_path(@user)%></li>
+	</ul> 
+<div style="font: 0px/0px sans-serif;clear: both;display: block"> </div> 
+</div>

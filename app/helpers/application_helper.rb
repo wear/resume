@@ -80,7 +80,7 @@ module ApplicationHelper
   end
   
   def name_for_resume(resume)
-    resume.user.login + '的简历' + (resume.user.resumes.index(resume) + 1).to_s + '(' + resume_lang(resume) + ')' 
+    resume.user.login + '的简历' + '(' + resume_lang(resume) + ')' 
   end  
   
   def resume_lang(resume)
@@ -95,4 +95,15 @@ module ApplicationHelper
   def format_refer(refer)
     (SCHOOL + COLLEAGUE).select{|v| v[1] == refer }[0][0]
   end
+  
+  def message_req(user,message)
+    case message.req_type 
+  	when 'recommendation' 
+  	 content_tag(:li,link_to('评价对方',new_user_recommendation_path(user,:receiver_id => message.sender )))
+  	when 'edit_recommendation' 
+  	 content_tag(:li,link_to('修订评价',edit_user_recommendation_path(user,message.req_id,:receiver_id => message.sender )))
+	 else
+	   content_tag(:li,link_to("回复", new_user_message_path(@user, :reply_to => @message)))
+	 end
+  end 
 end

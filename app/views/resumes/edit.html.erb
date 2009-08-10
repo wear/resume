@@ -14,11 +14,11 @@
 <% percent = completeness[:score] %>
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		$("#resume_pro").progressBar(88,{ barImage: '/images/progressbg_green.gif'});
+		$("#resume_pro").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
 	});
 </script>         
 
-   <h4><%= t(:usage)%>: <%= @resume.usage %> <%=link_to t('edit'),edit_resume_path(@resume),:class => 'ag'%></h4>
+   <h4><%= t(:usage)%>: <%= @resume.usage %> <%=link_to t('edit'),edit_item_resume_path(@resume),:class => 'ag'%></h4>
 
     <span class='avatar' style='margin-left:100px'><%= avatar_for @resume %></span><h1><%= @resume.personalinfo.name %></h1>	
 
@@ -29,17 +29,21 @@
 	<%=link_to t('edit'),edit_resume_personalinfo_path(@resume),:class =>'ag'%>
 </div>
 <div class='span-6'>
-		<h3 style='clear:both;'><%=t(:pro)%></h3>
+		<h3 class='pro'><%=t(:pro)%></h3>
 		<table >
-			<tr><td width='30%'><%=t(:sex)%>:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
+			<col style='width:60px;'>
+			<col> 
+			<tbody> 
+			<tr><td><%=t(:sex)%>:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
 			<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
 			<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
 			<tr><td><%=t(:age)%>:</td><td><%=h format_age(@resume.personalinfo.birthday) %></td></tr> 
-			<tr><td><%=t(:birth)%>:</td><td><%=h @resume.personalinfo.birthday %></td></tr> 
+			<tr><td><%=t(:birth)%>:</td><td><%=h @resume.personalinfo.birthday %></td></tr>
+			</tbody>  
 		</table>
 </div>
 <div class='span-6 last'>
-		<h3 ><%= t(:contact) %></h3>
+		<h3 class='pro'><%= t(:contact) %></h3>
 		<table>
 			<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
 			<tr><td>Email:</td><td><%=h @resume.personalinfo.email %></td></tr> 
@@ -80,7 +84,7 @@
 		<span class='edit'>[<%=link_to t('edit'),edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to t(:delete), resume_position_path(@resume,position),:class =>'ag', :confirm => t(:comfirm), :method => :delete %>]</span></p>
 		<% end -%>
 	</div> 
-</div>
+</div> 
 
  <span class="progressBar" id="pb">&nbsp;</span>
 <div class="section">    
@@ -90,9 +94,13 @@
 	<h3><%= t(:intresters)%></h3>      
 	<div class="main">
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='10%'><%= t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
-			<tr><td><%= t(:groups)%>:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
-			<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
+			<col style='width:80px;'>
+			<col>
+			<tbody>
+			<tr><td><%= t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+			<tr><td><%= t(:groups) %>:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
+			<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr>
+			</tbody> 
 		</table>
 	</div>
 </div>
@@ -114,7 +122,16 @@
 			</p>
 	</div>
 	<% end -%>  
-</div> 
+</div>   
+
+<div class="section">
+	<div class='more'>
+		<%=link_to t(:edit),user_recommendations_path(current_user),:class =>'ag'%> 
+	</div> 
+	<h3><%= t(:recommendations) %></h3>
+			<%= render :partial => 'recommendation',:collection => current_user.received_recommendations.visible  %>
+</div>
+
 <% content_for :tab_sidebar do -%> 
 <div class='tab-sidebar ui-corner-all' >         
 	<h4>提示</h4>

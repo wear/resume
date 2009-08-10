@@ -1,11 +1,14 @@
 <h2>发件箱</h2>
-<table>
+<table id='message'>
+	<thead> 
 	<tr>
 		<th>删除?</th>
 		<th>标题</th>
 		<th>收件人</th>
 		<th>发件</th>
 	</tr>
+	</thead> 
+	 <tbody> 
 	<% if @messages.size == 0 %>
 		<tr>
 			<td colspan="4">
@@ -26,5 +29,6 @@
 				<%= submit_tag "删除" %>
 			</td>
 		</tr>
- 	<% end %>
+ 	<% end %>  
+ </tbody> 
 </table>

@@ -1,9 +1,9 @@
 class RecommendationsController < ApplicationController 
   before_filter :login_required   
   before_filter :require_current_user
+  before_filter :set_section
   
   def index
-    @section = 'recommendation'
     @user = current_user
   end
 
@@ -11,11 +11,10 @@ class RecommendationsController < ApplicationController
   end
   
   def sent
-   @section = 'recommendation'
+
   end     
   
   def new      
-    @section = 'recommendation'
     @user = User.find params[:user_id] 
     @receiver = User.find(params[:receiver_id]) 
     @recommendation = Recommendation.new
@@ -50,16 +49,59 @@ class RecommendationsController < ApplicationController
      end
   end    
   
-  def ask 
-    @section = 'recommendation'     
+  def ask     
     @user = User.find params[:user_id]
- #   @user.invitation_code = User.generate_new_password(8) 
- #   @user.save!       
+    @user.invitation_code = User.generate_new_password(8) 
+    @user.save!       
     generate_url
     respond_to do |wants|
       wants.html { }
     end
-  end    
+  end
+  
+  def edit
+    @recommendation = Recommendation.find(params[:id]) 
+    @receiver =  @recommendation.receiver
+  end
+  
+  def visible
+       @recommendation = Recommendation.find(params[:id])
+       @recommendation.update_attributes(:visible => params[:visible])
+       respond_to do |wants|
+        wants.html { redirect_to user_recommendations_path(@user) }
+       end
+  end  
+  
+  def update 
+    @recommendation = Recommendation.find(params[:id])   
+    @receiver = @recommendation.receiver 
+    @user = User.find params[:user_id] 
+   
+    respond_to do |wants|
+     if @recommendation.update_attributes(params[:recommendation])
+       @recommendation.update_attributes(:visible => false)
+       flash[:notice] = '推荐信息已更新'
+       wants.html { redirect_to sent_user_recommendations_path(@user) }
+     else  
+       wants.html { render :action => "edit"  }
+     end
+    end 
+  end
+  
+  def request_revised   
+    
+    @user = User.find params[:user_id]
+    @recommendation = Recommendation.find(params[:id])
+    @recommendation.update_attributes(:visible => params[:visible])
+    message = Message.new(:subject => '更新对我的评价',:body => '<p>多谢你的评价,你能把评价更新下嘛?</p>' + "<p>--------原始推荐内容-------<br />'#{@recommendation.desc}'</p>",:req_type => 'edit_recommendation',:req_id => @recommendation.id)
+    message.sender = @user
+    message.recipient = @recommendation.sender
+    message.save
+    respond_to do |wants|  
+      flash[:notice] = '请求已发送'
+      wants.html { redirect_to user_recommendations_path(@user) }
+    end
+  end   
   
   def send_request
     emails = params[:emails]
@@ -80,5 +122,9 @@ class RecommendationsController < ApplicationController
   protected
   def generate_url 
     @invitation_code = APP_URL + '/signup?invitation_code=' + @user.invitation_code
+  end
+  
+  def set_section
+    @section = 'recommendation' 
   end
 end

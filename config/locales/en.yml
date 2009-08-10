@@ -25,7 +25,7 @@ en:
   age: Age
   birdth: Birth 
   contact: Contact
-  intresters: Intresters
+  intresters: Intres
   edu: Educations 
   positions: Positions
   summary: Summary
@@ -54,4 +54,6 @@ en:
   content: Content
   send: Send
   follow_resume: Follow is my resume
-  mail_correct_notify: Please click this link if can't see this mail correctly
+  mail_correct_notify: Please click this link if can't see this mail correctly 
+  recommendations: Recommendations
+  as: is his/her

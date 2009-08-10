@@ -14,8 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin '/admin', :controller => 'admin/admin', :action => 'index'  
  
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
-  map.resume_pdf '/resumes/:id/bmtang.pdf', :controller => 'resumes', :action => 'show',:format => 'pdf'
-  map.public_resume_pdf '/public/resumes/:salt/bmtang.pdf', :controller => 'resumes', :action => 'public',:format => 'pdf'
+  map.public_resume_pdf '/public/resumes/:salt', :controller => 'resumes', :action => 'public',:format => 'pdf' 
   map.jobs '/jobs',:controller => 'landing',:action => 'jobs'
   map.tools '/tools',:controller => 'landing',:action => 'tools' 
   map.books '/books',:controller => 'landing',:action => 'books' 
@@ -25,11 +24,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
   end
   
-  map.resources :users,:collection => {:reset_password => :put} do |user|
+  map.resources :users,:collection => {:reset_password => :put},:member => {:public => :get } do |user|
      user.resource :profile 
      user.resources :friendships,:member => {:add => :post}  
      user.resources :messages, :collection => { :delete_selected => :post,:sent_box => :get }
-     user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:select_role => :get,:sent => :get, :received => :get } 
+     user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:visible => :put,:request_revised => :put } 
   end 
 
   map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get} do |resume|

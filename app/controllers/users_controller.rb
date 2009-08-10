@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead  
-  before_filter :login_required,:only => [:show]
+  before_filter :login_required,:only => [:show,:public]
   
   def show
     @section = 'profile'
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     success = @user && @user.save
     if success && @user.errors.empty? 
       if find_friend &&  @user.become_friend_with(@friend)   
-        message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req => 'recommendation')
+        message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req_type => 'recommendation')
         message.sender = @friend
         message.recipient = @user
         message.save      
@@ -37,6 +37,10 @@ class UsersController < ApplicationController
       flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"
       render :action => 'new',:layout => 'landing'
     end
+  end
+  
+  def public
+    @user = User.find params[:id]
   end
 
   

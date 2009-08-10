@@ -2,9 +2,9 @@
  	<li><%=link_to('收到的评价', '#tabs-content' ) %></li>
  	<li><%=link_to('给出的评价', sent_user_recommendations_path(@user) ) %></li>
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
-<% end -%>     
+<% end -%>           
 
-<%= render :partial => "recommendation", :collection => @user.received_recommendations
+<%= render :partial => "recommendation", :collection => @user.received_recommendations,:locals => {:user => @user}
 %>          
 
 

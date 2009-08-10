@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password                        
   
   def find_resume
-    @resume = Resume.find(params[:resume_id]|| params[:id],:include => :user)
+    @resume = Resume.find(params[:resume_id] || params[:id])
     unless (@resume && (@resume.user.eql?(current_user)))
       redirect_to user_path(current_user) and return false
     end

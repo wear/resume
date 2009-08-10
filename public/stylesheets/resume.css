@@ -140,4 +140,20 @@ width:99.9%;
 #send_form { clear:both; }
 
 /* for facebox */ 
-#facebox .content { padding:0px;margin:0px;}
+#facebox .content { padding:0px;margin:0px;}        
+
+.recommendation-public{
+	width:440px;
+	clear:both;
+	padding:5px 20px;
+	border-bottom:1px solid #ccc;
+	margin:10px 5px;
+}              
+
+pre{
+	display:block;
+	font:12px "Courier New", Courier, monospace;
+	padding:5px;
+	margin:.2em 0;
+	width:304px;
+	}

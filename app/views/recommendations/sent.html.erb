@@ -3,10 +3,10 @@
  	<li class='ui-tabs-selected'><%=link_to('给出的评价','#tabs-content' ) %></li>
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
 <% end -%>        
-
-
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr><th>详情</th></tr>
 	<% @user.sent_recommendations.each do |r| -%>
-<p><%= r.receiver.login%><%= r.receiver_role%> <br /><%=link_to '编辑',edit_user_recommendation_path(@user,r)%></p>
-	 </tr> 
+	<tr><td><%= r.receiver.login%><%= r.receiver_role%> </td><td><%=link_to '编辑',edit_user_recommendation_path(@user,r)%></td></tr>  
 	<% end %>
+</table>
 

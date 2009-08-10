@@ -5,31 +5,27 @@
  	<li><%=link_to('全部简历','#tabs-content') %></li>
 <% end -%>
 <dl>
-<% @resumes.each_with_index do |resume,index| %>
-<% completeness ||= resume_completeness(resume) %>
+<% completeness ||= resume_completeness(@resume) %>
 <% percent = completeness[:score] %>    
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		$("#resume_<%=index%>").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+		$("#{@resume.id}").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
 	});
 </script>
 
 	<dd id='activity-item'>    
-	   <%=h name_for_resume(resume) %> <%=link_to '预览/定制', resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(resume),:target => '_blank',:class => 'ag'%>
+	   <%=h name_for_resume(@resume) %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:target => '_blank',:class => 'ag'%>
 	 <p>
-		<span class="progressBar" id="resume_<%=index%>">&nbsp;</span>
+		<span class="progressBar" id="<%=@resume.id%>">&nbsp;</span>
 		</p>     
-		<%= link_to '编辑', edit_resume_path(resume),:class => 'ag' %>
+		<%= link_to '编辑', edit_resume_path(@resume),:class => 'ag' %>
 	   
-		<%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> 
+		<%= link_to '删除', @resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> 
 	<br /> 
-	<span style='color:#999999'><%= resume.created_at%></span>
+	<span style='color:#999999'><%= @resume.created_at%></span>
 	 </dd>  
 	
     <hr />
 
-<% end %> 
 </dl>
-<div class='btn'>
-	<%= link_to '新建',new_resume_path,:class => 'btn'%>  
-</div>
+

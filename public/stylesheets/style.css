@@ -108,8 +108,8 @@ a:visited {
 }
 
 .main{
-	width:28em;
-	margin-left:12em;
+	width:350px;
+	margin-left:10em;
 } 
 
 .more{   
@@ -133,7 +133,8 @@ address{margin-bottom:0px;}
 
 	}
 
-.section h3 {margin-bottom: 15px;font-size:16px;width:5em;float:left; }   
+.section h3 {margin-bottom: 15px;font-size:16px;width:100px;float:left; }
+h3.pro {float:none;width:200px;}   
 a#view { margin-right:10px;display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
 a#view:hover { background: #222; }
 
@@ -359,14 +360,14 @@ dd{
 /*--- tab content ----*/
 .btn { margin-left:20px;}
 .btn a{
-  background:transparent url('/images/btn/bigbtn.gif') no-repeat;
+background:transparent url('/images/btn/bigbtn.gif') no-repeat;
 display:block;
 font-size:14px;
 height:31px;
 line-height:31px;
 margin:15px 0;
 text-align:center;
-width:119px;  
+width:119px; 
 }
 
 .ways li {list-style:none;margin:20px 5px;}
@@ -379,3 +380,85 @@ width:119px;
 #who{ clear:both;}
 
 #who i{font-size:12px;margin-left:10px;color:#999999;}
+
+.recommendation-public{
+	width:440px;
+	clear:both;
+	padding:5px 20px;
+	border:1px solid #ccc;
+	margin:10px 5px;
+}              
+
+pre{
+	display:block;
+	font:12px "Courier New", Courier, monospace;
+	padding:5px;
+	margin:.2em 0;
+	width:304px;
+	}
+	
+/* ---- massage ----*/  
+table#message
+{
+	border-collapse:collapse;
+	background:#F9F9F9;
+	width:647px;
+	border:3px solid #ccc; 
+} 
+
+#message td
+{   
+	color:#000;
+	padding:.5em 1em;
+}
+
+.row td{
+	border-bottom:1px solid #ccc;
+}                               
+
+#message th{ 
+	padding:.5em 1em;
+	color:#fff;
+	background:#cccccc;
+}
+
+#message thead
+{   
+	font-weight:normal;
+	border-bottom:1px solid #cccccc;  
+} 
+
+#msg_content{
+	border:5px solid #ccc;
+	padding:10px;
+} 
+
+#msg_content ul{
+	margin-top:10px;
+}
+
+#msg_content ul li{
+	list-style:none;
+	float:left;
+	margin-right:10px; 
+} 
+
+#msg_content ul li a{
+  	display:block;
+	padding:10px;
+	font-size:14px;
+	font-weight:bold; 
+	color:#009900; 
+	background:#ccc;
+}
+.msg_body{
+	padding:20px;
+	border:1px solid #ccc;
+	background:#F9F9F9;
+}
+
+ol
+{
+	margin:0;
+	padding: 0 1.5em;
+}

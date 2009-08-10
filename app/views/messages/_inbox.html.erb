@@ -1,11 +1,14 @@
-<h2>收件箱</h2>
-<table>
+<h2>收件箱</h2>   
+<table id='message'>
+	<thead>
 	<tr>
 		<th>删除?</th>
 		<th>发件箱</th>
 		<th>送信人</th>
 		<th>发送</th>
-	</tr>
+	</tr> 
+	</thead >
+	<tbody>
 	<% if @messages.size == 0 %>
 		<tr>
 			<td colspan="4">
@@ -14,7 +17,7 @@
 		</tr>
 	<% else %>
 		<% for message in @messages %>
-			<tr>
+			<tr class='row'>
 				<td><%= check_box_tag "delete[]", message.id %></td>
 				<td>
 					<% if message.read? %>
@@ -33,8 +36,9 @@
 			</td>
 		</tr>
 	<% end %>
+	</tbody>
 </table>  
-<div style='margin:10px'>   
-	<%= link_to "新建", new_user_message_path(@user),:class=> 'ag'%> 
+<div class='btn'>   
+	<%#= link_to "新建", new_user_message_path(@user),:class=> 'ag'%> 
 </div>
 

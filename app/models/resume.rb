@@ -21,10 +21,8 @@ class Resume < ActiveRecord::Base
   has_one :additionalinfo
   has_one :personalinfo   
   has_many :posters
-  validates_length_of :usage, :within => 2..20,:allow_blank => true
-  
-  @@creation_limit = 6
-  cattr_accessor :creation_limit
+  validates_length_of :usage, :within => 2..20,:allow_blank => true  
+   
   
   cattr_reader :per_page
   @@per_page = 20
@@ -56,12 +54,6 @@ class Resume < ActiveRecord::Base
    positions.each{|position| tmp_roles << ('在'+position.company+'做'+position.title) }
    educations.each{|edu| tmp_roles << ('在'+edu.name+'学'+edu.field) }
    tmp_roles
- end 
- 
- def validate  
-   if new_record? && user.has_reached_resume_creation_litmit?
-     errors.add_to_base("对不起，你只能创建6份简历.")       
-   end
  end 
  
 

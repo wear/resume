@@ -1,23 +1,9 @@
-<%
-a = ["North America",[["United States",1],["Canada",2]]]
-
-%>
 <h3>评价<%=h @receiver.login %> </h3> 
 
 <% form_for(@recommendation,:url => user_recommendations_path(current_user)) do |f| %>   
 <%= f.error_messages %> 
-<p><%= label_tag '选择他/她的角色'%> <br /><%= select_tag('resume_id', options_for_select(@receiver.resumes.collect{|r| [name_for_resume(r),r.id]}.insert(0,['请选择',nil])), { "onchange" => remote_function(   
-                    :with => "'resume_id='+value+'&type=receiver'",   
-                    :update => 'receiver_role',   
-                    :url => { :action => :select_role },:method => :get ) })%> <span id='receiver_role'>角色</span></p>
-<p><%= label_tag '他/她是你的'%><br /><%=select_tag 'recommendation[refer_type]', 					grouped_options_for_select([["师生", SCHOOL],["同事", COLLEAGUE]],nil,"选择你们的关系")%>
-</span></p>
-<p><%= label_tag '选择你的角色'%> <br /><%= select_tag('resume_id', options_for_select(@user.resumes.collect{|r| [name_for_resume(r),r.id]}.insert(0,['请选择',nil]), :html => {:id => 'sender'}),{ "onchange" => remote_function(   
-                    :with => "'resume_id='+value+'&type=sender'",   
-                    :update => 'sender_role',   
-                    :url => { :action => :select_role },:method => :get ) })%> <span id='sender_role'>你的角色,如没有请<%=link_to '添加',resumes_path,:class=>'ag'%>工作或教育经历</span></p> 
-<%= hidden_field_tag :receiver_id, @receiver.id %>    
-<p><%= label_tag '内容'%>(最少10个字符) <br /><%= f.text_area :desc,:style => 'height:120px;'%> </p>
+<%= render :partial => 'form',:locals => {:f => f} %>
+
 <p>                  
 	<%= submit_tag '确定'%>
 </p>                                                             	

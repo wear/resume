@@ -6,7 +6,7 @@
   mobile: 手机
   adr: 地址
   birth: 生日
-  pro: 资料
+  pro: 个人信息
   sex: 性别
   male: 男
   female: 女
@@ -54,6 +54,8 @@
   send: 发送
   follow_resume: 以下是我的简历
   mail_correct_notify: 如不能正常查看邮件请点击下面的链接
+  recommendations: 推荐
+  as: 是他/她的
         
   date:
     formats:

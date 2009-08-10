@@ -24,13 +24,14 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  has_many :resumes, :dependent => :destroy
+  has_one :resume, :dependent => :destroy
   has_one :profile, :dependent => :destroy
   has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
   has_many :pending_friends, :class_name => "Friendship", :foreign_key => "friend_id",:conditions => ['status = ?','pending'], :dependent => :destroy 
   has_and_belongs_to_many :roles
   has_many :sent_recommendations,:class_name => 'Recommendation',:foreign_key => 'sender_id'
-  has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id"    
+  has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id" 
+     
   has_private_messages
 
   validates_presence_of     :login
@@ -95,10 +96,6 @@ class User < ActiveRecord::Base
     (0..length).inject([]) { |password, i| password << charactars[rand(charactars.size-1)] }.join
   end 
   
-  def has_reached_resume_creation_litmit?
-    resumes.count >= Resume.creation_limit
-  end
-
   protected 
     
     def make_initation_code

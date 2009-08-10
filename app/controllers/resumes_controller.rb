@@ -1,17 +1,20 @@
 class ResumesController < ApplicationController
   before_filter :login_required,:except => :public
   before_filter :find_resume,:except => [:index,:new,:public,:create]
-  before_filter :set_language,:except =>  [:index,:new,:create]
+  before_filter :set_language,:except =>  [:index,:new,:create,:public]
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
   def index   
     @section = 'resume'
-    @resumes = current_user.resumes
+    @resume = current_user.resume
 
     respond_to do |format| 
+      if @resume.nil?
+        format.html { redirect_to :action => "new"}
+      else
         format.html # index.html.erb
-        format.xml  { render :xml => @resumes }
+      end
     end
   end 
   
@@ -44,8 +47,9 @@ class ResumesController < ApplicationController
   end 
   
   def public
-      @resume = Resume.find_by_salt(params[:salt])  
-     
+      @resume = Resume.find_by_salt(params[:salt]) 
+      @user = @resume.user 
+      set_language
      respond_to do |format|
        format.html { render :layout => 'resume'}
        format.xml  { render :xml => @resume }
@@ -55,13 +59,21 @@ class ResumesController < ApplicationController
              :right_margin => 50,
              :top_margin => 24,
              :bottom_margin => 24},
-             :filename=>"#{@resume.personalinfo.name.gsub(' ','_')}.pdf" }
+             :filename=>"#{@user.login.gsub(' ','_')}.pdf" }
      end   
+  end 
+  
+  def edit_item
+    @resume = Resume.find(params[:id])
+    respond_to do |wants|
+      wants.html {  }
+    end
   end
 
   # GET /resumes/1
   # GET /resumes/1.xml
   def show 
+    @user = @resume.user
     respond_to do |format|
       format.html { 
         if @resume.personalinfo.nil?  
@@ -71,19 +83,14 @@ class ResumesController < ApplicationController
           render :layout => 'resume'
         end
         }
-      format.pdf { 
-         if viewable? 
-            render :layout => false, :prawn => {
-            :page_size => 'A4',
-            :left_margin => 50,
-            :right_margin => 50,
-            :top_margin => 24,
-            :bottom_margin => 24},
-            :filename=>"#{@resume.profile.name.gsub(' ','_')}.pdf" 
-          else
-            flash[:error] = '您无权限查看此文件!'
-            redirect_to '/' 
-          end}
+#      format.pdf { 
+#            render :layout => false, :prawn => {
+#            :page_size => 'A4',
+#            :left_margin => 50,
+#            :right_margin => 50,
+#            :top_margin => 24,
+#            :bottom_margin => 24},
+#            :filename=>"#{@user.login.gsub(' ','_')}.pdf" }
     end
   end
 
@@ -91,7 +98,7 @@ class ResumesController < ApplicationController
   # GET /resumes/new.xml
   def new
     @section = 'resume' 
-    @resume = current_user.resumes.new          
+    @resume = current_user.build_resume      
     respond_to do |format|
         format.html {}
     end
@@ -113,7 +120,7 @@ class ResumesController < ApplicationController
   # POST /resumes
   # POST /resumes.xml
   def create
-    @resume = current_user.resumes.new(params[:resume])
+    @resume = current_user.build_resume(params[:resume])
     @resume.build_summary(:content => '暂无',:specialties => '暂无')
     @resume.build_additionalinfo(:interests => '暂无') 
     @resume.salt = Resume.generate_salt
