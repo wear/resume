@@ -22,13 +22,14 @@ class PostersController < ApplicationController
   def create
     @poster = @resume.posters.new(params[:poster])
       respond_to do |wants| 
-      begin @poster.save! && UserMailer.deliver_send_resume(@poster)
+      if @poster.save
+        UserMailer.deliver_send_resume(@poster)
         flash[:notice] = '简历发送成功'
-        wants.html { redirect_to @resume }
-      rescue  
+        wants.html { redirect_to resume_posters_path(@resume) }
+      else    
         wants.html { render :action => "new"  }
       end
-    end 
+      end
   end
 
 end

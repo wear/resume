@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     @resume = Resume.find(params[:resume_id] || params[:id])
     unless (@resume && (@resume.user.eql?(current_user)))
       redirect_to user_path(current_user) and return false
-    end
-     return @resume
+    end  
+    return @resume
   end
   
   def require_current_user

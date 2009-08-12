@@ -87,7 +87,7 @@ end
 
 pdf.bounding_box [100,pdf.cursor + 20], :width => 300 do
 	pdf.table [[ "#{t(:intresters)}:", "#{@resume.additionalinfo.interests}"],  ["#{t(:groups)}:","#{@resume.additionalinfo.groups}"],["#{t(:awards)}:","#{@resume.additionalinfo.awards}"]],
-   :column_widths => {0 => 60,1 => 300},:align => :left,:border_width => 0
+   :column_widths => {0 => 80,1 => 300},:align => :left,:border_width => 0
 pdf.move_down 20 
 end          
 pdf.stroke_horizontal_rule 
@@ -105,12 +105,12 @@ pdf.text "#{education.degree}"
 pdf.text "#{education.field}" 
 pdf.text "#{education.start_at.to_s(:date_edu)} >> #{education.end_at.to_s(:date_edu)}",:at => [260,35],:size => 8
 pdf.move_down 20
-end 
+end  
+pdf.move_down 20
 end  
 
-pdf.move_down 20 
-pdf.stroke_horizontal_rule 
-pdf.move_down 20
+pdf.start_new_page
+
 
 pdf.bounding_box [5,pdf.cursor], :width => 140 do 
 pdf.fill_color "999999"     

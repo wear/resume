@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
 # Table name: users
 #
@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
   has_many :pending_friends, :class_name => "Friendship", :foreign_key => "friend_id",:conditions => ['status = ?','pending'], :dependent => :destroy 
   has_and_belongs_to_many :roles
   has_many :sent_recommendations,:class_name => 'Recommendation',:foreign_key => 'sender_id'
-  has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id" 
-     
+  has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id"  
   has_private_messages
 
   validates_presence_of     :login
@@ -52,20 +51,18 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
   
-  before_save :make_initation_code
-
+  after_save :make_initation_code
+  before_create :make_activation_code   
+  
   def admin?
     all_roles.include?("superuser")
   end
   
   def become_friend_with(friend)
-    if friend?(friend)
-      return true
-    else
+      return false  if friend?(friend)
       r = friendships.new(:friend_id => friend.id)
       f = Friendship.new(:friend_id => self.id,:user_id => friend.id)
       f.save && r.save && f.accept! && r.accept!
-    end
   end
   
   def friend?(friend)
@@ -77,11 +74,11 @@ class User < ActiveRecord::Base
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
-  def self.authenticate(login, password)
-    return nil if login.blank? || password.blank?
-    u = find :first, :conditions => ['login = ?', login] # need to get the salt
-    u && u.authenticated?(password) ? u : nil
-  end
+    def self.authenticate(login, password)
+      return nil if login.blank? || password.blank?
+      u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
+      u && u.authenticated?(password) ? u : nil
+    end
 
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
@@ -96,14 +93,40 @@ class User < ActiveRecord::Base
     (0..length).inject([]) { |password, i| password << charactars[rand(charactars.size-1)] }.join
   end 
   
-  protected 
-    
-    def make_initation_code
-        self.invitation_code = self.class.generate_new_password(8)
-    end
+  def resume_name
+    resume.personalinfo.name
+  end
+  
+  def active?
+    # the existence of an activation code means they have not activated yet
+    activation_code.nil?
+  end
+  
+  # Activates the user in the database.
+  def activate!
+    @activated = true
+    self.activated_at = Time.now.utc
+    self.activation_code = nil
+    save(false)
+  end
 
-    def all_roles
-      roles.map{|r| r.title}
-    end
+  # Returns true if the user has just been activated.
+  def recently_activated?
+    @activated
+  end           
+  
+  protected
+  
+  def make_activation_code
+      self.activation_code = self.class.make_token
+  end
+   
+  def make_initation_code
+      self.invitation_code = self.class.generate_new_password(8)
+  end
+  
+  def all_roles
+    roles.map{|r| r.title}
+  end
 
 end

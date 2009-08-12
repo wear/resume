@@ -2,6 +2,7 @@ class ResumesController < ApplicationController
   before_filter :login_required,:except => :public
   before_filter :find_resume,:except => [:index,:new,:public,:create]
   before_filter :set_language,:except =>  [:index,:new,:create,:public]
+  
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
@@ -53,13 +54,8 @@ class ResumesController < ApplicationController
      respond_to do |format|
        format.html { render :layout => 'resume'}
        format.xml  { render :xml => @resume }
-       format.pdf { render :action => :show,:layout => false, :prawn => {
-             :page_size => 'A4',
-             :left_margin => 50,
-             :right_margin => 50,
-             :top_margin => 24,
-             :bottom_margin => 24},
-             :filename=>"#{@user.login.gsub(' ','_')}.pdf" }
+       format.pdf { render :action => :show,:layout => false,
+             :prawnto => {:inline=> false,:filename => 'sdfasf.pdf'}}
      end   
   end 
   
@@ -83,14 +79,6 @@ class ResumesController < ApplicationController
           render :layout => 'resume'
         end
         }
-#      format.pdf { 
-#            render :layout => false, :prawn => {
-#            :page_size => 'A4',
-#            :left_margin => 50,
-#            :right_margin => 50,
-#            :top_margin => 24,
-#            :bottom_margin => 24},
-#            :filename=>"#{@user.login.gsub(' ','_')}.pdf" }
     end
   end
 

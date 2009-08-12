@@ -137,7 +137,7 @@
 	<h4>提示</h4>
 		<ul>
 			<li> <%=link_to t(:preview),@resume,:target => '_blank'%></li> 
-            <li><%= link_to t(:request_recommendation),ask_user_recommendations_path(current_user,:resume_id => @resume)%> 
+            <li><%= link_to t(:request_recommendation),ask_user_recommendations_path(current_user)%> 
 		</ul>
 	<h4>完成度</h4>
          <span class="progressBar" id="resume_pro">&nbsp;</span>    

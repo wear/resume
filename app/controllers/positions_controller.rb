@@ -1,6 +1,7 @@
 class PositionsController < ApplicationController 
   before_filter :login_required
-  before_filter :find_resume
+  before_filter :find_resume    
+
   # GET /positions
   # GET /positions.xml
   def index

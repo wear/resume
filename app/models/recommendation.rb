@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
 # Table name: recommendations
 #
@@ -24,5 +24,6 @@ class Recommendation < ActiveRecord::Base
   belongs_to :sender, :class_name => "User" 
   belongs_to :receiver, :class_name => "User" 
   
-  named_scope :visible, :conditions => ['visible = ?',true]
+  named_scope :visible, :conditions => ['visible = ?',true]           
+  
 end

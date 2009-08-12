@@ -1,6 +1,7 @@
 class SummariesController < ApplicationController
   before_filter :login_required  
-  before_filter :find_resume       
+  before_filter :find_resume 
+      
   # GET /summaries
   # GET /summaries.xml
   def index

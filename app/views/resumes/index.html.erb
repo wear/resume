@@ -14,7 +14,7 @@
 </script>
 
 	<dd id='activity-item'>    
-	   <%=h name_for_resume(@resume) %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:target => '_blank',:class => 'ag'%>
+	   <%=h name_for_resume(@resume) %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:class => 'ag'%> <%=link_to '获得推荐', ask_user_recommendations_path(current_user),:class => 'ag'%> <%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt),:target => '_blank',:class => 'ag'%>
 	 <p>
 		<span class="progressBar" id="<%=@resume.id%>">&nbsp;</span>
 		</p>     

@@ -1,8 +1,7 @@
 class AdditionalinfosController < ApplicationController
   before_filter :login_required
-  before_filter :find_resume
-  # GET /additionalinfos
-  # GET /additionalinfos.xml
+  before_filter :find_resume  
+
   def index
     @additionalinfos = @resume.additionalinfo
 

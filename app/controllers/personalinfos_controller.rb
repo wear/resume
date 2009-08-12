@@ -2,8 +2,9 @@ class PersonalinfosController < ApplicationController
   before_filter :login_required   
   before_filter :find_resume
   before_filter :set_language
-  # GET /personalinfos/1
-  # GET /personalinfos/1.xml
+  before_filter :set_section
+
+
   def show
     @personalinfo = personalinfos.find(params[:id])
 
@@ -16,7 +17,7 @@ class PersonalinfosController < ApplicationController
   # GET /personalinfos/new
   # GET /personalinfos/new.xml
   def new     
-      @section = 'resume'
+      
       @user = current_user                      
       @personalinfo = @resume.build_personalinfo
       respond_to do |wants|
@@ -26,14 +27,12 @@ class PersonalinfosController < ApplicationController
 
   # GET /personalinfos/1/edit
   def edit 
-    @section = 'resume' 
     @personalinfo = @resume.personalinfo
   end
 
   # POST /personalinfos
   # POST /personalinfos.xml
   def create 
-    @section = 'resume'
     @personalinfo = @resume.build_personalinfo(params[:personalinfo])
     
  #   @resume = current_user.resumes.new(:usage => '暂无')
@@ -84,7 +83,7 @@ class PersonalinfosController < ApplicationController
   
   protected
   
-  def find_user
-    @resume = current_user.resume.find(params[:id])
+  def set_section
+    @section = 'resume'
   end 
 end

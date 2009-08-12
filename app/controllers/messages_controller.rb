@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   
   before_filter :set_user
+  before_filter :require_current_user
   
   def index
     @section = 'message'

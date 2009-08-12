@@ -1,7 +1,7 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
-# Table name: profiles
+# Table name: personalinfos
 #
 #  id             :integer(4)      not null, primary key
 #  name           :string(255)
@@ -15,7 +15,7 @@
 #  hukou          :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  user_id        :integer(4)
+#  resume_id      :integer(4)
 #
 
 class Personalinfo < ActiveRecord::Base

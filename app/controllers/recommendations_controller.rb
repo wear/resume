@@ -49,13 +49,18 @@ class RecommendationsController < ApplicationController
      end
   end    
   
-  def ask     
+  def ask        
     @user = User.find params[:user_id]
-    @user.invitation_code = User.generate_new_password(8) 
-    @user.save!       
+#    @user.invitation_code = User.generate_new_password(8) 
+#    @user.save!       
     generate_url
-    respond_to do |wants|
-      wants.html { }
+    respond_to do |wants| 
+      if @user.roles.blank? 
+        flash[:error] = '你至少需要创建一项工作或教育记录!'
+        wants.html{ redirect_to edit_resume_path(@user.resume)}
+      else
+        wants.html { }
+      end
     end
   end
   

@@ -29,9 +29,9 @@ module ApplicationHelper
     end
   end
   
-  def avatar_for_pdf(profile)
-    if profile.avatar_exists?
-      profile.assert.public_filename
+  def avatar_for_pdf(resume)
+    if resume.avatar_exists?
+      resume.personalinfo.assert.public_filename
     else  
       'images/unknow-avatar.jpg'
     end

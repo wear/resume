@@ -78,5 +78,5 @@
 
 <div class="span-15 section">    
 	<h3><%= t(:recommendations) %></h3>
-			<%= render :partial => 'recommendation',:collection => current_user.received_recommendations.visible  %>
+			<%= render :partial => 'recommendation',:collection => @user.received_recommendations.visible  %>
 </div>                       
