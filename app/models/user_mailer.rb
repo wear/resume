@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   end 
   
   def forgot_password(user,password)
-    setup_email(user)
+    setup_email(user)   
     @subject    += '密码重设'  
     @body[:password]  = "#{password}"
     @body[:url]  = "#{APP_URL}"

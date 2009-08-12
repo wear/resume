@@ -470,3 +470,13 @@ ol
 	margin:0;
 	padding: 0 1.5em;
 }
+
+/**---- note ----**/ 
+.note{
+	width:300px;
+	background:;
+	border:1px solid #ccc;
+	background-color:#EFEFEF;
+	padding:10px;
+	margin:10px 0px ;
+}

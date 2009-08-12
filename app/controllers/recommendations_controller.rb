@@ -2,6 +2,7 @@ class RecommendationsController < ApplicationController
   before_filter :login_required   
   before_filter :require_current_user
   before_filter :set_section
+  before_filter :resume_created?
   
   def index
     @user = current_user
@@ -131,5 +132,12 @@ class RecommendationsController < ApplicationController
   
   def set_section
     @section = 'recommendation' 
+  end       
+  
+  def resume_created?
+    if @user.resume.nil? || @user.resume.personalinfo.nil?
+      flash[:notice] = '请先创建一份简历并填写基本个人信息!'
+      redirect_to resumes_path
+    end
   end
 end

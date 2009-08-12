@@ -26,7 +26,11 @@ class Resume < ActiveRecord::Base
    
   
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 20 
+  
+  def name
+    personalinfo.name + '的简历'
+  end
   
   def avatar_exists?
     return false unless personalinfo && personalinfo.assert
