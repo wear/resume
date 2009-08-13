@@ -1,6 +1,6 @@
 <% content_for :tabs do -%> 
  	<li><%=link_to(t(:edit_positions),'#tabs-content') %></li> 
-    <li><%=link_to t(:back), resume_positions_path(@resume)%></li>       
+    <li><%=link_to t(:all_positions), resume_positions_path(@resume)%></li>       
     <li><%=link_to @resume.name, edit_resume_path(@resume)%></li>
 <% end -%>
 <div class='span-13'> 

@@ -102,6 +102,8 @@ module ApplicationHelper
   	 content_tag(:li,link_to('评价对方',new_user_recommendation_path(user,:receiver_id => message.sender )))
   	when 'edit_recommendation' 
   	 content_tag(:li,link_to('修订评价',edit_user_recommendation_path(user,message.req_id,:receiver_id => message.sender )))
+  	when 'new_recommendation'
+  	  content_tag(:li,link_to('修订评价',edit_visible(user,req_id))) 
 	 else
 	   content_tag(:li,link_to("回复", new_user_message_path(@user, :reply_to => @message)))
 	 end

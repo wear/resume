@@ -37,10 +37,9 @@ a:visited {
 .ag{font-size:14px;}
 .ag:link {
 	color: #009900;
-	text-decoration: none;
 }
 .ag:hover {
-	text-decoration: underline;
+	text-decoration: underline;  
 	color: #009900;
 }
 .ag:active {
@@ -203,35 +202,7 @@ h4{
 	float:left;
 }
 
-table.poll {
-  width: 100%;
-  margin-bottom: 1em; }
-  table.poll td {
-    border-bottom: none; }
-    table.poll td .vote {
-      display: block;
-      float: left;
-      background: url(/plugin_assets/community_engine/images/icons/vote.png) no-repeat left;
-      padding: 0 10px 0 20px;
-      height: 20px;
-      margin-right: 10px;
-      border-right: 1px solid #ccc; }
-  table.poll td.bars {
-    width: 50%; }
-    table.poll td.bars div.bar-container {
-      border: 1px solid #ccc;
-      width: 90%;
-      margin: 0px 5px 0px 0;
-      padding: 1px;
-      float: left;
-      background: white;
-      height: 1em; }
-    table.poll td.bars div.bar-container .bar {
-      background-color: #cfe1f1;
-      height: 12px;
-      font-size: 10px;
-      text-align: right;
-      padding-right: 2px; }
+
 
 /* for landing */
 
@@ -341,7 +312,23 @@ h4,h5 {
 	border:1px solid #ccc;
 	background-color:#EFEFEF;
 	width:140px;float:right;padding:5px;
+} 
+
+.tab-sidebar ul li{ 
+	list-style:none;
+	margin:2px 0px;
+} 
+
+.tab-sidebar ul li a{ 
+	color: #009900;
+	  
 }
+
+.tab-sidebar ul li a:hover{ 
+	text-decoration: underline;  
+	   
+}
+
 .checks li{padding-top:5px;}
 .checks{ font-size:10px;margin-right:0px;padding:0px;}
 
@@ -361,6 +348,9 @@ dd{
   padding-bottom:20px;
 }
 
+#activity-item{
+	margin-bottom:10px;
+}
 #activity-item a{
    text-decoration: underline;    
 }
@@ -445,19 +435,22 @@ table#message
 	margin-top:10px;
 }
 
-#msg_content ul li{
+#btn li{
 	list-style:none;
 	float:left;
 	margin-right:10px; 
 } 
 
-#msg_content ul li a{
+#btn li a{   
   	display:block;
 	padding:10px;
-	font-size:14px;
+	font-family:arial;
+	font-size:12px;
 	font-weight:bold; 
-	color:#009900; 
-	background:#ccc;
+	color:#999999; 
+    text-decoration: none;    
+	background:transparent url('/images/btn.gif') repeat-x scroll center top;
+	border:1px solid #999999;
 }
 .msg_body{
 	padding:20px;
@@ -474,9 +467,55 @@ ol
 /**---- note ----**/ 
 .note{
 	width:300px;
-	background:;
 	border:1px solid #ccc;
 	background-color:#EFEFEF;
 	padding:10px;
 	margin:10px 0px ;
+}
+
+/* --- input -----*/
+.soinput {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	width: 140px;
+	padding-top: 1px;
+	padding-right: 3px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+}   
+
+.soinputbot {
+	font-family: Tahoma, "ËÎÌå", Arial;
+	font-size: 22px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: outset;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: outset;
+	color: #009900;
+	background-color: #efefef;
+	border-top-color: #CCCCCC;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #CCCCCC;
+	line-height: 30px;
+	width: 100px;
+}
+
+/* ---- recnt activity ---- */
+  
+
+.recommendation{  
+	padding:10px;
+	border:1px solid #ccc;
+}
+
+.desc {
+	border:1px solid #ccc;
+	background-color:#EFEFEF;
+	margin:2px;
+	padding:10px;
 }

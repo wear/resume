@@ -16,5 +16,9 @@ function postition_time_period(ele) {
 }       
 
 $j(document).ready(function() { 
-	setTimeout(function () { $j('#flash-message').fadeOut(); }, 4000); 
+	setTimeout(function () { $j('#flash-message').fadeOut(); }, 8000); 
+});  
+
+$j(document).ready(function() { 
+   	$("#btn li a").addClass("ui-corner-all");
 });

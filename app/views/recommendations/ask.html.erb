@@ -16,9 +16,15 @@ mail_conent = "
 	<li class='ui-tabs-selected'><%=link_to('请求评价',  '#tabs-content') %></li>
 <% end -%>
 
+<div style='margin:20px;' class='way1'>    
+		<h1>请求推荐</h1>    
+	邀请链接: <%= text_field_tag :invitaion_code,@invitation_code,:size=> 64,:onclick => "javascript:this.focus();this.select();" %>  
+	<br />复制此邀请链接地址，用QQ、MSN等发送给你的朋友；对方加入后即自动加为你好友.然后可对你的简历做评价!!
+</div>
+<% if false %>
 <ul class='ways'>
 	<li> <span class='way'>方法1: 发送邀请链接给朋友</span> <%=link_to_function '打开',"$('.way1').show();"%> | <%=link_to_function '关闭',"$('.way1').hide();"%></li>
-    <li>
+    <li>   
 <div style='margin:20px;' class='way1'> 
 	邀请链接: <%= text_field_tag :invitaion_code,@invitation_code,:size=> 64,:onclick => "javascript:this.focus();this.select();" %>  
 	<br />复制此邀请链接地址，用QQ、MSN等发送给你的朋友；对方加入后即自动加为你好友并对你的简历做评价
@@ -46,3 +52,4 @@ mail_conent = "
 	$('.way1').hide();
 	$('.way2').hide(); 
 </script>
+<% end %>

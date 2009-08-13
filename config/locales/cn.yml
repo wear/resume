@@ -55,7 +55,9 @@
   follow_resume: 以下是我的简历
   mail_correct_notify: 如不能正常查看邮件请点击下面的链接
   recommendations: 推荐
-  as: 是他/她的
+  as: 是他/她的      
+  all_positions: 所有工作经历
+  all_educations: 所有教育经历
         
   date:
     formats:

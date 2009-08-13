@@ -9,23 +9,29 @@
 <% percent = completeness[:score] %>    
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		$("#{@resume.id}").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+		$("#progressbar").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
 	});
 </script>
 
 	<dd id='activity-item'>    
-	   <%=h name_for_resume(@resume) %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:class => 'ag'%> <%=link_to '获得推荐', ask_user_recommendations_path(current_user),:class => 'ag'%> <%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt),:target => '_blank',:class => 'ag'%>
+	   <%=h name_for_resume(@resume) %> <%= link_to '删除', @resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:class => 'ag'%>  <%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt),:target => '_blank',:class => 'ag'%>(<%=link_to '什么是pdf?','/help#faq_print',:class=> 'edit' %>)
 	 <p>
-		<span class="progressBar" id="<%=@resume.id%>">&nbsp;</span>
-		</p>     
-		<%= link_to '编辑', edit_resume_path(@resume),:class => 'ag' %>
-	   
-		<%= link_to '删除', @resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> 
-	<br /> 
-	<span style='color:#999999'><%= @resume.created_at%></span>
+		<span class="progressBar" id="progressbar">&nbsp;</span>
+		</p>
+	   <ul id='btn'>     
+		<li><%= link_to '编辑', edit_resume_path(@resume) %></li>
+	    <li><%=link_to '获得推荐', ask_user_recommendations_path(current_user)%></li>
+		</ul>
+	    
 	 </dd>  
 	
-    <hr />
 
-</dl>
-
+</dl>  
+<% content_for :tab_sidebar do -%>
+<div class='tab-sidebar ui-corner-all' >  
+<h4>提示</h4> 
+<p>
+用'获得推荐'功能让同学同事推荐你,你的简历会更具竞争力!<p><a href='/help#faq_be_req'>怎么让同事/同学推荐你?</a></p>
+</p>
+</div>
+<% end %>

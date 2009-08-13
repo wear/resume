@@ -1,1 +1,10 @@
-<%=sanitize @message.body, :tags => %w(p br)%>
+<%=sanitize @message.body, :tags => %w(p br)%>      
+<p>
+点下面链接<%=link_to '马上登录查看',@url%>
+</p>               
+
+<p>
+------------------------------<br />
+半亩塘让你快速创建更有用的简历
+<a href='http://www.muutang.com'>www.muutang.com</a>
+</p>

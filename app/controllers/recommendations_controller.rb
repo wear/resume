@@ -6,6 +6,7 @@ class RecommendationsController < ApplicationController
   
   def index
     @user = current_user
+    @recommendations_by_role = @user.received_recommendations.group_by { |t| t.sender_role }
   end
 
   def show
@@ -18,7 +19,15 @@ class RecommendationsController < ApplicationController
   def new      
     @user = User.find params[:user_id] 
     @receiver = User.find(params[:receiver_id]) 
-    @recommendation = Recommendation.new
+    @recommendation = Recommendation.new 
+    respond_to do |wants|
+      if @receiver.resume.nil? || @receiver.resume.roles.blank?
+        flash[:error] = '对方还没有创建简历或填写工作/教育经历！'
+        wants.html { redirect_to user_friendships_path(@user) }
+      else
+        wants.html {  } 
+      end
+    end
   end 
   
   def select_role 
@@ -41,8 +50,14 @@ class RecommendationsController < ApplicationController
      @recommendation.sender = @sender
      @recommendation.receiver = @receiver
      respond_to do |wants|               
-       if @recommendation.save 
-         flash[:notice] = '请求发送成功!' 
+       if @recommendation.save
+         message = Message.new(:subject => "#{@user.resume_name}评价了你的表现",
+         :body => "<p>#{@user.resume_name}评价了你的表现</p>-------------<br />他的评语<p><%=h recommendation.desc %></p>",
+         :req_type => 'new_recommendation',:req_id => @recommendation.id)
+         message.sender = @user
+         message.recipient = @receiver
+         message.save 
+         flash[:notice] = '评价发送成功!' 
          wants.html { redirect_to sent_user_recommendations_path(@user) }
        else
          wants.html { render :action => "new" }  
@@ -72,8 +87,9 @@ class RecommendationsController < ApplicationController
   
   def visible
        @recommendation = Recommendation.find(params[:id])
-       @recommendation.update_attributes(:visible => params[:visible])
-       respond_to do |wants|
+       respond_to do |wants|  
+       @recommendation.update_attributes(:visible => params[:visible])            
+        flash[:notice] =  "操作成功！"  
         wants.html { redirect_to user_recommendations_path(@user) }
        end
   end  
@@ -83,26 +99,35 @@ class RecommendationsController < ApplicationController
     @receiver = @recommendation.receiver 
     @user = User.find params[:user_id] 
    
-    respond_to do |wants|
+    respond_to do |wants|  
+     Recommendation.transaction do 
      if @recommendation.update_attributes(params[:recommendation])
        @recommendation.update_attributes(:visible => false)
+       message = Message.new(:subject => "#{@user.resume_name}更新了对你的评价",
+       :body => "#{@user.resume_name}更新了对你的评价,请选择是否公开这份评价.",
+       :req_type => 'update_recommendation',:req_id => @recommendation.id)
+       message.sender = @user
+       message.recipient = @recommendation.receiver
+       message.save
        flash[:notice] = '推荐信息已更新'
        wants.html { redirect_to sent_user_recommendations_path(@user) }
      else  
        wants.html { render :action => "edit"  }
+     end 
      end
     end 
   end
   
   def request_revised   
-    
     @user = User.find params[:user_id]
-    @recommendation = Recommendation.find(params[:id])
-    @recommendation.update_attributes(:visible => params[:visible])
-    message = Message.new(:subject => '更新对我的评价',:body => '<p>多谢你的评价,你能把评价更新下嘛?</p>' + "<p>--------原始推荐内容-------<br />'#{@recommendation.desc}'</p>",:req_type => 'edit_recommendation',:req_id => @recommendation.id)
-    message.sender = @user
-    message.recipient = @recommendation.sender
-    message.save
+    @recommendation = Recommendation.find(params[:id]) 
+    Recommendation.transaction do
+      @recommendation.update_attributes(:visible => params[:visible])
+      message = Message.new(:subject => "更新对#{@user.resume_name}的评价",:body => '<p>多谢你的评价,你能把评价更新下嘛?</p>' + "<p>--------原始推荐内容-------<br />'#{@recommendation.desc}'</p>",:req_type => 'edit_recommendation',:req_id => @recommendation.id)
+      message.sender = @user
+      message.recipient = @recommendation.sender
+      message.save   
+    end
     respond_to do |wants|  
       flash[:notice] = '请求已发送'
       wants.html { redirect_to user_recommendations_path(@user) }

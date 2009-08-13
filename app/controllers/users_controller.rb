@@ -127,7 +127,7 @@ class UsersController < ApplicationController
   
   
   def send_friendship_message(sender,receiver)
-    message = Message.new(:subject => '请评价我的工作表现',:body => "<p>你的评价对我将十分重要，多谢!<p><p>#{sender.resume_name}",:req_type => 'recommendation')
+    message = Message.new(:subject => '#{sender.resume_name请你推荐他/她',:body => "<p>你的评价对我将十分重要，多谢!<p><p>#{sender.resume_name}",:req_type => 'recommendation')
     message.sender = sender
     message.recipient = receiver
     message.save

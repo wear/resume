@@ -3,8 +3,11 @@
  	<li><%=link_to('给出的评价', sent_user_recommendations_path(@user) ) %></li>
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
 <% end -%>           
+<% @user.received_recommendations.each do -%>
+	<%%>
+<% end -%>
 
-<%= render :partial => "recommendation", :collection => @user.received_recommendations,:locals => {:user => @user}
+<%#= render :partial => "recommendation", :collection => @user.received_recommendations,:locals => {:user => @user}
 %>          
 
 

@@ -4,8 +4,7 @@
 	<tr><th>名称</th></tr>  
 	<% @user.friendships.each do |friendship| -%> 
 	<tr><td><%=link_to friendship.friend.login,friendship.friend %></td>
-		<td><%= friendship.status %></td>
-		<td><%=link_to '评价对方',new_user_recommendation_path(@user,:receiver_id => friendship.friend)%>
+		<td><%=link_to '评价对方',new_user_recommendation_path(@user,:receiver_id => friendship.friend),:class => 'ag'%>
 	</tr>  
 	<% end -%>    
 </table>

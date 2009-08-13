@@ -11,9 +11,10 @@
 	<div class='msg_body'>
 	  <%=sanitize @message.body, :tags => %w(p br) %>
 	</div>
-	<ul>
+	<ul id='btn'>
 	  <%= message_req(current_user,@message)%>
 	  <li><%= link_to "收件箱", user_messages_path(@user)%></li>
-	</ul> 
+	</ul>                                          
+	
 <div style="font: 0px/0px sans-serif;clear: both;display: block"> </div> 
 </div>

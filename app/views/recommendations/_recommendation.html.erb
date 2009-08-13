@@ -1,14 +1,16 @@
-	  <dl class='recommendation'>  
-			<div style='clear:both;'> 
+	  <dl class='recommendation'> 
+		<dd id='activity-item'>      
 					  <div id="who">
 					  	  <h4><%=h recommendation.receiver.login %></h4> <%=h recommendation.receiver_role %><br /> <i>你是他的<%= format_refer(recommendation.refer_type)%> </i>
-					  </div>                  
-				 </div>
-				<dd>    
-				   <p> <%=h recommendation.desc %></p>
-					  		<br /> 
-					<span style='color:#999999'><%=h recommendation.created_at%></span></p>
-					<%= edit_visible(user,recommendation) %>   <%=link_to '请求重写或修正',   request_revised_user_recommendation_path(user,recommendation),:class => 'ag',:method => :put %>
+					  </div>
+				   <p class='desc'> <%=h recommendation.desc %></p>
+					<span style='color:#999999'><%=h recommendation.created_at%></span>
+					<ul id='btn'>
+					<li><%= edit_visible(user,recommendation) %>
+						</li>  
+						<li> <%=link_to '请求重写或修正',   request_revised_user_recommendation_path(user,recommendation),:class => 'ag',:method => :put %></li>
+						</ul>
 				 </dd>   
-	    <hr /> 
-	</dl>  
+
+	</dl>
+		    <hr />   

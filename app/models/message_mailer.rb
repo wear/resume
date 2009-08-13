@@ -4,7 +4,7 @@ class MessageMailer < ActionMailer::Base
   def message_notification(message)
     setup_email(message)
     @subject    += message.subject
-    @body[:url]  = "http://muutang.com/"
+    @body[:url]  = "#{APP_URL}"
   end 
 
   protected
