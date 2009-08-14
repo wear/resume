@@ -3,9 +3,20 @@
  	<li><%=link_to('给出的评价', sent_user_recommendations_path(@user) ) %></li>
 	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
 <% end -%>           
-<% @user.received_recommendations.each do -%>
-	<%%>
-<% end -%>
+<% @recommendations_by_role.sort.each do |role,recommendations| %> 
+<div class='req_collection'>
+	<h3><%= role %> </h3> 
+	<ul>
+	<% recommendations.each do |r| %>
+	<li><%=h r.sender.resume_name %> <%=h r.sender_role %>,他是你的<%=format_refer(r.refer_type) %>,<b></b>评价了你.<b>此评价<%=format_visible(r)%></b><br />
+		<%=link_to '查看/修改',edit_visible_user_recommendation_path(@user,r),:class => 'ag' %>
+		</li> 
+	<% end -%> 
+	</ul>
+</div>
+
+	
+<% end %>
 
 <%#= render :partial => "recommendation", :collection => @user.received_recommendations,:locals => {:user => @user}
 %>          

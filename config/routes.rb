@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
      user.resource :profile 
      user.resources :friendships,:member => {:add => :post}  
      user.resources :messages, :collection => { :delete_selected => :post,:sent_box => :get }
-     user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:visible => :put,:request_revised => :put } 
+     user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:edit_visible => :get,:visible => :put,:request_revised => :put } 
   end 
 
   map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get} do |resume|

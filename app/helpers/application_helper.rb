@@ -103,9 +103,18 @@ module ApplicationHelper
   	when 'edit_recommendation' 
   	 content_tag(:li,link_to('修订评价',edit_user_recommendation_path(user,message.req_id,:receiver_id => message.sender )))
   	when 'new_recommendation'
-  	  content_tag(:li,link_to('修订评价',edit_visible(user,req_id))) 
+  	  recommendation = Recommendation.find(message.req_id)
+  	  content_tag(:li,link_to('查看/修改',edit_visible_user_recommendation_path(user,recommendation))) 
 	 else
 	   content_tag(:li,link_to("回复", new_user_message_path(@user, :reply_to => @message)))
 	 end
-  end 
+  end  
+  
+   def edit_visible(user,recommendation)         
+     if recommendation.visible     
+       link_to '不公开',visible_user_recommendation_path(user,recommendation,:visible => false),:method => :put,:class=> 'ag'
+     else
+       link_to '公开',visible_user_recommendation_path(user,recommendation,:visible => true),:method => :put,:class=> 'ag' 
+     end
+  end
 end

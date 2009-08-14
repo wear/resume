@@ -49,10 +49,11 @@ class RecommendationsController < ApplicationController
      @recommendation = Recommendation.new(params[:recommendation])
      @recommendation.sender = @sender
      @recommendation.receiver = @receiver
-     respond_to do |wants|               
+     respond_to do |wants|   
+       Recommendation.transaction do            
        if @recommendation.save
          message = Message.new(:subject => "#{@user.resume_name}评价了你的表现",
-         :body => "<p>#{@user.resume_name}评价了你的表现</p>-------------<br />他的评语<p><%=h recommendation.desc %></p>",
+         :body => "<p>#{@user.resume_name}评价了你的表现</p>-------------<br />他的评语<p>'#{@recommendation.desc}'</p>",
          :req_type => 'new_recommendation',:req_id => @recommendation.id)
          message.sender = @user
          message.recipient = @receiver
@@ -62,6 +63,7 @@ class RecommendationsController < ApplicationController
        else
          wants.html { render :action => "new" }  
        end
+     end
      end
   end    
   
@@ -85,13 +87,20 @@ class RecommendationsController < ApplicationController
     @receiver =  @recommendation.receiver
   end
   
+  def edit_visible
+    @recommendation = Recommendation.find(params[:id])
+    respond_to do |wants|
+      wants.html {  }
+    end
+  end
+  
   def visible
-       @recommendation = Recommendation.find(params[:id])
-       respond_to do |wants|  
-       @recommendation.update_attributes(:visible => params[:visible])            
-        flash[:notice] =  "操作成功！"  
-        wants.html { redirect_to user_recommendations_path(@user) }
-       end
+    @recommendation = Recommendation.find(params[:id])
+    respond_to do |wants|  
+    @recommendation.update_attributes(:visible => params[:visible])            
+     flash[:notice] =  "操作成功！"  
+     wants.html { redirect_to user_recommendations_path(@user) }
+    end
   end  
   
   def update 
@@ -104,8 +113,8 @@ class RecommendationsController < ApplicationController
      if @recommendation.update_attributes(params[:recommendation])
        @recommendation.update_attributes(:visible => false)
        message = Message.new(:subject => "#{@user.resume_name}更新了对你的评价",
-       :body => "#{@user.resume_name}更新了对你的评价,请选择是否公开这份评价.",
-       :req_type => 'update_recommendation',:req_id => @recommendation.id)
+       :body => "<p>#{@user.resume_name}更新了对你的评价,请选择是否公开这份评价.</p>-------------<br />他的评语<p>'#{@recommendation.desc}'</p>",
+       :req_type => 'new_recommendation',:req_id => @recommendation.id)
        message.sender = @user
        message.recipient = @recommendation.receiver
        message.save
@@ -123,7 +132,7 @@ class RecommendationsController < ApplicationController
     @recommendation = Recommendation.find(params[:id]) 
     Recommendation.transaction do
       @recommendation.update_attributes(:visible => params[:visible])
-      message = Message.new(:subject => "更新对#{@user.resume_name}的评价",:body => '<p>多谢你的评价,你能把评价更新下嘛?</p>' + "<p>--------原始推荐内容-------<br />'#{@recommendation.desc}'</p>",:req_type => 'edit_recommendation',:req_id => @recommendation.id)
+      message = Message.new(:subject => "#{@user.resume_name}请求你更新评价",:body => '<p>多谢你的评价,你能把评价更新下嘛?</p>' + "<p>--------原始推荐内容-------<br />'#{@recommendation.desc}'</p>",:req_type => 'edit_recommendation',:req_id => @recommendation.id)
       message.sender = @user
       message.recipient = @recommendation.sender
       message.save   

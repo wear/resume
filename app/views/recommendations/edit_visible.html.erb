@@ -1,0 +1,8 @@
+<% content_for :tabs do -%> 
+	<li><%=link_to('修改评价状态', '#tabs-content' ) %></li> 
+ 	<li><%=link_to('收到的评价', received_user_recommendations_path(@user) ) %></li>
+ 	<li><%=link_to('给出的评价', sent_user_recommendations_path(@user) ) %></li>
+	<li><%=link_to('请求评价', ask_user_recommendations_path(@user)) %></li>
+<% end -%>
+
+<%= render :partial => 'recommendation',:locals => {:user => @user} %>

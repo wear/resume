@@ -206,7 +206,7 @@ h4{
 
 /* for landing */
 
-.ad{text-align:center;padding:20px 20px 0px 20px;height:137px;
+.ad{text-align:center;padding:30px 30px 0px 10px;height:137px;
 	background:url(/images/bg-ad.jpg) no-repeat;font-size:14px;}    
 	
 .ad h3{  
@@ -400,7 +400,6 @@ table#message
 {
 	border-collapse:collapse;
 	background:#F9F9F9;
-	width:647px;
 	border:3px solid #ccc; 
 } 
 
@@ -508,14 +507,19 @@ ol
 /* ---- recnt activity ---- */
   
 
-.recommendation{  
-	padding:10px;
-	border:1px solid #ccc;
-}
-
 .desc {
 	border:1px solid #ccc;
 	background-color:#EFEFEF;
 	margin:2px;
 	padding:10px;
+}
+
+/*----- req ------*/
+.req_collection{
+	margin:5px;clear:both;
+}   
+
+.req_collection ul li{
+	list-style:none;
+	padding-bottom:10px;
 }
