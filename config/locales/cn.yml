@@ -1,7 +1,64 @@
 # Chinese (China) translations for Ruby on Rails 
 # by tsechingho (http://github.com/tsechingho)
 
-"zh-CN":
+'cn': 
+  name: 姓名
+  mobile: 手机
+  adr: 地址
+  birth: 生日
+  pro: 个人信息
+  sex: 性别
+  male: 男
+  female: 女
+  hometown: 出生地
+  hukou: 户口
+  portrait: 头像
+  fill_in_profile: 添加基本信息
+  create: 新建
+  resumes: 所有简历
+  edit_personal_info: 编辑基本信息
+  edit_educations: 编辑教育情况
+  edit_additionalinfo: 编辑兴趣爱好
+  edit_positions: 编辑工作经历
+  edit: 编辑
+  add: 添加
+  age: 年龄
+  contact: 联系方式
+  intresters: 兴趣爱好
+  edu: 教育情况
+  positions: 工作经历
+  summary: 总结
+  usage: 用途
+  preview: 预览/定制
+  back: 返回
+  update: 更新
+  request_recommendation: 请求评价
+  groups: 小组
+  awards: 获奖情况 
+  add_position: 添加工作经历
+  title: 职位
+  start_at: 开始时间
+  stop_at: 结束时间
+  company: 公司
+  desc: 描述
+  still_on: 仍在职
+  school: 学校
+  degree: 学历
+  major: 专业
+  new_education: 添加教育经历
+  delete: 删除
+  comfirm: 你确定嘛?
+  download_pdf: 下载pdf
+  send_resume: 投简历
+  content: 内容
+  send: 发送
+  follow_resume: 以下是我的简历
+  mail_correct_notify: 如不能正常查看邮件请点击下面的链接
+  recommendations: 推荐
+  as: 是他/她的      
+  all_positions: 所有工作经历
+  all_educations: 所有教育经历
+        
   date:
     formats:
       default: "%Y-%m-%d"
@@ -103,15 +160,21 @@
   
   activerecord:
     models:
-      profile: 个人资料
+      personalinfo: 个人资料
       summary: 个人总结
       position: 工作经验 
       education: 教育情况
       resume: 简历
       additionalinfo: 兴趣爱好
       user: 用户     
-      poster: 求职信
-    attributes:  
+      poster: 求职信 
+      recommendation: 评价
+    attributes: 
+      recommendation:
+          sender_role: 发送者角色
+          receiver_role: 接受者角色
+          desc: 内容
+          refer_type: 关系
       poster:
           content: 内容
           position: 职位
@@ -128,6 +191,9 @@
           degree: 学历
           field: 专业
       position:
+          start_at: 开始时间
+          description: 描述
+          end_at: 结束时间
           title: 职位
           company: 公司名称
       resume:
@@ -135,7 +201,7 @@
       summary:
           content: 总结
           specialties: 特长
-      profile:
+      personalinfo:
           email: '电子邮件' 
           sex: '性别'
           name: '名称'

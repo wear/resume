@@ -1,7 +1,8 @@
+<% content_for :tabs do -%>
+ 	<li><%=link_to('收件箱','#tabs-content') %></li>
+	<li><%=link_to('发件箱',sent_box_user_messages_path(@user)) %></li>  
+<% end -%>
+
 <% form_tag delete_selected_user_messages_path(@user) do %>
-	<% if params[:mailbox] == "sent" %>
-			<%= render :partial => "sent" %>
-	<% else %>
 			<%= render :partial => "inbox" %>
-		<% end %>
 <% end %>

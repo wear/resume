@@ -1,18 +1,24 @@
-<h1>Listing educations</h1>
+<% content_for :tabs do -%> 
+    <li><%=link_to(t(:edit_educations),'#tabs-content') %></li>
+	<li><%=link_to t(:back), edit_resume_path(@resume)%></li> 
+<% end -%>
 
-<table>
-  <tr>
-  </tr>
+<dl>   
+   <% @educations.each do |education| -%>     
+	<dd id='activity-item'>    
+	   <h3 style='margin:0px;'><%=h education.name %></h3>
+	<address><%=h education.degree %> - <%=h education.field %> </address>
+	<p style='padding:10px;'><%=h education.description %></p>
+		<%= link_to t(:edit), edit_resume_education_path(@resume,education),:class => 'ag' %>
+		<%= link_to t(:delete), resume_education_path(@resume,education), :confirm => '你确定嘛?', :method => :delete,:class => 'ag' %>
+	<br /> 
+	<span style='color:#999999'><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
+	 </dd>  
+	
+    <hr /> 
+	<% end -%>
+</dl>
 
-<% @educations.each do |education| %>
-  <tr>
-    <td><%= link_to 'Show', education %></td>
-    <td><%= link_to 'Edit', edit_education_path(education) %></td>
-    <td><%= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New education', new_education_path %>
+<div class='btn'>
+	<%= link_to t(:create),new_resume_education_path(@resume),:class => 'btn' %>  
+</div>

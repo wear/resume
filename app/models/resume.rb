@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
 # Table name: resumes
 #
@@ -11,6 +11,7 @@
 #  salt       :string(255)
 #  usage      :string(255)
 #  type       :integer(4)
+#  lang       :string(255)
 #
 
 class Resume < ActiveRecord::Base
@@ -18,21 +19,23 @@ class Resume < ActiveRecord::Base
   has_many :positions
   has_many :educations
   has_one :summary
-  has_one :additionalinfo   
-  has_many :posters
-  validates_length_of :usage, :within => 2..20
+  has_one :additionalinfo
+  has_one :personalinfo  
+  has_many :posters 
+  validates_length_of :usage, :within => 2..20,:allow_blank => true  
+   
   
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 20 
   
   def name
-     user.profile.name + '的简历' + id.to_s 
-  end 
+    personalinfo.name + '的简历'
+  end
   
-  
-  def profile
-    user.profile
-  end           
+  def avatar_exists?
+    return false unless personalinfo && personalinfo.assert
+    File.file? "public/#{ personalinfo.assert.public_filename}"
+  end         
   
   def owner?(owner)
     user == owner
@@ -52,17 +55,14 @@ class Resume < ActiveRecord::Base
   end     
   
  def roles
-   roles = []
-   r = find_roles
-   r.each_index{|index| roles << [index,r[index]]}
-   roles
- end 
+   tmp_roles = []
+   positions.each{|position| tmp_roles << ('在'+position.company+'做'+position.title) }
+   educations.each{|edu| tmp_roles << ('在'+edu.name+'学'+edu.field) }
+   tmp_roles
+ end  
  
- def find_roles
-    tmp_roles = []
-    positions.each{|position| tmp_roles << position }
-    educations.each{|edu| tmp_roles << edu }
-    tmp_roles
- end
-
+ def has_reached_daily_poster_send_limit?
+   posters.count(:conditions => ['created_at > ?', Time.now.beginning_of_day]) >= 12
+ end              
+ 
 end

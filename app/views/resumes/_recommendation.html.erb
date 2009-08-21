@@ -1,0 +1,5 @@
+		<div class='recommendation-public'>
+			<pre><%=h recommendation.desc%> <span style='color:#999999'><%=h recommendation.created_at%></span></pre>
+			<%=link_to h(recommendation.sender.resume_name) %>,<span style='color:#999999'><%= recommendation.sender_role %> <br />
+			 <%=h @resume.personalinfo.name%> 是 <%=h(recommendation.sender.resume_name)%> <%=h recommendation.receiver_role %> 时的<%= format_refer(recommendation.refer_type) %></span>
+		</div>  

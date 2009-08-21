@@ -1,42 +1,72 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead  
-  before_filter :login_required,:only => [:show]
+  before_filter :login_required,:only => [:show,:public]
   
   def show
+    @section = 'profile'
     @user = User.find params[:id]    
   end                                                                          
 
   # render new.rhtml
   def new
     @user = User.new 
-    unless  params[:invitation_code].nil? && params[:resume].nil?
-      session[:invitation_code] = params[:invitation_code]
-      session[:invitation_resume] = params[:resume] 
-      find_code_and_resume 
+    find_code
+    
+    respond_to do |wants|
+    if logged_in?     
+      User.transaction do
+        if find_friend && current_user.become_friend_with(@friend)
+          flash[:notice] = "成功添加加#{@friend.resume_name}为好友!"            
+          send_friendship_message(@friend,current_user)
+        end
+      end   
+      wants.html  { redirect_to resumes_path }
+    else
+      wants.html { render :layout => 'landing' }
+    end
     end
   end
  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
-    success = @user && @user.save
-    if success && @user.errors.empty?
-      self.current_user = @user 
-      if find_code_and_resume &&  @user.become_friend_with(@friend)   
-        message = Message.new(:subject => '求求你评价我',:body => '不评价我就砍死你',:req => 'recommendation')
-        message.sender = @friend
-        message.recipient = @user
-        message.save
-        flash[:notice] = '注册成功!为了严肃评价,请先填写个人信息'
-      else         
-        self.current_user = @user
-        flash[:notice] = "感谢注册!您现在就可以登录创建简历了."
+
+    respond_to do |wants|
+      User.transaction do
+        if @user.save 
+          flash[:notice] = "多谢您的注册!我们已向您的邮箱发送确认邮件,请注意查收！"    
+          if find_friend && @user.become_friend_with(@friend) 
+            send_friendship_message(@friend,@user) 
+            flash[:notice] += "成功添加加#{@friend.resume.personalinfo.name}为好友!"  
+          end   
+            wants.html { redirect_to login_path }
+        else 
+          wants.html { render :action => 'new',:layout => 'landing' }
+        end
       end 
-      redirect_to new_user_profile_path(@user) 
-    else
-      flash[:error]  = "无法创建用户，可能填写的信息有误，请检查，抱歉!"
-      render :action => 'new'
     end
+  end
+  
+  def public
+    @user = User.find params[:id]
+    respond_to do |wants|
+      wants.html { render :layout => 'landing' }
+    end
+  end  
+  
+  def activate
+    logout_keeping_session!
+    user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
+    case
+    when (!params[:activation_code].blank?) && user && !user.active?
+      user.activate!
+      flash[:notice] = "注册完成! 您现在就可以登录了."
+    when params[:activation_code].blank?
+      flash[:error] = "验证码缺失.请使用确认邮件中的url地址."
+    else 
+      flash[:error]  = "此验证码无效,请检查确认邮件,或者重新注册?."
+    end
+    redirect_to login_path
   end
 
   
@@ -61,7 +91,7 @@ class UsersController < ApplicationController
   
   def forgot_password
     respond_to do |wants|
-      wants.html { render :layout => 'application' }
+      wants.html { render :layout => 'landing' }
     end
   end
   
@@ -75,20 +105,31 @@ class UsersController < ApplicationController
       UserMailer.deliver_forgot_password(@user, new_password)
       cookies.delete :auth_token
       reset_session
-      flash[:notice] = "新密码已发送到#{@user.email}!"
+      flash[:notice] = "新密码已发送到#{@user.email}!" 
       redirect_to root_url
     else
       flash.now[:error] = '填写信息有误，请重试!'
-      render :action => "forgot_password",:layout => 'application'
+      render :action => "forgot_password",:layout => 'landing'
     end
   end 
   
   protected
   
-  def find_code_and_resume
-    if session[:invitation_code] && session[:invitation_resume]
-      @friend = User.find_by_invitation_code(session[:invitation_code])
-      @resume = @friend.resumes.find(session[:invitation_resume])
+  def find_code
+    unless  params[:invitation_code].nil? 
+      session[:invitation_code] = params[:invitation_code] 
     end 
+  end
+  
+  def find_friend
+     @friend = User.find_by_invitation_code(session[:invitation_code])  if  session[:invitation_code]
+  end
+  
+  
+  def send_friendship_message(sender,receiver)
+    message = Message.new(:subject => '#{sender.resume_name}请你推荐他/她',:body => "<p>你的评价对我将十分重要，多谢!<p><p>#{sender.resume_name}",:req_type => 'recommendation')
+    message.sender = sender
+    message.recipient = receiver
+    message.save
   end
 end

@@ -1,11 +1,14 @@
-<h2>收件箱</h2>
-<table>
+<h2>发件箱</h2>
+<table id='message'>
+	<thead> 
 	<tr>
 		<th>删除?</th>
 		<th>标题</th>
 		<th>收件人</th>
 		<th>发件</th>
 	</tr>
+	</thead> 
+	 <tbody> 
 	<% if @messages.size == 0 %>
 		<tr>
 			<td colspan="4">
@@ -18,7 +21,7 @@
 				<td><%= check_box_tag "delete[]", message.id %></td>
 				<td><%= link_to h(message.subject), user_message_path(@user, message) %></td>
   			<td><%= link_to h(message.recipient.login), user_path(@user) %></td>
-			  <td><%=h message.created_at.to_s(:long) %></td>
+			  <td><%=h message.created_at.to_s(:date_time24) %></td>
 			</tr>
 		<% end %>
 		<tr>
@@ -26,6 +29,6 @@
 				<%= submit_tag "删除" %>
 			</td>
 		</tr>
- 	<% end %>
+ 	<% end %>  
+ </tbody> 
 </table>
-<%= link_to "收件箱", user_messages_path(@user)%>

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
 # Table name: positions
 #

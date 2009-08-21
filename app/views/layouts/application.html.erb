@@ -15,32 +15,54 @@
   <%= stylesheet_link_tag 'style' %>  
   <%= stylesheet_link_tag 'facebox' %>
   <%= stylesheet_link_tag 'ui-theme' %>
-  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery.min' %>
   <%= javascript_include_tag 'jrails' %>
   <%= javascript_include_tag  'application' %>
   <%= javascript_include_tag 'facebox' %>
-  <%= javascript_include_tag  'jquery-ui' %> 
+  <%= javascript_include_tag  'jquery-ui.min' %>
   <%= yield :head %>
   <script type="text/javascript" charset="utf-8">
-  	jQuery(document).ready(function($) {
-	  $('a[rel*=facebox]').facebox()
-	})
-  </script>
+	 $j(document).ready(function() {
+		$j("#tabs").tabs({
+		    select: function(event, ui) {
+		        var url = $.data(ui.tab, 'load.tabs');
+		        if( url ) {
+		            location.href = url;
+		            return false;
+		        }
+		        return true;
+		    }
+		});
+	 });
+  </script>   
 </head>
 <body>
 <div class='container'>
 	<div class='span-24'>
 		<%= render :partial => '/shared/header' %> 
 	</div>    
-	<div class='span-21 prepend-2 append-1 prepend-top prepend-bottom'> 
+	<div class='span-24' style='margin-top:20px'> 
 		<%= render :partial => '/shared/notice' %>
-		<div class='span-15'>  
-	    	<%= yield %>
-   		</div>
-		<div class='span-5 prepend-1 last sidebar'>
-			<h3>提示</h3>  
-			<%= yield :sidebar%>
-		</div>
+        <% unless @render_sidebar -%> 
+			<%= render :partial => '/shared/sidebar' %>
+		<% end -%>
+
+        <div class='span-18 last'> 
+         		<div id="tabs">
+			     <ul>  
+					<%= yield :tabs %>
+			     </ul>
+				<div id="tabs-content"> 
+					<div class='ui-widget'>
+					    <div id="ajax-indicator" style="display:none;" class='ui-state-highlight ui-corner-all'><span>载入中</span></div> 
+					</div>
+					<div class='span-13'>  
+						<%= yield %>          
+					</div>  
+				   	<%= yield :tab_sidebar %>
+				</div>
+			</div>  
+        </div>
 	</div> 
     <%= render :partial => '/shared/footer' %>
 </div>

@@ -2,10 +2,11 @@ class EducationsController < ApplicationController
   # GET /educations
   # GET /educations.xml       
   before_filter :login_required             
-  before_filter :find_resume 
+  before_filter :find_resume        
+  
   def index
-    @educations = Education.all
-
+    @educations = @resume.educations.all
+    @section = 'resume'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @educations }
@@ -25,7 +26,8 @@ class EducationsController < ApplicationController
 
   # GET /educations/new
   # GET /educations/new.xml
-  def new
+  def new   
+    @section = 'resume'
     @education = Education.new
 
     respond_to do |format|
@@ -36,6 +38,7 @@ class EducationsController < ApplicationController
 
   # GET /educations/1/edit
   def edit
+    @section = 'resume'
     @education = Education.find(params[:id])
   end
 

@@ -1,6 +1,7 @@
 class SummariesController < ApplicationController
   before_filter :login_required  
-  before_filter :find_resume       
+  before_filter :find_resume 
+      
   # GET /summaries
   # GET /summaries.xml
   def index
@@ -36,6 +37,7 @@ class SummariesController < ApplicationController
 
   # GET /summaries/1/edit
   def edit
+    @section = 'resume'
     @summary = @resume.summary
   end
 

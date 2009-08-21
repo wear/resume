@@ -1,28 +1,37 @@
-<h1><%= @user.login %></h1>
-
-<table  width='100%',style ='margin-bottom:0;' class='poll'>
-  <tr>
-	<th>编号</th>
-  </tr>
-
-<% @resumes.each_with_index do |resume,index| %>
-<% completeness ||= profile_completeness(resume) %>
-<% percent = completeness[:score] %>
-  <tr>   
-	<td><%= index + 1 %>_<%= resume.usage %></td>
-    <td><%= link_to '查看', resume,:target => '_blank' %></td>
-	<td class='bars'>
-		<div class='bar-container' style='width:50%;'>
-		   <div class='bar' style="width:<%=percent%>%">
-		   	  <small><%= number_to_percentage(percent, :precision => 0)%></small>
-		   </div> 
-		</div>
-	</td>
-    <td><%= link_to '编辑', edit_resume_path(resume) %></td>
-    <td><%= link_to '删除', resume, :confirm => '你确定嘛?', :method => :delete %></td>
-  </tr>
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.progressbar.min' %>
 <% end %>
-</table>
+<% content_for :tabs do -%>
+ 	<li><%=link_to('全部简历','#tabs-content') %></li>
+<% end -%>
+<dl>
+<% completeness ||= resume_completeness(@resume) %>
+<% percent = completeness[:score] %>    
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#progressbar").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+	});
+</script>
 
-<br />
-<%= link_to '新建', resumes_path,:styly =>'font-size:14px;',:method => :post %>
+	<dd id='activity-item'>    
+	   <%=h name_for_resume(@resume) %> <%= link_to '删除', @resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:class => 'ag'%>  <%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt),:target => '_blank',:class => 'ag'%>(<%=link_to '什么是pdf?','/help#faq_print',:class=> 'edit' %>)
+	 <p>
+		<span class="progressBar" id="progressbar">&nbsp;</span>
+		</p>
+	   <ul id='btn'>     
+		<li><%= link_to '编辑', edit_resume_path(@resume) %></li>
+	    <li><%=link_to '获得推荐', ask_user_recommendations_path(current_user)%></li>
+		</ul>
+	    
+	 </dd>  
+	
+
+</dl>  
+<% content_for :tab_sidebar do -%>
+<div class='tab-sidebar ui-corner-all' >  
+<h4>提示</h4> 
+<p>
+用'获得推荐'功能让同学同事推荐你,你的简历会更具竞争力!<p><a href='/help#faq_be_req'>怎么让同事/同学推荐你?</a></p>
+</p>
+</div>
+<% end %>

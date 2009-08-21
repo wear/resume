@@ -3,25 +3,53 @@ mail_conent = "
 我发这封邮件的目的是为了请你对我的的工作做个客观的评价，用来完善我在半亩方塘的简历!
 有任何问题请联系我.
 "
-%>
-<h1>请求评价</h1>
-<p> 
-<p>
-<h2>方法1: 发送邀请链接给朋友</h2>
-邀请链接: <%= text_field_tag :invitaion_code,@invitation_code,:size=> 64,:onclick => "javascript:this.focus();this.select();" %>  
-<br />复制此邀请链接地址，用QQ、MSN等发送给你的朋友；对方加入后即自动加为你好友并对你的简历做评价
-</p>   
-<h2>方法2: 发送邮件</h2>
-<% form_tag(send_request_resume_recommendations_path(@resume),:method => :post) do %> 
-<p><%#= label_tag '角色'%> <br /><%#= select_tag :role,options_for_select(@resume.roles)%>
+-%> 
+<% content_for :head do -%>
+<style type="text/css" media="screen">
+	.way{font-size:18px;margin:10px};
+   .ways li{ font-size:12px;}
+</style>
+<% end -%>            
+<% content_for :tabs do -%>     
+ 	<li><%=link_to('收到的评价', user_recommendations_path(@user) ) %></li>
+ 	<li><%=link_to('给出的评价', sent_user_recommendations_path(@user) ) %></li>
+	<li class='ui-tabs-selected'><%=link_to('请求评价',  '#tabs-content') %></li>
+<% end -%>
+
+<div style='margin:20px;' class='way1'>    
+		<h1>请求推荐</h1>    
+	邀请链接: <%= text_field_tag :invitaion_code,@invitation_code,:size=> 64,:onclick => "javascript:this.focus();this.select();" %>  
+	<br />复制此邀请链接地址，用QQ、MSN等发送给你的朋友；对方加入后即自动加为你好友.然后可对你的简历做评价!!
+</div>
+<% if false %>
+<ul class='ways'>
+	<li> <span class='way'>方法1: 发送邀请链接给朋友</span> <%=link_to_function '打开',"$('.way1').show();"%> | <%=link_to_function '关闭',"$('.way1').hide();"%></li>
+    <li>   
+<div style='margin:20px;' class='way1'> 
+	邀请链接: <%= text_field_tag :invitaion_code,@invitation_code,:size=> 64,:onclick => "javascript:this.focus();this.select();" %>  
+	<br />复制此邀请链接地址，用QQ、MSN等发送给你的朋友；对方加入后即自动加为你好友并对你的简历做评价
+</div> 
+</li>
+ 
+<li><span  class='way'>方法2: 发送邮件</span>  <%=link_to_function '打开',"$('.way2').show();"%> | <%=link_to_function '关闭',"$('.way2').hide();"%> </li> 
+<li> 
+<div style='margin:20px' class='way2'>  
+
+<% form_tag(send_request_user_recommendations_path(@user),:method => :post) do %> 
 <p><%= label_tag 'email'%> <br /> <%= text_area_tag :emails, nil, :style => 'height:40px;'
 %>
-<p><%= label_tag '标题'%> <br /><%= text_field_tag :subject,"帮忙评价下吧 － #{@resume.profile.name}", :size => 45
+<p><%= label_tag '标题'%> <br /><%= text_field_tag :subject,"帮忙评价下吧", :size => 45
  %></p>
 <p><%= label_tag '内容'%> <br /><%= text_area_tag :content,"#{mail_conent}",:style => 'height:120px;'%> </p>
 <p>
 	<%= submit_tag '发送'%>
 </p>      
-<p>                                                       	
-
+</div> 
+</li>
+</ul>
+<% end %> 
+<script type="text/javascript" charset="utf-8">
+	$('.way1').hide();
+	$('.way2').hide(); 
+</script>
 <% end %>

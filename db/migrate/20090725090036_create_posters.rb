@@ -8,12 +8,10 @@ class CreatePosters < ActiveRecord::Migration
 
       t.timestamps
     end  
-    remove_column :profiles, :resume_id
 
   end
 
   def self.down
-    add_column :profiles, :resume_id, :integer
     drop_table :posters
   end
 end

@@ -1,18 +1,24 @@
-<h1>Listing positions</h1>
+<% content_for :tabs do -%> 
+	<li><%=link_to(t(:edit_positions),'#tabs-content') %></li>
+	<li><%=link_to t(:back), edit_resume_path(@resume)%></li> 
+<% end -%>
 
-<table>
-  <tr>
-  </tr>
+<dl>   
+	<% @positions.each do |position| -%>     
+	<dd id='activity-item'>    
+	   <h3 style='margin:0px;'><%=h position.company %></h3>
+	<address><%=h position.title %>  </address>
+	<p style='padding:10px;'><%=h position.description %></p>
+		<%= link_to t(:edit), edit_resume_position_path(@resume,position),:class => 'ag' %>
+		<%= link_to t(:delete), resume_position_path(@resume,position), :confirm => '你确定嘛?', :method => :delete,:class => 'ag' %>
+	<br /> 
+	<span style='color:#999999'><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
+	 </dd>  
+	
+    <hr /> 
+	<% end -%>
+</dl>
 
-<% @positions.each do |position| %>
-  <tr>
-    <td><%= link_to 'Show', position %></td>
-    <td><%= link_to 'Edit', edit_position_path(position) %></td>
-    <td><%= link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New position', new_position_path %>
+<div class='btn'>
+	<%= link_to t('create'),new_resume_position_path(@resume),:class => 'btn' %>  
+</div>

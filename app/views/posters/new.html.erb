@@ -1,17 +1,25 @@
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.scrollTo-min' %>
+<% end -%>
 
-<h2>投简历</h2>
-<% form_for @poster,:url => resume_posters_path(@resume),:html => {:id => 'poster_form'} do |f| -%>
+<% content_for :tabs do -%> 
+    <li><%=link_to(t(:send_resume),'#tabs-content') %></li>
+ 	<li><%=link_to('求职发送记录',resume_posters_path(@resume)) %></li> 
+	<li><%=link_to t(:back), edit_resume_path(@resume)%></li> 
+<% end -%>    
+
+
+<% form_for @poster,:url => resume_posters_path(@resume),:method => :post,:html => {:id => 'poster_form'} do |f| -%>
 <%= f.error_messages %> 
- <p><%= label_tag 'email' %> <br /><%= f.text_field :email,:size => 32 %></p>
- <p><%= label_tag '职位' %> <br /><%= f.text_field :position,:size => 32 %></p>
- <p><%= label_tag '内容' %> <br /><%= f.text_area :content,:rows => 12, :cols => 65
-%></p> 
+ <p><%= label_tag 'Email' %> <br /><%= f.text_field :email,:size => 32 %></p>
+ <p><%= label_tag t(:title) %> <br /><%= f.text_field :position,:size => 32 %></p>
+ <p><%= label_tag t(:content) %> <br /><%= f.text_area :content,:style => 'width:500px;height:200px' %></p> 
 <p>
-	<%= submit_tag '发送' %>    <%= link_to_remote '预览',{:url => preview_resume_posters_path(@resume), 
+	<%= submit_tag t(:send) %>    <%= link_to_remote t('preview'),{:url => preview_resume_posters_path(@resume), 
 	                         :method => 'post',
 	                         :update => 'preview',
 	                         :with => "$('#poster_form').serialize()",
-							 :complete =>"$('#preview').scrollTo()"
+							 :complete =>"$.scrollTo('#preview')"
 	                         }%>   
 </p>  
 <% end -%>   

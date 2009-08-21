@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
 # Table name: messages
 #
@@ -13,9 +13,8 @@
 #  read_at           :datetime
 #  created_at        :datetime
 #  updated_at        :datetime
-#  requestable_type  :string(255)
-#  requestable_id    :integer(4)
-#  req               :string(255)
+#  req_type          :string(255)
+#  req_id            :integer(4)
 #
 
 class Message < ActiveRecord::Base

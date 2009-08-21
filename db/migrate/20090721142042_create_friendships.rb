@@ -14,6 +14,6 @@ class CreateFriendships < ActiveRecord::Migration
 
   def self.down
    remove_column :users, :invitation_code
-    drop_table :friendships
+   drop_table :friendships
   end
 end

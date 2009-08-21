@@ -1,129 +1,150 @@
-<div class="span-14 section" >   
-   <h4>用途: <%= @resume.usage %>  <span class='edit'><%=link_to '修改',edit_item_resume_path(@resume)%></span></h4>
-</div>
-<div class='span-12 prepend-2'>
-    <span class='avatar'><%= avatar_for @resume.profile %></span><h1><%= @resume.profile.name %></h1>	
-</div>
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.progressbar.min' %>
+<% end %>       
 
-  
-<div class="span-14 section"> 
-<div class='more'>
-	<%=link_to '编辑',edit_user_profile_path(current_user),:class =>'ag'%>
+<% content_for :tabs do -%> 
+ 	<li><%=link_to(t(:resumes), resumes_path ) %></li>
+	<li class='ui-tabs-selected'><%=link_to(name_for_resume(@resume),'#tabs-content') %></li>
+	 <li><%=link_to(t(:edit_personal_info),edit_resume_personalinfo_path(@resume)) %></li>
+	<li><%=link_to(t(:edit_positions),resume_positions_path(@resume)) %></li>
+	<li><%=link_to(t(:edit_additionalinfo),edit_resume_additionalinfo_path(@resume)) %></li> 
+    <li><%=link_to(t(:edit_educations),resume_educations_path(@resume)) %></li>
+<% end -%>           
+
+<% completeness ||= resume_completeness(@resume) %>
+<% percent = completeness[:score] %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#progressbar").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+	});
+</script>       
+
+   <h4><%= t(:usage)%>: <%= @resume.usage %> <%=link_to t('edit'),edit_item_resume_path(@resume),:class => 'ag'%></h4>
+
+    <span class='avatar' style='margin-left:100px'><%= avatar_for @resume %></span><h1><%= @resume.personalinfo.name %></h1>	
+
+
+   
+<div class="section"> 
+<div class='more'> 
+	<%=link_to t('edit'),edit_resume_personalinfo_path(@resume),:class =>'ag'%>
 </div>
-<div class='span-7'>
-		<h3>个人信息<span class='edit'></h3>
-		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='30%'>性别:</td><td><%=h format_sex(@resume.profile.sex) %></td></tr> 
-			<tr><td>出生地:</td><td><%=h @resume.profile.hometwon %></td></tr> 
-			<tr><td>户口所在地:</td><td><%=h @resume.profile.hukou %></td></tr> 
-			<tr><td>年龄:</td><td><%=h format_age(@resume.profile.birthday) %></td></tr> 
-			<tr><td>生日:</td><td><%=h @resume.profile.birthday %></td></tr> 
+<div class='span-6'>
+		<h3 class='pro'><%=t(:pro)%></h3>
+		<table >
+			<col style='width:60px;'>
+			<col> 
+			<tbody> 
+			<tr><td><%=t(:sex)%>:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
+			<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
+			<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
+			<tr><td><%=t(:age)%>:</td><td><%=h format_age(@resume.personalinfo.birthday) %></td></tr> 
+			<tr><td><%=t(:birth)%>:</td><td><%=h @resume.personalinfo.birthday %></td></tr>
+			</tbody>  
 		</table>
 </div>
-<div class='span-7 last'>
-		<h3>联系方式</h3>
-		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='30%'>地址:</td><td><%=h @resume.profile.address %></td></tr> 
-			<tr><td>电子邮件:</td><td><%=h @resume.profile.email %></td></tr> 
-			<tr><td>手机:</td><td><%=h @resume.profile.mobile %></td></tr> 
+<div class='span-6 last'>
+		<h3 class='pro'><%= t(:contact) %></h3>
+		<table>
+			<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
+			<tr><td>Email:</td><td><%=h @resume.personalinfo.email %></td></tr> 
+			<tr><td><%= t(:mobile)%>:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
 		</table>
 </div>
 </div>
-<div class="span-14 section"> 
+<div class="section"> 
 	<div class='more'>
-		<%=link_to '编辑',edit_resume_summary_path(@resume),:class =>'ag'%> 
+		<%=link_to t('edit'),edit_resume_summary_path(@resume),:class =>'ag'%> 
 	</div>
-	<h2>总结</h2>
+	<h3><%= t :summary %></h3>
 	<div class="main">
 		<p><%=h @resume.summary.content %></p>
 	</div>
     <% if false %>
-	<h2>技能</h2>
+	<h3>技能</h3>
 	<div class="main">
 		<p><%= @resume.summary.tag_list %></p>
 	</div>      
 	<% end %>
 </div>
 
-<div class="span-14 section"> 
+<div class="section"> 
 	<div class='more'>
-		<%=link_to '添加',new_resume_position_path(@resume),:class =>'ag'%> 
+		<%=link_to t(:add),new_resume_position_path(@resume),:class =>'ag'%> 
 	</div>   
-	<h2>工作经验</h2>
+	<h3><%= t(:positions) %></h3>
 	<div class="main">  
 		<% @resume.positions.each do |position| -%>
 		<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
-		<h3><%=h position.title %><span class='edit'>[<%=link_to '编辑',edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to '删除', resume_position_path(@resume,position),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
+		<span style='width:200px;padding-top:10px'><%=h position.title %></span>
 		<address><%=h position.company %></address>
 		<ul>
-		<li><%=h position.description %></li>
+			<li><%=h position.description %></li>
 		</ul>
+		<p>
+		<span class='edit'>[<%=link_to t('edit'),edit_resume_position_path(@resume,position),:class =>'ag'%> | <%= link_to t(:delete), resume_position_path(@resume,position),:class =>'ag', :confirm => t(:comfirm), :method => :delete %>]</span></p>
 		<% end -%>
 	</div> 
-</div>
+</div> 
 
-<div class="span-14 section">    
+<div class="section">    
 	<div class='more'>
-		<%=link_to '编辑',edit_resume_additionalinfo_path(@resume),:class =>'ag'%> 
+		<%=link_to t('edit'),edit_resume_additionalinfo_path(@resume),:class =>'ag'%> 
 	</div>
-	<h2>兴趣爱好</h2>      
+	<h3><%= t(:intresters)%></h3>      
 	<div class="main">
 		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='10%'>爱好:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
-			<tr><td>小组:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
-			<tr><td>获奖:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
+			<col style='width:80px;'>
+			<col>
+			<tbody>
+			<tr><td><%= t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+			<tr><td><%= t(:groups) %>:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
+			<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr>
+			</tbody> 
 		</table>
 	</div>
 </div>
 
-<div class="span-14 section"> 
+<div class="section"> 
 	<div class='more'>
-		<%=link_to '添加',new_resume_education_path(@resume),:class =>'ag'%> 
+		<%=link_to t(:add),new_resume_education_path(@resume),:class =>'ag'%> 
 	</div>   
-	<h2>教育</h2>  
+	<h3><%= t(:edu) %></h3>  
 	<% @resume.educations.each do |education| -%>
 	<div class="main">  
 		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
-		<h3><%= education.name %><span class='edit'>[<%=link_to '编辑',edit_resume_education_path(@resume,education),:class =>'ag'%> | <%= link_to '删除', resume_education_path(@resume,education),:class =>'ag', :confirm => '你确定嘛?', :method => :delete %>]</span></h3>
-		<ul>
-			<li><%=h education.degree %></li>
-			<li><%=h education.field %></li>
+		<span style='width:200px;padding-top:10px'><%=h education.name %></span>
+		<address><%=h education.degree %> - <%=h education.field %></address>
+		<ul style='clear:both;'>
+			<li><%= education.description %></li>
 		</ul>
+		<p><span class='edit'>[<%=link_to t('edit'),edit_resume_education_path(@resume,education),:class =>'ag'%> | <%= link_to t(:delete), resume_education_path(@resume,education),:class =>'ag', :confirm => t(:comfirm), :method => :delete %>]</span>
+			</p>
 	</div>
 	<% end -%>  
+</div>   
+
+<div class="section">
+	<div class='more'>
+		<%=link_to t(:edit),user_recommendations_path(current_user),:class =>'ag'%> 
+	</div> 
+	<h3><%= t(:recommendations) %></h3>
+			<%= render :partial => 'recommendation',:collection => current_user.received_recommendations.visible  %>
 </div>
 
-
-<% content_for :sidebar do -%>
-	<div class='span-5'>
+<% content_for :tab_sidebar do -%> 
+<div class='tab-sidebar ui-corner-all' >         
+	<h4>提示</h4>
 		<ul>
-			<li> <%=link_to '预览/定制',@resume,:id => 'view',:target => '_blank'%></li> 
-			<% if false %> 
-            <li><%= link_to '获得推荐',ask_resume_recommendations_path(@resume),:id =>'view'%> 
-	<% end %> 
+			<li> <%=link_to t(:preview),@resume,:target => '_blank'%></li> 
+            <li><%= link_to t(:request_recommendation),ask_user_recommendations_path(current_user)%> 
 		</ul>
-	</div>                                                       
-	<div class='span-5 prepend-top'>      
-		 <b>完成度</b>
-	<% completeness ||= profile_completeness(@resume) %>
-	<% percent = completeness[:score] %>
-		<table width='100%',style ='margin-bottom:0;' class='poll'>
-			<tr><td class='bars'>
-				<div class='bar-container' style='width:50%;'>
-				   <div class='bar' style="width:<%=percent%>%">
-				   	  <small><%= number_to_percentage(percent, :precision => 0)%></small>
-				   </div> 
-				</div>
-			</td></tr>
-			<tr>
-				<td>
-					<ul class='checks'>
-						<% completeness[:incomplete].each do |line| %>
-						<li><%= line[:action]  %>+(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</li>
-						<% end %>
-						</ul>
-				</td>
-			</tr>
-		</table> 
-		</div> 
- <% end -%>
+	<h4>完成度</h4>
+          <span class="progressBar" id="progressbar">&nbsp;</span>     
+		 <ul class='checks'>
+				<% completeness[:incomplete].each do |line| %>
+				<li><%= line[:action]  %>+<small>(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</small></li>
+				<% end %>
+				</ul>  
+</div>
+<% end -%>

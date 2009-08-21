@@ -18,15 +18,18 @@
 			});
 		});
 	</script>
-<% end -%>   
-<div id="message_box"> 
-			 <h1>   
-				公开网址(所有人可访问,建议定期重设): <%=link_to @resume.public_url,@resume.public_url,:target => '_blank',:id => 'public_url' %>
-				<%=link_to_remote '重设',:url => publish_resume_path(@resume),:method => :put,:confirm => '你确定嘛?重设后之前的人将不能访问.' %>
-				<%=link_to '投',new_resume_poster_path(@resume),:id => 'dl'%> 
-				<%=link_to '返回编辑 >>',edit_resume_path(@resume) %>
-			  </h1>      
-</div>
+<% end -%>       
+<% content_for :message_box do %>
+	<div id="message_box"> 
+				 <h1>   
+					公开网址(所有人可访问,建议定期重设): <%=link_to @resume.public_url,@resume.public_url,:target => '_blank',:id => 'public_url' %>
+					<%=link_to_remote '重设',:url => publish_resume_path(@resume),:method => :put,:confirm => '你确定嘛?重设后之前的人将不能访问.' %>
+					<%=link_to '投',new_resume_poster_path(@resume),:id => 'dl'%> 
+					<%=link_to '返回编辑 >>',edit_resume_path(@resume) %>
+				  </h1>      
+	</div>
+<% end -%>
+
 
 <%= render :partial => '/resumes/resume' %>
 

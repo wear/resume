@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController      
-  include FaceboxRender                  
+  include FaceboxRender
+  layout 'landing'                  
   
   def login_box 
     respond_to do |wants|
@@ -19,29 +20,18 @@ class SessionsController < ApplicationController
  
   def create
     self.current_user = User.authenticate(params[:login], params[:password])
+    respond_to do |wants|
     if logged_in?
       if params[:remember_me] == "1"
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      flash.now[:notice] = '登录成功!'
-      respond_to do |wants|
-        wants.html { redirect_back_or_default(resumes_path) }
-        wants.js { redirect_from_facebox(new_resume_path) }
-      end
+    flash.now[:notice] = '登录成功!'
+    wants.html { redirect_back_or_default resumes_path }
     else
-      flash.now[:error] = '有错误发生！'
-      respond_to do |wants|
-        wants.html { 
-#        redirect_to teaser_path and return if AppConfig.closed_beta_mode        
-        render :action => 'new' }
-        wants.js { 
-          render :update do |page|
-                page.replace_html 'login-box', :partial => 'sessions/login_box' 
-          end
-           }
-      end
- 
+    flash.now[:error] = '有错误发生！'
+    wants.html { render :action => "new" } 
+    end
     end
   end
   

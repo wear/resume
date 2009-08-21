@@ -1,0 +1,6 @@
+<p><%= label_tag '选择他/她的角色'%> <span style='color:red;'>*</span><br /><%= f.select :receiver_role,@receiver.resume.roles %>
+<p><%= label_tag '他/她是你的'%><span style='color:red;'>*</span><br /><%= select_tag 'recommendation[refer_type]', 					grouped_options_for_select([["师生", SCHOOL],["同事", COLLEAGUE]],nil,"选择你们的关系")%>
+</span></p>
+<p><%= label_tag '选择你的角色'%><span style='color:red;'>*</span><br /><%= f.select(:sender_role,@user.resume.roles)%> <span id='sender_role'>你的角色,如没有请<%=link_to '添加',resumes_path,:class=>'ag'%>工作或教育经历</span></p> 
+<%= hidden_field_tag :receiver_id, @receiver.id %>    
+<p><%= label_tag '内容'%>(最少10个字符)<span style='color:red;'>*</span><br /><%= f.text_area :desc,:style => 'height:120px;'%> </p> 

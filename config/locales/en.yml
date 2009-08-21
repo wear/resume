@@ -1,5 +1,61 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+en:    
+  name: 'Name'
+  mobile: 'Mobile'
+  adr: 'address'
+  birth: 'Birthday'
+  pro: Profile
+  sex: Sex
+  male: Male
+  female: Female
+  hometown: Hometown
+  hukou: Hukou
+  portrait: Portrait
+  fill_in_profile: Fill in your profile
+  create: Create
+  resumes: Resumes
+  edit_personal_info: Edit Profile
+  edit_educations: Edit Educations
+  edit_additionalinfo: Edite Additionals
+  edit_positions: Edit Positions 
+  edit: Edit
+  add: Add
+  age: Age
+  birdth: Birth 
+  contact: Contact
+  intresters: Intres
+  edu: Educations 
+  positions: Positions
+  summary: Summary
+  usage: Usage
+  preview: Preview/Customize
+  back: Back
+  update: Update
+  request_recommendation: Request Recommendation
+  groups: Groups
+  awards: Awards
+  add_position: Add Position
+  title: Title
+  start_at: Start At
+  stop_at: End At
+  company: Company
+  desc: Description
+  still_on: I currently work here
+  school: School
+  degree: Degree
+  major: Major
+  new_education: Add Education
+  delete: Delete
+  comfirm: Are you sure?
+  download_pdf: Download
+  send_resume: Send Resume
+  content: Content
+  send: Send
+  follow_resume: Follow is my resume
+  mail_correct_notify: Please click this link if can't see this mail correctly 
+  recommendations: Recommendations
+  as: is his/her
+  all_positions: All Positions
+  all_educations: All Educations

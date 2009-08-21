@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090802025238
 #
 # Table name: resumes
 #
@@ -11,6 +11,7 @@
 #  salt       :string(255)
 #  usage      :string(255)
 #  type       :integer(4)
+#  lang       :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

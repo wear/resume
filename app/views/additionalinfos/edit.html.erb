@@ -1,15 +1,12 @@
-<h1>编辑兴趣爱好</h1>
+<% content_for :tabs do -%> 
+	<li><%=link_to(t(:edit_additionalinfo),'#tabs-content') %></li> 
+    <li><%=link_to t(:back), edit_resume_path(@resume)%></li> 
+<% end -%>
 
 <% form_for(@additionalinfo,:url => resume_additionalinfo_path(@resume)) do |f| %>
   <%= f.error_messages %>
     <%= render :partial => 'form',:locals => { :f => f } %>
   <p>
-    <%= f.submit '更新' %>
+    <%= f.submit t(:update) %>
   </p>
 <% end %>
-
-<%= link_to '返回', edit_resume_path(@resume) %>   
-
-<% content_for :sidebar do %>
-   <%= render :comatose=>'cn/additional' %>
-<% end -%>

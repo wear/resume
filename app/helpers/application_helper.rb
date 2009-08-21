@@ -3,9 +3,9 @@ module ApplicationHelper
   def format_sex(sex)
     case sex
     when 'm'
-      '男'
+      t(:male)
     when 'f'
-      '女'
+      t(:female)
     end
   end    
  
@@ -21,25 +21,25 @@ module ApplicationHelper
     (type == 'error') ? 'error' : 'highlight'
   end 
   
-  def avatar_for(profile)
-    if profile.avatar_exists?
-      image_tag((APP_URL + profile.assert.public_filename),:alt => "avatar")
+  def avatar_for(resume,width=77,heigth=99)
+    if resume.avatar_exists?
+      image_tag((APP_URL + resume.personalinfo.assert.public_filename),:alt => "avatar",:size => "#{width}x#{heigth}")
     else  
-      image_tag((APP_URL + '/images/unknow-avatar.jpg'),:alt => "avatar")
+      image_tag((APP_URL + '/images/unknow-avatar.jpg'),:alt => "avatar",:size => "#{width}x#{heigth}")
     end
   end
   
-  def avatar_for_pdf(profile)
-    if profile.avatar_exists?
-      profile.assert.public_filename
+  def avatar_for_pdf(resume)
+    if resume.avatar_exists?
+      resume.personalinfo.assert.public_filename
     else  
       'images/unknow-avatar.jpg'
     end
   end
   
-  def profile_completeness(resume)
+  def resume_completeness(resume)
     segments = [
-      {:val => 2, :action => link_to('添加一寸照', edit_user_profile_path(resume)), :test => resume.profile.avatar_exists? },
+      {:val => 2, :action => link_to('添加一寸照', edit_resume_personalinfo_path(resume)), :test => resume.avatar_exists? },
       {:val => 1, :action => link_to('添加个人总结', edit_resume_summary_path(resume)), :test => !(resume.summary.content == '暂无')},      
       {:val => 2, :action => link_to('增加工作经验', new_resume_position_path(resume)), :test => resume.positions.any? },            
       {:val => 1, :action => link_to('填写个人兴趣爱好', edit_resume_additionalinfo_path(resume)), :test => !(resume.additionalinfo.interests== '暂无')},                  
@@ -56,7 +56,11 @@ module ApplicationHelper
   end        
   
   def format_end_at(time)
-    return '至今' if time.nil?
+      if time.nil?
+        '至今'
+      else
+        time
+      end
   end
   
   def option_groups_for_select(collection,selected = nil)
@@ -68,5 +72,49 @@ module ApplicationHelper
     end
   end
   
+  def topnav_tab(name, options)
+    classes = [options.delete(:class)]
+    classes << 'current' if options[:section] && (options.delete(:section).to_a.include?(@section))
+    
+    "<li class='#{classes.join(' ')}'>" + link_to( "<span>"+name+"</span>", options.delete(:url), options) + "</li>"
+  end
   
+  def name_for_resume(resume)
+    resume.user.login + '的简历' + '(' + resume_lang(resume) + ')' 
+  end  
+  
+  def resume_lang(resume)
+     case resume.lang
+     when 'cn'
+       '中文'
+     when 'en'
+       'English'
+     end
+  end 
+  
+  def format_refer(refer)
+    (SCHOOL + COLLEAGUE).select{|v| v[1] == refer }[0][0]
+  end
+  
+  def message_req(user,message)
+    case message.req_type 
+  	when 'recommendation' 
+  	 content_tag(:li,link_to('评价对方',new_user_recommendation_path(user,:receiver_id => message.sender )))
+  	when 'edit_recommendation' 
+  	 content_tag(:li,link_to('修订评价',edit_user_recommendation_path(user,message.req_id,:receiver_id => message.sender )))
+  	when 'new_recommendation'
+  	  recommendation = Recommendation.find(message.req_id)
+  	  content_tag(:li,link_to('查看/修改',edit_visible_user_recommendation_path(user,recommendation))) 
+	 else
+	   content_tag(:li,link_to("回复", new_user_message_path(@user, :reply_to => @message)))
+	 end
+  end  
+  
+   def edit_visible(user,recommendation)         
+     if recommendation.visible     
+       link_to '不公开',visible_user_recommendation_path(user,recommendation,:visible => false),:method => :put,:class=> 'ag'
+     else
+       link_to '公开',visible_user_recommendation_path(user,recommendation,:visible => true),:method => :put,:class=> 'ag' 
+     end
+  end
 end

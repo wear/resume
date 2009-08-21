@@ -1,16 +1,26 @@
 class MessagesController < ApplicationController
   
   before_filter :set_user
+  before_filter :require_current_user
   
   def index
-    if params[:mailbox] == "sent"
-      @messages = @user.sent_messages
-    else
-      @messages = @user.received_messages
+    @section = 'message'
+    respond_to do |wants|
+        @messages = @user.received_messages
+        wants.html {  }
     end
   end
   
-  def show
+  def sent_box
+    @section = 'message'    
+    respond_to do |wants|
+        @messages = @user.sent_messages
+        wants.html {  }
+    end
+  end
+  
+  def show 
+    @section = 'message'
     @message = Message.read(params[:id], current_user)
   end
   

@@ -1,11 +1,14 @@
+<div style='float:left;margin-left:120px;'>  
+<div class='ui-corner-all note'>
+	<b>提示:</b>刚创建的帐户需要用注册邮箱里的链接激活!
+</div>  
 <h1>登录</h1>
-
 <% form_tag session_path do -%>
 <p><%= label_tag '用户名' %><br />
 <%= text_field_tag 'login', @login %></p>
 
 <p><%= label_tag '密码' %><br/>
-<%= password_field_tag 'password', nil %><%= link_to '忘记密码', forgot_password_path %></p>
+<%= password_field_tag 'password', nil %>  <%= link_to '忘记密码', forgot_password_path %></p>
 
 <!-- Uncomment this if you want this functionality
 <p><%= label_tag 'remember_me', 'Remember me' %>
@@ -13,4 +16,11 @@
 -->
 
 <p><%= submit_tag '登录' %></p>
-<% end -%>
+<% end -%> 
+</div>   
+<div style='float:right;margin:20px;'> 
+	<div class='span-5 ad'>
+	   <h3>更客观</h3> 
+		推荐你的同学/同事
+	</div>
+</div>

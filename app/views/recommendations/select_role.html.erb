@@ -1,0 +1,14 @@
+<% unless @resume.nil? -%>
+	
+<% case @type -%>
+<% when 'sender' %>
+	<% if @resume.roles.blank? -%>
+  		你还没有相关经历,请先<%=link_to '增加',edit_resume_path(@resume) %>
+	<% else -%>
+		<%= select :recommendation,:sender_role,@resume.roles %> 如果没有相关经历,请先<%=link_to '增加',edit_resume_path(@resume) %>
+	<% end -%>
+<% when 'receiver' %> 
+   <%= select :recommendation,:receiver_role,@resume.roles %>
+<% end %>          
+
+<% end -%>

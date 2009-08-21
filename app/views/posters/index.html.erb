@@ -1,2 +1,12 @@
-<h1>Posters#index</h1>
-<p>Find me in app/views/posters/index.html.erb</p>
+<% content_for :tabs do -%> 
+    <li><%=link_to('求职发送记录','#tabs-content') %></li>
+	<li><%=link_to t(:back), edit_resume_path(@resume)%></li> 
+<% end -%>
+
+<% @resume.posters.each do |poster| -%>
+职位:<%=h poster.position %> <br />
+email:<%=h poster.email %> 
+<p>
+<%=truncate(h(poster.content),100) %> 
+</p>
+<% end %>

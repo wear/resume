@@ -1,22 +1,14 @@
-<h3>评价<%=h @receiver.profile.name %> </h3> 
-<%
-a = [
-	['同学',0],['师生',1],['同事',2]
-	]
-%>
-<% form_for(@recommendation,:url => user_recommendations_path(current_user)) do |f| %> 
-<p><%= label_tag '选择角色'%> <br /><%= select_tag('resume_id', options_for_select(@receiver.resumes.collect{|r| [r.name,r.id]}.insert(0,'请选择')), { "onchange" => remote_function(   
-                    :with => "'resume_id='+value",   
-                    :update => 'role_select',   
-                    :url => { :action => :select_role },:method => :get ) })%> <span id='role_select'>角色</span></p>
-<p><%= label_tag '与当事人的关系'%><br /><%=f.select :refer_type, a %>
-</span></p>    
-<p><%= label_tag '内容'%> <br /><%= f.text_area :desc,:style => 'height:120px;'%> </p>
-<p>
-	<%= submit_tag '发送'%>
+<h3>评价<%=h @receiver.login %> </h3> 
+
+<% form_for(@recommendation,:url => user_recommendations_path(current_user)) do |f| %>   
+<%= f.error_messages %> 
+<%= render :partial => 'form',:locals => {:f => f} %>
+
+<p>                  
+	<%= submit_tag '确定'%>
 </p>                                                             	
 <% end -%> 
 
 <% content_for :sidebar do -%>
-	<%= render :comatose => 'cn/add-recommandation'%>
+收费电视
 <% end -%> 
