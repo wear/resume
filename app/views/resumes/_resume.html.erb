@@ -3,24 +3,21 @@
 		    <%=link_to t(:download_pdf),APP_URL + public_resume_pdf_path(@resume.salt)%>
 	</div>
 
+
 <div class="section profile"> 
 	<div class='identi'>
 		<h3><%= t(:pro)%> </h3>
-		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='35%'><%=t(:sex)%>:</td><td><%= format_sex(@resume.personalinfo.sex) %></td></tr> 
-			<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
-			<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
-			<tr><td><%=t(:age)%>:</td><td><%= format_age(@resume.personalinfo.birthday) %></td></tr> 
-			<tr><td><%=t(:birth)%>:</td><td><%= @resume.personalinfo.birthday %></td></tr> 
-		</table>
+			<span><%=t(:sex)%>:</span><%= format_sex(@resume.personalinfo.sex) %><br /> 
+			<span><%=t(:hometown)%>:</span><%=h @resume.personalinfo.hometwon %><br /> 
+			<span><%=t(:hukou)%>:</span><%=h @resume.personalinfo.hukou %><br />
+			<span><%=t(:age)%>:</span><%= format_age(@resume.personalinfo.birthday) %><br />
+			<span><%=t(:birth)%>:</span><%= @resume.personalinfo.birthday %><br />
 	</div>
 	<div class='contact'>
 		<h3><%=t(:contact)%></h3>
-		<table border="0" cellspacing="1" cellpadding="1">
-			<tr><td width='35%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
-			<tr><td>Email:</td><td><%=h @resume.personalinfo.email %></td></tr> 
-			<tr><td><%=t(:mobile)%>:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
-		</table>
+		<span><%=t(:adr)%>:</span><%=h @resume.personalinfo.address %><br /> 
+		<span>Email:</span><%=h @resume.personalinfo.email %><br />
+		<span><%=t(:mobile)%>:</span><%=h @resume.personalinfo.mobile %><br />
 	</div>
 </div>
 <div class="section"> 
@@ -39,7 +36,7 @@
 
 <div class="span-15 section">  
 	<h2><%=t(:positions)%></h2>
-	<div class="box">  
+	<div class="box position">  
 		<% @resume.positions.each do |position| -%>
 		<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
 		<h3><%=h position.title %></h3>
@@ -54,10 +51,14 @@
 <div class="span-15 section">  
 	<h2><%=t(:intresters)%></h2>      
 	<div class="box">
-		<table border="0" cellspacing="1" cellpadding="1" class='intresting'>
-			<tr><td width='20%'><%=t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+		<table border="0" cellspacing="1" cellpadding="1" class='intresting'> 
+			<col class='intrest-title'>
+			<col class='intrest-content'>
+			<tbody>
+			<tr><td><%=t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
 			<tr><td><%=t(:groups)%>:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
-			<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr> 
+			<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr>
+			</tbody> 
 		</table>
 	</div>
 </div>

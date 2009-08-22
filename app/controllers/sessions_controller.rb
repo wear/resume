@@ -1,13 +1,7 @@
 class SessionsController < ApplicationController      
   include FaceboxRender
   layout 'landing'                  
-  
-  def login_box 
-    respond_to do |wants|
-      wants.html { }
-      wants.js  { render_to_facebox(:partial => 'sessions/login_box' ) }
-    end
-  end     
+     
   
   def index
     redirect_to :action => "new"
@@ -26,11 +20,11 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-    flash.now[:notice] = '登录成功!'
-    wants.html { redirect_back_or_default resumes_path }
+      flash.now[:notice] = '登录成功!'
+      wants.html { redirect_back_or_default resumes_path }
     else
-    flash.now[:error] = '有错误发生！'
-    wants.html { render :action => "new" } 
+      flash.now[:error] = '有错误发生！'
+      wants.html { render :action => "new" } 
     end
     end
   end

@@ -74,11 +74,11 @@ class User < ActiveRecord::Base
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
-    def self.authenticate(login, password)
-      return nil if login.blank? || password.blank?
-      u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
-      u && u.authenticated?(password) ? u : nil
-    end
+   def self.authenticate(login, password)
+     return nil if login.blank? || password.blank?
+     u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
+     u && u.authenticated?(password) ? u : nil
+   end
 
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
