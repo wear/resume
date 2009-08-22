@@ -25,11 +25,11 @@
 
 
    
-<div class="section"> 
+<div class="section" style='clear:both;'> 
 <div class='more'> 
 	<%=link_to t('edit'),edit_resume_personalinfo_path(@resume),:class =>'ag'%>
 </div>
-<div class='span-6'>
+<div class='span-6' style='float:left;'>
 		<h3 class='pro'><%=t(:pro)%></h3>
 		<table >
 			<col style='width:60px;'>
@@ -43,7 +43,7 @@
 			</tbody>  
 		</table>
 </div>
-<div class='span-6 last'>
+<div class='span-6 last' style='float:right;'>
 		<h3 class='pro'><%= t(:contact) %></h3>
 		<table>
 			<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
@@ -93,7 +93,7 @@
 	</div>
 	<h3><%= t(:intresters)%></h3>      
 	<div class="main">
-		<table border="0" cellspacing="1" cellpadding="1">
+		<table class='intrest'>
 			<col style='width:80px;'>
 			<col>
 			<tbody>
@@ -113,7 +113,7 @@
 	<% @resume.educations.each do |education| -%>
 	<div class="main">  
 		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
-		<span style='width:200px;padding-top:10px'><%=h education.name %></span>
+		<h4><%=h education.name %></h4>
 		<address><%=h education.degree %> - <%=h education.field %></address>
 		<ul style='clear:both;'>
 			<li><%= education.description %></li>

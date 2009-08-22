@@ -13,6 +13,6 @@
 #
 
 class Additionalinfo < ActiveRecord::Base
-    validates_length_of :interests, :within => 2..20
+    validates_length_of :interests, :minimum => 10
     belongs_to :resume  
 end

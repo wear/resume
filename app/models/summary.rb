@@ -14,7 +14,7 @@
 class Summary < ActiveRecord::Base 
     belongs_to :resume  
     validates_presence_of :content,:specialties
-    validates_length_of :content, :within => 2..20
+    validates_length_of :content, :minimum => 10
     acts_as_taggable
     
 end

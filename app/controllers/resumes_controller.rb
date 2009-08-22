@@ -48,16 +48,30 @@ class ResumesController < ApplicationController
   end 
   
   def public
-      @resume = Resume.find_by_salt(params[:salt]) 
-      @user = @resume.user 
-      set_language
-     respond_to do |format|
-       format.html { render :layout => 'resume'}
-       format.xml  { render :xml => @resume }
-       format.pdf { render :action => :show,:layout => false,
-             :prawnto => {:inline=> false,:filename => 'sdfasf.pdf'}}
+      @resume = Resume.find_by_salt(params[:salt])    
+     respond_to do |format|                        
+       if @resume 
+         @user = @resume.user 
+         set_language
+         format.html { render :layout => 'resume'}
+         format.xml  { render :xml => @resume }
+         format.pdf { render :layout => false,
+             :prawnto => {:prawn => {
+                    :page_size => 'A4',
+                    :left_margin => 50,
+                    :right_margin => 50,
+                    :top_margin => 24,
+                    :bottom_margin => 24},:inline=> false,:filename => "#{@resume.name.gsub(' ','_')}.pdf"}} 
+       else
+         wants.html { redirect_to login_path }
+       end    
      end   
-  end 
+  end  
+  
+  def pdf
+    make_and_send_pdf("file_name")
+  end
+  
   
   def edit_item
     @resume = Resume.find(params[:id])
