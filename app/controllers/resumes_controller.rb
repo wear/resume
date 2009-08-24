@@ -63,7 +63,7 @@ class ResumesController < ApplicationController
                     :top_margin => 24,
                     :bottom_margin => 24},:inline=> false,:filename => "#{@resume.name.gsub(' ','_')}.pdf"}} 
        else
-         wants.html { redirect_to login_path }
+         format.html { redirect_to login_path }
        end    
      end   
   end  

@@ -2,7 +2,7 @@
 	<%= javascript_include_tag 'jquery.progressbar.min' %>
 <% end %>
 <% content_for :tabs do -%>
- 	<li><%=link_to('全部简历','#tabs-content') %></li>
+ 	<li><%=link_to('我的简历','#tabs-content') %></li>
 <% end -%>
 <dl>
 <% completeness ||= resume_completeness(@resume) %>

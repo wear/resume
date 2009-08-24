@@ -12,6 +12,12 @@ class UserMailer < ActionMailer::Base
     @subject    += '密码重设'  
     @body[:password]  = "#{password}"
     @body[:url]  = "#{APP_URL}"
+  end  
+  
+  def site_notify(user)
+    setup_email(user)  
+    @subject    += '站点/简历更新'
+    @body[:user] = user 
   end
   
   def recommandition_request(resume,recipients,subject,body,role,code)

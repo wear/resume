@@ -49,10 +49,16 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :email, :name, :password, :password_confirmation 
+  
+  named_scope :weekly_joined,:conditions => ["created_at > ?", DateTime.now.to_time.at_beginning_of_week]
   
   before_create :make_initation_code
   before_create :make_activation_code   
+  
+  def offical_name
+    (!resume.nil? && !resume.personalinfo.nil?) ? login : resume_name 
+  end
   
   def admin?
     all_roles.include?("superuser")

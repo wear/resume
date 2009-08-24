@@ -143,7 +143,7 @@
           <span class="progressBar" id="progressbar">&nbsp;</span>     
 		 <ul class='checks'>
 				<% completeness[:incomplete].each do |line| %>
-				<li><%= line[:action]  %>+<small>(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</small></li>
+				<li><%= line[:action]  %><small>(<%=number_to_percentage((line[:val].to_f/completeness[:total].to_f)*100, :precision => 0)%>)</small></li>
 				<% end %>
 				</ul>  
 </div>

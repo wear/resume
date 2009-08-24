@@ -1,8 +1,7 @@
 class Admin::UsersController < ApplicationController     
-  before_filter :login_required
-  access_control :DEFAULT => 'superuser'
-  
-  def index
+    layout 'admin'    
+  def index       
+    @section = 'admin_user' 
     @users = User.paginate :page => params[:page], :order => 'created_at DESC'
   end     
   

@@ -1,14 +1,24 @@
+<%= will_paginate @users,:class =>'apple_pagination' %> 
 <table>
-  <tr>
+  <tr>  
+	<th>ID</th>
 	<th>用户名</th>
+	<th>简历情况</th>
+	<th>好友数</th>
+	<th>加入时间</th>
+	<th>操作</th>
   </tr>
 
 <% @users.each do |user| %>
-  <tr>   
-	<td><%= user.login %></td>
-    <td><%= link_to '查看', user,:target => '_blank' %></td>
-    <td><%= link_to '编辑', edit_user_path(user) %></td>
-    <td><%= link_to '删除', admin_user_path(user), :confirm => '你确定嘛?', :method => :delete %></td>
+  <tr>     
+	 <td><%= user.id %></td>
+	<td><%=link_to h(user.login),user,:target => '_blank' %></td>
+    <td><%= resume_status(user) %></td>
+    <td><%= user.friendships.count %></td>
+	<td><%= user.created_at %></td> 
+	<td><%= link_to '删除', admin_user_path(user), :confirm => '你确定嘛?', :method => :delete %></td> 
   </tr>
 <% end %>
-</table>
+</table>   
+
+<%= will_paginate @users,:class =>'apple_pagination'  %> 
