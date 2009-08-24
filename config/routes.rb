@@ -10,14 +10,21 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.public_resume '/public/resume/:salt', :controller => 'resumes', :action => 'public', :salt => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box' 
-  map.admin '/admin', :controller => 'admin/admin', :action => 'index'  
+ 
  
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
   map.public_resume_pdf '/public/resumes/:salt', :controller => 'resumes', :action => 'public',:format => 'pdf' 
   map.jobs '/jobs',:controller => 'landing',:action => 'jobs'
   map.tools '/tools',:controller => 'landing',:action => 'tools' 
-  map.books '/books',:controller => 'landing',:action => 'books' 
+  map.books '/books',:controller => 'landing',:action => 'books'   
   
+  # admin 
+  
+  map.with_options :controller => 'admin' do |admin|
+    admin.admin 'admin', :action => 'index'
+    admin.send_mail '/admin/mail',:action => 'mail'
+  end
+                 
   map.namespace :admin do |admin|
     admin.resources :resumes
     admin.resources :users
