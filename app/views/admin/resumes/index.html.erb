@@ -7,13 +7,15 @@
   </tr>
 
 <% @resumes.each do |resume| %>
-  <tr>         
+  <tr>  
+	<% begin %>
 	<td><%= resume.id %></td>
 	<% completeness ||= resume_completeness(resume) %>
 	<% percent = completeness[:score] %>
 	<td> <%=link_to resume.name,resume.public_url,:target =>'_blank' %></td>
 	<td><%= number_to_percentage percent.to_i %></td>
 		<td><%= resume.created_at %></td>     
+<% rescue %>iasdf<% end %>
   </tr>
 <% end %>
 </table>
