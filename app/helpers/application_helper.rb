@@ -129,11 +129,11 @@ module ApplicationHelper
    end
   end
   
-  def resume_center_path(user)
-    if user.resume.nil?
+  def resume_center_path(resume)
+    if resume.nil? || resume.new_record?
       new_resume_path
-    else
-      edit_resume_path(user.resume)
+    else  
+      edit_resume_path(resume)
     end
   end  
   

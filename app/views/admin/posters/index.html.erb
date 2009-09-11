@@ -1,0 +1,18 @@
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<th>用户名</th>
+		<th>职位</th>
+		<th>Email</th> 
+		 <th>内容</th>
+		<th>时间</th> 
+	</tr>
+	<% @posters.each do |poster| -%>     
+	<tr> 
+		<td><%= poster.resume.user.login %></td>
+		<td><%=h poster.position %></td>
+		<td><%=h poster.email %></td>
+		<td><%=truncate(h(poster.content),20) %>  </td>
+		<td><%= poster.created_at %>  </td>
+		</tr> 
+		<% end %>   
+</table>

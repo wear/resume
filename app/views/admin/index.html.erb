@@ -1,5 +1,13 @@
 <h3>状态</h3>
 <div id="box">
 目前注册会员<span><%= User.count %></span>名,简历数<span><%= Resume.count %></span>,本周新增<span><%= User.weekly_joined.size %> </span>名会员
+</div> 
+<h3>求职申请</h3>
+<div id="box">
+申请数<%= Poster.count %>
+</div> 
+<h3>好友数</h3>
+<div id="box">
+好友数<%= Friendship.count %>
 </div>
 
