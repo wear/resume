@@ -2,7 +2,7 @@
 	<div class='sidebar ui-corner-all' style='width:150px'>
 			<h4 id='service'>菜单</h4> 
 		 	<ul >  
-				<%= topnav_tab('简历中心', :url => resumes_path ,:section => 'resume') %> 
+				<%= topnav_tab('简历中心', :url => resume_center_path(current_user) ,:section => 'resume') %> 
 				<%= topnav_tab('评价管理', :url => user_recommendations_path(current_user) ,:section => 'recommendation') %> 
 			    <%= topnav_tab('关系圈', :url => user_friendships_path(current_user) ,:section => 'friendship') %> 
 				<%= topnav_tab('便条', :url => user_messages_path(current_user) ,:section => 'message') %>   

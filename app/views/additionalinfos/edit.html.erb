@@ -1,7 +1,4 @@
-<% content_for :tabs do -%> 
-	<li><%=link_to(t(:edit_additionalinfo),'#tabs-content') %></li> 
-    <li><%=link_to t(:back), edit_resume_path(@resume)%></li> 
-<% end -%>
+<h1><%= t(:edit_additionalinfo) %></h1>
 
 <% form_for(@additionalinfo,:url => resume_additionalinfo_path(@resume)) do |f| %>
   <%= f.error_messages %>

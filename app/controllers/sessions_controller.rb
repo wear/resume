@@ -20,8 +20,12 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      flash.now[:notice] = '登录成功!'
-      wants.html { redirect_back_or_default resumes_path }
+      flash.now[:notice] = '登录成功!'     
+      if current_user.resume.nil?
+        wants.html { redirect_back_or_default new_resume_path }
+      else
+        wants.html { redirect_back_or_default edit_resume_path(current_user.resume) }
+      end
     else
       flash.now[:error] = '有错误发生！'
       wants.html { render :action => "new" } 
@@ -36,7 +40,6 @@ class SessionsController < ApplicationController
     reset_session
     flash[:notice] = '您已退出'
     redirect_to new_session_path
-  end
+  end   
   
- 
 end

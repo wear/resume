@@ -1,4 +1,6 @@
-class Admin::ResumesController < ApplicationController   
+class Admin::ResumesController < ApplicationController 
+  before_filter :login_required
+  access_control :DEFAULT => '(superuser)'  
     layout 'admin'
         
   def index     

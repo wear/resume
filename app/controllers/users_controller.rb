@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     find_code
     
     respond_to do |wants|
-    if logged_in?     
+     if logged_in?     
       User.transaction do
         if find_friend && current_user.become_friend_with(@friend)
           flash[:notice] = "成功添加加#{@friend.resume_name}为好友!"            
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
     end
   end
- 
+  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
@@ -39,9 +39,9 @@ class UsersController < ApplicationController
             send_friendship_message(@friend,@user) 
             flash[:notice] += "成功添加加#{@friend.resume.personalinfo.name}为好友!"  
           end   
-            wants.html { redirect_to login_path }
+          wants.html { redirect_to login_path }
         else 
-          wants.html { render :action => 'new',:layout => 'landing' }
+          wants.html { render :action => 'new', :layout => 'landing' }
         end
       end 
     end
@@ -113,6 +113,7 @@ class UsersController < ApplicationController
     end
   end 
   
+  
   protected
   
   def find_code
@@ -124,7 +125,6 @@ class UsersController < ApplicationController
   def find_friend
      @friend = User.find_by_invitation_code(session[:invitation_code])  if  session[:invitation_code]
   end
-  
   
   def send_friendship_message(sender,receiver)
     message = Message.new(:subject => '#{sender.resume_name}请你推荐他/她',:body => "<p>你的评价对我将十分重要，多谢!<p><p>#{sender.resume_name}",:req_type => 'recommendation')

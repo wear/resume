@@ -1,7 +1,4 @@
-<% content_for :tabs do -%>
-	<li><%=link_to('编辑个人总结','#tabs-content') %></li> 
-	<li><%=link_to('返回', edit_resume_path(@resume) ) %></li>
-<% end -%>
+<h1>编辑个人总结</h1> 
 
 	<% form_for(@summary,:url => resume_summary_path(@resume)) do |f| %>
 	  <%= f.error_messages %>

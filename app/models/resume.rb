@@ -16,12 +16,12 @@
 
 class Resume < ActiveRecord::Base
   belongs_to :user     
-  has_many :positions
-  has_many :educations
-  has_one :summary
-  has_one :additionalinfo
-  has_one :personalinfo  
-  has_many :posters 
+  has_many :positions, :dependent => :destroy
+  has_many :educations, :dependent => :destroy
+  has_one :summary, :dependent => :destroy
+  has_one :additionalinfo, :dependent => :destroy
+  has_one :personalinfo, :dependent => :destroy  
+  has_many :posters, :dependent => :destroy 
   validates_length_of :usage, :within => 2..20,:allow_blank => true  
    
   
@@ -29,7 +29,7 @@ class Resume < ActiveRecord::Base
   @@per_page = 20 
   
   def name
-    personalinfo.name + '的简历'
+    (personalinfo.nil? ? user.login : personalinfo.name) + '的简历'
   end
   
   def avatar_exists?
