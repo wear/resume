@@ -1,8 +1,4 @@
-<% content_for :tabs do -%> 
- 	<li><%=link_to(t(:new_education), '#tabs-content' ) %></li>
-    <li><%=link_to(t(:back),resume_educations_path(@resume)) %></li>
-<% end -%>
-
+<h1>添加教育情况</h1>
 <% form_for(@education,:url => resume_educations_path(@resume)) do |f| %>
   <%= f.error_messages %>
    <%= render :partial => 'form', :locals => { :f => f }%> 

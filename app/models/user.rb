@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   has_one :resume, :dependent => :destroy
-  has_one :profile, :dependent => :destroy
   has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
   has_many :pending_friends, :class_name => "Friendship", :foreign_key => "friend_id",:conditions => ['status = ?','pending'], :dependent => :destroy 
   has_and_belongs_to_many :roles
@@ -42,7 +41,7 @@ class User < ActiveRecord::Base
   validates_length_of       :name,     :maximum => 100
 
   validates_presence_of     :email
-  validates_length_of       :email,    :within => 6..100 #r@a.wk
+  validates_length_of       :email,    :within => 4..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
@@ -57,7 +56,7 @@ class User < ActiveRecord::Base
   before_create :make_activation_code   
   
   def offical_name
-    (!resume.nil? && !resume.personalinfo.nil?) ? login : resume_name 
+    (resume.nil? || resume.personalinfo.nil?) ? login : resume_name 
   end
   
   def admin?

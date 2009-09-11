@@ -48,11 +48,6 @@
 		<% end -%>
 
         <div class='span-18 last'> 
-         		<div id="tabs">
-			     <ul>  
-					<%= yield :tabs %>
-			     </ul>
-				<div id="tabs-content"> 
 					<div class='ui-widget'>
 					    <div id="ajax-indicator" style="display:none;" class='ui-state-highlight ui-corner-all'><span>载入中</span></div> 
 					</div>
@@ -60,8 +55,6 @@
 						<%= yield %>          
 					</div>  
 				   	<%= yield :tab_sidebar %>
-				</div>
-			</div>  
         </div>
 	</div> 
     <%= render :partial => '/shared/footer' %>

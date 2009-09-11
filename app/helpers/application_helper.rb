@@ -118,4 +118,23 @@ module ApplicationHelper
        link_to '公开',visible_user_recommendation_path(user,recommendation,:visible => true),:method => :put,:class=> 'ag' 
      end
   end
+  
+  def resume_status(u)
+    if u.resume.nil? 
+       '没有创建' 
+    else     
+     completeness ||= resume_completeness(u.resume)
+     percent = completeness[:score]
+     number_to_percentage(percent)
+   end
+  end
+  
+  def resume_center_path(resume)
+    if resume.nil? || resume.new_record?
+      new_resume_path
+    else  
+      edit_resume_path(resume)
+    end
+  end  
+  
 end

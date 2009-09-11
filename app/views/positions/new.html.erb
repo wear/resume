@@ -1,7 +1,4 @@
-<% content_for :tabs do -%> 
-	<li><%=link_to(t(:add_position),'#tabs-content') %></li>
-	<li><%=link_to t(:back), resume_positions_path(@resume)%></li> 
-<% end -%>
+<h1><%= t(:add_position)%></h1>
 
 <% form_for(@position,:url => resume_positions_path(@resume)) do |f| %>
   <%= f.error_messages %>

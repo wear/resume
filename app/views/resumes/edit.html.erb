@@ -1,15 +1,6 @@
 <% content_for :head do -%>
 	<%= javascript_include_tag 'jquery.progressbar.min' %>
-<% end %>       
-
-<% content_for :tabs do -%> 
- 	<li><%=link_to(t(:resumes), resumes_path ) %></li>
-	<li class='ui-tabs-selected'><%=link_to(name_for_resume(@resume),'#tabs-content') %></li>
-	 <li><%=link_to(t(:edit_personal_info),edit_resume_personalinfo_path(@resume)) %></li>
-	<li><%=link_to(t(:edit_positions),resume_positions_path(@resume)) %></li>
-	<li><%=link_to(t(:edit_additionalinfo),edit_resume_additionalinfo_path(@resume)) %></li> 
-    <li><%=link_to(t(:edit_educations),resume_educations_path(@resume)) %></li>
-<% end -%>           
+<% end %>            
 
 <% completeness ||= resume_completeness(@resume) %>
 <% percent = completeness[:score] %>

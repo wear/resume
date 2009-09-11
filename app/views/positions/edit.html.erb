@@ -1,8 +1,5 @@
-<% content_for :tabs do -%> 
- 	<li><%=link_to(t(:edit_positions),'#tabs-content') %></li> 
-    <li><%=link_to t(:all_positions), resume_positions_path(@resume)%></li>       
-    <li><%=link_to @resume.name, edit_resume_path(@resume)%></li>
-<% end -%>
+<h1><%= t(:edit_positions) %></h1>
+
 <div class='span-13'> 
 
 <% form_for(@position, :url => resume_position_path(@resume,@position)) do |f| %>
@@ -13,6 +10,4 @@
   </p>
 <% end %> 
 </div>
-<div class='tab-sidebar' style='width:130px;float:right;padding-left:10px;'> 
-	sf
-</div>
+

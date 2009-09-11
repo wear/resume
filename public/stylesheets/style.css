@@ -309,7 +309,7 @@ h4,h5 {
 	margin:0px;
 }    
 
-#tabs ul li{font-size:12px;}
+#tabs ul li{font-size:14px;}
 
 #tabs-content{
 	padding:10px;
@@ -318,7 +318,7 @@ h4,h5 {
 .tab-sidebar{ 
 	border:1px solid #ccc;
 	background-color:#EFEFEF;
-	width:140px;float:right;padding:5px;
+	width:160px;float:right;padding:5px;
 } 
 
 .tab-sidebar ul li{ 
@@ -326,7 +326,8 @@ h4,h5 {
 	margin:2px 0px;
 } 
 
-.tab-sidebar ul li a{ 
+.tab-sidebar ul li a{
+	font-size:13px; 
 	color: #009900;
 	  
 }

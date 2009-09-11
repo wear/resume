@@ -158,7 +158,6 @@ class ResumesController < ApplicationController
   # DELETE /resumes/1
   # DELETE /resumes/1.xml
   def destroy
-       
     @resume.destroy
     flash[:notice] = '删除成功!'
     respond_to do |format|
