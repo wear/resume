@@ -4,6 +4,7 @@ config/database.yml
 public/asserts
 log/*.log
 tmp/**/*
+tmp/*
 doc/**/*
 test/**/* 
 public/asserts/**/*
