@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.comatose_admin 'admin/cms'
+  map.comatose_blog 'blog', :index=>'blog',:layout => 'blog'
   map.resource :session
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.help '/help', :controller => 'landing', :action => 'help'

@@ -7,7 +7,8 @@ Comatose.configure do |config|
   config.admin_sub_title = "Content for the rest of us..."
 
   # Includes AuthenticationSystem in the ComatoseAdminController
-  config.admin_includes << :authenticated_system
+  config.admin_includes << :authenticated_system 
+  config.helpers <<  :application_helper
 
   # Calls :login_required as a before_filter
   config.admin_authorization do

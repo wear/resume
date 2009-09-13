@@ -6,8 +6,19 @@
 	<ul>
 		<li><%= link_to '招聘信息',jobs_path %></li>
 		<li><%= link_to '相关工具',tools_path %></li>
-		<li><%=link_to '意见反馈','http://spreadsheets.google.com/viewform?formkey=cmhJV0c1ZXFaWkRlckNLLTQ4dEQzNUE6MA',:target => '_blank'%></li><li><%=link_to '帮助',help_path%></li> <li><%=link_to '联系我们',contact_path%></li><li><%=link_to '首页','/'%><li> 
+		<li><%=link_to '博客',comatose_blog_path %></li><li><%=link_to '帮助',help_path%></li> <li><%=link_to '联系我们',contact_path%></li><li><%=link_to '首页','/'%><li> 
 	</ul>
 	</div>	
 </div>   
 
+<% unless  ENV['RAILS_ENV'] == 'development' %>     
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9920036-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<% end %>

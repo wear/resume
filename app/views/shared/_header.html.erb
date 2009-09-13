@@ -27,7 +27,7 @@
 				<% restrict_to "superuser" do %>
 				  <%= link_to "管理", admin_path %>
 				<% end %>
-				<%=link_to '注销', logout_path %> <%=link_to '帮助',help_path%> <%=link_to '联系我们',contact_path%></h2>
+				<%=link_to '注销', logout_path %> <%=link_to '帮助',help_path%> <%=link_to '博客',comatose_blog_path %></h2>
 		    <% else -%>
 		      <h2><%=link_to '登录',login_path%> <%= link_to '注册', signup_path %> <%=link_to '帮助',help_path%> </h2> 
 			<% end -%>

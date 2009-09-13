@@ -5,36 +5,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>半亩塘 - 在线简历制作</title> 
-  <meta name="description" content="半亩塘 - 让你快速创建更管用的简历" />
-  <meta name="keywords" content="简历制作,在线简历,个人简,简历模板,求职简历,个人简历表格,英文简历
-简历表,个人简历模板,个人简历封面,简历范文,简历下载" />
-  <meta name="robots" content="all" />
-  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">    
-  <!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]--> 
-  <%= stylesheet_link_tag 'style' %>  
-  <%= stylesheet_link_tag 'facebox' %>
-  <%= stylesheet_link_tag 'ui-theme' %>
-  <%= javascript_include_tag 'jquery.min' %>
-  <%= javascript_include_tag 'jrails' %>
-  <%= javascript_include_tag  'application' %>
-  <%= javascript_include_tag 'facebox' %>
-  <%= javascript_include_tag  'jquery-ui.min' %>
-  <%= yield :head %>
-  <script type="text/javascript" charset="utf-8">
-	 $j(document).ready(function() {
-		$j("#tabs").tabs({
-		    select: function(event, ui) {
-		        var url = $.data(ui.tab, 'load.tabs');
-		        if( url ) {
-		            location.href = url;
-		            return false;
-		        }
-		        return true;
-		    }
-		});
-	 });
-  </script>   
+  <%= render :partial => '/shared/script_and_tags' %>
+  <%= yield :head %>  
 </head>
 <body>
 <div class='container'>
@@ -48,9 +20,6 @@
 		<% end -%>
 
         <div class='span-18 last'> 
-					<div class='ui-widget'>
-					    <div id="ajax-indicator" style="display:none;" class='ui-state-highlight ui-corner-all'><span>载入中</span></div> 
-					</div>
 					<div class='span-13'>  
 						<%= yield %>          
 					</div>  
@@ -59,16 +28,5 @@
 	</div> 
     <%= render :partial => '/shared/footer' %>
 </div>            
-<% unless  ENV['RAILS_ENV'] == 'development' %>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-9920036-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-<% end %> 
 </body>
 </html>

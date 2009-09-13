@@ -17,10 +17,10 @@ td {
 div{ white-space:normal; word-break:break-all;overflow:hidden;}
 h4{ white-space:normal; word-break:break-all;overflow:hidden;}    
 ul li{list-style:none;}  
-
-h1{font-size:24px;} 
-
-h2{font-size:18px;}
+                      
+h1,h2,h3,h4 {color:#008000;}
+h1{font-size:24px;  } 
+h2{font-size:18px;   }
 
  
 /* --- href ----*/
@@ -224,7 +224,6 @@ h4{
 	width:100px;
 }   
 .announce h1{
-	color:#133855;
 	font-family:Helvetica,Arial,sans-serif;
 	font-size:240%;
 	font-weight:normal;
@@ -548,6 +547,13 @@ ol
 	vertical-align:middle;
 }
 
-#mq td img{ 
-
+/* blog */  
+.post,.blog-content{ font-size:14px;margin:10px; }
+.post-meta{
+	margin:10px 0px;
+	color:#ccc;
+}
+.post h2 a{  
+	font-size:21px;
+   color:#008000; 
 }
