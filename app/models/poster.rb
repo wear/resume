@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090802025238
+# Schema version: 20090729062155
 #
 # Table name: posters
 #
@@ -7,7 +7,7 @@
 #  position   :string(255)
 #  email      :string(255)
 #  content    :text
-#  user_id    :integer(4)
+#  resume_id  :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #

@@ -22,8 +22,8 @@ class Resume < ActiveRecord::Base
   has_one :additionalinfo, :dependent => :destroy
   has_one :personalinfo, :dependent => :destroy  
   has_many :posters, :dependent => :destroy 
-  validates_length_of :usage, :within => 2..20,:allow_blank => true  
-   
+  validates_length_of :usage, :within => 2..20
+     
   
   cattr_reader :per_page
   @@per_page = 20 

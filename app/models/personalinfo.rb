@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090802025238
+# Schema version: 20090729062155
 #
 # Table name: personalinfos
 #
@@ -15,6 +15,7 @@
 #  hukou          :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  user_id        :integer(4)
 #  resume_id      :integer(4)
 #
 
@@ -28,7 +29,7 @@ class Personalinfo < ActiveRecord::Base
   validates_numericality_of :mobile
   validates_format_of :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/
   validates_length_of       :email,    :within => 6..100 #r@a.wk   
-  validates_format_of       :email,    :with => Authentication.email_regex, :message => '必须符合email的格式'      
+  validates_format_of       :email,    :with => Authentication.email_regex, :message => '必须符合email的格式'  
  
   def avatar_data=(data) 
     return if data.blank?
