@@ -2,10 +2,10 @@ class LandingController < ApplicationController
   include FaceboxRender
              
   def index
-  #  @resumes = Resume.find(:all) 
+    @asserts = Assert.find(:all,:limit => 10,:conditions => ['attachable_type = ?','Personalinfo'])
   respond_to do |wants|
     if logged_in?
-      wants.html { redirect_to resumes_path }
+      wants.html { redirect_to current_user }
     else
       wants.html { }
     end

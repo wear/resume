@@ -15,8 +15,37 @@
 		在线浏览,递email,导出打印
 	</div> 
 </div>
-	<div class='span-10' style='text-align:right;padding:20px 30px 0px 0px;'>
-   	 <%=image_tag 'snap.jpg', :border => '0',:align => 'center'%>    
+	<div class='span-10' style='text-align:right;'>
+   	 <%#=image_tag 'snap.jpg', :border => '0',:align => 'center'%>
+	<div id="mq" onMouseOver="iScrollAmount=0"
+	onmouseout="iScrollAmount=1" >
+   <table >
+	<tbody> 
+		<% @asserts.each do |assert| -%>
+			<tr><td><h4><%=assert.attachable.name %> - <%=assert.attachable.resume.usage %></h4><%=image_tag assert.public_filename%> </td></tr>
+        <% end -%>
+	</tbody>
+   </table>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+	var oMarquee = document.getElementById("mq"); //滚动对象
+	var iLineHeight = 133; //单行高度，像素
+	var iLineCount = 10; //实际行数
+	var iScrollAmount = 142; //每次滚动高度，像素
+	function run() {
+	oMarquee.scrollTop += iScrollAmount;
+	if ( oMarquee.scrollTop == iLineCount * iLineHeight )
+	oMarquee.scrollTop = 0;
+	if ( oMarquee.scrollTop % iLineHeight == 0 ) {
+	window.setTimeout( "run()", 2000 );
+	} else {
+	window.setTimeout( "run()", 50 );
+	}
+	}  
+	oMarquee.innerHTML += oMarquee.innerHTML;
+	window.setTimeout( "run()", 50 ); 
+	</script>
    </div>
    <div class='span-10 last'>   
 	<% if false %>
