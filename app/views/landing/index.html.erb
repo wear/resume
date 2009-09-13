@@ -32,13 +32,13 @@
 	var oMarquee = document.getElementById("mq"); //滚动对象
 	var iLineHeight = 133; //单行高度，像素
 	var iLineCount = 10; //实际行数
-	var iScrollAmount = 142; //每次滚动高度，像素
+	var iScrollAmount = 133; //每次滚动高度，像素
 	function run() {
 	oMarquee.scrollTop += iScrollAmount;
 	if ( oMarquee.scrollTop == iLineCount * iLineHeight )
 	oMarquee.scrollTop = 0;
 	if ( oMarquee.scrollTop % iLineHeight == 0 ) {
-	window.setTimeout( "run()", 2000 );
+	window.setTimeout( "run()", 1000 );
 	} else {
 	window.setTimeout( "run()", 50 );
 	}
