@@ -1,8 +1,11 @@
 <p><%= label_tag '语言类型' %><span style='color:red;'>*</span><br />
    <%= f.select :lang,LANG,:selected => 'cn'%>
-</p>   
-<p><%= label_tag '用途(目标行业/职位)' %><br />
-	 <%= f.text_field :usage %>
-	</p>                                                        
+</p>      
+
+<p><%= label_tag '你目前的状态' %><br />
+	 <%= f.text_field :usage %><br />
+	 例如: 毕业生,采购员,初级Java程序员,asp咨询师
+</p> 
+                                                       
 
         

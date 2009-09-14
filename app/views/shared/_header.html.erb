@@ -8,7 +8,6 @@
 	
 	<div class='span-10 login'>
 		 <h2>
-			<%=link_to '首页',root_path %>
 			<% if logged_in? -%>
 			<%=link_to '关系圈',user_friendships_path(current_user) %> 
 			<%=link_to "便条(#{current_user.unread_message_count})",user_messages_path(current_user) %>  

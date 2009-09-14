@@ -1,35 +1,106 @@
-<% content_for :head do -%>  
-	<script type="text/javascript" charset="utf-8">
-		//  Developed by Roshan Bhattarai 
-		//  Visit http://roshanbh.com.np for this script and more.
-		//  This notice MUST stay intact for legal use
-		$(document).ready(function()
-		{
-			//scroll the message box to the top offset of browser's scrool bar
-			$(window).scroll(function()
-			{
-		  		$('#message_box').animate({top:$(window).scrollTop()+"px" },{queue: false, duration: 350});  
-			});
-		    //when the close button at right corner of the message box is clicked 
-			$('#close_message').click(function()
-			{
-		  		//the messagebox gets scrool down with top property and gets hidden with zero opacity 
-				$('#message_box').animate({ top:"+=15px",opacity:0 }, "slow");
-			});
-		});
-	</script>
-<% end -%>       
-<% content_for :message_box do %>
-	<div id="message_box"> 
-				 <h1>   
-					公开网址(所有人可访问,建议定期重设): <%=link_to @resume.public_url,@resume.public_url,:target => '_blank',:id => 'public_url' %>
-					<%=link_to_remote '重设',:url => publish_resume_path(@resume),:method => :put,:confirm => '你确定嘛?重设后之前的人将不能访问.' %>
-					<%=link_to '投',new_resume_poster_path(@resume),:id => 'dl'%> 
-					<%=link_to '返回编辑 >>',edit_resume_path(@resume) %>
-				  </h1>      
+<% content_for :tabs do -%>
+<% if @user == current_user -%>
+  <li><%=link_to('我的简历',edit_resume_path(@resume)) %></li>
+  <li class='ui-tabs-selected'><%=link_to('预览','#tabs-content') %></li>
+<% else -%>
+  <li><%=link_to(@resume.name,'#tabs-content') %></li>
+<% end -%>  
+<% end -%>  
+<div id="intenal">
+	<div class='span-13 masthead'>
+	<h1><%= avatar_for @resume %><%= @resume.personalinfo.name %></h1>       
+	<%= t(:usage)%>: <%= @resume.usage || '暂无' %> <%=link_to t('edit'),edit_item_resume_path(@resume),:class => 'ag'%>                    
 	</div>
-<% end -%>
 
+	<div class="section" style='clear:both;'> 
+	<div class='span-6' style='float:left;'>
+			<h3 class='pro'><%=t(:pro)%></h3>
+			<table >
+				<col style='width:60px;'>
+				<col> 
+				<tbody> 
+				<tr><td><%=t(:sex)%>:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
+				<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
+				<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
+				<tr><td><%=t(:age)%>:</td><td><%=h format_age(@resume.personalinfo.birthday) %></td></tr> 
+				<tr><td><%=t(:birth)%>:</td><td><%=h @resume.personalinfo.birthday %></td></tr>
+				</tbody>  
+			</table>
+	</div>
+	<div class='span-6 last' style='float:right;'>
+			<h3 class='pro'><%= t(:contact) %></h3>
+			<table>
+				<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
+				<tr><td>Email:</td><td><%=h @resume.personalinfo.email %></td></tr> 
+				<tr><td><%= t(:mobile)%>:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
+			</table>
+	</div>
+	</div>
+	<div class="section"> 
+		<h3><%= t :summary %></h3>
+		<div class="main">
+			<p><%=h @resume.summary.content %></p>
+		</div>
+	    <% if false %>
+		<h3>技能</h3>
+		<div class="main">
+			<p><%= @resume.summary.tag_list %></p>
+		</div>      
+		<% end %>
+	</div>
 
-<%= render :partial => '/resumes/resume' %>
+	<div class="section"> 
+		<h3><%= t(:positions) %></h3>
+		<div class="main">  
+			<% @resume.positions.each do |position| -%>
+			<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
+			<span style='width:200px;padding-top:10px'><%=h position.title %></span>
+			<address><%=h position.company %></address>
+			<ul>
+				<li><%=h position.description %></li>
+			</ul>
+			<% end -%>
+		</div> 
+	</div> 
+
+	<div class="section">    
+		<h3><%= t(:intresters)%></h3>      
+		<div class="main">
+			<table class='intrest'>
+				<col style='width:80px;'>
+				<col>
+				<tbody>
+				<tr><td><%= t(:intresters)%>:</td><td><%=h @resume.additionalinfo.interests %></td></tr> 
+				<tr><td><%= t(:groups) %>:</td><td><%=h @resume.additionalinfo.groups %></td></tr> 
+				<tr><td><%=t(:awards)%>:</td><td><%=h @resume.additionalinfo.awards %></td></tr>
+				</tbody> 
+			</table>
+		</div>
+	</div>
+
+	<div class="section"> 
+		<h3><%= t(:edu) %></h3>  
+		<% @resume.educations.each do |education| -%>
+		<div class="main">  
+			 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
+			<h4><%=h education.name %></h4>
+			<address><%=h education.degree %> - <%=h education.field %></address>
+			<ul style='clear:both;'>
+				<li><%= education.description %></li>
+			</ul>
+		</div>
+		<% end -%>  
+	</div>   
+
+	<div class="section">
+		<h3><%= t(:recommendations) %></h3>
+				<%= render :partial => 'recommendation',:collection => current_user.received_recommendations.visible  %>
+	</div>
+<% if false %>
+	<% content_for :tab_sidebar do -%>  
+	<div class='sidebar ui-corner-all' >  
+	</div> 
+	<% end -%> 
+<% end %>
+</div>
 

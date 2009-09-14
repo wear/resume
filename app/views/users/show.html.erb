@@ -1,3 +1,7 @@
 <% content_for :tabs do -%>
  	<li><%=link_to('我的资料','#tabs-content') %></li>
-<% end -%>
+<% end -%>                                        
+
+<% if @user.resume %>
+	<p><%=link_to name_for_resume(@user.resume),@user.resume %></p>
+<% end %>

@@ -1,7 +1,7 @@
 class ResumesController < ApplicationController
-  before_filter :login_required,:except => :public
-  before_filter :find_resume,:except => [:index,:new,:public,:create]
-  before_filter :set_language,:except =>  [:index,:new,:create,:public]
+  before_filter :login_required,:except => [:public ]
+  before_filter :find_resume,:except => [:index,:new,:public,:create,:show]
+  before_filter :set_language,:except =>  [:index,:new,:create,:public,:show]
   
   include FaceboxRender 
   # GET /resumes
@@ -23,7 +23,8 @@ class ResumesController < ApplicationController
     respond_to do |wants|
       wants.js {render_to_facebox(:template => 'resumes/send_to' ) }
     end
-  end
+  end         
+  
    
   def do_send
       @poster = @resume.poster.new(params[:poster])
@@ -48,7 +49,7 @@ class ResumesController < ApplicationController
   end 
   
   def public
-      @resume = Resume.find_by_salt(params[:salt])    
+      @resume = Resume.find(params[:id])    
      respond_to do |format|                        
        if @resume 
          @user = @resume.user 
@@ -82,15 +83,20 @@ class ResumesController < ApplicationController
 
   # GET /resumes/1
   # GET /resumes/1.xml
-  def show 
+  def show          
+    @section = 'resume' 
+    @resume = Resume.find(params[:id])
     @user = @resume.user
     respond_to do |format|
       format.html { 
         if @resume.personalinfo.nil?  
           flash[:notice] = '请先填写基本个人信息'
-           redirect_to new_resume_personalinfo_path(@resume) 
+           redirect_to new_resume_personalinfo_path(@resume)  
         else
-          render :layout => 'resume'
+         unless current_user.id.equal?(@resume.user.id) || @user.friend?(current_user)
+            flash[:notice] = '你无权查看此页面'
+            redirect_to '/'           
+         end   
         end
         }
     end

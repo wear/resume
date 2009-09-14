@@ -2,6 +2,7 @@
 # by tsechingho (http://github.com/tsechingho)
 
 'cn': 
+  contact_user: "查看完简历"  
   name: 姓名
   mobile: 手机
   adr: 地址
@@ -28,8 +29,9 @@
   edu: 教育情况
   positions: 工作经历
   summary: 总结
-  usage: 用途
-  preview: 预览/定制
+  usage: 状态
+  preview: 内部效果(仅好友可见)
+  public: 公开页面
   back: 返回
   update: 更新
   request_recommendation: 请求评价

@@ -1,1 +1,18 @@
+<% content_for :message_box do -%>
+<div id="message_box">          
+	此简历由<%=link_to '半亩塘','/'%>提供支持,<%=link_to '登录',login_path%>或<%=link_to '注册',signup_path%>以创建你的简历
+</div>                          
+<% end -%>
+<div class='span-13 masthead'> 
+		<%= avatar_for @resume %>
+	<div class='name'>
+	   <span><%= @resume.personalinfo.name %></span><br />
+	    <%= @resume.usage %> 
+	</div>
+    
+		<div id="download">                                     
+			    <%#=link_to t(:contact_user),APP_URL + public_resume_pdf_path(@resume.salt)%>
+			<%=link_to t(:contact_user),login_path %>
+		</div>	
+</div>
 <%= render :partial => 'resume' %>    

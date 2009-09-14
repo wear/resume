@@ -14,14 +14,18 @@
 		<h3>更好用</h3>
 		在线浏览,递email,导出打印
 	</div> 
-</div>      
+</div>              
 	<div class='span-10' style='text-align:center;'> 
 	<div id="mq" onMouseOver="iScrollAmount=0"
 	onmouseout="iScrollAmount=1" >
    <table >
 	<tbody> 
-		<% @asserts.each do |assert| -%>
-			<tr><td><h4><%=assert.attachable.name %> - <%=assert.attachable.resume.usage %></h4><%=image_tag assert.public_filename%> </td></tr>
+		<% @asserts.each do |assert| -%> 
+		<% begin %>
+			<tr><td><h4><%=assert.attachable.name %> - <%=assert.attachable.resume.usage %></h4><%=link_to image_tag(assert.public_filename),public_resume_path(assert.attachable.resume),:target => '_blank'%> </td></tr>
+			<% rescue %> 
+			<tr><td><h4><%= assert.attachable.name %></h4><%=image_tag assert.public_filename%> </td></tr>   
+			<% end %>
         <% end -%>
 	</tbody>
    </table>

@@ -20,7 +20,8 @@
 	   <div style="font: 0px/0px sans-serif;clear: both;display: block"> </div>
 	</div> 
 	     
-</div> 
+</div>  
+<% unless  ENV['RAILS_ENV'] == 'development' %>   
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -30,5 +31,6 @@ try {
 var pageTracker = _gat._getTracker("UA-9920036-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
+<% end %>
 </body>
 </html>

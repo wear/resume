@@ -6,7 +6,21 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>半亩塘 - 在线简历制作</title> 
   <%= render :partial => '/shared/script_and_tags' %>
-  <%= yield :head %>  
+  <%= yield :head %> 
+  <script type="text/javascript" charset="utf-8">
+$j(document).ready(function() {
+$j("#tabs").tabs({
+select: function(event, ui) {
+var url = $.data(ui.tab, 'load.tabs');
+if( url ) {
+location.href = url;
+return false;
+}
+return true;
+}
+});
+});
+  </script> 
 </head>
 <body>
 <div class='container'>
@@ -19,11 +33,20 @@
 			<%= render :partial => '/shared/sidebar' %>
 		<% end -%>
 
-        <div class='span-18 last'> 
+        <div class='span-18 last'>
+			 <div class='ui-widget'>
+			<div id="ajax-indicator" style="display:none;" class='ui-state-highlight ui-corner-all'><span>载入中</span></div>
+			</div>
+			<div id="tabs">
+				<ul><%= yield :tabs %></ul>
+			</div> 
 					<div class='span-13'>  
 						<%= yield %>          
-					</div>  
-				   	<%= yield :tab_sidebar %>
+					</div>   
+					<div class='span-5 last'>
+					  <%= yield :tab_sidebar %>    
+					</div>
+				   	
         </div>
 	</div> 
     <%= render :partial => '/shared/footer' %>

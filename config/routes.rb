@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'    
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-  map.public_resume '/public/resume/:salt', :controller => 'resumes', :action => 'public', :salt => nil 
+  map.public_resume '/public/resume/:id', :controller => 'resumes', :action => 'public', :id => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box' 
  
  
@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
      user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:edit_visible => :get,:visible => :put,:request_revised => :put } 
   end 
 
-  map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get} do |resume|
+  map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get,:pub => :get} do |resume|
      resume.resources :positions 
      resume.resources :educations
      resume.resource :summary
