@@ -51,7 +51,7 @@ class ResumesController < ApplicationController
   def public
       @resume = Resume.find(params[:id])    
      respond_to do |format|                        
-       if @resume 
+       if @resume && !@resume.personalinfo.nil?
          @user = @resume.user 
          set_language
          format.html { render :layout => 'resume'}
