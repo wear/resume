@@ -20,14 +20,18 @@
 			<h3>管理菜单</h3>  
 			<ul>    
 				<%= topnav_tab('管理页', :url => admin_path ,:section => 'dash') %> 
-				<%= topnav_tab('管理用户', :url => admin_users_path ,:section => 'admin_user') %> 
-				<%= topnav_tab('管理简历', :url => admin_resumes_path ,:section => 'admin_resume') %>
-				<%= topnav_tab('管理求职申请', :url => admin_posters_path ,:section => 'admin_poster') %> 
-				<%= topnav_tab('管理cms内容', :url => comatose_admin_path ,:section => 'cms') %>        
+				<%= topnav_tab('用户', :url => admin_users_path ,:section => 'admin_user') %> 
+				<%= topnav_tab('简历', :url => admin_resumes_path ,:section => 'admin_resume') %>
+				<%= topnav_tab('求职申请', :url => admin_posters_path ,:section => 'admin_poster') %> 
+				<%= topnav_tab('cms内容', :url => comatose_admin_path ,:section => 'cms',:target => '_blank') %>        
 			</ul>  
 			 <h3>操作菜单</h3> 
 			<ul>    
 				<%= topnav_tab('发mail通知', :url => send_mail_path ,:section => 'mail') %>  
+			</ul> 
+			<h3>数据分析</h3> 
+			<ul>    
+				<%= topnav_tab('统计图', :url => admin_charts_path ,:section => 'chart') %>  
 			</ul>
 		</div>
         <div class='span-18 last'> 

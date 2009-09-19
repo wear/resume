@@ -118,7 +118,20 @@ class User < ActiveRecord::Base
   # Returns true if the user has just been activated.
   def recently_activated?
     @activated
-  end           
+  end  
+  
+  class << self
+    include FusionChart
+    
+    def monthly_data
+      @month = find(:all,:conditions => ['created_at > ?',Time.now.at_beginning_of_month]).group_by { |t| t.created_at.at_beginning_of_day }
+      arr_data = []
+      @month.sort.each do |month, users|
+        arr_data << [month.strftime('%d'),users.size,month.strftime('%d')]
+      end 
+      line_chart_data(arr_data,:caption => '本月用户赠长情况',:y_axis_name => '用户数数',:x_axis_name => '天',:number_prefix => '人')
+    end
+  end         
   
   protected
   

@@ -1,8 +1,9 @@
 <%= will_paginate @users,:class =>'apple_pagination' %> 
 <table>
   <tr>  
-	<th>ID</th>
 	<th>用户名</th>
+	<th>email</th>
+    <th>激活</th>
 	<th>简历情况</th>
 	<th>好友数</th>
 	<th>加入时间</th>
@@ -11,8 +12,9 @@
 
 <% @users.each do |user| %>
   <tr>     
-	 <td><%= user.id %></td>
 	<td><%=link_to h(user.login),user,:target => '_blank' %></td>
+	<td><%= user.email %></td>  
+	<td><%= user.active? %></td>
     <td><%= resume_status(user) %></td>
     <td><%= user.friendships.count %></td>
 	<td><%= user.created_at %></td> 
@@ -21,4 +23,4 @@
 <% end %>
 </table>   
 
-<%= will_paginate @users,:class =>'apple_pagination'  %> 
+<%= will_paginate @users,:class =>'apple_pagination'  %>

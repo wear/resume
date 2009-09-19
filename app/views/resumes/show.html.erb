@@ -9,7 +9,7 @@
 <div id="intenal">
 	<div class='span-13 masthead'>
 	<h1><%= avatar_for @resume %><%= @resume.personalinfo.name %></h1>       
-	<%= t(:usage)%>: <%= @resume.usage || '暂无' %> <%=link_to t('edit'),edit_item_resume_path(@resume),:class => 'ag'%>                    
+	<%= t(:usage)%>: <%= @resume.usage || '暂无' %> 
 	</div>
 
 	<div class="section" style='clear:both;'> 
@@ -96,11 +96,10 @@
 		<h3><%= t(:recommendations) %></h3>
 				<%= render :partial => 'recommendation',:collection => current_user.received_recommendations.visible  %>
 	</div>
-<% if false %>
-	<% content_for :tab_sidebar do -%>  
-	<div class='sidebar ui-corner-all' >  
-	</div> 
-	<% end -%> 
-<% end %>
 </div>
 
+<% content_for :tab_sidebar do -%>  
+	<div class='sidebar ui-corner-all' >  
+		<%=link_to '公开效果',public_resume_path(@resume),:class=>'invite',:target => '_blank'%>
+	</div> 
+<% end %>

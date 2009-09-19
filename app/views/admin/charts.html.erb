@@ -1,0 +1,12 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'FusionCharts' %>
+<% end %>
+
+<h3>本月月用户增长情况</h3>  
+
+<%
+	# The xml is obtained as a string from builder template.
+	  str_xml =  User.monthly_data
+
+%>
+<%= line_chart('sdf',str_xml,700,300)%>

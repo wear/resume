@@ -20,16 +20,14 @@ class UserMailer < ActionMailer::Base
     @body[:user] = user 
   end
   
-  def recommandition_request(resume,recipients,subject,body,role,code)
-    @from        = "半亩塘"
-    @subject     = "[半亩塘] "
+  def recommandition_request(resume,recipients,subject,body,code)
+    @from        = "#{resume.personalinfo.name} <support@muutang.com>"           
     @sent_on     = Time.now
     @recipients  = recipients
     @body[:resume] = resume
     @body[:code] = code
     @body[:text] = body
-    @body[:role] = role
-    @subject += subject 
+    @subject = subject 
     @content_type = "text/html"
   end
   

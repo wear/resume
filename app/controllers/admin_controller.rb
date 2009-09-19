@@ -6,6 +6,10 @@ class AdminController < ApplicationController
     @section = 'dash'
   end     
   
+  def charts
+    @section = 'chart'
+  end
+  
   def mail
     @section = 'mail' 
     @user = User.find 4

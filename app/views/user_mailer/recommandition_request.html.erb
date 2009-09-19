@@ -1,16 +1,11 @@
-Hi:
+Hi，我是<%= @resume.personalinfo.name %>
 <p>
 <%= @text %>
-<br />
-<%= @resume.profile.name %>
 </p>        
 <p>
-请点击以下链接，对<b><%= @resume.profile.name %></b>在<b><%= @role %></b>时的表现进行评价:
+请点击以下链接，接受好友邀请:
 <br />
-<a href="<%= @code %>"/><%= @code %></a>
-</p>
-<p>
-如果你已有半亩方塘帐号,请点击以下链接
-<br />
-<a href="http://muutang.com/users/<%= @resume.user.id %>"> http://muutang.com/users/<%=@resume.user.id%> </a>
-</p>
+<%=link_to @code,@code%>
+</p>                
+
+<%= render :partial => 'mail_resume' %>

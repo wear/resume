@@ -145,16 +145,18 @@ class RecommendationsController < ApplicationController
   
   def send_request
     emails = params[:emails]
-     unless emails.nil? || params[:subject].nil? || params[:content].nil?
-      begin                                 
-       UserMailer.deliver_recommandition_request(@resume,emails,params[:subject],params[:content],params[:role],generate_url)
+     unless emails.nil? || params[:content].nil? 
+      begin 
+       subject = current_user.resume_name + "请你评价他的简历" 
+       resume = current_user.resume                                      
+       UserMailer.deliver_recommandition_request(resume,emails,subject,params[:content],generate_url)
        flash[:info] = '邮件已发送'  
       rescue
         flash[:error] = '有错误发送,可能email格式填写不对'
       end
-       redirect_to edit_resume_path(@resume) 
+       redirect_to edit_resume_path(@user.resume) 
      else      
-       flash[:error] = '有错误发送,可能email格式填写不对2'
+       flash[:error] = '有错误发送,可能email格式填写不对'
        render :action => "ask"
      end
   end

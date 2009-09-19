@@ -30,7 +30,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :resumes
     admin.resources :users 
-    admin.resources :posters 
+    admin.resources :posters
+    admin.charts 'charts',:action => 'charts',:controller => 'admin' 
   end
   
   map.resources :users,:collection => {:reset_password => :put},:member => {:public => :get } do |user|

@@ -44,7 +44,8 @@ module ApplicationHelper
       {:val => 1, :action => link_to('添加个人总结', edit_resume_summary_path(resume)), :test => !(resume.summary.content == '暂无')},      
       {:val => 2, :action => link_to('增加工作经验', new_resume_position_path(resume)), :test => resume.positions.any? },            
       {:val => 1, :action => link_to('填写个人兴趣爱好', edit_resume_additionalinfo_path(resume)), :test => !(resume.additionalinfo.interests== '暂无')},                  
-      {:val => 1, :action => link_to('教育情况介绍', new_resume_education_path(resume)), :test => resume.educations.any? }
+      {:val => 1, :action => link_to('教育情况介绍', new_resume_education_path(resume)), :test => resume.educations.any? },   
+      {:val => 4, :action => link_to('请求评价', ask_user_recommendations_path(resume.user)), :test => resume.user.received_recommendations.nil? }
     ]
     
     completed_score = segments.select{|s| s[:test].eql?(true)}.sum{|s| s[:val]}

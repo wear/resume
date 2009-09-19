@@ -1,22 +1,26 @@
 <%= will_paginate @resumes,:class =>'apple_pagination' %>    
 <table>
   <tr> 
-	<th>id</th>
 	<th>名称</th>
+	<th>login</th>
 	<th>志愿</th>
 	<th>完成度</th>
 	<th>创建时间</th>  
   </tr>
 
 <% @resumes.each do |resume| %>
-  <tr>         
-	<td><%= resume.id %></td>
+  <tr>                    
+	<% begin %>
+	 <td><%= resume.user.login %></td>
 	<% completeness ||= resume_completeness(resume) %>
 	<% percent = completeness[:score] %>
 	<td> <%=link_to resume.name,public_resume_path(resume),:target =>'_blank' %></td>
 	<td><%= resume.usage %></td>                     
 	<td><%= number_to_percentage percent.to_i %></td>
-		<td><%= resume.created_at %></td>     
+		<td><%= resume.created_at %></td> 
+		<% rescue %>     
+		error 
+		<% end %>
   </tr>
 <% end %>
 </table>
