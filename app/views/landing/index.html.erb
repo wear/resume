@@ -1,5 +1,5 @@
 <div class="announce" >
-  <h1 >半亩塘让你快速创建更有用的简历</h1>
+  <h1 >与其临渊羨魚，不如退而結网</h1>
 </div>   
 <div class='span-19 prepend-2'>              
 	<div class='span-5 ad' > 
@@ -14,10 +14,12 @@
 		<h3>更好用</h3>
 		在线浏览,递email,导出打印
 	</div> 
-</div>              
-	<div class='span-10' style='text-align:center;'> 
+</div>   
+        
+	<div class='span-10' style='text-align:center;'>    
+	  <h3>最新加入的会员</h3>     
 	<div id="mq" onMouseOver="iScrollAmount=0"
-	onmouseout="iScrollAmount=1" >
+	onmouseout="iScrollAmount=1" > 
    <table >
 	<tbody> 
 		<% @asserts.each do |assert| -%> 
@@ -35,33 +37,27 @@
 	var oMarquee = document.getElementById("mq"); //滚动对象
 	var iLineHeight = 133; //单行高度，像素
 	var iLineCount = 10; //实际行数
-	var iScrollAmount = 133; //每次滚动高度，像素
+	var iScrollAmount = 1; //每次滚动高度，像素
 	function run() {
 	oMarquee.scrollTop += iScrollAmount;
 	if ( oMarquee.scrollTop == iLineCount * iLineHeight )
 	oMarquee.scrollTop = 0;
 	if ( oMarquee.scrollTop % iLineHeight == 0 ) {
-	window.setTimeout( "run()", 2000 );
+	window.setTimeout( "run()", 1000 );
 	} else {
 	window.setTimeout( "run()", 50 );
 	}
 	}  
 	oMarquee.innerHTML += oMarquee.innerHTML;
 	window.setTimeout( "run()", 2000 ); 
-	</script>
+	</script>   
+
+	
    </div>
    <div class='span-10 last'>   
-	<% if false %>
-   	<div id="download">
-		<% if logged_in? -%>
-		   <%=link_to '开始创建',new_resume_path %> 
-		<% else -%>
-		   <%=facebox_link_to '开始创建',:url => login_box_path %>
-		<% end -%>
-	</div> 
-	<% end %>
+
    <fieldset style='width:220px;background:#EFEFEF;'>
-	<legend>马上开始</legend>   
+	<legend>马上开始</legend>  
    	<% form_for :user, :url => users_path do |f| -%>
 		<%= render :partial => '/users/form',:locals => {:f => f} %>
 	<p><%= submit_tag '注册' %></p> 
