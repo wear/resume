@@ -10,7 +10,7 @@
 
 <% @resumes.each do |resume| %>
   <tr>                    
-	<% begin %>
+
 	 <td><%= resume.user.login %></td>
 	<% completeness ||= resume_completeness(resume) %>
 	<% percent = completeness[:score] %>
@@ -18,9 +18,7 @@
 	<td><%= resume.usage %></td>                     
 	<td><%= number_to_percentage percent.to_i %></td>
 		<td><%= resume.created_at %></td> 
-		<% rescue %>     
-		error 
-		<% end %>
+
   </tr>
 <% end %>
 </table>

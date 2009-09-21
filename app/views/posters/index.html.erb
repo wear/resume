@@ -1,4 +1,7 @@
-
+<% content_for :tabs do -%> 
+ 	<li><%=link_to('求职发送记录','#tabs-content') %></li> 
+	<li><%=link_to t(:send_resume),new_resume_poster_path(@resume)%></li> 
+<% end -%>
 
 <% @resume.posters.each do |poster| -%>
 职位:<%=h poster.position %> <br />

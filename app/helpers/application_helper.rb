@@ -14,7 +14,7 @@ module ApplicationHelper
   end
   
   def format_age(birth)
-    Time.now.year - birth.strftime("%Y").to_i
+    Time.now.year - birth.strftime("%Y").to_i  if birth
   end
   
   def state_type(type)
@@ -23,7 +23,7 @@ module ApplicationHelper
   
   def avatar_for(resume,width=77,heigth=99)
     if resume.avatar_exists?
-      image_tag((APP_URL + resume.personalinfo.assert.public_filename),:alt => "avatar",:size => "#{width}x#{heigth}")
+      image_tag((APP_URL + resume.assert.public_filename),:alt => "avatar",:size => "#{width}x#{heigth}")
     else  
       image_tag((APP_URL + '/images/unknow-avatar.jpg'),:alt => "avatar",:size => "#{width}x#{heigth}")
     end
@@ -39,8 +39,9 @@ module ApplicationHelper
   
   def resume_completeness(resume)
     segments = [ 
-      {:val => 2, :action => link_to('个人信息', edit_resume_personalinfo_path(resume)), :test => !resume.personalinfo.nil? }, 
-      {:val => 2, :action => link_to('添加一寸照', edit_resume_personalinfo_path(resume)), :test => resume.avatar_exists? },
+      {:val => 2, :action => link_to('个人信息', edit_resume_path(resume)), :test => !resume.name.nil? },         
+      {:val => 2, :action => link_to('个人信息', edit_resume_path(resume)), :test => !resume.sex.nil? }, 
+      {:val => 2, :action => link_to('添加一寸照', edit_resume_path(resume)), :test => resume.avatar_exists? },
       {:val => 1, :action => link_to('添加个人总结', edit_resume_summary_path(resume)), :test => !(resume.summary.content == '暂无')},      
       {:val => 2, :action => link_to('增加工作经验', new_resume_position_path(resume)), :test => resume.positions.any? },            
       {:val => 1, :action => link_to('填写个人兴趣爱好', edit_resume_additionalinfo_path(resume)), :test => !(resume.additionalinfo.interests== '暂无')},                  

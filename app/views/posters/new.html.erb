@@ -15,7 +15,7 @@
  <p><%= label_tag t(:title) %> <br /><%= f.text_field :position,:size => 32 %></p>
  <p><%= label_tag t(:content) %> <br /><%= f.text_area :content,:style => 'width:500px;height:200px' %></p> 
 <p>
-	<%= submit_tag t(:send) %>    <%= link_to_remote t('preview'),{:url => preview_resume_posters_path(@resume), 
+	<%= submit_tag t(:send) %>    <%= link_to_remote "预览",{:url => preview_resume_posters_path(@resume), 
 	                         :method => 'post',
 	                         :update => 'preview',
 	                         :with => "$('#poster_form').serialize()",

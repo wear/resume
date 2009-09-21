@@ -1,7 +1,32 @@
-<% content_for :tabs do -%>
- 	<li><%=link_to('我的资料','#tabs-content') %></li>
-<% end -%>                                        
+<% 
+message = "这是我在半亩塘创建的在线简历,为了能让它发挥更大的作用,我邀请你加入半亩塘.
 
-<% if @user.resume %>
-	<p><%=link_to name_for_resume(@user.resume),@user.resume %></p>
-<% end %>
+在半亩塘你可以创建你的在线简历，管理你的个人人脉，和你的朋友/同事/领导保持联系,是你工作学习的好帮手.:)
+"
+-%>
+<% content_for :tabs do -%>
+ 	<li><%=link_to('个人中心','#tabs-content') %></li>
+	<%= javascript_include_tag 'jquery.progressbar.min' %> 
+<% end -%>   
+
+<% content_for :sidebar do -%> 
+<div class='sidebar ui-corner-all' style='width:150px'> 
+		<h4 id='service'>帐户</h4>
+	 	<ul >  
+			<%= topnav_tab('修改密码', :url => password_user_path(@user) ,:section => 'password') %>  
+	 	</ul> 
+</div>                                      
+<% end -%> 
+
+<h1>创建你自己的人脉</h1>
+ <div style='margin:20px'>  
+	<% form_for @invitation, :url => user_invitations_path(@user)  do |f| -%>    
+	<%= f.error_messages %>   
+	<p><%= label_tag 'email'%><small>(多个mail用逗号各隔开)</small><br /> <%= f.text_area :email_addresses, :style => 'height:40px;'
+	%>
+	<p><%= label_tag '内容'%> <br /><%= f.text_area :message,:value => message,:style => 'height:120px;'%> </p>
+	<p>
+		<%= submit_tag '发送'%>
+	</p>     
+	<% end -%>
+</div>

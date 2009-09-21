@@ -50,8 +50,8 @@ class ResumesController < ApplicationController
   
   def public
       @resume = Resume.find(params[:id])    
-     respond_to do |format|                        
-       if @resume && !@resume.personalinfo.nil?
+      respond_to do |format|                        
+       if @resume
          @user = @resume.user 
          set_language
          format.html { render :layout => 'resume'}
@@ -89,15 +89,10 @@ class ResumesController < ApplicationController
     @user = @resume.user
     respond_to do |format|
       format.html { 
-        if @resume.personalinfo.nil?  
-          flash[:notice] = '请先填写基本个人信息'
-           redirect_to new_resume_personalinfo_path(@resume)  
-        else
          unless current_user.id.equal?(@resume.user.id) || @user.friend?(current_user)
             flash[:notice] = '你无权查看此页面'
             redirect_to '/'           
          end   
-        end
         }
     end
   end
@@ -115,14 +110,9 @@ class ResumesController < ApplicationController
   # GET /resumes/1/edit
   def edit    
     @section = 'resume'  
-      respond_to do |wants| 
-        if @resume.personalinfo.nil?  
-          flash[:notice] = '请先填写基本个人信息'
-          wants.html { redirect_to new_resume_personalinfo_path(@resume) }  
-        else
-          wants.html {} 
-        end
-      end 
+    respond_to do |wants| 
+       wants.html {} 
+     end
   end
 
   # POST /resumes
@@ -135,9 +125,8 @@ class ResumesController < ApplicationController
     respond_to do |format|
       if @resume.save
         flash[:notice] = '简历创建成功!'
-        format.html { redirect_to new_resume_personalinfo_path(@resume) }
+        format.html { redirect_to edit_resume_path(@resume) }
       else  
-        flash[:error] = '创建中出错了'
         format.html { render :action => 'new' }
       end 
     end

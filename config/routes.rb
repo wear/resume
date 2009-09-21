@@ -34,8 +34,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posters
   end
   
-  map.resources :users,:collection => {:reset_password => :put},:member => {:public => :get } do |user|
-     user.resource :profile 
+  map.resources :users,:collection => {:reset_password => :post},:member => {:public => :get,:password => :get,:change_password => :put } do |user|
+     user.resources :invitations 
      user.resources :friendships,:member => {:add => :post}  
      user.resources :messages, :collection => { :delete_selected => :post,:sent_box => :get }
      user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:edit_visible => :get,:visible => :put,:request_revised => :put } 

@@ -199,7 +199,9 @@
           title: 职位
           company: 公司名称
       resume:
+          name: 名称
           usage: 用途
+          mobile: 手机
       summary:
           content: 总结
           specialties: 特长

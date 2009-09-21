@@ -1,17 +1,26 @@
 # == Schema Information
-# Schema version: 20090802025238
+# Schema version: 20090920043026
 #
 # Table name: resumes
 #
-#  id         :integer(4)      not null, primary key
-#  status     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer(4)
-#  salt       :string(255)
-#  usage      :string(255)
-#  type       :integer(4)
-#  lang       :string(255)
+#  id             :integer(4)      not null, primary key
+#  status         :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  user_id        :integer(4)
+#  salt           :string(255)
+#  usage          :string(255)
+#  type           :integer(4)
+#  lang           :string(11)      default("cn")
+#  name           :string(255)
+#  hukou          :string(255)
+#  hometwon       :string(255)
+#  sex            :string(255)
+#  mobile         :string(255)
+#  marital_status :boolean(1)
+#  birthday       :datetime
+#  address        :string(255)
+#  email          :string(255)
 #
 
 class Resume < ActiveRecord::Base
@@ -22,19 +31,43 @@ class Resume < ActiveRecord::Base
   has_one :additionalinfo, :dependent => :destroy
   has_one :personalinfo, :dependent => :destroy  
   has_many :posters, :dependent => :destroy 
-  validates_length_of :usage, :within => 2..20
-     
+  validates_length_of :usage, :within => 2..20 
+  has_one :assert, :as => 'attachable'
+  
+#  validates_presence_of :name,:email
+#  validates_length_of :name, :within => 2..20
+#  validates_format_of :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/,:allow_blank => true   
   
   cattr_reader :per_page
-  @@per_page = 20 
+  @@per_page = 20
+
   
-  def name
-    (personalinfo.nil? ? user.login : personalinfo.name) + '的简历'
+  def avatar_data=(data) 
+    return if data.blank?
+    if assert
+      assert.update_attributes :uploaded_data => data
+    else
+      self.assert = Assert.create :uploaded_data => data
+    end
+  end  
+  
+#  def validate    
+#    unless self.mobile.to_s.size == 11 
+#      errors.add("mobile", "必须为11位")
+#    end
+#  end
+  
+  def create_initial_resume
+      build_summary(:content => '暂无',:specialties => '暂无')
+      build_additionalinfo(:interests => '暂无')
+      salt = self.generate_salt
+      save(false)
   end
+     
   
   def avatar_exists?
-    return false unless personalinfo && personalinfo.assert
-    File.file? "public/#{ personalinfo.assert.public_filename}"
+    return false if assert.nil?
+    File.file? "public/#{assert.public_filename}"
   end         
   
   def owner?(owner)
@@ -63,6 +96,6 @@ class Resume < ActiveRecord::Base
  
  def has_reached_daily_poster_send_limit?
    posters.count(:conditions => ['created_at > ?', Time.now.beginning_of_day]) >= 12
- end              
- 
+ end  
+
 end

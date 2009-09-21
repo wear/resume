@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090729062155) do
+ActiveRecord::Schema.define(:version => 20090921081421) do
 
   create_table "additionalinfos", :force => true do |t|
     t.integer  "resume_id"
@@ -93,7 +93,24 @@ ActiveRecord::Schema.define(:version => 20090729062155) do
     t.datetime "read_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "req"
+    t.string   "req_type"
+    t.integer  "req_id"
+  end
+
+  create_table "personalinfos", :force => true do |t|
+    t.string   "name"
+    t.string   "mobile"
+    t.string   "address"
+    t.string   "email"
+    t.datetime "birthday"
+    t.boolean  "marital_status"
+    t.string   "sex"
+    t.string   "hometwon"
+    t.string   "hukou"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "resume_id"
   end
 
   create_table "positions", :force => true do |t|
@@ -114,27 +131,10 @@ ActiveRecord::Schema.define(:version => 20090729062155) do
     t.datetime "updated_at"
   end
 
-  create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.string   "mobile"
-    t.string   "address"
-    t.string   "email"
-    t.datetime "birthday"
-    t.boolean  "marital_status"
-    t.string   "sex"
-    t.string   "hometwon"
-    t.string   "hukou"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
   create_table "recommendations", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.boolean  "visible",            :default => false
-    t.string   "recommendable_type"
-    t.integer  "recommandable_id"
+    t.boolean  "visible",     :default => false
     t.text     "desc"
     t.string   "sender_role"
     t.integer  "refer_type"
@@ -149,7 +149,17 @@ ActiveRecord::Schema.define(:version => 20090729062155) do
     t.integer  "user_id"
     t.string   "salt"
     t.string   "usage"
-    t.integer  "type"
+    t.integer  "type" 
+    t.string   "name"
+    t.string   "mobile"
+    t.string   "address"
+    t.string   "email"
+    t.datetime "birthday"
+    t.boolean  "marital_status"
+    t.string   "sex"
+    t.string   "hometwon"
+    t.string   "hukou"
+    t.string   "lang",       :limit => 11, :default => "cn" 
   end
 
   create_table "roles", :force => true do |t|
@@ -196,6 +206,13 @@ ActiveRecord::Schema.define(:version => 20090729062155) do
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
     t.string   "invitation_code"
+  end    
+  
+  create_table "invitations", :force => true do |t|
+    t.string   "email_addresses"
+    t.string   "message"
+    t.string   "user_id"
+    t.datetime "created_at"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

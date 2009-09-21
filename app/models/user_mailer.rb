@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def recommandition_request(resume,recipients,subject,body,code)
-    @from        = "#{resume.personalinfo.name} <support@muutang.com>"           
+    @from        = "#{resume.name} <support@muutang.com>"           
     @sent_on     = Time.now
     @recipients  = recipients
     @body[:resume] = resume
@@ -32,12 +32,22 @@ class UserMailer < ActionMailer::Base
   end
   
   def send_resume(poster)
-    @from        = "#{poster.resume.personalinfo.name} <support@muutang.com>"
+    @from        = "#{poster.resume.name} <support@muutang.com>"
     @sent_on     = Time.now
     @subject     = "求职申请 - (#{poster.position})"
     @recipients  = poster.email
     @body[:poster]  = poster
     @body[:resume]  = poster.resume
+    @content_type = "text/html"
+  end  
+  
+  def send_invitation(email, user, message)
+    @from        = "#{user.resume.name} <support@muutang.com>"
+    @sent_on     = Time.now
+    @subject     = "#{user.resume.name}邀请你加入半亩塘(muutang.com)，并成为她的好友"
+    @recipients  = email
+    @body[:resume]  = user.resume  
+    @body[:message]  = message
     @content_type = "text/html"
   end
   

@@ -1,10 +1,30 @@
+<% if false -%>
 <p><%= label_tag '语言类型' %><span style='color:red;'>*</span><br />
    <%= f.select :lang,LANG,:selected => 'cn'%>
-</p>      
+</p>        
+<% end %>
+  
+<fieldset style='background:#EFEFEF;'>  
+	<legend>基本信息</legend>   
+<table class='resume'>
+	<tr><td class='label'><%= f.label :name, t(:name) %>:</td><td><%= f.text_field :name %> <span style='color:red;'>*</span></td></tr>
+		<tr><td class='label'><%= f.label :email, "Email" %>:</td><td><%= f.text_field :email,:value => current_user.email %><span style='color:red;'>*</span></td></tr>   
+	<tr><td class='label'><%= f.label :mobile, t(:mobile) %>:</td><td><%= f.text_field :mobile %></td></tr>
+	<tr><td class='label'><%= f.label :address, t(:adr) %>:</td><td> <%= f.text_field :address %></td></tr>
 
-<p><%= label_tag '你目前的状态' %><br />
-	 <%= f.text_field :usage %><br />
+	<tr><td class='label'> <%= f.label :birthday, t('birth') %>:</td><td><%= f.date_select :birthday,:start_year => Time.now.year - 45,:end_year => Time.now.year - 16, :default => { :year => 1981}  %> </td></tr>
+	<tr><td class='label'><%= f.label :sex, t(:sex) %>:</td><td><%= f.radio_button :sex, 'm' %> <%=t(:male)%> <%= f.radio_button :sex, 'f' %> <%=t(:female)%></td></tr>
+	<tr><td class='label'><%= f.label :hometown, t(:hometown) %>:</td><td><%= f.text_field :hometwon %></td></tr> 
+	<tr><td class='label'><%= f.label :hukou, t(:hukou) %>:</td><td><%= f.text_field :hukou %></td></tr>
+	<tr><td class='label'><%= f.label :avatar,t('portrait')%></td><td><%=f.file_field :avatar_data,:size => '50' %></tr>
+</table>       
+</fieldset>
+<fieldset style='background:#EFEFEF;'>
+	 <legend>目前状态</legend>       
+	 <%= f.text_field :usage %><span style='color:red;'>*</span><br />
 	 例如: 应届毕业生,采购员,初级Java程序员等能描述你前状态的词语
 </p> 
+</fieldset> 
+
                                                        
 

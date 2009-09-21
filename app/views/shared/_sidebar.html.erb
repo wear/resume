@@ -1,13 +1,30 @@
+
+
 <div class='span-5'> 
 	<div class='sidebar ui-corner-all' style='width:150px'>
 			<h4 id='service'>菜单</h4> 
 		 	<ul >  
+				<%= topnav_tab('个人中心', :url => user_path(current_user) ,:section => 'user') %>
 				<%= topnav_tab('简历中心', :url => resume_center_path(current_user.resume) ,:section => 'resume') %> 
 				<%= topnav_tab('评价管理', :url => user_recommendations_path(current_user) ,:section => 'recommendation') %> 
 			    <%= topnav_tab('关系圈', :url => user_friendships_path(current_user) ,:section => 'friendship') %> 
 		 	</ul> 
   
+	</div> 
+	
+	<%= yield :sidebar %>    
+	
+	<% completeness ||= resume_completeness(current_user.resume) %>
+	<% percent = completeness[:score] %>    
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$("#sidebar-progressbar").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+		});
+	</script>
+	<div class='sidebar ui-corner-all bio' > 
+		<%= avatar_for current_user.resume,47,69 %><span class='ag'><%= current_user.resume.name %></span><br /><%= current_user.resume.usage %>
+		 <div style="font: 0px/0px sans-serif;clear: both;display: block"> </div>   
+		    <span class="progressBar" id="sidebar-progressbar">&nbsp;</span>  
+			你的简历完成度为<%=percent.to_i%>,现在就<%=link_to '更新',edit_resume_path(current_user.resume)%>
 	</div>
 </div> 
-			
-

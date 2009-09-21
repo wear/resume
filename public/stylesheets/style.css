@@ -21,7 +21,7 @@ ul li{list-style:none;}
 h1,h2,h3,h4 {color:#008000;}
 h1{font-size:24px;  } 
 h2{font-size:18px;   }
-
+h1{margin:10px;}
  
 /* --- href ----*/
 
@@ -281,6 +281,16 @@ h4{
 	background: #00BF00; 
 	color:#ffffff;       
    }
+   
+.bio {
+	width:150px;
+}                     
+
+.bio img{
+	float:left; 
+	padding:0px 5px 15px 15px;
+} 
+
 
 .a6 {
 	color: #999999;
@@ -544,7 +554,7 @@ ol
 }   
 
 /* for resume */
-.masthead{      
+.masthead{    
 	text-align:center;
 	margin:10px 0px;
 }  
@@ -559,4 +569,42 @@ ol
 	padding:10px 0px;
 	margin:10px 0px; 
 	border-bottom:3px solid #ccc;
+}
+
+/* error --*/
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px dotted #999999;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #FFFFEE;
+}
+
+#errorExplanation h2 {  
+  width:99%;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 14px;
+  margin: -7px;
+  background-color: #FFFFEE;
+  color: #000;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
 }

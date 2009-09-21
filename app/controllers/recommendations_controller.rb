@@ -74,7 +74,7 @@ class RecommendationsController < ApplicationController
     generate_url
     respond_to do |wants| 
       if @user.resume.roles.blank? 
-        flash[:error] = '你至少需要创建一项工作或教育记录!'
+        flash[:error] = '你至少需要创建一项工作或教育记录来让别人评价!'
         wants.html{ redirect_to edit_resume_path(@user.resume)}
       else
         wants.html { }
@@ -171,7 +171,7 @@ class RecommendationsController < ApplicationController
   end       
   
   def resume_created?
-    if @user.resume.nil? || @user.resume.personalinfo.nil?
+    if @user.resume.nil? 
       flash[:notice] = '请先创建一份简历并填写基本个人信息!'
       redirect_to resumes_path
     end

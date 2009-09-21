@@ -31,8 +31,7 @@ a:hover { color: #fff; background-color:#000; }
   background-color: #f0f0f0;
 }
 
-#errorExplanation h2 {  
-  width:99%;
+#errorExplanation h2 {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;

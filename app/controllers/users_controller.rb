@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead  
-  before_filter :login_required,:only => [:show,:public]
+  before_filter :login_required,:only => [:show,:public] 
+  before_filter :find_resume,:except => [:new,:create]
+  before_filter :require_current_user,:except => [:new,:create]        
   
   def show
-    @section = 'profile'
-    @user = User.find params[:id]    
+    @section = 'user'
+    @user = User.find params[:id] 
+    @invitation = @user.invitations.new   
   end                                                                          
 
   # render new.rhtml
@@ -25,7 +28,8 @@ class UsersController < ApplicationController
       wants.html { render :layout => 'landing' }
     end
     end
-  end
+  end   
+  
   
   def create
     logout_keeping_session!
@@ -40,7 +44,8 @@ class UsersController < ApplicationController
             flash[:notice] += "成功添加加#{@friend.resume.personalinfo.name}为好友!"  
           end   
           wants.html { redirect_to login_path }
-        else 
+        else    
+          flash[:error] = '发现错误,请检查数据并重试'
           wants.html { render :action => 'new', :layout => 'landing' }
         end
       end 
@@ -71,9 +76,12 @@ class UsersController < ApplicationController
 
   
   def password
+    @section = 'password'
+    @user = User.find(params[:id])
   end
   
-  def change_password
+  def change_password  
+    @user = User.find(params[:id])
      respond_to do |format|
        if User.authenticate(@user.login, params[:user][:current_password])
  	      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])

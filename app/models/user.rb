@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090729062155
+# Schema version: 20090920043026
 #
 # Table name: users
 #
@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   has_many :pending_friends, :class_name => "Friendship", :foreign_key => "friend_id",:conditions => ['status = ?','pending'], :dependent => :destroy 
   has_and_belongs_to_many :roles
   has_many :sent_recommendations,:class_name => 'Recommendation',:foreign_key => 'sender_id'
-  has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id"  
+  has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id" 
+  has_many :invitations 
   has_private_messages
 
   validates_presence_of     :login
@@ -51,7 +52,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation 
   
   named_scope :weekly_joined,:conditions => ["created_at > ?", DateTime.now.to_time.at_beginning_of_week]
-  
+  attr_accessor :current_password 
   before_create :make_initation_code
   before_create :make_activation_code   
   

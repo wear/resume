@@ -1,0 +1,13 @@
+
+<h1>创建你自己的人脉</h1>
+ <div style='margin:20px'>  
+<% form_for @invitation, :url => user_invitations_path(@user)  do |f| -%>    
+<%= f.error_messages %>   
+<p><%= label_tag 'email'%><small>(多个mail用逗号各隔开)</small><br /> <%= f.text_area :email_addresses, :style => 'height:40px;'
+%>
+<p><%= label_tag '内容'%> <br /><%= f.text_area :message,:style => 'height:120px;'%> </p>
+<p>
+	<%= submit_tag '发送'%>
+</p>     
+<% end -%>  
+</div>

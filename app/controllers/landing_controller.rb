@@ -1,7 +1,7 @@
 class LandingController < ApplicationController 
   include FaceboxRender
              
-  def index
+  def index       
     @asserts = Assert.find(:all,:limit => 10,:conditions => ['attachable_type = ?','Personalinfo'],:order => 'created_at DESC')
   respond_to do |wants|
     if logged_in?

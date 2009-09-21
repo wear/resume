@@ -8,7 +8,7 @@
 <% end -%>  
 <div id="intenal">
 	<div class='span-13 masthead'>
-	<h1><%= avatar_for @resume %><%= @resume.personalinfo.name %></h1>       
+	<h1><%= avatar_for @resume %><%= @resume.name %></h1>       
 	<%= t(:usage)%>: <%= @resume.usage || '暂无' %> 
 	</div>
 
@@ -19,20 +19,20 @@
 				<col style='width:60px;'>
 				<col> 
 				<tbody> 
-				<tr><td><%=t(:sex)%>:</td><td><%=h format_sex(@resume.personalinfo.sex) %></td></tr> 
-				<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.personalinfo.hometwon %></td></tr> 
-				<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.personalinfo.hukou %></td></tr> 
-				<tr><td><%=t(:age)%>:</td><td><%=h format_age(@resume.personalinfo.birthday) %></td></tr> 
-				<tr><td><%=t(:birth)%>:</td><td><%=h @resume.personalinfo.birthday %></td></tr>
+				<tr><td><%=t(:sex)%>:</td><td><%=h format_sex(@resume.sex) %></td></tr> 
+				<tr><td><%=t(:hometown)%>:</td><td><%=h @resume.hometwon %></td></tr> 
+				<tr><td><%=t(:hukou)%>:</td><td><%=h @resume.hukou %></td></tr> 
+				<tr><td><%=t(:age)%>:</td><td><%=h format_age(@resume.birthday) %></td></tr> 
+				<tr><td><%=t(:birth)%>:</td><td><%=h @resume.birthday %></td></tr>
 				</tbody>  
 			</table>
 	</div>
 	<div class='span-6 last' style='float:right;'>
 			<h3 class='pro'><%= t(:contact) %></h3>
 			<table>
-				<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.personalinfo.address %></td></tr> 
-				<tr><td>Email:</td><td><%=h @resume.personalinfo.email %></td></tr> 
-				<tr><td><%= t(:mobile)%>:</td><td><%=h @resume.personalinfo.mobile %></td></tr> 
+				<tr><td width='30%'><%=t(:adr)%>:</td><td><%=h @resume.address %></td></tr> 
+				<tr><td>Email:</td><td><%=h @resume.email %></td></tr> 
+				<tr><td><%= t(:mobile)%>:</td><td><%=h @resume.mobile %></td></tr> 
 			</table>
 	</div>
 	</div>
