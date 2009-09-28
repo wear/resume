@@ -1,5 +1,5 @@
 class ResumesController < ApplicationController
-  before_filter :login_required,:except => [:public ]
+  before_filter :login_required,:except => [:public,:index]
   before_filter :find_resume,:except => [:index,:new,:public,:create,:show]
   before_filter :set_language,:except =>  [:index,:new,:create,:public,:show]
   

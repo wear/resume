@@ -836,3 +836,54 @@ li.new_group{
 	font-size: 28px;
 	font-family: Tahoma, "ËÎÌå", Arial;
 }
+
+/*  --- landing---*/
+.soinputbot {
+	font-family: Tahoma, "ËÎÌå", Arial;
+	font-size: 22px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: outset;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: outset;
+	color: #009900;
+	background-color: #efefef;
+	border-top-color: #CCCCCC;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-left-color: #CCCCCC;
+	line-height: 30px;
+	width: 100px;
+}
+.soinputindex {
+	font-family: Tahoma, "ËÎÌå", Arial;
+	font-size: 22px;
+	width: 340px;
+	padding-top: 5px;
+	padding-right: 7px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+	color: #666;
+	border-top-style: inset;
+	border-right-style: inset;
+	border-bottom-style: inset;
+	border-left-style: inset;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-color: #CCCCCC;
+	border-right-color: #efefef;
+	border-bottom-color: #efefef;
+	border-left-color: #CCCCCC;
+	line-height: 30px;
+}
+
+/* tag cloud ---*/
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }

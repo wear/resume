@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
     // Binding focus and blur events for query input box
     $('#query').
         focus(function() {
-        if (this.value == "搜索最近学习、关注的东东...") { 
+        if (this.value == "输入关键字") { 
 			this.style.color = "#000" 
             this.value = "";  
         }
@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
         blur(function() {
         if (this.value == "") {
 			this.style.color = "#666";
-            this.value = "搜索最近学习、关注的东东...";
+            this.value = "输入关键字";
         }
     });
 });
