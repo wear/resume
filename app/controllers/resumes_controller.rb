@@ -3,6 +3,9 @@ class ResumesController < ApplicationController
   before_filter :find_resume,:except => [:index,:new,:public,:create,:show]
   before_filter :set_language,:except =>  [:index,:new,:create,:public,:show]
   
+ # caches_page :public
+ # cache_sweeper :resume_sweeper,:only => [:create, :update, :destroy]
+    
   include FaceboxRender 
   # GET /resumes
   # GET /resumes.xml
@@ -55,14 +58,14 @@ class ResumesController < ApplicationController
          @user = @resume.user 
          set_language
          format.html { render :layout => 'resume'}
-         format.xml  { render :xml => @resume }
-         format.pdf { render :layout => false,
-             :prawnto => {:prawn => {
-                    :page_size => 'A4',
-                    :left_margin => 50,
-                    :right_margin => 50,
-                    :top_margin => 24,
-                    :bottom_margin => 24},:inline=> false,:filename => "#{@resume.name.gsub(' ','_')}.pdf"}} 
+#         format.xml  { render :xml => @resume }
+#         format.pdf { render :layout => false,
+#             :prawnto => {:prawn => {
+#                    :page_size => 'A4',
+#                    :left_margin => 50,
+#                    :right_margin => 50,
+#                    :top_margin => 24,
+#                    :bottom_margin => 24},:inline=> false,:filename => "#{@resume.name.gsub(' ','_')}.pdf"}} 
        else
          format.html { redirect_to login_path }
        end    

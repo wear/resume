@@ -1,0 +1,30 @@
+<% content_for :tabs do -%>
+	 <%= render(:partial => 'wikis/tabs') %> 
+<% end -%>                                   
+
+<% content_for :tab_sidebar do -%>
+	<li><%=link_to "返回",group_wiki_path(@group,:page => @page.pretty_title )%></li>     
+	<li><%=link_to "目录",'#tab-content'%></li>
+	<%=topnav_tab '新建页面',{:url => new_page_group_wiki_path(@group)} %>                                                      
+<% end -%>
+
+<h2><%= @page.pretty_title %></h2>
+<% form_for :content, @content, :url => group_wiki_path(@group,:page => @page.pretty_title ), :html => {:id => 'wiki_form',:method => :put} do |f| %>   
+<%= render :partial => 'wiki_form',:locals => { :f => f } %> 
+<p><label><%= '评论' %></label><br /><%= f.text_field :comments,:value => nil, :size => 40 %></p> 
+<p><%= submit_tag '保存' %>
+   <%#= link_to_remote :label_preview.l,{:url => preview_group_wiki_path(@group,:page => @page.pretty_title), 
+                         :method => 'post',
+                         :update => 'preview',
+                         :with => "Form.serialize('wiki_form')",
+                         :complete => "Element.scrollTo('preview')"},
+                         :accesskey => accesskey(:preview) %></p>
+<% end %>
+<% if false %>
+<div id="preview" class="wiki"></div>
+<% end %>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'scm' %>
+<% end %>
+
+<% html_title @page.pretty_title %>

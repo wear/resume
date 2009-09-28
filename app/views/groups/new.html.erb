@@ -1,0 +1,7 @@
+<h3>新建课堂</h3>
+<%= error_messages_for :group%>
+<% form_for(:group, :url => groups_path, :html => {:class => "MainForm", :multipart => true } ) do |f| -%>
+	<%= render :partial => 'form',:locals => { :f => f } %>
+	<%= f.hidden_field(:created_by,:value => current_user.id)%> 
+	<p><%= submit_tag '提交'%></p>
+<% end -%>

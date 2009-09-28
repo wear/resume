@@ -32,11 +32,12 @@ class Resume < ActiveRecord::Base
   has_one :personalinfo, :dependent => :destroy  
   has_many :posters, :dependent => :destroy 
   validates_length_of :usage, :within => 2..20 
-  has_one :assert, :as => 'attachable'
+  has_one :assert, :as => 'attachable'   
   
-#  validates_presence_of :name,:email
-#  validates_length_of :name, :within => 2..20
-#  validates_format_of :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/,:allow_blank => true   
+  validates_presence_of :user
+  validates_presence_of :name,:email
+  validates_length_of :name, :within => 2..20
+  validates_format_of :mobile, :with => /^13[0-9]|^15[0-9][0-9]{8}$/,:allow_blank => true   
   
   cattr_reader :per_page
   @@per_page = 20

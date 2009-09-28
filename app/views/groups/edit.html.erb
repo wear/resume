@@ -1,0 +1,24 @@
+<% content_for :tabs do -%> 
+	<li><%=link_to '动态',@group%></li> 
+	<li><%=link_to '资料库',page_group_wiki_path(@group,:page => @group.wiki.start_page) %></li>  
+	<%#= topnav_tab '书签', {:url => group_wiki_bookmarks_path(@group)}%>
+    <% if current_user.is_mod_of?(@group) -%> 
+    	<li class='ui-tabs-selected'><%=link_to '课堂设置','#tabs-content'%></li>
+	<% end -%>
+<% end -%>
+
+<% content_for :tab_sidebar do -%> 
+	<li><%=link_to '动态',@group%></li>
+	<%#= topnav_tab '书签', {:url => group_wiki_bookmarks_path(@group)}%>
+    <% if current_user.is_mod_of?(@group) -%> 
+	<li class='ui-tabs-selected'><%=link_to '课堂设置','#tabs-content'%></li>
+	<li><%=link_to '成员设置',members_group_path(@group)%></li>
+	<li><%=link_to '权限管理','#'%></li>
+	<li><%=link_to '邀请成员','#'%></li>
+	<% end -%>
+<% end -%>
+
+<% form_for(@group, :html => { :method => :put,:multipart => true } ) do |f| -%>      
+ <%= render :partial => 'form',:locals => { :f => f } %>
+<p><%= submit_tag '编辑'%></p>
+<% end -%>

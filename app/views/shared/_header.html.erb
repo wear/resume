@@ -1,5 +1,5 @@
 <div class='nav span-24'>
-	<div class='span-5 logo'>
+	<div class='span-4 logo'>
 		<%=link_to image_tag('logo.png'),root_path %>
 	</div>
 	<div class='line span-1'>
@@ -9,6 +9,7 @@
 	<div class='span-10 login'>
 		 <h2>
 			<% if logged_in? -%>
+			<%=link_to '课堂',groups_path %>
 			<%=link_to '关系圈',user_friendships_path(current_user) %> 
 			<%=link_to "便条(#{current_user.unread_message_count})",user_messages_path(current_user) %>  
 			<% end -%> 
@@ -19,7 +20,7 @@
 	<div class='line span-1'>
 		<%= image_tag 'line_1.gif'%> 
 	</div>
-	<div class='span-6 last login'> 
+	<div class='span-8 login last'> 
 	   	<% if logged_in? -%>
 			  <h2>
 				你好 <%=link_to current_user.login,current_user %>
@@ -30,5 +31,15 @@
 		    <% else -%>
 		      <h2><%=link_to '登录',login_path%> <%= link_to '注册', signup_path %> <%=link_to '博客',comatose_blog_path %> <%=link_to '帮助',help_path%>  </h2> 
 			<% end -%>
+	</div>  
+	<% if false %>
+	<div class='line span-1'>
+		<%= image_tag 'line_1.gif'%> 
 	</div>
+	<div class='span-5 last login'> 
+		<% form_tag search_path,:method => 'get' do %>
+		   <%= text_field_tag :query,params[:query] || "搜索最近学习、关注的东东...", :size => 21,:id => 'query',:style=>'color:#666;'%>
+		<% end -%>
+	</div>       
+	<% end %>
 </div>

@@ -330,13 +330,18 @@ h4,h5 {
 	padding-right:10px;
 }       
 
+dl{   
+	border-bottom: 1px solid #D9D9D9;
+}         
+
 dt{
 	font-size:12px;
 }
 
 dd{
-  padding-bottom:20px;
+  padding-bottom:20px;  
 }
+
 
 #activity-item{
 	margin-bottom:10px;
@@ -607,4 +612,227 @@ ol
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+/*-----icon------*/  
+.icon {
+background-position: 0% 40%;
+background-repeat: no-repeat;
+padding-left: 20px;
+padding-top: 2px;
+padding-bottom: 3px;
+}
+
+
+.icon-add { background-image: url(../images/icon/add.png); }
+.icon-edit { background-image: url(../images/icon/edit.png); }
+.icon-copy { background-image: url(../images/icon/copy.png); }
+.icon-del { background-image: url(../images/icon/delete.png); }
+.icon-move { background-image: url(../images/icon/move.png); }
+.icon-save { background-image: url(../images/icon/save.png); }
+.icon-cancel { background-image: url(../images/icon/cancel.png); }
+.icon-file { background-image: url(../images/icon/file.png); }
+.icon-folder { background-image: url(../images/icon/folder.png); }
+.open .icon-folder { background-image: url(../images/icon/folder_open.png); }
+.icon-package { background-image: url(../images/icon/package.png); }
+.icon-home { background-image: url(../images/icon/home.png); }
+.icon-user { background-image: url(../images/icon/user.png); }
+.icon-mypage { background-image: url(../images/icon/user_page.png); }
+.icon-admin { background-image: url(../images/icon/admin.png); }
+.icon-projects { background-image: url(../images/icon/projects.png); }
+.icon-help { background-image: url(../images/icon/help.png); }
+.icon-attachment  { background-image: url(../images/icon/attachment.png); }
+.icon-index  { background-image: url(../images/icon/index.png); }
+.icon-history  { background-image: url(../images/icon/history.png); }
+.icon-time  { background-image: url(../images/icon/time.png); }
+.icon-time-add  { background-image: url(../images/icon/time_add.png); }
+.icon-stats  { background-image: url(../images/icon/stats.png); }
+.icon-warning  { background-image: url(../images/icon/warning.png); }
+.icon-fav  { background-image: url(../images/icon/fav.png); }
+.icon-fav-off  { background-image: url(../images/icon/fav_off.png); }
+.icon-reload  { background-image: url(../images/icon/reload.png); }
+.icon-lock  { background-image: url(../images/icon/locked.png); }
+.icon-unlock  { background-image: url(../images/icon/unlock.png); }
+.icon-checked  { background-image: url(../images/icon/true.png); }
+.icon-details  { background-image: url(../images/icon/zoom_in.png); }
+.icon-report  { background-image: url(../images/icon/report.png); }
+.icon-comment  { background-image: url(../images/icon/comment.png); }
+
+/***** Diff *****/
+.diff_out { background: #fcc; }
+.diff_in { background: #cfc; }
+
+/***** Wiki *****/
+div.wiki table {
+    border: 1px solid #505050;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+div.wiki table, div.wiki td, div.wiki th {
+    border: 1px solid #bbb;
+    padding: 4px;
+}
+
+div.wiki .external {
+    background-position: 0% 60%;
+    background-repeat: no-repeat;
+    padding-left: 12px;
+    background-image: url(../images/external.png);
+}
+
+div.wiki a.new {
+    color: #b73535;
+}
+
+div.wiki pre {
+    margin: 1em 1em 1em 1.6em;
+    padding: 2px;
+    background-color: #fafafa;
+    border: 1px solid #dadada;
+    width:95%;
+    overflow-x: auto;
+}
+
+div.wiki ul.toc {
+    background-color: #ffffdd;
+    border: 1px solid #e4e4e4;
+    padding: 4px;
+    line-height: 1.2em;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    margin-left: 0;
+    display: table
+}
+* html div.wiki ul.toc { width: 50%; } /* IE6 doesn't autosize div */
+
+div.wiki ul.toc.right { float: right; margin-left: 12px; margin-right: 0; width: auto; }
+div.wiki ul.toc.left  { float: left; margin-right: 12px; margin-left: 0; width: auto; }
+div.wiki ul.toc li { list-style-type:none;}
+div.wiki ul.toc li.heading2 { margin-left: 6px; }
+div.wiki ul.toc li.heading3 { margin-left: 12px; font-size: 0.8em; }
+
+div.wiki ul.toc a {
+    font-size: 0.9em;
+    font-weight: normal;
+    text-decoration: none;
+    color: #606060;
+}
+div.wiki ul.toc a:hover { color: #c61a1a; text-decoration: underline;}
+
+a.wiki-anchor { display: none; margin-left: 6px; text-decoration: none; }
+a.wiki-anchor:hover { color: #aaa !important; text-decoration: none; }
+h1:hover a.wiki-anchor, h2:hover a.wiki-anchor, h3:hover a.wiki-anchor { display: inline; color: #ddd; }
+ 
+#preview fieldset {margin-top: 1em; background: url(../images/draft.png)}  
+
+/***** Ajax indicator ******/
+#ajax-indicator {
+position: absolute; /* fixed not supported by IE */
+background-color:#eee;
+border: 1px solid #bbb;
+top:35%;
+left:40%;
+width:20%;
+font-weight:bold;
+text-align:center;
+padding:0.6em;
+z-index:100;
+filter:alpha(opacity=50);
+opacity: 0.5;
+}
+
+html>body #ajax-indicator { position: fixed; }
+
+#ajax-indicator span {
+background-position: 0% 40%;
+background-repeat: no-repeat;
+background-image: url(../images/loading.gif);
+padding-left: 26px;
+vertical-align: bottom;
+}
+
+/*---- group -------*/ 
+.group_icon{
+	background:url(/images/id_bg.png) 8px no-repeat;
+}  
+
+#group_header{
+	clear:both;
+	padding:10px;
+	height:65px;
+	width:100%;
+} 
+
+.g_left{ 
+	float:left;
+	background: url(/images/bg/title_bg_m.jpg) repeat-x;
+} 
+
+.title_left{  
+	float:left; 
+	width:26px; 
+	height:56px;
+  background: url(/images/bg/title_bg_l.jpg); 
+} 
+
+.title_m{
+	float:left; 
+}
+
+.title-right{ 
+	float:left;
+	width:26px; 
+	height:56px;
+   background: url(/images/bg/title_bg_r.jpg);  
+}
+.g_left ul li{
+	float:left;
+	list-style:none;
+	margin-left:10px;
+}
+
+.group_description{
+	float:left; 
+	margin-left:30px;
+}
+
+.g-logo{   
+	height:48px; 
+	width:54px;   
+	text-align:center;
+    padding-top:3px;
+	background:#cbcbcb;
+} 
+
+.group_list{
+   margin:10px 100px 10px 10px;
+}            
+
+.group_list li{ 
+	float:left;
+	list-style-type: none;
+	padding:10px;
+	width:100px; 
+	text-align:center;
+} 
+
+.title{
+	font-size:14px;
+} 
+
+.group_list li img{
+	margin:10px 0px;
+}
+
+
+li.new_group{  
+	background:url(images/id_bg.png) no-repeat 18px 30px;
+	float:right;
+}
+
+.group-title{
+	color: #222222;
+	font-size: 28px;
+	font-family: Tahoma, "ËÎÌå", Arial;
 }

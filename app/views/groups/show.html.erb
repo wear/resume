@@ -1,0 +1,12 @@
+<% content_for :tabs do -%> 
+	<li><%=link_to '动态','#tabs-content'%></li>
+    <li><%=link_to '资料库',page_group_wiki_path(@group,:page => @group.wiki.start_page) %></li>  
+	<%#= topnav_tab '书签', {:url => group_wiki_bookmarks_path(@group)}%>
+    <% if current_user.is_mod_of?(@group) -%> 
+		<li><%=link_to '课堂设置',edit_group_path(@group)%></li>
+	<% end -%>
+<% end -%>
+
+<% @recent_activity.each do |activity| -%>
+   <%=render :partial => "shared/activity", :locals => {:activity => activity }%>
+<% end %>	

@@ -1,0 +1,256 @@
+# Chinese (China) translations for Ruby on Rails 
+# by tsechingho (http://github.com/tsechingho)
+
+zh: 
+  contact_user: "查看完简历"  
+  name: 姓名
+  mobile: 手机
+  adr: 地址
+  birth: 生日
+  pro: 个人信息
+  sex: 性别
+  male: 男
+  female: 女
+  hometown: 出生地
+  hukou: 户口
+  portrait: 头像
+  fill_in_profile: 添加基本信息
+  create: 新建
+  resumes: 我的简历
+  edit_personal_info: 编辑基本信息
+  edit_educations: 编辑教育情况
+  edit_additionalinfo: 编辑兴趣爱好
+  edit_positions: 编辑工作经历
+  edit: 编辑
+  add: 添加
+  age: 年龄
+  contact: 联系方式
+  intresters: 兴趣爱好
+  edu: 教育情况
+  positions: 工作经历
+  summary: 总结
+  usage: 状态
+  preview: 内部效果(仅好友可见)
+  public: 公开页面
+  back: 返回
+  update: 更新
+  request_recommendation: 请求评价
+  groups: 小组
+  awards: 获奖情况 
+  add_position: 添加工作经历
+  title: 职位
+  start_at: 开始时间
+  stop_at: 结束时间
+  company: 公司
+  desc: 描述
+  still_on: 仍在职
+  school: 学校
+  degree: 学历
+  major: 专业
+  new_education: 添加教育经历
+  delete: 删除
+  comfirm: 你确定嘛?
+  download_pdf: 下载pdf
+  send_resume: 投简历
+  content: 内容
+  send: 发送
+  follow_resume: 以下是我的简历
+  mail_correct_notify: 如不能正常查看邮件请点击下面的链接
+  recommendations: 推荐
+  as: 是他/她的      
+  all_positions: 所有工作经历
+  all_educations: 所有教育经历
+        
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b%d日"
+      long: "%Y年%b%d日"
+      date_ago: "%B %d"
+    day_names: [星期日, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [日, 一, 二, 三, 四, 五, 六]
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    order: [ :year, :month, :day ]
+  
+  time:
+    formats:
+      default: "%Y年%b%d日 %A %H:%M:%S %Z"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+      time_ago: "%p%l:%M"
+    am: "上午"
+    pm: "下午"
+  
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分钟"
+      less_than_x_seconds:
+        one: "一秒内"
+        other: "少于 {{count}} 秒"
+      x_seconds:
+        one: "一秒"
+        other: "{{count}} 秒"
+      less_than_x_minutes:
+        one: "一分钟内"
+        other: "少于 {{count}} 分钟"
+      x_minutes:
+        one: "一分钟"
+        other: "{{count}} 分钟"
+      about_x_hours:
+        one: "大约一小时"
+        other: "大约 {{count}} 小时"
+      x_days:
+        one: "一天"
+        other: "{{count}} 天"
+      about_x_months:
+        one: "大约一个月"
+        other: "大约 {{count}} 个月"
+      x_months:
+        one: "一个月"
+        other: "{{count}} 个月"
+      about_x_years:
+        one: "大约一年"
+        other: "大约 {{count}} 年"
+      over_x_years:
+        one: "一年以上"
+        other: "{{count}} 年以上"
+    prompts:
+      year:   "年"
+      month:  "月"
+      day:    "日"
+      hour:   "时"
+      minute: "分"
+      second: "秒"
+  
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+    currency:
+      format:
+        format: "%u %n"
+        unit: "CN¥"
+        separator: "."
+        delimiter: ","
+        precision: 2
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+  
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " 和 "
+      last_word_connector: ", 和 "
+  
+  activerecord:
+    models:
+      personalinfo: 个人资料
+      summary: 个人总结
+      position: 工作经验 
+      education: 教育情况
+      resume: 简历
+      additionalinfo: 兴趣爱好
+      user: 用户     
+      poster: 求职信 
+      recommendation: 评价
+    attributes: 
+      recommendation:
+          sender_role: 发送者角色
+          receiver_role: 接受者角色
+          desc: 内容
+          refer_type: 关系
+      poster:
+          content: 内容
+          position: 职位
+      user:
+          login: 用户名
+          password: 密码
+          password_confirmation: 密码确认  
+      additionalinfo:
+          interests: 爱好
+          groups: 参加的活动/小组
+          awards: 获得的奖励    
+      education:
+          name: 学校名称
+          degree: 学历
+          field: 专业
+      position:
+          start_at: 开始时间
+          description: 描述
+          end_at: 结束时间
+          title: 职位
+          company: 公司名称
+      resume:
+          name: 名称
+          usage: 用途
+          mobile: 手机
+      summary:
+          content: 总结
+          specialties: 特长
+      personalinfo:
+          email: '电子邮件' 
+          sex: '性别'
+          name: '名称'
+          mobile: '手机' 
+          address: '地址'
+          country: '国家' 
+          company: '公司'
+          description: '介绍'
+          website: 网站/博客
+          phone_number: 联系电话
+          submit: 提交
+          industry: 行业
+          company_category: 公司类型 
+          company_size: 公司规模 
+          work_experience: 工作经验
+          ruby_experience: Ruby经验
+          interesting: 兴趣爱好
+          title: 职位
+    errors:
+      template:
+        header: 
+          one: "有 1 个错误发生导致「{{model}}」无法被保存。"
+          other: "有 {{count}} 个错误发生导致「{{model}}」无法被保存。"
+        body: "如下字段出现错误："
+      messages: 
+        inclusion: "不包含于列表中"
+        exclusion: "是保留关键字"
+        invalid: "是无效的"
+        confirmation: "与确认值不匹配"
+        accepted: "必须是可被接受的"
+        empty: "不能留空"
+        blank: "不能为空字符"
+        too_long: "过长（最长为 {{count}} 个字符）"
+        too_short: "過短（最短为 {{count}} 个字符）"
+        wrong_length: "长度非法（必须为 {{count}} 个字符）"
+        taken: "已经被使用"
+        not_a_number: "不是数字"
+        greater_than: "必须大于 {{count}}"
+        greater_than_or_equal_to: "必须大于或等于 {{count}}"
+        equal_to: "必须等于 {{count}}"
+        less_than: "必须小于 {{count}}"
+        less_than_or_equal_to: "必须小于或等于 {{count}}"
+        odd: "必须为单数"
+        even: "必须为双数"
+
+

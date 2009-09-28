@@ -3,7 +3,24 @@
 
 var $j = jQuery;
  
-$j.ajaxSetup({'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} });
+$j.ajaxSetup({'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} });    
+
+jQuery(document).ready(function($) {
+    // Binding focus and blur events for query input box
+    $('#query').
+        focus(function() {
+        if (this.value == "搜索最近学习、关注的东东...") { 
+			this.style.color = "#000" 
+            this.value = "";  
+        }
+    }).
+        blur(function() {
+        if (this.value == "") {
+			this.style.color = "#666";
+            this.value = "搜索最近学习、关注的东东...";
+        }
+    });
+});
 
 function postition_time_period(ele) {  
     if(ele.value == 'no') {

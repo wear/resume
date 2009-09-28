@@ -31,7 +31,29 @@ class User < ActiveRecord::Base
   has_many :sent_recommendations,:class_name => 'Recommendation',:foreign_key => 'sender_id'
   has_many :received_recommendations,:class_name => 'Recommendation', :foreign_key => "receiver_id" 
   has_many :invitations 
-  has_private_messages
+  has_many :groups
+  has_private_messages   
+  include_simple_groups  
+  
+  named_scope :recent, :order => 'users.created_at DESC'
+  named_scope :active, :conditions => ["users.activated_at IS NOT NULL"]
+  
+  has_many :memberships,:foreign_key => 'user_id'     
+#  has_many :bookmarks,:foreign_key => 'user_id'         
+  
+  def allowed_to?(group)
+    is_member_of?(group) 
+  end
+  
+  def request_membership_of(group)
+    group.pending_members << self unless self.is_member_of?(group)
+  end
+  
+  def become_admin_of(group)
+      group.members << self unless self.pending_and_accepted_groups.include?(group)
+      group.accept_member(self)
+      group.set_mod(self)
+  end
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 2..40
@@ -56,9 +78,10 @@ class User < ActiveRecord::Base
   before_create :make_initation_code
   before_create :make_activation_code   
   
-  def offical_name
-    (resume.nil? || resume.personalinfo.nil?) ? login : resume_name 
+  def official_name
+    resume.nil? ? login : resume.name 
   end
+  
   
   def admin?
     all_roles.include?("superuser")

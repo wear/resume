@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="47"
+   name=""
+   committed-date="2009-04-13T09:38:28.309082Z"
+   url="http://www.skung.com/svn/elearning/trunk/vendor/plugins/activity_tracker/test/fixtures"
+   last-author="wear"
+   kind="dir"
+   repos="http://www.skung.com/svn/elearning"
+   revision="47"/>
+<entry
+   committed-rev="47"
+   name="test_user.rb"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="eac4d9d0994db33dbabd2b63d89c0281"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="test_users.yml"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="e3dd0a6d0b4b124b7f5f7dc3ac535a39"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="test_post.rb"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="080c040adf8f1ea5f1ffac1f1da1474c"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="test_posts.yml"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="81a6f5abbc4d75fa1b8e3dde6f304cf9"
+   last-author="wear"
+   kind="file"/>
+</wc-entries>

@@ -1,0 +1,28 @@
+<% content_for :head do -%>
+	<%= javascript_include_tag 'jquery.scrollTo-min' %>
+<% end -%>
+
+<% content_for :tabs do -%>
+	<%=link_to '<<返回','#tabs-content' %> 
+<% end -%>
+
+<h2>新建页面</h2>
+<% form_for :content, @content, :url => group_wiki_path(@group), :html => {:id => 'wiki_form',:method => :put} do |f| %>   
+<%= error_messages_for :content %>
+<p><label>标题</label><br /><%= text_field_tag :page,nil,:size => 40 %></p>
+<%= render :partial => 'wiki_form',:locals => { :f => f } %> 
+<%= f.hidden_field :comments, :value => '初始创建' %>
+<p><%= submit_tag '保存' %>
+   <%= link_to_remote '预览',{:url => preview_group_wiki_path(@group), 
+                         :method => 'post',
+                         :update => 'preview',
+                         :with => "$('#wiki_form').serialize()",
+						 :complete =>"$.scrollTo('#preview')"},
+                         :accesskey => accesskey(:preview) %></p>
+<% end %>
+
+<div id="preview" class="wiki"></div>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'scm' %>
+<% end %>

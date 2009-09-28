@@ -10,7 +10,12 @@ class LandingController < ApplicationController
       wants.html { }
     end
   end
-  end  
+  end 
+  
+  def search   
+     query = params[:query]
+     @resumes = Resume.find(:all,:conditions => ["name LIKE ? ",query])
+  end 
   
   def help
     

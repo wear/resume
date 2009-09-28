@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="42"
+   name=""
+   committed-date="2009-04-04T14:33:16.301626Z"
+   url="http://www.skung.com/svn/elearning/trunk/public/images/icon"
+   last-author="wear"
+   kind="dir"
+   uuid="12b9a22b-fce1-4581-802c-20c975270ab6"
+   repos="http://www.skung.com/svn/elearning"
+   revision="46"/>
+<entry
+   committed-rev="5"
+   name="time.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="b139ed675fdbdca56f0d73121f36f836"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_toggle_minus.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="f571247a0bb0a90708faaeb3f9b03943"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="folder_open_add.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="3236fdab30eb5b50d89409e25669e75b"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="5"
+   name="warning.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="c847e1076da70df83ef5284622b82a74"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="5"
+   name="reload.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="33e084980e8bc278dd24f95a71b710ed"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="5"
+   name="move.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="ffdc5c1c327de9c5cb203ebca76bd43d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="fav_off.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="ecd6dd06b5cd23c28348a2420b288838"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="5"
+   name="ticket_note.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="f45663fce0823e4a935b60a700bde56b"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="copy.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="44e004725398668b453ff10153b1de7f"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="5"
+   name="zoom_in.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="f016626b631bf3ddc9d56ead3a18fe99"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="5"
+   name="news.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="a9f5563fb90eeeac3c619c0f00761b91"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="file.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="c06156a18f3af9b49dd0068c77ee6773"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_orange.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="54bfd6834ff4eb49da60cf792811dc3b"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="arrow_bw.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="916fee51acfcc40198ca4c200f959064"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="external.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="d3a5329e1ee742faeba83c4c31357965"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="edit.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="0a74b72595dfa6d2d7777e2d76ccea17"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="38"
+   name="guest.png"
+   text-time="2008-06-02T06:52:29.000000Z"
+   committed-date="2009-04-04T08:19:25.882820Z"
+   checksum="47b2f3f438a66eb32b63165f68a92d7e"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-04-04T08:06:20.000000Z"/>
+<entry
+   committed-rev="5"
+   name="package.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="cc5619783332d3232584725c50fb44b2"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:48.000000Z"/>
+<entry
+   committed-rev="4"
+   name="folder_open.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="7eb17493fce79d814194755bb30156fd"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="history.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="2055c71051d6fdae7561f42832ac2ca7"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="delete.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="887228730e1094868d2b2363bdb4c519"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="feed.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="ae16b2754fb88a5c0db141a35eff5d2b"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="close.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="0bda084e710faa86b030976ffc581dae"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="task_done.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="5f8d4136a0c170800fa6c945d5c7cbaf"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="pdf.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="0e0e10cd24ba7fd2b28d33e34f84b85a"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_delete.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="eedcd207a2964b2ae4989d1ed8fd7c87"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="sub.gif"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="6cdb75d387d4e9c8f760b38e988265c7"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="sort_asc.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="b1b3610ebb8b6971995551bd56cfb6ef"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="toggle_check.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="a28929fcdb0033e3e8755af8127f6b11"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_black.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="06d345566cf9e0f97a23bb07ab3d50d9"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="comments.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="7f921eb272b341361812f386377df256"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="folder_open_orange.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="c3d96bd8f16c9ff1521a49b059be3df1"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="attachment.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="209bbd8af56afda8b7d9f5a177a09a14"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="false.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="99af054ef5122dcc648749c02f1a47a9"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_toggle_plus.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="d432bdeade0811f3eaae594e56abfcd2"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="unlock.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="c9450dac2de93b6385774d1b69a78bb9"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="save.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="2e823ad1ad6c494a1076ac85b05d6de1"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="loading.gif"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="03ce3dcc84af110e9da8699a841e5200"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_blue.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="e5cad03c7d23fedc6d0f5c9242242ef6"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="milestone.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="a845e2de316dbb5a9825e64ca02eeff5"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_add.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="970fba02d1d3263f76c43559ae32cf0d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="draft.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="069990bce52b917ba6b75f088887b053"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="users.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="c87d8ed0350b5301cd9530f3fd2f7577"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="html.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="3d63ac3e8688108598a765245c839d74"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="report.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="e3d811ea801a0f77da7f1dbbffc56b04"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="folder.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="daf4dea8b2a027ca48ab8d69060a18e3"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="zoom_out.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="311807f39dd3c5bfbd4198c02a80b661"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="fav.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="0fd26369585c491dca64207a41f0f09d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="arrow_from.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="06b65242e57853ed12e6294dff4823e6"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="bullet_purple.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="dd1822336288b9bf3d0cd37ba92fa460"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="document.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="16d0b038ea75d9eeb0e0fa052b796045"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="true.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="2d5b7bb67b24bbaee8c7cf533b997415"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="txt.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="7bcf4d4d56647d59653a120aeeace6e2"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="arrow_down.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="0815b9503653619589c01cbde0d5380a"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="cancel.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="dcb39990e7e546cdc0c04160da06ccfe"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="user_new.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="b2ef530ac23680a401291df26f653c85"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="help.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="50e859b802aa8a9caabbead2a053832b"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="admin.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="382e868d7116c080d6d9012b25ca9a75"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="add.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="a85b3e11e3746d2f8ea530aa3da527e1"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="close_hl.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="028e9b27ab62619c759e8c90854b548d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="projects.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="db0c5e34c502235988e7eeda32d58ec9"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="csv.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="19e215647d89f238bebf2c0cce15beae"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="arrow_to.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="a6ffcbf413a784bbb4f76d5c6d1dfd16"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="stats.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="9317a077c0d3f138cd9428c7c16b0787"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="locked.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="a25a7389f406224a0a2bae40b6a2d817"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="changeset.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="30a18063ef42b090194a7e936086960f"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="42"
+   name="icon_missing_thumb.gif"
+   text-time="2009-04-04T12:06:37.000000Z"
+   committed-date="2009-04-04T14:33:16.301626Z"
+   checksum="ac314ef9b4bd197d5eccef9fb0287f4d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-04-04T14:21:19.000000Z"/>
+<entry
+   committed-rev="4"
+   name="comment.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="a22ab82fb3a33ece38c3ab5e0844154d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="sticky.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="768767e1a98c4efbe7b7d26e6a55242a"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="time_add.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="803d3f19ff71392c1edd5221ddbc332e"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="task_late.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="e6ca78becebb7982bc8676c1d7bd6d2d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="index.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="f2c8ef6b1ee455d93b8050d6f431a5e6"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="5"
+   name="wiki_edit.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="e6c2436f7f8623c4d61ece39d0201acd"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:49.000000Z"/>
+<entry
+   committed-rev="4"
+   name="calendar.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="034be2acb4c3a031e37e9c7c2135c2bd"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="user_page.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="c94469008b91b78d0c47d1081bf5e0f2"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="user.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="c74df7ed9498d5a88e8fece4b09ba004"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="zoom_in_g.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="309c1139181af9fcafdcdb44521be5ad"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="zoom_out_g.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="8e23f8275514e518acd3b6a88df5637f"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="4"
+   name="image.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="9d65208ae4f1d50f20f7fac361c5515d"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="ticket.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="77491f6a50ed2e0945153809e2334713"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="message.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="43383c0421f67ded9079fec3ab059fed"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:50.000000Z"/>
+<entry
+   committed-rev="5"
+   name="sort_desc.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="d13aca370fc207654e187e59464831cc"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:51.000000Z"/>
+<entry
+   committed-rev="5"
+   name="openid-bg.gif"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="d8720cf3644e6ae0511c1391fb2ecf07"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:51.000000Z"/>
+<entry
+   committed-rev="5"
+   name="task_todo.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="5d679fbc98310312f4d2a110affa10fc"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:51.000000Z"/>
+<entry
+   committed-rev="4"
+   name="home.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T11:15:33.004988Z"
+   checksum="61fc53df18594a98fb4286aab267e3b6"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:51.000000Z"/>
+<entry
+   committed-rev="5"
+   name="ticket_edit.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="2199b675aa61e0dabd5737d83a4ba56f"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:52.000000Z"/>
+<entry
+   committed-rev="5"
+   name="ticket_checked.png"
+   text-time="2009-03-19T12:01:52.000000Z"
+   committed-date="2009-03-19T12:02:56.515110Z"
+   checksum="54cc11039b9a6c47a82a386d8e9673bc"
+   last-author="wear"
+   kind="file"
+   prop-time="2009-03-19T12:01:52.000000Z"/>
+</wc-entries>

@@ -1,0 +1,31 @@
+<div id='group_header'>  
+	<div class='g_left'>
+		<div class='title_left'></div>
+		<div class='title_m'>
+		  	<ul>
+				<li class='g-logo'><%= group_icon_for(@group,'thumb') %></li>
+			    <li><h1><%=link_to @group.title,@group,:class=>'group-title' %></h1></li>
+			</ul>  
+		</div> 
+		<div class="title-right"></div>
+	</div> 
+	<div class='group_description'>
+		<%= show_description(@group) %>
+		<%= @group.tag_list %><br />
+		<% if logged_in? && current_user.is_mod_of?(@group) %>
+			<%=link_to '编辑',edit_group_path(@group) %>
+		<% end %>
+		<% if logged_in? && current_user.id == @group.created_by  -%>
+			<%=link_to '删除',group_path(@group),:method => 'delete'%>
+		<% end -%> 
+		<% unless logged_in? -%>
+		   -<%=facebox_link_to '加入小组',  :url => login_box_path ,:class=>'ag' ,:method => 'get'%>
+		<% else -%>        
+		   <% unless current_user.is_member_of?(@group) || (current_user.id == @group.created_by) -%>
+			-<%=link_to '加入小组', join_group_path(@group),:class=>'ag'%>
+		    <% end -%>
+		<% end -%>
+	</div> 
+</div>
+
+                

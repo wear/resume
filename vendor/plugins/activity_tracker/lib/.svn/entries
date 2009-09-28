@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="47"
+   name=""
+   committed-date="2009-04-13T09:38:28.309082Z"
+   url="http://www.skung.com/svn/elearning/trunk/vendor/plugins/activity_tracker/lib"
+   last-author="wear"
+   kind="dir"
+   repos="http://www.skung.com/svn/elearning"
+   revision="47"/>
+<entry
+   committed-rev="47"
+   name="activity_tracker.rb"
+   text-time="2009-04-13T07:23:48.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="9e4ad0bfbc059c51b6e63194d19e74fe"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="activity.rb"
+   text-time="2009-04-13T08:53:06.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="34943fa0bf933a863e46ec4b48e43e99"
+   last-author="wear"
+   kind="file"/>
+</wc-entries>

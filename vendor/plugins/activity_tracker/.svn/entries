@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="47"
+   name=""
+   committed-date="2009-04-13T09:38:28.309082Z"
+   url="http://www.skung.com/svn/elearning/trunk/vendor/plugins/activity_tracker"
+   last-author="wear"
+   kind="dir"
+   repos="http://www.skung.com/svn/elearning"
+   revision="47"/>
+<entry
+   name="test"
+   kind="dir"/>
+<entry
+   committed-rev="47"
+   name="Rakefile"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="1e7e8766097168cf6c4665d82b9f6c3d"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="init.rb"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="a43ba859fe54d02d40fe9b7626c92dc1"
+   last-author="wear"
+   kind="file"/>
+<entry
+   name="tasks"
+   kind="dir"/>
+<entry
+   name="lib"
+   kind="dir"/>
+<entry
+   committed-rev="47"
+   name="install.rb"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="cbe738c10eba4ae2da8c6859c9723e44"
+   last-author="wear"
+   kind="file"/>
+<entry
+   name="generators"
+   kind="dir"/>
+<entry
+   committed-rev="47"
+   name="uninstall.rb"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="2a5fc883fe7f8dfe22ced24643d59ad4"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="README"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="9904aceff2afa78fc3cf518ffb48e035"
+   last-author="wear"
+   kind="file"/>
+</wc-entries>

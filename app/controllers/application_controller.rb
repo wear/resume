@@ -7,9 +7,13 @@ class ApplicationController < ActionController::Base
   include ExceptionNotifiable
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
+  def render_group_header
+    @render_group_header = true
+  end
   
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password                        
+  def set_section(section)
+    @section = section
+  end                 
   
   def find_resume
     @resume = Resume.find(params[:resume_id] || params[:id]) || current_user.resume

@@ -1,0 +1,11 @@
+
+<h2><%= '提交' %>: <%= @original_title %></h2>
+
+<%= error_messages_for 'page' %>
+
+<% form_for :wiki_page, @page, :url => { :action => 'rename' } do |f| %>
+	<div class="box">
+		<p><lable for='title'>名称</label><%= f.text_field :title, :required => true, :size => 40  %></p>
+	</div>
+<%= submit_tag '提交' %>
+<% end %>

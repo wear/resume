@@ -1,0 +1,6 @@
+<li><%=link_to '动态',@group%></li>
+<li class='ui-tabs-selected'><%=link_to '资料库','#tabs-content'%></li>  
+<%#= topnav_tab '书签', {:url => group_wiki_bookmarks_path(@group)}%>
+<% if current_user.is_mod_of?(@group) -%> 
+<li><%=link_to '课堂设置',edit_group_path(@group)%></li>
+<% end -%>

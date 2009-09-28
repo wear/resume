@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   map.public_resume '/public/resume/:id', :controller => 'resumes', :action => 'public', :id => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box' 
- 
+  map.search '/search', :controller => 'landing', :action => 'search'
  
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
   map.public_resume_pdf '/public/resumes/:salt', :controller => 'resumes', :action => 'public',:format => 'pdf' 
@@ -35,11 +35,19 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :users,:collection => {:reset_password => :post},:member => {:public => :get,:password => :get,:change_password => :put } do |user|
-     user.resources :invitations 
+     user.resources :invitations
      user.resources :friendships,:member => {:add => :post}  
      user.resources :messages, :collection => { :delete_selected => :post,:sent_box => :get }
      user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:edit_visible => :get,:visible => :put,:request_revised => :put } 
-  end 
+  end   
+  
+  map.resources :groups,:member => { :join => :get,:members => :get,:activity => :get,:pending_members => :get, :managers => :get, } do |group|
+    group.resource :wiki,:member => {:page => :get,:preview => :put, :annotate => :get,:new_page => :get,
+      :create_page => :post, :protect => :post, :rename => [:get,:post], :history => :get, :diff => :get, :special => :get, :page_list => :get } do |w|
+        w.resources :bookmarks
+      end
+    
+  end
 
   map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get,:pub => :get} do |resume|
      resume.resources :positions 
@@ -48,7 +56,16 @@ ActionController::Routing::Routes.draw do |map|
      resume.resource :personalinfo 
      resume.resource :additionalinfo
      resume.resources :posters,:collection => {:preview => :post }
-  end 
+  end     
+  
+  map.group_member '/groups/:id/members/:user_id',:controller => 'groups', :action => 'member'
+  map.edit_group_member '/groups/:id/members/:user_id/edit',:controller => 'groups', :action => 'edit_member'
+  map.update_group_member '/groups/:id/members/:user_id/update',:controller => 'groups', :action => 'update_member'
+  map.group_category '/groups/:id/category/:category_id', :controller => 'categories', :action => 'show'
+  map.accpet_pending_group_member '/groups/:id/members/:user_id/accept', :controller => 'groups', :action => 'accept'
+  map.add_group_admin '/groups/:id/members/:user_id/add_admin', :controller => 'groups', :action => 'add_admin'
+  map.kick_group_member '/groups/:id/members/:user_id/kick', :controller => 'groups', :action => 'kick'   
+  map.reset_group_admin 'groups/:id/:members/:user_id/reset_admin', :controller => 'groups', :action => 'reset_admin'
   
 
 

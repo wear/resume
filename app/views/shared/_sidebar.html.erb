@@ -5,6 +5,7 @@
 			<h4 id='service'>菜单</h4> 
 		 	<ul >  
 				<%= topnav_tab('个人中心', :url => user_path(current_user) ,:section => 'user') %>
+				<%= topnav_tab('课堂', :url => groups_path ,:section => 'group') %>
 				<%= topnav_tab('简历中心', :url => resume_center_path(current_user.resume) ,:section => 'resume') %> 
 				<%= topnav_tab('评价管理', :url => user_recommendations_path(current_user) ,:section => 'recommendation') %> 
 			    <%= topnav_tab('关系圈', :url => user_friendships_path(current_user) ,:section => 'friendship') %> 

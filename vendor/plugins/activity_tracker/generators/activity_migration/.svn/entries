@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="47"
+   name=""
+   committed-date="2009-04-13T09:38:28.309082Z"
+   url="http://www.skung.com/svn/elearning/trunk/vendor/plugins/activity_tracker/generators/activity_migration"
+   last-author="wear"
+   kind="dir"
+   repos="http://www.skung.com/svn/elearning"
+   revision="47"/>
+<entry
+   committed-rev="47"
+   name="USAGE"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="0767ed8d37560de5eaf72fb068775ad9"
+   last-author="wear"
+   kind="file"/>
+<entry
+   committed-rev="47"
+   name="activity_migration_generator.rb"
+   text-time="2009-03-19T10:37:50.000000Z"
+   committed-date="2009-04-13T09:38:28.309082Z"
+   checksum="d07eac8fee2c1a5d31d08e2bb884abfe"
+   last-author="wear"
+   kind="file"/>
+<entry
+   name="templates"
+   kind="dir"/>
+</wc-entries>
