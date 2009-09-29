@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090928093730) do
+ActiveRecord::Schema.define(:version => 20090929144825) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.datetime "updated_at"
   end
 
-  add_index "additionalinfos", ["resume_id"], :name => "index_additionalinfos_resume_id"
-
   create_table "asserts", :force => true do |t|
     t.string   "filename"
     t.integer  "width"
@@ -48,8 +46,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.string   "thumbnail"
     t.integer  "parent_id"
   end
-
-  add_index "asserts", ["attachable_id", "attachable_type"], :name => "index_asserts_on_attachable_id_and_attachable_type"
 
   create_table "comatose_page_versions", :force => true do |t|
     t.integer  "comatose_page_id"
@@ -92,8 +88,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.text     "description"
   end
 
-  add_index "educations", ["resume_id"], :name => "index_educations_resume_id"
-
   create_table "friendships", :force => true do |t|
     t.integer  "friend_id"
     t.integer  "user_id"
@@ -101,9 +95,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "friendships", ["friend_id"], :name => "index_friendships_friend_id"
-  add_index "friendships", ["user_id"], :name => "index_friendships_user_id"
 
   create_table "groups", :force => true do |t|
     t.string   "title"
@@ -156,9 +147,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.integer  "req_id"
   end
 
-  add_index "messages", ["recipient_id"], :name => "index_messages_recipient_id"
-  add_index "messages", ["sender_id"], :name => "index_messages_sender_id"
-
   create_table "personalinfos", :force => true do |t|
     t.string   "name"
     t.string   "mobile"
@@ -184,8 +172,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.text     "description"
   end
 
-  add_index "positions", ["resume_id"], :name => "index_positions_resume_id"
-
   create_table "posters", :force => true do |t|
     t.string   "position"
     t.string   "email"
@@ -206,10 +192,16 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.datetime "updated_at"
   end
 
-  add_index "recommendations", ["receiver_id"], :name => "index_recommendations_receiver_id"
-  add_index "recommendations", ["sender_id"], :name => "index_recommendations_sender_id"
-
   create_table "resumes", :force => true do |t|
+    t.string   "name"
+    t.string   "mobile"
+    t.string   "address"
+    t.string   "email"
+    t.datetime "birthday"
+    t.boolean  "marital_status"
+    t.string   "sex"
+    t.string   "hometwon"
+    t.string   "hukou"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -217,19 +209,8 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.string   "salt"
     t.string   "current"
     t.integer  "type"
-    t.string   "lang",           :limit => 11, :default => "cn"
-    t.string   "name"
-    t.string   "hukou"
-    t.string   "hometwon"
-    t.string   "sex"
-    t.string   "mobile"
-    t.boolean  "marital_status"
-    t.datetime "birthday"
-    t.string   "address"
-    t.string   "email"
+    t.string   "lang",       :limit => 11, :default => "cn"
   end
-
-  add_index "resumes", ["user_id"], :name => "index_resumes_user_id"
 
   create_table "roles", :force => true do |t|
     t.string "title"
@@ -247,8 +228,6 @@ ActiveRecord::Schema.define(:version => 20090928093730) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "summaries", ["resume_id"], :name => "index_summaries_resume_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

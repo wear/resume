@@ -41,13 +41,13 @@ ActionController::Routing::Routes.draw do |map|
      user.resources :recommendations,:collection => {:ask => :get,:send_request => :post,:sent => :get, :received => :get },:member => {:edit_visible => :get,:visible => :put,:request_revised => :put } 
   end   
   
-  map.resources :groups,:member => { :join => :get,:members => :get,:activity => :get,:pending_members => :get, :managers => :get, } do |group|
-    group.resource :wiki,:member => {:page => :get,:preview => :put, :annotate => :get,:new_page => :get,
-      :create_page => :post, :protect => :post, :rename => [:get,:post], :history => :get, :diff => :get, :special => :get, :page_list => :get } do |w|
-        w.resources :bookmarks
-      end
-    
-  end
+#  map.resources :groups,:member => { :join => :get,:members => :get,:activity => :get,:pending_members => :get, :managers => :get, } do |group|
+#    group.resource :wiki,:member => {:page => :get,:preview => :put, :annotate => :get,:new_page => :get,
+#      :create_page => :post, :protect => :post, :rename => [:get,:post], :history => :get, :diff => :get, :special => :get, :page_list => :get } do |w|
+#        w.resources :bookmarks
+#      end
+#    
+#  end
 
   map.resources :resumes, :member => {:publish => :put,:send_to => :get,:do_send => :post,:recommands => :get,:send => :post,:edit_item => :get,:pub => :get} do |resume|
      resume.resources :positions 
@@ -58,14 +58,14 @@ ActionController::Routing::Routes.draw do |map|
      resume.resources :posters,:collection => {:preview => :post }
   end     
   
-  map.group_member '/groups/:id/members/:user_id',:controller => 'groups', :action => 'member'
-  map.edit_group_member '/groups/:id/members/:user_id/edit',:controller => 'groups', :action => 'edit_member'
-  map.update_group_member '/groups/:id/members/:user_id/update',:controller => 'groups', :action => 'update_member'
-  map.group_category '/groups/:id/category/:category_id', :controller => 'categories', :action => 'show'
-  map.accpet_pending_group_member '/groups/:id/members/:user_id/accept', :controller => 'groups', :action => 'accept'
-  map.add_group_admin '/groups/:id/members/:user_id/add_admin', :controller => 'groups', :action => 'add_admin'
-  map.kick_group_member '/groups/:id/members/:user_id/kick', :controller => 'groups', :action => 'kick'   
-  map.reset_group_admin 'groups/:id/:members/:user_id/reset_admin', :controller => 'groups', :action => 'reset_admin'
+#  map.group_member '/groups/:id/members/:user_id',:controller => 'groups', :action => 'member'
+#  map.edit_group_member '/groups/:id/members/:user_id/edit',:controller => 'groups', :action => 'edit_member'
+#  map.update_group_member '/groups/:id/members/:user_id/update',:controller => 'groups', :action => 'update_member'
+#  map.group_category '/groups/:id/category/:category_id', :controller => 'categories', :action => 'show'
+#  map.accpet_pending_group_member '/groups/:id/members/:user_id/accept', :controller => 'groups', :action => 'accept'
+#  map.add_group_admin '/groups/:id/members/:user_id/add_admin', :controller => 'groups', :action => 'add_admin'
+#  map.kick_group_member '/groups/:id/members/:user_id/kick', :controller => 'groups', :action => 'kick'   
+#  map.reset_group_admin 'groups/:id/:members/:user_id/reset_admin', :controller => 'groups', :action => 'reset_admin'
   
 
 

@@ -200,9 +200,27 @@ zh:
           end_at: 结束时间
           title: 职位
           company: 公司名称
-      resume:
+      resume:  
+          email: '电子邮件' 
+          sex: '性别'
+          name: '名称'
+          mobile: '手机' 
+          address: '地址'
+          country: '国家' 
+          company: '公司'
+          description: '介绍'
+          website: 网站/博客
+          phone_number: 联系电话
+          submit: 提交
+          industry: 行业
+          company_category: 公司类型 
+          company_size: 公司规模 
+          work_experience: 工作经验
+          ruby_experience: Ruby经验
+          interesting: 兴趣爱好
+          title: 职位
           name: 名称
-          usage: 用途
+          current: 工作状态
           mobile: 手机
       summary:
           content: 总结

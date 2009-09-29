@@ -40,7 +40,6 @@ module ApplicationHelper
   def resume_completeness(resume)
     segments = [ 
       {:val => 2, :action => link_to('个人信息', edit_resume_path(resume)), :test => !resume.name.nil? },         
-      {:val => 2, :action => link_to('个人信息', edit_resume_path(resume)), :test => !resume.sex.nil? }, 
       {:val => 2, :action => link_to('添加一寸照', edit_resume_path(resume)), :test => resume.avatar_exists? },
       {:val => 1, :action => link_to('添加个人总结', edit_resume_summary_path(resume)), :test => !(resume.summary.content == '暂无')},      
       {:val => 2, :action => link_to('增加工作经验', new_resume_position_path(resume)), :test => resume.positions.any? },            

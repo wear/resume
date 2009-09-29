@@ -2,7 +2,6 @@ class ResumesController < ApplicationController
   before_filter :login_required,:except => [:public,:index]
   before_filter :find_resume,:except => [:index,:new,:public,:create,:show]
   before_filter :set_language,:except =>  [:index,:new,:create,:public,:show]
-  
  # caches_page :public
  # cache_sweeper :resume_sweeper,:only => [:create, :update, :destroy]
     
@@ -11,14 +10,10 @@ class ResumesController < ApplicationController
   # GET /resumes.xml
   def index   
     @section = 'resume'
-    @resume = current_user.resume
-
+  #  @resume = current_user.resume
+    @resumes = Resume.paginate :conditions => ['current like ?',params[:query]],:page => params[:page], :per_page => 10
     respond_to do |format| 
-      if @resume.nil?
-        format.html { redirect_to :action => "new"}
-      else
-        format.html # index.html.erb
-      end
+        format.html { render :layout => 'landing'}
     end
   end 
   

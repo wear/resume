@@ -17,5 +17,6 @@ class Education < ActiveRecord::Base
   belongs_to :resume      
   validates_presence_of :name,:degree,:field,:start_at,:end_at
   
-  has_many :recommends, :as => :recommendable
+  has_many :recommends, :as => :recommendable    
+  named_scope :ordered,:order => 'start_at DESC'  
 end

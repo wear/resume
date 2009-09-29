@@ -17,7 +17,10 @@ class Position < ActiveRecord::Base
   validates_presence_of :title,:company,:start_at
   has_many :recommends, :as => :recommendable 
   validates_length_of :description, :minimum => 6
-  validates_presence_of :start_at
+  validates_presence_of :start_at  
+  
+  named_scope :ordered,:order => 'start_at DESC' 
+  
   
   def validate 
     unless start_at.nil? || end_at.nil?

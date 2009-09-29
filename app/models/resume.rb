@@ -31,7 +31,7 @@ class Resume < ActiveRecord::Base
   has_one :additionalinfo, :dependent => :destroy
   has_one :personalinfo, :dependent => :destroy  
   has_many :posters, :dependent => :destroy 
-  validates_length_of :usage, :within => 2..20 
+  validates_length_of :current, :within => 2..20 
   has_one :assert, :as => 'attachable'   
   
   validates_presence_of :user
@@ -86,7 +86,12 @@ class Resume < ActiveRecord::Base
     else
       '还未发布'
     end
-  end     
+  end   
+  
+  def current_position
+    return '' if positions.blank?
+    positions.ordered.first.title
+  end  
   
  def roles
    tmp_roles = []

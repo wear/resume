@@ -1,0 +1,53 @@
+.apple_pagination {
+  background: #F1F1F1;
+  border: 1px solid #E5E5E5;
+  text-align: center;
+  padding: 1em; }
+  .apple_pagination a, .apple_pagination span {
+    padding: .2em .3em; }
+  .apple_pagination span.disabled {
+    color: #AAA; }
+  .apple_pagination span.current {
+    font-weight: bold;
+    background: transparent url(/images/apple-circle.gif) no-repeat 50% 50%; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }
+
+.activity_user_avatar{
+	text-align:center;
+}                     
+
+.activity_user_avatar img{
+	margin:5px;
+}
+
+.group_list{
+   margin:10px 10px 10px 10px;
+}
+ 
+.group_list li{
+  float:left;
+  list-style-type: none;
+  padding:10px;
+  width:100px;
+  text-align:center;
+}
+ 
+.title{
+  font-size:14px;
+}
+ 
+.group_list li img{
+  margin:10px 0px;
+}
+ 
+li.new_group{
+  float:right;
+}
+
+.group_icon{
+	background:url(/images/id_bg.png) 8px no-repeat;
+}

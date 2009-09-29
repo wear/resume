@@ -1,0 +1,312 @@
+"33<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>半亩塘 - 在线简历制作</title>
+  <meta name="verify-v1" content="usRMJ3ELlPl4WYVXZGqaqK/bEq4awFjS+j/B1FzTXW8=" /> 
+    <meta name="description" content="半亩塘 - 让你快速创建更管用的简历" />
+  <meta name="keywords" content="简历制作,在线简历,个人简,简历模板,求职简历,个人简历表格,英文简历
+简历表,个人简历模板,个人简历封面,简历范文,简历下载" />
+  <meta name="robots" content="all" />
+  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">    
+  <!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]--> 
+  <link href="/stylesheets/style.css?1254133073" media="screen" rel="stylesheet" type="text/css" />  
+  <link href="/stylesheets/facebox.css?1253370639" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/ui-theme.css?1253370639" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/jquery.min.js?1253370639" type="text/javascript"></script>
+  <script src="/javascripts/jrails.js?1253370639" type="text/javascript"></script>
+  <script src="/javascripts/application.js?1254193333" type="text/javascript"></script>
+  <script src="/javascripts/facebox.js?1253370639" type="text/javascript"></script>
+  <script src="/javascripts/jquery-ui.min.js?1253370639" type="text/javascript"></script>
+  <script src="/javascripts/jquery.progressbar.min.js?1253371735" type="text/javascript"></script> 
+	<link href="/stylesheets/common.css?1254195190" media="screen" rel="stylesheet" type="text/css" />          
+  
+  <script type="text/javascript" charset="utf-8">
+  	jQuery(document).ready(function($) {
+	  $('a[rel*=facebox]').facebox()
+	})
+  </script>
+</head>
+<body>
+<div class='container'>
+	<div class='span-24'>
+		<div class='nav span-24'>
+	<div class='span-4 logo'>
+		<a href="/"><img alt="Logo" src="/images/logo.png?1253370639" /></a>
+	</div>
+	<div class='line span-1'>
+		<img alt="Line_1" src="/images/line_1.gif?1253370639" /> 
+	</div>
+	
+	<div class='span-10 login'>
+		 <h2>
+			 
+			 
+		 </h2>
+	</div> 
+	
+	<div class='line span-1'>
+		<img alt="Line_1" src="/images/line_1.gif?1253370639" /> 
+	</div>
+	<div class='span-8 login last'> 
+	   			      <h2><a href="/login">登录</a> <a href="/signup">注册</a> <a href="/blog">博客</a> <a href="/help">帮助</a>  </h2> 
+				</div>  
+	
+</div> 
+	</div>    
+	<div class='span-21 prepend-1 append-1 prepend-top prepend-bottom'> 
+		 	   	   	   
+	       
+
+<div class="announce" > 
+		<form action="/resumes" method="get" onsubmit="clear_query_box('search-input');return false;" style="margin-left:200px"> 
+		 <input class="soinputindex" id="query" name="query" size="18" type="text" value="找人" /> 
+	   <input align="absmiddle" class="soinputbot" name="commit" type="submit" value="提交" />
+	</form>	
+</div> 
+
+<div style='margin:20px;pading:10px;line-height:16px;'>
+	
+		<a href="/resumes?query=" class="css2"></a>
+	
+		<a href="/resumes?query=2010%E5%B9%B4%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F" class="css1">2010年应届毕业生</a>
+	
+		<a href="/resumes?query=IT" class="css1">IT</a>
+	
+		<a href="/resumes?query=alkd" class="css1">alkd</a>
+	
+		<a href="/resumes?query=%E4%B8%9A%E5%8A%A1%E5%91%98" class="css1">业务员</a>
+	
+		<a href="/resumes?query=%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E5%8A%A9%E7%90%86" class="css1">人力资源助理</a>
+	
+		<a href="/resumes?query=%E4%BB%AA%E5%99%A8%E5%85%AC%E5%8F%B8%2F%E5%AE%9E%E4%B9%A0" class="css1">仪器公司/实习</a>
+	
+		<a href="/resumes?query=%E4%BC%81%E5%88%92%E9%83%A8%E7%BB%8F%E7%90%86" class="css1">企划部经理</a>
+	
+		<a href="/resumes?query=%E4%BC%9A%E8%AE%A1" class="css1">会计</a>
+	
+		<a href="/resumes?query=%E4%BC%9A%E8%AE%A1%E3%80%81%E8%B7%9F%E5%8D%95%E5%91%98" class="css1">会计、跟单员</a>
+	
+		<a href="/resumes?query=%E4%BF%83%E9%94%80" class="css1">促销</a>
+	
+		<a href="/resumes?query=%E4%BF%9D%E9%99%A9%E7%90%86%E8%B4%A2" class="css1">保险理财</a>
+	
+		<a href="/resumes?query=%E5%81%9A%E4%B8%80%E5%90%8D%E5%A5%BD%E7%84%8A%E5%B7%A5" class="css1">做一名好焊工</a>
+	
+		<a href="/resumes?query=%E5%86%85%E7%A7%91%E5%8C%BB%E7%94%9F" class="css1">内科医生</a>
+	
+		<a href="/resumes?query=%E5%87%BA%E7%BA%B3%2F%E8%B4%A2%E5%8A%A1%E5%8A%A9%E7%90%86" class="css1">出纳/财务助理</a>
+	
+		<a href="/resumes?query=%E5%8C%BB%E5%AD%A6" class="css1">医学</a>
+	
+		<a href="/resumes?query=%E5%8C%BB%E7%96%97" class="css1">医疗</a>
+	
+		<a href="/resumes?query=%E5%8D%B3%E5%B0%86%E6%AF%95%E4%B8%9A" class="css1">即将毕业</a>
+	
+		<a href="/resumes?query=%E5%9C%A8%E6%A0%A1%E5%85%BC%E8%81%8C" class="css1">在校兼职</a>
+	
+		<a href="/resumes?query=%E5%9C%A8%E6%A0%A1%E5%AD%A6%E7%94%9F" class="css1">在校学生</a>
+	
+		<a href="/resumes?query=%E5%9C%A8%E6%A0%A1%E7%94%9F" class="css1">在校生</a>
+	
+		<a href="/resumes?query=%E5%9C%A8%E8%81%8C" class="css1">在职</a>
+	
+		<a href="/resumes?query=%E5%9C%A8%E8%81%8C%E6%95%99%E5%B8%88" class="css1">在职教师</a>
+	
+		<a href="/resumes?query=%E5%A4%96%E8%B4%B8%E7%89%A9%E6%B5%81%E9%87%87%E8%B4%AD%E8%A1%8C%E6%94%BF" class="css1">外贸物流采购行政</a>
+	
+		<a href="/resumes?query=%E5%A4%A7%E5%9B%9B%E5%AD%A6%E7%94%9F" class="css1">大四学生</a>
+	
+		<a href="/resumes?query=%E5%A4%A7%E5%AD%A6%E5%AF%BC%E5%91%98" class="css1">大学导员</a>
+	
+		<a href="/resumes?query=%E5%A4%B1%E4%B8%9A" class="css1">失业</a>
+	
+		<a href="/resumes?query=%E5%AA%92%E4%BD%93" class="css1">媒体</a>
+	
+		<a href="/resumes?query=%E5%AE%A1%E8%AE%A1%E5%91%98" class="css1">审计员</a>
+	
+		<a href="/resumes?query=%E5%AE%A2%E6%9C%8D" class="css1">客服</a>
+	
+		<a href="/resumes?query=%E5%AE%B6%E5%85%B7%E8%AE%BE%E8%AE%A1%E5%B8%88" class="css1">家具设计师</a>
+	
+		<a href="/resumes?query=%E5%B0%B1%E4%B8%9A%E5%A4%96%E4%BC%81" class="css1">就业外企</a>
+	
+		<a href="/resumes?query=%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F" class="css3">应届毕业生</a>
+	
+		<a href="/resumes?query=%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F%2C%E5%9C%9F%E6%9C%A8%EF%BC%8C%E5%B7%A5%E6%B0%91%E5%BB%BA%EF%BC%8C%E6%A6%82%E9%A2%84%E7%AE%97" class="css1">应届毕业生,土木，工民建，概预算</a>
+	
+		<a href="/resumes?query=%E5%BA%94%E8%81%98" class="css1">应聘</a>
+	
+		<a href="/resumes?query=%E5%BB%BA%E7%AD%91" class="css1">建筑</a>
+	
+		<a href="/resumes?query=%E5%BB%BA%E7%AD%91%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF" class="css1">建筑工程技术</a>
+	
+		<a href="/resumes?query=%E5%BE%85%E4%B8%9A" class="css1">待业</a>
+	
+		<a href="/resumes?query=%E6%89%BE%E5%B7%A5%E4%BD%9C" class="css1">找工作</a>
+	
+		<a href="/resumes?query=%E6%94%B6%E9%93%B6%E5%91%98" class="css1">收银员</a>
+	
+		<a href="/resumes?query=%E6%95%99%E5%B8%88" class="css1">教师</a>
+	
+		<a href="/resumes?query=%E6%95%B0%E6%8E%A7" class="css1">数控</a>
+	
+		<a href="/resumes?query=%E6%96%87%E5%91%98" class="css1">文员</a>
+	
+		<a href="/resumes?query=%E6%9A%82%E6%97%A0" class="css3">暂无</a>
+	
+		<a href="/resumes?query=%E6%9C%8D%E5%8A%A1%E4%B8%9A" class="css1">服务业</a>
+	
+		<a href="/resumes?query=%E6%9C%AC%E7%A7%91%E6%AF%95%E4%B8%9A" class="css1">本科毕业</a>
+	
+		<a href="/resumes?query=%E6%9C%BA%E6%A2%B0" class="css1">机械</a>
+	
+		<a href="/resumes?query=%E6%9C%BA%E7%94%B5%E4%B8%80%E4%BD%93%E5%8C%96" class="css1">机电一体化</a>
+	
+		<a href="/resumes?query=%E6%9D%90%E6%96%99%E5%B7%A5%E7%A8%8B" class="css1">材料工程</a>
+	
+		<a href="/resumes?query=%E6%A0%B8%E7%94%B5%E5%8E%82" class="css1">核电厂</a>
+	
+		<a href="/resumes?query=%E6%AF%95%E4%B8%9A%E5%9B%9B%E5%B9%B4" class="css1">毕业四年</a>
+	
+		<a href="/resumes?query=%E6%AF%95%E4%B8%9A%E7%94%9F" class="css4">毕业生</a>
+	
+		<a href="/resumes?query=%E6%B1%82%E8%81%8C" class="css2">求职</a>
+	
+		<a href="/resumes?query=%E7%89%A9%E4%B8%9A%E7%AE%A1%E7%90%86" class="css1">物业管理</a>
+	
+		<a href="/resumes?query=%E7%95%99%E5%AD%A6%2F%E7%A7%BB%E6%B0%91" class="css1">留学/移民</a>
+	
+		<a href="/resumes?query=%E7%9B%AE%E6%A0%87%E8%A1%8C%E4%B8%9A" class="css1">目标行业</a>
+	
+		<a href="/resumes?query=%E7%9F%B3%E6%B2%B9%E5%8C%96%E5%B7%A5%E4%BC%81%E4%B8%9A" class="css1">石油化工企业</a>
+	
+		<a href="/resumes?query=%E7%A4%BE%E4%BC%9A%E4%BA%BA%E5%A3%AB" class="css1">社会人士</a>
+	
+		<a href="/resumes?query=%E7%A6%BB%E8%81%8C" class="css1">离职</a>
+	
+		<a href="/resumes?query=%E7%A7%A9%E5%BA%8F%E7%BB%B4%E6%8A%A4%E9%83%A8%E4%B8%BB%E4%BB%BB" class="css1">秩序维护部主任</a>
+	
+		<a href="/resumes?query=%E7%A8%8B%E5%BA%8F%E5%91%98" class="css1">程序员</a>
+	
+		<a href="/resumes?query=%E7%BD%91%E5%90%A7%E5%80%BC%E7%8F%AD%E7%BB%8F%E7%90%86" class="css1">网吧值班经理</a>
+	
+		<a href="/resumes?query=%E7%BD%91%E7%BB%9C" class="css1">网络</a>
+	
+		<a href="/resumes?query=%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%B8%88" class="css1">网络系统工程师</a>
+	
+		<a href="/resumes?query=%E7%BE%8E%E6%9C%AF" class="css1">美术</a>
+	
+		<a href="/resumes?query=%E7%BF%BB%E8%AF%91" class="css1">翻译</a>
+	
+		<a href="/resumes?query=%E8%81%8C%E4%BD%8D" class="css1">职位</a>
+	
+		<a href="/resumes?query=%E8%81%B7%E6%A5%AD" class="css1">職業</a>
+	
+		<a href="/resumes?query=%E8%8D%AF%E5%AD%A6" class="css1">药学</a>
+	
+		<a href="/resumes?query=%E8%A1%8C%E6%94%BF4%E5%B9%B4%E7%BB%8F%E9%AA%8C" class="css1">行政4年经验</a>
+	
+		<a href="/resumes?query=%E8%A1%8C%E6%94%BF%E5%90%8E%E5%8B%A4" class="css1">行政后勤</a>
+	
+		<a href="/resumes?query=%E8%AE%A1%E7%AE%97%E6%9C%BA" class="css1">计算机</a>
+	
+		<a href="/resumes?query=%E8%AE%BE%E8%AE%A1" class="css1">设计</a>
+	
+		<a href="/resumes?query=%E8%AF%95%E9%AA%8C%E5%91%98" class="css1">试验员</a>
+	
+		<a href="/resumes?query=%E8%B4%A2%E4%BC%9A%E7%B1%BB" class="css1">财会类</a>
+	
+		<a href="/resumes?query=%E8%B4%A2%E5%8A%A1" class="css1">财务</a>
+	
+		<a href="/resumes?query=%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90" class="css1">财务分析</a>
+	
+		<a href="/resumes?query=%E8%B4%A2%E5%8A%A1%EF%BC%8C%E9%87%91%E8%9E%8D" class="css1">财务，金融</a>
+	
+		<a href="/resumes?query=%E9%87%87%E8%B4%AD%E5%91%98" class="css1">采购员</a>
+	
+		<a href="/resumes?query=%E9%87%91%E8%9E%8D%E5%B9%BF%E5%91%8A" class="css1">金融广告</a>
+	
+		<a href="/resumes?query=%E9%8A%B7%E5%94%AE" class="css1">銷售</a>
+	
+		<a href="/resumes?query=%E9%94%80%E5%94%AE%E5%91%98" class="css1">销售员</a>
+	
+		<a href="/resumes?query=%E9%A2%84%E7%AE%97%E5%91%98" class="css1">预算员</a>
+	  
+</div>   
+<div >
+	<ul class='group_list'>  
+	   
+		<li>
+			<a href="/public/resume/96" class="title">杨潇</a><br /> 
+			<div class='group_icon'>
+			   <a href="/public/resume/96"><img alt="avatar" height="64" src="http://dev.resume/asserts/0000/0030/DSCN3885.jpg" width="64" /></a> 
+			</div>
+			助理
+		</li> 
+	   
+		<li>
+			<a href="/public/resume/129" class="title">吴田莉</a><br /> 
+			<div class='group_icon'>
+			   <a href="/public/resume/129"><img alt="avatar" height="64" src="http://dev.resume/asserts/0000/0043/DSC00074.JPG" width="64" /></a> 
+			</div>
+			实习医生
+		</li> 
+	   
+		<li>
+			<a href="/public/resume/140" class="title">郑海净</a><br /> 
+			<div class='group_icon'>
+			   <a href="/public/resume/140"><img alt="avatar" height="64" src="http://dev.resume/asserts/0000/0047/DSC_0004.JPG" width="64" /></a> 
+			</div>
+			促销员
+		</li> 
+	   
+		<li>
+			<a href="/public/resume/153" class="title">彭赛娥</a><br /> 
+			<div class='group_icon'>
+			   <a href="/public/resume/153"><img alt="avatar" height="64" src="http://dev.resume/asserts/0000/0052/1024_768_100bea15fda983e1_1_.jpg" width="64" /></a> 
+			</div>
+			宣传促销人员
+		</li> 
+	   
+		<li>
+			<a href="/public/resume/174" class="title">宫宝君</a><br /> 
+			<div class='group_icon'>
+			   <a href="/public/resume/174"><img alt="avatar" height="64" src="http://dev.resume/images/unknow-avatar.jpg" width="64" /></a> 
+			</div>
+			副校长
+		</li> 
+		<li class='new_group'>   
+		<a href="/signup" class="title">创建自己的简历</a> <br /> 
+		<div class='group_icon'>
+		<a href="/signup"><img alt="New_group" src="/images/new_group.jpg?1240169824" /></a>
+		</div>
+	</li>                                 
+	</ul>
+</div>
+
+
+
+
+	</div> 
+    <div id="footer" class='span-24'> 
+	<div class='span-7' id='copyright'>
+		半亩塘 © 2008-2009    中文(简体)
+	</div> 
+	<div class='span-16 last'>
+	<ul>
+		<li><a href="/jobs">招聘信息</a></li>
+		<li><a href="/tools">相关工具</a></li>
+		<li><a href="/blog">博客</a></li><li><a href="/help">帮助</a></li> <li><a href="/contact">联系我们</a></li><li><a href="/">首页</a><li> 
+	</ul>
+	</div>	
+</div>   
+
+
+
+</div>
+</body>
+</html>

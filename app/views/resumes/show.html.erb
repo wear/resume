@@ -9,7 +9,7 @@
 <div id="intenal">
 	<div class='span-13 masthead'>
 	<h1><%= avatar_for @resume %><%= @resume.name %></h1>       
-	<%= t(:usage)%>: <%= @resume.usage || '暂无' %> 
+	<%= t(:usage)%>: <%= @resume.current || '暂无' %> 
 	</div>
 
 	<div class="section" style='clear:both;'> 

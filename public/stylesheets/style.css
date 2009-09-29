@@ -233,7 +233,8 @@ h4{
 
 /* for poster */
 
-#preview fieldset {margin-top: 1em; background: url(/images/draft.png)}    
+#preview fieldset {margin-top: 1em; background: url(/images/draft.png)}  
+
 
 .url-list {background:#f2f2f2;padding:0px 10px;margin-bottom:20px;} 
 .url-list ul li{float:left;list-style:none;}
@@ -887,3 +888,8 @@ li.new_group{
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
+
+
+#preview table{ margin:0px;}   
+
+#preview table td { border:0px;}

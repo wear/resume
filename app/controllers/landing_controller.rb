@@ -1,24 +1,19 @@
 class LandingController < ApplicationController 
-  include FaceboxRender
-#  @trial_months = find(:all).group_by { |t| t.created_at.beginning_of_month }
-#  arr_data = []
-#  @trial_months.sort.each do |month, trials|
-#    arr_data << [month.strftime('%B'),trials.size,month.strftime('%B')]
-#  end           
-  def index       
-   # @asserts = Assert.find(:all,:limit => 10,:conditions => ['attachable_type = ?','Personalinfo'],:order => 'created_at DESC')
-   @arr_data = [] 
-   @resumes = Resume.find(:all,:limit => 300,:conditions =>"current IS NOT NULL").group_by { |t| t.current } 
-      @resumes.sort.each do |current, r|
+ # include FaceboxRender  
+      
+  before_filter :redirect_if_logged_in,:only => [:index]   
+  caches_action :index
+       
+  def index     
+    @fetured_resumes = Resume.find([174,96,153,140,129])
+    @arr_data = [] 
+    @resumes = Resume.find(:all,:limit => 300,:conditions =>"current IS NOT NULL").group_by { |t| t.current } 
+    @resumes.sort.each do |current, r|
        @arr_data << [r.size,current]
-     end
-  respond_to do |wants|
-    if logged_in?
-      wants.html { redirect_to current_user }
-    else
-      wants.html { }
     end
-  end
+    respond_to do |wants|
+      wants.html {  }
+    end
   end 
   
   def search   
@@ -36,5 +31,14 @@ class LandingController < ApplicationController
   
   def jobs
     
-  end
+  end      
+  
+  protected
+  
+  def redirect_if_logged_in 
+    if logged_in?
+      redirect_to current_user 
+    end
+  end 
+  
 end

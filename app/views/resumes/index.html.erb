@@ -1,37 +1,30 @@
-<% content_for :head do -%>
-	<%= javascript_include_tag 'jquery.progressbar.min' %>
-<% end %>
-<% content_for :tabs do -%>
- 	<li><%=link_to('我的简历','#tabs-content') %></li>
-<% end -%>
-<dl>
-<% completeness ||= resume_completeness(@resume) %>
+
+<div style='margin-bottom:10px'>
+	<% form_tag resumes_path,:method => 'get',:onsubmit => "clear_query_box('search-input');return false;",:style => 'margin-left:200px'  do -%> 
+	<%= text_field_tag :query,(params[:query] ||"输入关键字"),:size => 18,:class => "soinputindex",:id => 'query' %> 
+	<%=submit_tag '提交',:class=>'soinputbot',:align => 'absmiddle'%>
+	<% end -%>
+</div> 
+<%= will_paginate @resumes,:class =>'apple_pagination' %>   
+<% @resumes.each do |resume| -%>
+<% completeness ||= resume_completeness(resume) %>
 <% percent = completeness[:score] %>    
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		$("#progressbar").progressBar(<%=percent%>,{ barImage: '/images/progressbg_green.gif'});
+		$("#progressbar_<%=resume.id%>").progressBar(<%=percent%>,{showText:false,width:80,barImage: '/images/progressbg_green.gif'});
 	});
 </script>
+	<dl style='padding:5px 10px;'>
+		<dd id='activity-item'>    
+		   <div class='activity_user_avatar'><%= avatar_for(resume,48,48)%><br /><%=resume.current_position %><p>
+		   <span class="progressBar" id="progressbar_<%=resume.id%>">&nbsp;</span></p></div>
+		<%=link_to h(resume.name),public_resume_path(resume),:target => '_blank',:class => 'ag'  %>
+		   <br /> <%=h resume.additionalinfo.awards %>
+			<br /> 
+			爱好: <%=h resume.additionalinfo.interests %> <br />
+			<span style='color:#999999'><%= time_ago_in_words_or_date(resume.created_at) %> </span>
+		 </dd>  
 
-	<dd id='activity-item'>    
-	   <%=h name_for_resume(@resume) %> <%= link_to '删除', @resume, :confirm => '你确定嘛?', :method => :delete,:class=> 'edit' %> <%=link_to '预览/定制', @resume,:target => '_blank',:class => 'ag'%> <%=link_to '投送', new_resume_poster_path(@resume),:class => 'ag'%>  <%=link_to 'PDF下载',APP_URL + public_resume_pdf_path(@resume.salt),:target => '_blank',:class => 'ag'%>(<%=link_to '什么是pdf?','/help#faq_print',:class=> 'edit' %>)
-	 <p>
-		<span class="progressBar" id="progressbar">&nbsp;</span>
-		</p>
-	   <ul id='btn'>     
-		<li><%= link_to '编辑', edit_resume_path(@resume) %></li>
-	    <li><%=link_to '获得推荐', ask_user_recommendations_path(current_user)%></li>
-		</ul>
-	    
-	 </dd>  
-	
-
-</dl>  
-<% content_for :tab_sidebar do -%>
-<div class='tab-sidebar ui-corner-all' >  
-<h4>提示</h4> 
-<p>
-用'获得推荐'功能让同学同事推荐你,你的简历会更具竞争力!<p><a href='/help#faq_be_req'>怎么让同事/同学推荐你?</a></p>
-</p>
-</div>
-<% end %>
+	</dl>
+<% end %>    
+<%= will_paginate @resumes,:class =>'apple_pagination' %>   

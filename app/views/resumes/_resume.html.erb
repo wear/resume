@@ -15,7 +15,7 @@
 <div class="span-15 section">  
 	<h2><%=t(:positions)%></h2>
 	<div class="box position">  
-		<% @resume.positions.each do |position| -%>
+		<% @resume.positions.ordered.each do |position| -%>
 		<span class="date"><%= position.start_at %> » <%= format_end_at(position.end_at) %></span>
 		<h3><%=h position.title %></h3>
 		<address><%=h position.company %></address>
@@ -43,7 +43,7 @@
 
 <div class="span-15 section">  
 	<h2><%=t(:edu)%></h2>  
-	<% @resume.educations.each do |education| -%>
+	<% @resume.educations.ordered.each do |education| -%>
 	<div class="box">  
 		 <span class="date"><%= education.start_at.to_s(:date_edu) %> » <%= education.end_at.to_s(:date_edu) %></span>
 		<h3><%= education.name %></h3>

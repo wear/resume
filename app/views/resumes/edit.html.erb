@@ -14,7 +14,7 @@
 </script>  
 <div class='span-13 masthead' >
 <h1><%= avatar_for @resume %><%= @resume.name %></h1>       
-<p><%= t(:usage)%>: <%= @resume.usage || '暂无' %>  <%=link_to t('edit'),edit_item_resume_path(@resume),:class => 'ag'%> </p>          
+<p><%= t(:usage)%>: <%= @resume.current || '暂无' %>  <%=link_to t('edit'),edit_item_resume_path(@resume),:class => 'ag'%> </p>          
 </div>
 
 <div class="section" style='clear:both;'> 

@@ -2,20 +2,7 @@
 <div class="announce" >
   <h1 >与其临渊羨魚，不如退而結网</h1>
 </div>   
-<div class='span-19 prepend-2'>              
-	<div class='span-5 ad' > 
-	   <h3>更快捷</h3> 
-	有限的必填项和选项
-	</div>   
-	<div class='span-5 ad'>
-	   <h3>更客观</h3> 
-	让同学/同事推荐你
-	</div>      
-	<div class='span-5 ad last'> 
-		<h3>更好用</h3>
-		在线浏览,递email,导出打印
-	</div> 
-</div>   
+
         
 	<div class='span-10' style='text-align:center;'>    
 	  <h3>最新加入的会员</h3>     
@@ -67,21 +54,37 @@
   </div>                                           
 <% end %>   
 
-<div class="announce" >
-	  <h1>找人帮忙</h1>
-	<% form_tag resumes_path,:method => 'get',:onsubmit => "clear_query_box('search-input');return false;",:style => 'margin-left:200px'  do -%> 
-	<%= text_field_tag :query,(params[:query] ||"输入关键字"),:size => 18,:class => "soinputindex",:id => 'query' %> 
+<div class="announce" > 
+		<% form_tag resumes_path,:method => 'get',:onsubmit => "clear_query_box('search-input');return false;",:style => 'margin-left:200px'  do -%> 
+		 <%= text_field_tag :query,(params[:query] ||"找人"),:size => 18,:class => "soinputindex",:id => 'query' %> 
 	   <%=submit_tag '提交',:class=>'soinputbot',:align => 'absmiddle'%>
 	<% end -%>	
 </div> 
 
-<div class="announce">
+<div style='margin:20px;pading:10px;line-height:16px;'>
 	<% tag_cloud @arr_data, %w(css1 css2 css3 css4) do |tag,css_class| %>
 		<%= link_to tag, resumes_path(:query => tag), :class => css_class %>
 	<% end %>  
-	<%# @arr_data.sort.each do |count,current| %>
-	   <p> <%#= current %><br /> <%#= count %></p>
-	<%# end %>
+</div>   
+<div >
+	<ul class='group_list'>  
+	<% @fetured_resumes.each do |resume| -%>   
+		<li>
+			<%=link_to h(resume.name),public_resume_path(resume),:class=> 'title' %><br /> 
+			<div class='group_icon'>
+			   <%=link_to avatar_for(resume,64,64),public_resume_path(resume)%> 
+			</div>
+			<%=resume.current_position %>
+		</li> 
+	<% end -%>
+	<li class='new_group'>   
+		<%=link_to '创建自己的简历', signup_path,:class=> 'title'%> <br /> 
+		<div class='group_icon'>
+		<%=link_to image_tag("new_group.jpg"),signup_path%>
+		</div>
+	</li>                                 
+	</ul>
 </div>
+
 
 
