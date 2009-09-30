@@ -173,7 +173,7 @@ class RecommendationsController < ApplicationController
   def resume_created?
     if @user.resume.nil? 
       flash[:notice] = '请先创建一份简历并填写基本个人信息!'
-      redirect_to resumes_path
+      redirect_to new_resume_path
     end
   end
 end
