@@ -6,15 +6,15 @@ class FriendshipsController < ApplicationController
      @section = 'friendship'
   end 
   
-  def add                                   
-    @friend = Friendship.find(params[:id]).user
+  def create                                   
+    @friend = User.find(params[:receiver])
     if @user.become_friend_with(@friend) 
       flash[:notice] = '操作成功!'
     else
-       flash[:notice] = '操作失败!'
+       flash[:error] = '操作失败!'
      end
      respond_to do |wants|
-      wants.html { redirect_to user_friendships_path(@user) }
+       wants.html { redirect_to user_friendships_path(@user) } 
      end
   end
   

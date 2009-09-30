@@ -12,7 +12,7 @@
     
 		<div id="download">                                     
 			    <%#=link_to t(:contact_user),APP_URL + public_resume_pdf_path(@resume.salt)%>
-			<%=link_to t(:contact_user),login_path %>
+			<%=link_to t(:contact_user),@resume %>
 		</div>	
 </div>
 <%= render :partial => 'resume' %>

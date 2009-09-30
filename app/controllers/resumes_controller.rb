@@ -86,12 +86,7 @@ class ResumesController < ApplicationController
     @resume = Resume.find(params[:id])
     @user = @resume.user
     respond_to do |format|
-      format.html { 
-         unless current_user.id.equal?(@resume.user.id) || @user.friend?(current_user)
-            flash[:notice] = '你无权查看此页面'
-            redirect_to '/'           
-         end   
-        }
+      format.html {  }
     end
   end
 

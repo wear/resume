@@ -106,9 +106,12 @@ module ApplicationHelper
   	 content_tag(:li,link_to('修订评价',edit_user_recommendation_path(user,message.req_id,:receiver_id => message.sender )))
   	when 'new_recommendation'
   	  recommendation = Recommendation.find(message.req_id)
-  	  content_tag(:li,link_to('查看/修改',edit_visible_user_recommendation_path(user,recommendation))) 
+  	  content_tag(:li,link_to('查看/修改',edit_visible_user_recommendation_path(user,recommendation)))
+  	when 'request_friend'       
+  	  receiver = User.find(message.req_id)
+  	  content_tag(:li,link_to('同意加对方为好友',user_friendships_path(user,:receiver => receiver.id),:method => :post))  
 	 else
-	   content_tag(:li,link_to("回复", new_user_message_path(@user, :reply_to => @message)))
+	   content_tag(:li,link_to("回复", new_user_message_path(user, :reply_to => message)))
 	 end
   end  
   
@@ -172,6 +175,23 @@ module ApplicationHelper
     end
   end
 
+  def default_subject(req)
+    case req
+    when 'request_friend'
+      '好友申请'
+    else
+      ''
+    end
+  end  
+  
+  def default_body(req)
+    case req
+    when 'request_friend'
+      '请加我为好友'
+    else
+      ''
+    end
+  end                  
   
   protected
   

@@ -15,7 +15,7 @@
 	<% completeness ||= resume_completeness(resume) %>
 	<% percent = completeness[:score] %>
 	<td> <%=link_to resume.name,public_resume_path(resume),:target =>'_blank' %></td>
-	<td><%= resume.usage %></td>                     
+	<td><%= resume.current %></td>                     
 	<td><%= number_to_percentage percent.to_i %></td>
 		<td><%= resume.created_at %></td> 
 

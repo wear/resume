@@ -12,8 +12,10 @@
     <p>
       内容<br />
       <%= f.text_area :body %>
-			<%= error_message_on @message, :body %>
+	  <%= error_message_on @message, :body %>
     </p>
+	  <%= f.hidden_field :req_type %>  
+	  <%= f.hidden_field :req_id %>
     <p>
       <%= submit_tag "发送" %>
     </p>

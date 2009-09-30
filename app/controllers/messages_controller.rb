@@ -1,7 +1,6 @@
-class MessagesController < ApplicationController
-  
+class MessagesController < ApplicationController 
   before_filter :set_user
-  before_filter :require_current_user
+#  before_filter :require_current_user
   
   def index
     @section = 'message'
@@ -24,9 +23,17 @@ class MessagesController < ApplicationController
     @message = Message.read(params[:id], current_user)
   end
   
-  def new
+  def new 
     @message = Message.new
-
+    if !params[:req].nil? && !params[:receiver].nil?
+        @receiver = User.find(params[:receiver])
+        @message.to = @receiver.login
+        @message.subject = "好友申请"
+        @message.body = "我对你的资料非常感兴趣,请加我详谈!"
+        @message.req_type = 'request_friend'
+        @message.req_id =  @user.id
+    end
+    
     if params[:reply_to]
       @reply_to = @user.received_messages.find(params[:reply_to])
       unless @reply_to.nil?
