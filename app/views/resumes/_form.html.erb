@@ -16,7 +16,8 @@
 	<tr><td class='label'><%= f.label :sex, t(:sex) %>:</td><td><%= f.radio_button :sex, 'm' %> <%=t(:male)%> <%= f.radio_button :sex, 'f' %> <%=t(:female)%></td></tr>
 	<tr><td class='label'><%= f.label :hometown, t(:hometown) %>:</td><td><%= f.text_field :hometwon %></td></tr> 
 	<tr><td class='label'><%= f.label :hukou, t(:hukou) %>:</td><td><%= f.text_field :hukou %></td></tr>
-	<tr><td class='label'><%= f.label :avatar,t('portrait')%></td><td><%=f.file_field :avatar_data,:size => '50' %></tr>
+	<tr><td></td><td><%= avatar_for @resume %></td></tr><tr>
+		<td class='label'><%= f.label :avatar,t('portrait')%></td><td><%=f.file_field :avatar_data,:size => '50' %></tr>
 </table>       
 </fieldset>
 <fieldset style='background:#EFEFEF;'>

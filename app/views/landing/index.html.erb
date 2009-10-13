@@ -1,4 +1,4 @@
-<% if false %>
+
 <div class="announce" >
   <h1 >与其临渊羨魚，不如退而結网</h1>
 </div>   
@@ -10,9 +10,9 @@
 	onmouseout="iScrollAmount=1" > 
    <table >
 	<tbody> 
-		<% @asserts.each do |assert| -%> 
+		<% @fetured_resumes.each do |resume| -%> 
 		<% begin %>
-			<tr><td><h4><%=assert.attachable.name %> - <%=assert.attachable.resume.usage %></h4><%=link_to image_tag(assert.public_filename),public_resume_path(assert.attachable.resume),:target => '_blank'%> </td></tr>
+			<tr><td><h4><%= resume.name %> - <%= resume.current_position %> </h4><%=link_to avatar_for(resume),public_resume_path(resume),:target => '_blank'%> </td></tr>
 			<% rescue %> 
 			<tr><td><h4><%= assert.attachable.name %></h4><%=image_tag assert.public_filename%> </td></tr>   
 			<% end %>
@@ -52,39 +52,3 @@
 	<% end %>
 	</fieldset>   
   </div>                                           
-<% end %>   
-
-<div class="announce" > 
-		<% form_tag resumes_path,:method => 'get',:onsubmit => "clear_query_box('search-input');return false;",:style => 'margin-left:200px'  do -%> 
-		 <%= text_field_tag :query,(params[:query] ||"找人"),:size => 18,:class => "soinputindex",:id => 'query' %> 
-	   <%=submit_tag '提交',:class=>'soinputbot',:align => 'absmiddle'%>
-	<% end -%>	
-</div> 
-
-<div style='margin:20px;pading:10px;line-height:16px;'>
-	<% tag_cloud @arr_data, %w(css1 css2 css3 css4) do |tag,css_class| %>
-		<%= link_to tag, resumes_path(:query => tag), :class => css_class %>
-	<% end %>  
-</div>   
-<div >
-	<ul class='group_list'>  
-	<% @fetured_resumes.each do |resume| -%>   
-		<li>
-			<%=link_to h(resume.name),public_resume_path(resume),:class=> 'title' %><br /> 
-			<div class='group_icon'>
-			   <%=link_to avatar_for(resume,64,64),public_resume_path(resume)%> 
-			</div>
-			<%=resume.current_position %>
-		</li> 
-	<% end -%>
-	<li class='new_group'>   
-		<%=link_to '创建自己的简历', signup_path,:class=> 'title'%> <br /> 
-		<div class='group_icon'>
-		<%=link_to image_tag("new_group.jpg"),signup_path%>
-		</div>
-	</li>                                 
-	</ul>
-</div>
-
-
-
