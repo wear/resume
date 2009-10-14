@@ -2,15 +2,14 @@ class LandingController < ApplicationController
  # include FaceboxRender  
       
   before_filter :redirect_if_logged_in,:only => [:index]   
-  caches_action :index
        
   def index     
     @fetured_resumes = Resume.find([174,96,153,140,129])
-    @arr_data = [] 
-    @resumes = Resume.find(:all,:limit => 300,:conditions =>"current IS NOT NULL").group_by { |t| t.current } 
-    @resumes.sort.each do |current, r|
-       @arr_data << [r.size,current]
-    end
+#    @arr_data = [] 
+#    @resumes = Resume.find(:all,:limit => 300,:conditions =>"current IS NOT NULL").group_by { |t| t.current } 
+#    @resumes.sort.each do |current, r|
+#       @arr_data << [r.size,current]
+#    end
     respond_to do |wants|
       wants.html {  }
     end

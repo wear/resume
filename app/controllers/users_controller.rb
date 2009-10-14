@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead  
   before_filter :login_required,:only => [:show,:public] 
-  before_filter :find_resume,:only => [:show,:public]
+  before_filter :find_resume,:only => [:public]
   before_filter :require_current_user,:only => [:show]        
   
   def show
