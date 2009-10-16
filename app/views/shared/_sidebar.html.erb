@@ -9,7 +9,7 @@
 			    <%= topnav_tab('关系圈', :url => user_friendships_path(current_user) ,:section => 'friendship') %> 
 		 	</ul> 
 	</div> 
-   
+<% if false -%>   
 <% unless current_user.resume.nil? || current_user.resume.new_record?  %> 
 	<% completeness ||= resume_completeness(current_user.resume) %>
 	<% percent = completeness[:score] %>    
@@ -25,5 +25,5 @@
 	你的简历完成度为<%=percent.to_i%>,现在就<%=link_to '更新',edit_resume_path(current_user.resume)%>
 	</div>     
 <% end -%>        
-
+<% end -%>
 </div>  
