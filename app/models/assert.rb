@@ -20,13 +20,14 @@
 class Assert < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true 
   
-  validates_presence_of :filename
-  
   has_attachment(
     :storage => :file_system,
     :resize_to => [77,99],
     :content_type => :image
-  ) 
+  )
+  
+  validates_presence_of :filename      
+  validates_length_of :filename, :within => 2..40
 
   validates_as_attachment
 

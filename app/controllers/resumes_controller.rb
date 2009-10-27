@@ -93,7 +93,7 @@ class ResumesController < ApplicationController
   # GET /resumes/new
   # GET /resumes/new.xml
   def new
-    @section = 'resume' 
+    @section = 'resume'  
     @resume = current_user.build_resume      
     respond_to do |format|
         format.html {}
@@ -114,12 +114,13 @@ class ResumesController < ApplicationController
     @resume = current_user.build_resume(params[:resume])
     @resume.build_summary(:content => '暂无',:specialties => '暂无')
     @resume.build_additionalinfo(:interests => '暂无') 
-    @resume.salt = Resume.generate_salt
+ #   @resume.salt = Resume.generate_salt
     respond_to do |format|
       if @resume.save
         flash[:notice] = '简历创建成功!'
         format.html { redirect_to edit_resume_path(@resume) }
-      else  
+      else                 
+        @section = 'resume' 
         format.html { render :action => 'new' }
       end 
     end
