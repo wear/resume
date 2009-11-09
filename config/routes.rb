@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.public_resume '/public/resume/:id', :controller => 'resumes', :action => 'public', :id => nil 
   map.login_box '/login_box', :controller => 'sessions', :action => 'login_box' 
   map.search '/search', :controller => 'landing', :action => 'search'
- 
+  map.get_mail '/get_mail', :controller => 'landing', :action => 'get_mail'
   map.forgot_password '/forgot_password',:controller => 'users', :action => 'forgot_password' 
   map.public_resume_pdf '/public/resumes/:salt', :controller => 'resumes', :action => 'public',:format => 'pdf' 
   map.jobs '/jobs',:controller => 'landing',:action => 'jobs'

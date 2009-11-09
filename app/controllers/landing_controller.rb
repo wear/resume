@@ -1,5 +1,5 @@
 class LandingController < ApplicationController 
- # include FaceboxRender  
+  include FaceboxRender  
       
   before_filter :redirect_if_logged_in,:only => [:index]   
        
@@ -26,7 +26,16 @@ class LandingController < ApplicationController
   
   def contact
     
-  end 
+  end          
+  
+  def get_mail
+    @contacts = ContactList::Client.fetch('wear21@hotmail.com', 'zzzzzz', 'hotmail')
+    
+    respond_to do |wants|
+      wants.js { render_to_facebox }
+    end
+    
+  end
   
   def jobs
     
